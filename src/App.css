@@ -1,0 +1,18 @@
+:root {
+    --primary:#8298c6;
+    --secondary:#e9e7db;
+    --tertiary: black;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+/* Darrell */
+div {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-color: var(--tertiary);
+    border-style: solid;
+}
+/* Hari */
