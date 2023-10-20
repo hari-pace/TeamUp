@@ -1,18 +1,50 @@
 :root {
-    --primary:#8298c6;
-    --secondary:#e9e7db;
-    --tertiary: black;
+  --primary: #8298c6;
+  --secondary: #e9e7db;
+  --tertiary: black;
 }
 
 body {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 /* Darrell */
 div {
-    background-color: var(--primary);
-    color: var(--secondary);
-    border-color: var(--tertiary);
-    border-style: solid;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border-color: var(--tertiary);
 }
 /* Hari */
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-logo-container {
+  display: flex;
+  align-items: center;
+}
+.footer-container > div > ul {
+  list-style: none;
+}
+.footer-container > div > ul > li {
+  padding: 2%;
+  cursor: pointer;
+}
+
+.footer-socials-container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-socials-container > a {
+  padding: 1%;
+  font-size: 0.75em;
+  color: var(--secondary);
+}
+
+.footer-1,
+.footer-2,
+.footer-3 {
+  width: 10%;
+}
