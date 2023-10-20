@@ -12,7 +12,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element="" />
+        <Route path="/" element={<Homepage />} />
         <Route path="/dashboard/:username" element={<Dashboard />} />
         <Route path="/sport" element="" />
         <Route path="/sport/:id" element="" />
@@ -22,7 +22,6 @@ function App() {
         <Route path="/about" element="" />
         <Route path="/*" element="" />
       </Routes>
-      <Homepage />
       <Footer />
     </>
   );
