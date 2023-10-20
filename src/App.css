@@ -1,18 +1,76 @@
+@font-face {
+    font-family: 'Futura Condensed Extra';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Futura Condensed Extra'), url('https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff') format('woff');
+}
+
 :root {
   --primary: #8298c6;
   --secondary: #e9e7db;
   --tertiary: black;
+  --mainFont: "Futura Condensed Extra";
 }
 
 body {
   padding: 0px;
   margin: 0px;
+  background-color: var(--primary);
 }
+
 /* Darrell */
-div {
+
+/* header styling */
+.logo {
   background-color: var(--primary);
   color: var(--secondary);
-  border-color: var(--tertiary);
+  font-family: var(--mainFont);
+  border-radius: 20px;
+  letter-spacing: 1px;
+  border-style: solid;
+  text-align: center;
+  font-size: 3rem;
+  padding: 20% 2%;
+  cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1% 5%;
+}
+
+.headerLeft {
+    display: flex;
+}
+
+.headerRight {
+    display: flex;
+    padding: 0% 10%;
+    justify-content: space-around;
+}
+
+.avatarMini {
+    border-radius: 50%;
+    padding: 50% 40%;
+    margin-right: 50%;
+    background-image: none;
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
+.loginSignup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginSignup button {
+    margin: 0% 10%;
+    padding: 20%;
+    font-size: 1rem;
+    cursor: pointer;
 }
 /* Hari */
 .footer-container {
