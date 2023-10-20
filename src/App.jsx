@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Dashboard from "./components/Dashboard";
 
 import "./App.css";
 
 function App() {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="/" element="" />
-        <Route path="/dashboard/:username" element="" />
+        <Route path="/dashboard/:username" element={<Dashboard />} />
         <Route path="/sport" element="" />
         <Route path="/sport/:id" element="" />
         <Route path="/sport/create" element="" />
@@ -20,7 +22,6 @@ function App() {
         <Route path="/*" element="" />
       </Routes>
 
-      <Header />
       <Footer />
     </>
   );

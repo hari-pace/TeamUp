@@ -1,0 +1,87 @@
+@import url("https://fonts.cdnfonts.com/css/futura-condensed-pt");
+
+.page2-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Futura Condensed Extra", sans-serif;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+.page2-subheading {
+  font-size: 2rem;
+  font-family: "Futura Condensed Extra", sans-serif;
+  padding-left: 10%;
+  margin-top: 1%;
+}
+
+.page2-carousel {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.page2-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.page2-block-btn {
+  max-width: 500px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Proxima Nova Condensed", sans-serif;
+  font-size: 1.2rem;
+  height: 20%;
+  margin-bottom: 1%;
+}
+.page2-block-btn:hover {
+  max-width: 500px;
+  background-color: black;
+  color: white;
+}
+
+.page2-divider {
+  background-color: var(--secondary);
+}
+
+.page2-section2 div {
+  background-color: var(--secondary);
+  color: black;
+}
+
+.page2-subheading2 {
+  font-size: 2rem;
+  font-family: "Futura Condensed Extra", sans-serif;
+  padding-left: 10%;
+  padding-top: 2%;
+  margin-top: 1%;
+}
+
+.page2-sports-cards {
+  margin-top: 1%;
+}
+
+.page2-sports-cards-row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
+
+.page2-sports-cards-col {
+  padding: 1%;
+  border: 2px solid black;
+}
+
+.page2-suggested-cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: wrap;
+  margin: 0 6%;
+}
+
+.page2-suggested-individual-card {
+  margin: 1%;
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
