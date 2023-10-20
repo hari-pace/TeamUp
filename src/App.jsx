@@ -1,9 +1,24 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element="" />
+        <Route path="/dashboard/:username" element="" />
+        <Route path="/sport" element="" />
+        <Route path="/sport/:id" element="" />
+        <Route path="/sport/create" element="" />
+        <Route path="/profile/:username" element="" />
+        <Route path="/contact" element="" />
+        <Route path="/about" element="" />
+        <Route path="/*" element="" />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
