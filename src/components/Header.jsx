@@ -1,5 +1,6 @@
 import Logo from "./Logo"
 import Avatar from "./Avatar"
+import { Button, Space } from "antd";
 import { useState } from "react"
 
 export default function Header() {
@@ -14,16 +15,36 @@ export default function Header() {
   {loggedIn ? (
     <>
   <Avatar />
-  <div className="loginSignup"> 
-  <button onClick={() => setLoggedIn(false)}>Logout</button>
-  </div>
+    <Space> 
+  <Button 
+  type="primary" 
+  ghost 
+  onClick={() => setLoggedIn(false)}
+  >
+    Logout
+  </Button>
+  </Space>
   </>
   )
   : (
-  <div className="loginSignup"> 
-  <button onClick={() => setLoggedIn(true)}>Login</button>
-  <button>Signup</button>
-  </div>)}
+    <>
+  <Space> 
+  <Button   
+  type="primary" 
+  ghost 
+  onClick={() => setLoggedIn(true)}
+  >
+    Login
+  </Button>
+  </Space>
+  <Space>
+  <Button 
+  type="primary" 
+  ghost
+  >Signup
+  </Button>
+  </Space>
+  </>)}
   </div>
   </div>
 </>

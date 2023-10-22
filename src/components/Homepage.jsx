@@ -4,6 +4,8 @@ import Football from "../assets/football.jpg"
 import Basketball from "../assets/basketball.jpg"
 import Swimming from "../assets/swimming.jpg"
 import Beachvolleyball from "../assets/beachvolleyball.jpg"
+import { ParallaxBanner } from "react-scroll-parallax";
+import Hero2 from "../assets/hero2.png"
 
 export default function Homepage() {
     const contentStyle = {
@@ -16,7 +18,22 @@ export default function Homepage() {
     return (
         <>
         <div className="heroDiv">
+            <ParallaxBanner
+                className="heroBanner"
+                layers={[
+                    {
+                    speed: -30,
+                    children: (
+                    <div className="">
+                    <h1 className="text">Welcome to TeamUp</h1>
+                    </div>
+                    ),
+                    },
+                    { image: Hero2, speed: 20 },
+                      ]}
+                      >
         <h1> Welcome to TeamUp</h1>
+        </ParallaxBanner>
         </div>
         <div className="whatIsCon">
         <h2>What is TeamUp?</h2>
@@ -35,7 +52,7 @@ export default function Homepage() {
                   </p>
                 </div>
             </div>
-        <div className="howContainer">
+            <div className="howContainer">
             <h2>How it works</h2>
                 <div className="stepsContainer">
                     <div className="steps"><h3>1. Register <br/>an account</h3></div>
