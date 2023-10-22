@@ -1,0 +1,279 @@
+@font-face {
+    font-family: 'Futura Condensed Extra';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Futura Condensed Extra'), url('https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff') format('woff');
+}
+
+:root {
+  --primary: #8298c6;
+  --secondary: #e9e7db;
+  --tertiary: black;
+  --mainFont: "Futura Condensed Extra";
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--primary);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--mainFont); 
+}
+
+/* Darrell */
+
+/* header styling */
+.logo {
+  background-color: var(--primary);
+  color: var(--tertiary);
+  font-family: var(--mainFont);
+  border-radius: 20px;
+  letter-spacing: 1px;
+  border-style: solid;
+  text-align: center;
+  font-size: 3rem;
+  padding: 20% 2%;
+  cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1% 5%;
+}
+
+.headerLeft {
+    display: flex;
+}
+
+.headerRight {
+    display: flex;
+    padding: 0% 10%;
+    justify-content: space-around;
+}
+
+.avatarMini {
+    border-radius: 50%;
+    padding: 50% 40%;
+    margin-right: 50%;
+    background-image: none;
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
+.loginSignup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginSignup button {
+    margin: 0% 10%;
+    padding: 20%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* homepage */
+/* .heroDiv {
+    background-image: url("./assets/hero.jpg");
+    background-color: var(--secondary);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    padding: 10%;
+    /* background-position-y: 50%; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 1%;
+    border-radius: 30px;
+    
+} */
+
+/* .heroDiv h1 {
+    font-size: 8rem;
+    color: var(--tertiary);
+    background-color:#8298c6aa;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}  */
+
+.heroDiv {
+    height: 700px;
+    background-color: var(--secondary);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    margin: 0px 1%;
+    border-radius: 30px;
+  }
+
+.heroBanner {
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroDiv h1 {
+    position: absolute;
+    font-size: 6rem;
+    color: var(--tertiary);
+    background-color:#8298c67a;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+.whatIsCon {
+    margin: 5% 1%;
+}
+
+.whatIsCon h2 {
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.descriptionCon {
+    background-color: var(--secondary);
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.descriptionCon h2 {
+    font-size: 4rem;
+    padding: 0px;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+.descriptionCon p {
+    font-size: 1.5rem;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.howContainer h2 {
+    margin: 1%;
+    text-decoration: underline;
+    font-size: 4rem;
+}
+
+/* ant buttons */
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+      color: var(--tertiary);
+      border-color: var(--tertiary);
+      margin: 0 5px;
+  }
+
+  :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+/*steps */
+.stepsContainer {
+display: flex;
+justify-content: space-evenly;
+}
+
+.steps {
+    padding: 5%;
+    background-color: var(--secondary);
+    border-radius: 20px;
+    }
+
+.typeOfSportContainer {
+    margin: 5% 1%;
+}
+
+.typeOfSportContainer h2 {
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.carouselCon {
+    padding-bottom: 20px;
+}
+
+.carouselCon a {
+    color: var(--tertiary);
+}
+
+.carouselItem {
+    display: flex !important;
+    justify-content: center;
+    background-color: var(--secondary);
+    align-content: center;
+}
+
+.carouselItem h3 {
+    position: absolute;
+    top: 30%;
+    font-size: 3rem;
+    background-color:#8298c6aa;
+    padding: 5px 20px;
+}
+
+.reviewContainer {
+    margin: 5% 1%;
+}
+
+.reviewContainer h2 {
+    font-size: 4rem;
+}
+
+.carouselReviews {
+    padding-bottom: 20px;
+}
+
+
+
+/* Hari */
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-logo-container {
+  display: flex;
+  align-items: center;
+}
+.footer-container > div > ul {
+  list-style: none;
+}
+.footer-container > div > ul > li {
+  padding: 2%;
+  cursor: pointer;
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
+
+.footer-socials-container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-socials-container > a {
+  padding: 1%;
+  font-size: 0.75em;
+  color: var(--secondary);
+}
+
+.footer-1,
+.footer-2,
+.footer-3 {
+  width: 10%;
+  min-width: 150px;
+}
