@@ -78,26 +78,55 @@ h1, h2, h3, h4 {
 }
 
 /* homepage */
-.heroDiv {
+/* .heroDiv {
     background-image: url("./assets/hero.jpg");
     background-color: var(--secondary);
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: luminosity;
     padding: 10%;
-    background-position-y: 50%;
-    display: flex;
+    /* background-position-y: 50%; */
+    /* display: flex;
     justify-content: center;
     align-items: center;
     margin: 0% 1%;
     border-radius: 30px;
     
-}
+} */
 
-.heroDiv h1 {
+/* .heroDiv h1 {
     font-size: 8rem;
     color: var(--tertiary);
     background-color:#8298c6aa;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}  */
+
+.heroDiv {
+    height: 700px;
+    background-color: var(--secondary);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    margin: 0px 1%;
+    border-radius: 30px;
+  }
+
+.heroBanner {
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroDiv h1 {
+    position: absolute;
+    font-size: 6rem;
+    color: var(--tertiary);
+    background-color:#8298c67a;
     padding: 5%;
     width: 100%;
     text-align: center;
@@ -142,6 +171,19 @@ h1, h2, h3, h4 {
     font-size: 4rem;
 }
 
+/* ant buttons */
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+      color: var(--tertiary);
+      border-color: var(--tertiary);
+      margin: 0 5px;
+  }
+
+  :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+/*steps */
 .stepsContainer {
 display: flex;
 justify-content: space-evenly;
