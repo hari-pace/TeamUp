@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./styling/EventMoreInfo.css";
+import React from "react" 
+import { useEffect, useState } from "react";
+import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
 import { Card, List, Button } from "antd";
 
