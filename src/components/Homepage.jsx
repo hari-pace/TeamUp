@@ -6,6 +6,7 @@ import Swimming from "../assets/swimming.jpg"
 import Beachvolleyball from "../assets/beachvolleyball.jpg"
 import { ParallaxBanner } from "react-scroll-parallax";
 import Hero2 from "../assets/hero2.png"
+import "./styling/homepage.css"
 
 export default function Homepage() {
     const contentStyle = {

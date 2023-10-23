@@ -5,11 +5,11 @@ import {
   EllipsisOutlined,
   CheckOutlined,
 } from "@ant-design/icons";
-import "./dashboard.css";
 import Football from "../assets/football.jpg";
 import Basketball from "../assets/basketball.jpg";
 import Swimming from "../assets/swimming.jpg";
 import Beachvolleyball from "../assets/beachvolleyball.jpg";
+import "./styling/dashboard.css";
 
 const contentStyle = {
   height: "400px",
