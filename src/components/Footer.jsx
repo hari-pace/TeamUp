@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Logo from "./Logo";
 import { Divider } from "antd";
+import "./styling/footer.css";
 
 function Footer() {
   return (
