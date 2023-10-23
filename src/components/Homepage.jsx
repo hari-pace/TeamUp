@@ -101,16 +101,16 @@ export default function Homepage() {
     autoplay
     dotHeight="30"
     >
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great"- Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
   </Carousel>
