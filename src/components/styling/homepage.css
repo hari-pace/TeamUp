@@ -1,7 +1,7 @@
 /* homepage */
 @media screen and (max-width: 800px) {
     .heroDiv {
-        margin-right: 25px !important;
+        /* margin-right: 25px !important; */
     }
     
     .descriptionCon p {
@@ -10,7 +10,7 @@
     }
     .descriptionCon {
         padding: 5%;
-        margin-right: 25px !important;
+        /* margin-right: 25px !important; */
     }
     .stepsContainer {
         flex-direction: column;
@@ -30,7 +30,7 @@
         height: 150px !important;
     }
     .carouselItem {
-        margin-right: 25px !important;
+        /* margin-right: 25px !important; */
     }
     .carouselItem h3 {
         font-size: 1.75rem !important;

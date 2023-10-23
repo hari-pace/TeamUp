@@ -1,11 +1,24 @@
 import Logo from "./Logo"
 import Avatar from "./Avatar"
 import { Button, Space } from "antd";
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Login from "./user/Login";
+import Signup from "./user/Signup";
 import "./styling/header.css"
 
 export default function Header() {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    if (!user) {
+  setUser(JSON.parse(localStorage.getItem("user")))
+  }},[user])
+
+  const handleClick = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
   return (
 <>
 <div className="header">
@@ -13,7 +26,7 @@ export default function Header() {
 <Logo />
 </div>
 <div className="headerRight">
-  {loggedIn ? (
+  {user !== null && (
     <>
   <Avatar />
     <Space> 
@@ -21,16 +34,20 @@ export default function Header() {
   className="loginButtons"
   type="primary" 
   ghost 
-  onClick={() => setLoggedIn(false)}
+  onClick={handleClick}
   >
     Logout
   </Button>
   </Space>
   </>
-  )
-  : (
+  )}
+  {user === null && (
     <>
-  <Space> 
+    <Login user={user} setUser={setUser} />
+    <Signup />
+    </>
+    )}
+  {/* <Space> 
   <Button
   className="loginButtons"   
   type="primary" 
@@ -48,7 +65,7 @@ export default function Header() {
   >Signup
   </Button>
   </Space>
-  </>)}
+  </>)} */}
   </div>
   </div>
 </>
