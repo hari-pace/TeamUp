@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
 import Events from "./components/Events";
+import EventMoreInfo from "./components/EventMoreInfo";
 
 import "./App.css";
 
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="dashboard/:username" element={<Dashboard />} />
         <Route path="events" element={<Events />} />
-        <Route path="events/:id" element="" />
+        <Route path="events/:id" element={<EventMoreInfo />} />
         <Route path="events/create" element="" />
         <Route path="profile/:username" element="" />
         <Route path="contact" element="" />
