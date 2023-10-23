@@ -1,0 +1,86 @@
+.events-heroDiv {
+  height: 400px;
+  background-color: var(--secondary);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  display: flex;
+  justify-content: center;
+  margin: 0px 1%;
+  border-radius: 30px;
+}
+
+.events-heroBanner {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-heroDiv h1 {
+  position: absolute;
+  color: var(--tertiary);
+  background-color: #8298c67a;
+  padding: 4%;
+  width: 100%;
+  text-align: center;
+}
+
+.events-search-section {
+  display: flex;
+  justify-content: center;
+}
+
+.events-searchbars,
+.events-filter {
+  margin: 2%;
+}
+
+.events-searchbars {
+  display: flex;
+  flex-flow: wrap;
+  margin-right: 10%;
+}
+
+.events-search-btn {
+  font-size: 1.5rem;
+  min-height: 50px;
+}
+
+.events-find-event {
+  min-height: 40px;
+  min-width: 300px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.events-search-btn {
+  font-size: 1.5rem;
+  min-height: 50px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+}
+
+.page3-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.page3-block-btn {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Proxima Nova Condensed", sans-serif;
+  font-size: 1.5rem;
+  min-height: 50px;
+  margin-bottom: 1%;
+}
