@@ -125,6 +125,7 @@ justify-content: space-evenly;
 
 .reviewContainer h2 {
     font-size: 4rem;
+    text-decoration: underline;
 }
 
 .carouselReviews {
