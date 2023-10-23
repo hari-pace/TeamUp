@@ -38,3 +38,21 @@
   background-color: var(--secondary);
   margin: 2% 0;
 }
+
+@media screen and (max-width: 800px) {
+  .footer-logo-container {
+    display: none;
+  }
+  .footer-1,
+  .footer-2,
+  .footer-3 {
+    width: 10%;
+    min-width: 120px;
+  }
+  .footer-container > div > ul {
+    margin-left: -17%;
+  }
+  .divider {
+    display: none;
+  }
+}

@@ -14,14 +14,14 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/dashboard/:username" element={<Dashboard />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events/:id" element="" />
-        <Route path="/events/create" element="" />
-        <Route path="/profile/:username" element="" />
-        <Route path="/contact" element="" />
-        <Route path="/about" element="" />
-        <Route path="/*" element="" />
+        <Route path="dashboard/:username" element={<Dashboard />} />
+        <Route path="events" element={<Events />} />
+        <Route path="events/:id" element="" />
+        <Route path="events/create" element="" />
+        <Route path="profile/:username" element="" />
+        <Route path="contact" element="" />
+        <Route path="about" element="" />
+        <Route path="*" element="" />
       </Routes>
       <Footer />
     </>

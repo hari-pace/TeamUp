@@ -76,11 +76,29 @@
   margin: 1%;
 }
 
-.page3-block-btn {
-  background-color: var(--secondary);
-  color: var(--primary);
-  font-family: "Proxima Nova Condensed", sans-serif;
-  font-size: 1.5rem;
-  min-height: 50px;
-  margin-bottom: 1%;
+@media screen and (max-width: 800px) {
+  .events-heroDiv {
+    height: 250px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .events-search-section {
+    flex-flow: wrap;
+    margin: 5% 50%;
+  }
+  .events-find-event {
+    margin: 2% auto;
+    max-width: 300px;
+
+    text-align: center;
+
+    /* padding-left: 2%; */
+  }
+  .events-search-btn {
+    margin: 4% auto;
+  }
+  .page3-btn-wrapper {
+    max-width: 300px;
+    margin: 5% auto;
+  }
 }

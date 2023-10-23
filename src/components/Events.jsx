@@ -27,7 +27,7 @@ const Events = () => {
   return (
     <>
       <div className="events-heroDiv">
-        <h1> Find your event</h1>
+        <h1 className="events-h1"> Find your event</h1>
       </div>
       <div className="events-search-section">
         <div className="events-searchbars">
