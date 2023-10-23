@@ -1,8 +1,10 @@
 @font-face {
-    font-family: 'Futura Condensed Extra';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Futura Condensed Extra'), url('https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff') format('woff');
+  font-family: "Futura Condensed Extra";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Futura Condensed Extra"),
+    url("https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff")
+      format("woff");
 }
 
 :root {
@@ -18,8 +20,11 @@ body {
   background-color: var(--primary);
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--mainFont); 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--mainFont);
 }
 
 /* Darrell */
@@ -39,42 +44,42 @@ h1, h2, h3, h4 {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1% 5%;
 }
 
 .headerLeft {
-    display: flex;
+  display: flex;
 }
 
 .headerRight {
-    display: flex;
-    padding: 0% 10%;
-    justify-content: space-around;
+  display: flex;
+  padding: 0% 10%;
+  justify-content: space-around;
 }
 
 .avatarMini {
-    border-radius: 50%;
-    padding: 50% 40%;
-    margin-right: 50%;
-    background-image: none;
-    background-color: var(--secondary);
-    cursor: pointer;
+  border-radius: 50%;
+  padding: 50% 40%;
+  margin-right: 50%;
+  background-image: none;
+  background-color: var(--secondary);
+  cursor: pointer;
 }
 
 .loginSignup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginSignup button {
-    margin: 0% 10%;
-    padding: 20%;
-    font-size: 1rem;
-    cursor: pointer;
+  margin: 0% 10%;
+  padding: 20%;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 /* homepage */
@@ -86,7 +91,7 @@ h1, h2, h3, h4 {
     background-blend-mode: luminosity;
     padding: 10%;
     /* background-position-y: 50%; */
-    /* display: flex;
+/* display: flex;
     justify-content: center;
     align-items: center;
     margin: 0% 1%;
@@ -104,153 +109,159 @@ h1, h2, h3, h4 {
 }  */
 
 .heroDiv {
-    height: 700px;
-    background-color: var(--secondary);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: luminosity;
-    display: flex;
-    justify-content: center;
-    margin: 0px 1%;
-    border-radius: 30px;
-  }
+  height: 700px;
+  background-color: var(--secondary);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  display: flex;
+  justify-content: center;
+  margin: 0px 1%;
+  border-radius: 30px;
+}
 
 .heroBanner {
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .heroDiv h1 {
-    position: absolute;
-    font-size: 6rem;
-    color: var(--tertiary);
-    background-color:#8298c67a;
-    padding: 5%;
-    width: 100%;
-    text-align: center;
+  position: absolute;
+  font-size: 6rem;
+  color: var(--tertiary);
+  background-color: #8298c67a;
+  padding: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .whatIsCon {
-    margin: 5% 1%;
+  margin: 5% 1%;
 }
 
 .whatIsCon h2 {
-    font-size: 4rem;
-    text-decoration: underline;
+  font-size: 4rem;
+  text-decoration: underline;
 }
 
 .descriptionCon {
-    background-color: var(--secondary);
-    border-radius: 20px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
+  background-color: var(--secondary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .descriptionCon h2 {
-    font-size: 4rem;
-    padding: 0px;
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-bottom: 0px;
-    text-decoration: underline;
+  font-size: 4rem;
+  padding: 0px;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-bottom: 0px;
+  text-decoration: underline;
 }
 
 .descriptionCon p {
-    font-size: 1.5rem;
-    margin-left: 2%;
-    margin-bottom: 2%;
+  font-size: 1.5rem;
+  margin-left: 2%;
+  margin-bottom: 2%;
 }
 
 .howContainer h2 {
-    margin: 1%;
-    text-decoration: underline;
-    font-size: 4rem;
+  margin: 1%;
+  text-decoration: underline;
+  font-size: 4rem;
 }
 
 /* ant buttons */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
-      color: var(--tertiary);
-      border-color: var(--tertiary);
-      margin: 0 5px;
-  }
+:where(
+    .css-dev-only-do-not-override-3mqfnx
+  ).ant-btn-primary.ant-btn-background-ghost {
+  color: var(--tertiary);
+  border-color: var(--tertiary);
+  margin: 0 5px;
+}
 
-  :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
-    color: var(--secondary);
-    border-color: var(--secondary);
+:where(
+    .css-dev-only-do-not-override-3mqfnx
+  ).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
 }
 
 :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
-    color: var(--tertiary);
-    border-color: var(--tertiary);
-    margin: 0 5px;
+  color: var(--tertiary);
+  border-color: var(--tertiary);
+  margin: 0 5px;
 }
 
-:where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+:where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
   color: var(--secondary);
   border-color: var(--secondary);
 }
 
 /*steps */
 .stepsContainer {
-display: flex;
-justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .steps {
-    padding: 5%;
-    background-color: var(--secondary);
-    border-radius: 20px;
-    }
+  padding: 5%;
+  background-color: var(--secondary);
+  border-radius: 20px;
+}
 
 .typeOfSportContainer {
-    margin: 5% 1%;
+  margin: 5% 1%;
 }
 
 .typeOfSportContainer h2 {
-    font-size: 4rem;
-    text-decoration: underline;
+  font-size: 4rem;
+  text-decoration: underline;
 }
 
 .carouselCon {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .carouselCon a {
-    color: var(--tertiary);
+  color: var(--tertiary);
 }
 
 .carouselItem {
-    display: flex !important;
-    justify-content: center;
-    background-color: var(--secondary);
-    align-content: center;
+  display: flex !important;
+  justify-content: center;
+  background-color: var(--secondary);
+  align-content: center;
 }
 
 .carouselItem h3 {
-    position: absolute;
-    top: 30%;
-    font-size: 3rem;
-    background-color:#8298c6aa;
-    padding: 5px 20px;
+  position: absolute;
+  top: 30%;
+  font-size: 3rem;
+  background-color: #8298c6aa;
+  padding: 5px 20px;
 }
 
 .reviewContainer {
-    margin: 5% 1%;
+  margin: 5% 1%;
 }
 
 .reviewContainer h2 {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 
 .carouselReviews {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
-
-
 
 /* Hari */
 .footer-container {
@@ -287,4 +298,9 @@ justify-content: space-evenly;
 .footer-3 {
   width: 10%;
   min-width: 150px;
+}
+
+.divider {
+  background-color: var(--secondary);
+  margin: 2% 0;
 }

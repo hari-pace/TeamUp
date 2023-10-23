@@ -1,19 +1,21 @@
 import React from "react";
-import { Button, Space, Carousel, Divider, Card, Col, Row, Avatar } from "antd";
+import { Button, Space, Carousel, Card, Col, Row, Avatar } from "antd";
 import {
   PlusOutlined,
   EllipsisOutlined,
   CheckOutlined,
 } from "@ant-design/icons";
 import "./dashboard.css";
+import Football from "../assets/football.jpg";
+import Basketball from "../assets/basketball.jpg";
+import Swimming from "../assets/swimming.jpg";
+import Beachvolleyball from "../assets/beachvolleyball.jpg";
 
 const contentStyle = {
-  margin: 0,
-  height: "300px",
-  color: "#fff",
-  lineHeight: "300px",
+  height: "400px",
+  lineHeight: "360px",
   textAlign: "center",
-  background: "#364d79",
+  background: "var(--secondary)",
 };
 
 const { Meta } = Card;
@@ -60,7 +62,7 @@ const Dashboard = () => {
           <div className="page2-sports">
             <div className="page2-subheading2">Sports you follow</div>
             <div className="page2-sports-cards">
-              <Row className="page2-sports-cards-row" gutter={8}>
+              <Row className="page2-sports-cards-row" gutter={0}>
                 {/* Add map method of followed sports here */}
                 <Col span={5}>
                   <Card
@@ -68,7 +70,12 @@ const Dashboard = () => {
                     className="page2-sports-cards-col"
                     bordered={true}
                   >
-                    Image goes here
+                    <img
+                      className="page2-sports-cards-individual"
+                      src={Football}
+                      alt="Football"
+                      height="200px"
+                    />
                   </Card>
                 </Col>
                 <Col span={5}>
@@ -77,25 +84,40 @@ const Dashboard = () => {
                     className="page2-sports-cards-col"
                     bordered={true}
                   >
-                    Image goes here
+                    <img
+                      className="page2-sports-cards-individual"
+                      src={Basketball}
+                      alt="Basketball"
+                      height="200px"
+                    />
                   </Card>
                 </Col>
                 <Col span={5}>
                   <Card
-                    title="Running"
+                    title="Swimming"
                     className="page2-sports-cards-col"
                     bordered={true}
                   >
-                    Image goes here
+                    <img
+                      className="page2-sports-cards-individual"
+                      src={Swimming}
+                      alt="Swimming"
+                      height="200px"
+                    />
                   </Card>
                 </Col>
                 <Col span={5}>
                   <Card
-                    title="Cycling"
+                    title="Beach Volleyball"
                     className="page2-sports-cards-col"
                     bordered={true}
                   >
-                    Image goes here
+                    <img
+                      className="page2-sports-cards-individual"
+                      src={Beachvolleyball}
+                      alt="BeachVolleyball"
+                      height="200px"
+                    />
                   </Card>
                 </Col>
               </Row>
@@ -103,7 +125,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="page2-sports">
-          <div className="page2-subheading">Suggested</div>
+          <div className="page2-subheading">Suggested events</div>
           <div className="page2-suggested-cards">
             <Card
               className="page2-suggested-individual-card"
@@ -123,7 +145,7 @@ const Dashboard = () => {
               ]}
             >
               <Meta
-                className="page2-suggested-individual-card-meta"
+                // className="page2-suggested-individual-card-meta"
                 avatar={
                   <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
                 }
@@ -285,7 +307,6 @@ const Dashboard = () => {
           </div>
         </div>
       </Space>
-      <Divider className="page2-divider" />
     </>
   );
 };
