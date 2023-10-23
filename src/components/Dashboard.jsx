@@ -5,7 +5,7 @@ import {
   EllipsisOutlined,
   CheckOutlined,
 } from "@ant-design/icons";
-import "./dashboard.css";
+import "./styling/dashboard.css";
 
 const contentStyle = {
   margin: 0,
