@@ -40,7 +40,9 @@ h4 {
 p,
 a,
 button,
-span {
+span,
+label,
+div {
   font-family: var(--secondaryFont);
 }
 

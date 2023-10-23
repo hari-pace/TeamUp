@@ -1,5 +1,6 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useState } from "react";
+import "../styling/loginform.css"
 
 export default function LoginForm({setUser}) {
   const [email, setEmail] = useState("");
@@ -102,7 +103,9 @@ export default function LoginForm({setUser}) {
       }}
     >
       <Button 
-      type="primary" 
+      type="primary"
+      ghost
+      className="loginButtons" 
       htmlType="submit">
         Submit
       </Button>

@@ -37,6 +37,7 @@ export default function Login({user, setUser}) {
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
+        footer={null}
       >
         <p>{modalText}</p>
       </Modal>
