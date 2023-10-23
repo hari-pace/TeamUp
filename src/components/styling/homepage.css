@@ -1,5 +1,50 @@
 /* homepage */
-
+@media screen and (max-width: 800px) {
+    .heroDiv {
+        margin-right: 25px !important;
+    }
+    
+    .descriptionCon p {
+       width: 100% !important;
+       font-size: 1.25rem !important;
+    }
+    .descriptionCon {
+        padding: 5%;
+        margin-right: 25px !important;
+    }
+    .stepsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .steps {
+        margin: 5% 0%;
+        width: 100px;
+        height: 100px;
+    }
+    .steps h3 {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+    .carouselItem img {
+        height: 150px !important;
+    }
+    .carouselItem {
+        margin-right: 25px !important;
+    }
+    .carouselItem h3 {
+        font-size: 1.75rem !important;
+        margin: 0px;
+        padding: 0px;
+    }
+    .reviewItem h3 {
+        height: 150px !important;
+        line-height: 150px !important;
+        margin: 0px;
+        padding: 0px;
+        margin-right: 25px;
+    }
+}
 .heroDiv {
     height: 700px;
     background-color: var(--secondary);

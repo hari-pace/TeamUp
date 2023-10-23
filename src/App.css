@@ -21,6 +21,15 @@ body {
   background-color: var(--primary);
 }
 
+@media screen and (max-width: 800px) {
+  h1 {
+      font-size: 3.5rem !important;
+  }
+  h2 {
+    font-size: 2rem !important;
+  }
+}
+
 h1,
 h2,
 h3,
