@@ -6,13 +6,16 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import Logo from "./Logo";
+import { Divider } from "antd";
 
 function Footer() {
   return (
     <section>
+      <Divider className="divider" />
       <div className="footer-container">
         <div className="footer-logo-container">
-          <div>Logo</div>
+          <Logo />
         </div>
         <div className="footer-1">
           <ul>

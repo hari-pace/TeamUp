@@ -1,8 +1,10 @@
 @font-face {
-    font-family: 'Futura Condensed Extra';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Futura Condensed Extra'), url('https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff') format('woff');
+  font-family: "Futura Condensed Extra";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Futura Condensed Extra"),
+    url("https://fonts.cdnfonts.com/s/92636/Futura Condensed Extra Bold.woff")
+      format("woff");
 }
 
 :root {
@@ -10,7 +12,7 @@
   --secondary: #e9e7db;
   --tertiary: black;
   --mainFont: "Futura Condensed Extra";
-  --secondaryFont: "Proxima Nova Condensed",sans-serif;
+  --secondaryFont: "Proxima Nova Condensed", sans-serif;
 }
 
 body {
@@ -19,20 +21,26 @@ body {
   background-color: var(--primary);
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--mainFont); 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--mainFont);
 }
 
-p, a, button, span {
-    font-family: var(--secondaryFont); 
+p,
+a,
+button,
+span {
+  font-family: var(--secondaryFont);
 }
 
 h1 {
-    font-size: 6rem; 
+  font-size: 6rem;
 }
 
 h2 {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 
 /* Darrell */
@@ -72,4 +80,9 @@ h2 {
 .footer-3 {
   width: 10%;
   min-width: 150px;
+}
+
+.divider {
+  background-color: var(--secondary);
+  margin: 2% 0;
 }
