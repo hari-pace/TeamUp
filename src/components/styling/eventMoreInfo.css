@@ -1,0 +1,98 @@
+.page4-container {
+  display: flex;
+  margin-top: 2%;
+}
+
+.page4-left-column {
+  width: 10%;
+  margin-left: 5%;
+}
+
+.page4-avatar {
+  margin-bottom: 15%;
+}
+
+.page4-right-column {
+  width: 50%;
+  background-color: var(--secondary);
+  padding-left: 10%;
+  margin-left: 10%;
+  border-radius: 20px;
+}
+
+.page4-heading {
+  padding-left: 3%;
+}
+
+.page4-input-fields {
+  font-size: 1.5rem;
+  border: 2px solid var(--primary);
+  width: 70%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+  border-radius: 20px;
+}
+
+#page-4-description {
+  height: 10rem;
+  align-items: flex-start;
+  padding-top: 2%;
+}
+
+.page4-spaces-fields {
+  font-size: 1.5rem;
+  border: 2px solid var(--primary);
+  width: 33%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+  border-radius: 20px;
+  margin: 0.5%;
+}
+
+.page4-spaces-fields-container {
+  display: flex;
+}
+
+.page4-users-attending-heading {
+  font-size: 3rem;
+  margin-top: 10%;
+}
+
+.page4-grid {
+  padding-right: 20%;
+}
+
+.page4-grid-items {
+  min-width: 150px;
+  min-height: 150px;
+}
+
+.ant-card-head-title {
+  font-size: 1.5rem;
+}
+
+.page4-btn-wrapper {
+  display: flex;
+}
+
+.page4-block-btn {
+  max-width: 375px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: "Proxima Nova Condensed", sans-serif;
+  font-size: 1.5rem;
+  height: 50px;
+  margin: 1% 0.5% 5% 0.5%;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  max-width: 375px;
+  background-color: #536ce8;
+  color: white;
+}
