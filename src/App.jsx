@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
+import Events from "./components/Events";
 
 import "./App.css";
 
@@ -14,9 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/dashboard/:username" element={<Dashboard />} />
-        <Route path="/sport" element="" />
-        <Route path="/sport/:id" element="" />
-        <Route path="/sport/create" element="" />
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/:id" element="" />
+        <Route path="/events/create" element="" />
         <Route path="/profile/:username" element="" />
         <Route path="/contact" element="" />
         <Route path="/about" element="" />
