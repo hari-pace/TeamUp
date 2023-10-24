@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Avatar, Modal, Input, Radio, Space } from "antd";
 import {
   PlusOutlined,
@@ -13,6 +13,7 @@ const Events = () => {
   const [modal2Open, setModal2Open] = useState(false);
   const [locationValue, setLocationValue] = useState(null);
   const [sportValue, setSportValue] = useState(null);
+  const [events, setEvents] = useState([]);
 
   const onChangeLocation = (e) => {
     console.log("radio checked", e.target.value);
@@ -24,6 +25,26 @@ const Events = () => {
   };
 
   const { Meta } = Card;
+
+  const fetchEvents = async () => {
+    const res = await fetch("https://teamup-service.onrender.com/event/");
+    const data = await res.json();
+    console.log(data);
+    setEvents(data);
+  };
+
+  useEffect(() => {
+    clearFilter();
+    fetchEvents();
+  }, []);
+
+  const filteredEvents = events.filter((event) =>
+    event.sportType[0].includes(sportValue)
+  );
+
+  const clearFilter = () => {
+    setSportValue("");
+  };
 
   return (
     <>
@@ -70,6 +91,13 @@ const Events = () => {
           >
             Filter results
           </Button>
+          <Button
+            className="events-search-btn"
+            type="primary"
+            onClick={clearFilter}
+          >
+            Clear filter
+          </Button>
           <Modal
             title="Choose your sport"
             open={modal2Open}
@@ -88,260 +116,38 @@ const Events = () => {
         </div>
       </div>
       <div className="page2-suggested-cards">
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <Link to="/events/1">
-              <EllipsisOutlined key="ellipsis" />
-            </Link>,
-          ]}
-        >
-          <Meta
-            // className="page2-suggested-individual-card-meta"
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Thursday night basketball"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            className=""
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Football at Volkspark"
-            description="8pm, 21.07 @ Volkspark"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
-        <Card
-          className="page2-suggested-individual-card"
-          style={{
-            width: 300,
-          }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-          actions={[
-            <PlusOutlined key="plus" />,
-            <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-            }
-            title="Card title"
-            description="This is the description"
-          />
-        </Card>
+        {filteredEvents.map((event, index) => (
+          <div key={index} className="page4-suggested-cards">
+            <Card
+              className="page2-suggested-individual-card"
+              style={{
+                width: 300,
+              }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+              }
+              actions={[
+                <PlusOutlined key="plus" />,
+                <CheckOutlined key="check" />,
+                <Link to={`/events/${event._id}`}>
+                  <EllipsisOutlined key="ellipsis" />
+                </Link>,
+              ]}
+            >
+              <Meta
+                // className="page2-suggested-individual-card-meta"
+                avatar={
+                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                }
+                title={event.eventDescription}
+                description={event.sportType[0]}
+              />
+            </Card>
+          </div>
+        ))}
       </div>
       <div className="page3-btn-wrapper">
         <Button className="page2-block-btn" type="primary" block>

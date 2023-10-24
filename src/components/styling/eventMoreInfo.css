@@ -20,10 +20,6 @@
   border-radius: 20px;
 }
 
-.page4-heading {
-  padding-left: 3%;
-}
-
 .page4-input-fields {
   font-size: 1.5rem;
   border: 2px solid var(--primary);
@@ -100,6 +96,11 @@
   max-width: 500px;
   background-color: #536ce8;
   color: white;
+}
+
+.page4-hashtags {
+  padding: 2%;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 800px) {
