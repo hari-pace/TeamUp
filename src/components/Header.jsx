@@ -1,24 +1,41 @@
 import Logo from "./Logo"
 import Avatar from "./Avatar"
 import { Button, Space } from "antd";
-import { useState, useEffect } from "react"
+import { useContext, useState, useEffect } from "react"
+import { AuthContext } from "../context/authContext.jsx";
+import { useJwt } from "react-jwt";
 import Login from "./user/Login";
 import Signup from "./user/Signup";
 import "./styling/header.css"
 
 export default function Header() {
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState(null);
-  
-  useEffect(() => {
-    if (!user) {
-  setUser(JSON.parse(localStorage.getItem("user")))
-  }},[user])
+  const { logout, token } = useContext(AuthContext);
+  const [loadings, setLoadings] = useState([]);
+
+  const { decodedToken } = useJwt(token);
+
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 6000);
+  };
 
   const handleClick = () => {
-    localStorage.removeItem("user");
-    setUser(null);
+    enterLoading(0);
+    setTimeout(() => {
+    localStorage.removeItem("token");
+    logout()}, 5000);
   };
+
   return (
 <>
 <div className="header">
@@ -26,14 +43,16 @@ export default function Header() {
 <Logo />
 </div>
 <div className="headerRight">
-  {user !== null && (
+  {token !== null && (
     <>
+    <h3>Hello, {decodedToken?.name}</h3>
   <Avatar />
     <Space> 
   <Button
   className="loginButtons"
   type="primary" 
-  ghost 
+  ghost
+  loading={loadings[0]} 
   onClick={handleClick}
   >
     Logout
@@ -41,31 +60,12 @@ export default function Header() {
   </Space>
   </>
   )}
-  {user === null && (
+  {token === null && (
     <>
-    <Login user={user} setUser={setUser} />
+    <Login />
     <Signup />
     </>
     )}
-  {/* <Space> 
-  <Button
-  className="loginButtons"   
-  type="primary" 
-  ghost 
-  onClick={() => setLoggedIn(true)}
-  >
-    Login
-  </Button>
-  </Space>
-  <Space>
-  <Button
-  className="loginButtons" 
-  type="primary" 
-  ghost
-  >Signup
-  </Button>
-  </Space>
-  </>)} */}
   </div>
   </div>
 </>

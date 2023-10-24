@@ -68,25 +68,25 @@ export default function Homepage() {
     autoplay
     dotHeight="30"
     >
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle}  src={Football} />
     <h3>Football</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Basketball} />
     <h3>Basketball</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Beachvolleyball} />
     <h3>Beach Volleyball</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Swimming} />
     <h3>Swimming</h3>

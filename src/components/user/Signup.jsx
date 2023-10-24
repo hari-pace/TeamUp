@@ -31,9 +31,10 @@ return (
         Sign up
       </Button>
       <Modal
-        title="Title"
+        title="Sign up"
         open={open}
         onOk={handleOk}
+        footer={null}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >

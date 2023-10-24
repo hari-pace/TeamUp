@@ -1,11 +1,13 @@
-import { Button, Modal } from 'antd';
+import { Button, Modal, Form } from 'antd';
+import { Link } from "react-router-dom";
+import Signup from './Signup';
 import { useState } from "react";
 import LoginForm from './LoginForm';
 
-export default function Login({user, setUser}) {
+export default function Login() {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-    const [modalText, setModalText] = useState(<LoginForm setUser={setUser}/>);
+    const [modalText, setModalText] = useState(<LoginForm />);
     const showModal = () => {
       setOpen(true);
     };
@@ -16,7 +18,7 @@ export default function Login({user, setUser}) {
         setOpen(false);
         setConfirmLoading(false);
       }, 2000);
-      setModalText(<LoginForm setUser={setUser}/>)
+      setModalText(<LoginForm />)
     };
     const handleCancel = () => {
       console.log('Clicked cancel button');
@@ -40,6 +42,9 @@ export default function Login({user, setUser}) {
         footer={null}
       >
         <p>{modalText}</p>
+        <Form.Item>
+        Or <Link onClick={() => {setOpen(false)}}>register now!</Link>
+      </Form.Item>
       </Modal>
         </>
     )
