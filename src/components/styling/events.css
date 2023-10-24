@@ -63,6 +63,10 @@
   font-family: "Proxima Nova Condensed", sans-serif;
 }
 
+.page4-suggested-cards {
+  margin: 1%;
+}
+
 :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {

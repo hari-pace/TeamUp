@@ -1,11 +1,15 @@
-import React from "react" 
+import React from "react";
 import { useEffect, useState } from "react";
 import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
 import { Card, List, Button } from "antd";
+import { useParams } from "react-router-dom";
 
 const EventMoreInfo = () => {
   const [attendees, setAttendees] = useState([]);
+  const [eventInfo, setEventInfo] = useState();
+
+  const { id } = useParams();
 
   //   const data = [
   //     {
@@ -28,15 +32,16 @@ const EventMoreInfo = () => {
   //     },
   //   ];
 
-  const fetchAttendees = async () => {
-    const res = await fetch("https://teamup-service.onrender.com/user/users");
+  const fetchData = async () => {
+    const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
     const data = await res.json();
     console.log(data);
-    setAttendees(data);
+    setEventInfo(data);
+    setAttendees(data.usersAttending);
   };
 
   useEffect(() => {
-    fetchAttendees();
+    fetchData();
   }, []);
 
   const data = attendees;
@@ -51,17 +56,34 @@ const EventMoreInfo = () => {
           <div>Organiser info</div>
         </div>
         <div className="page4-right-column">
-          <h2 className="page4-heading">Football at Volkspark</h2>
-          <h3 className="page4-input-fields">Date: </h3>
-          <h3 className="page4-input-fields">Start time: </h3>
+          <h2 className="page4-heading">
+            {eventInfo && eventInfo.eventDescription}
+          </h2>
+          <h3 className="page4-input-fields">
+            Sport type: {eventInfo && eventInfo.sportType}
+          </h3>
+          <h3 className="page4-input-fields">
+            Date: {eventInfo && eventInfo.eventDateAndTime}
+          </h3>
+          <h3 className="page4-input-fields">
+            Start time: {eventInfo && eventInfo.eventDateAndTime}
+          </h3>
           <h3 className="page4-input-fields">Location: </h3>
           <h3 className="page4-input-fields" id="page-4-description">
             Description:{" "}
           </h3>
           <div className="page4-spaces-fields-container">
-            <h3 className="page4-spaces-fields">Confirmed number: </h3>
+            <h3 className="page4-spaces-fields">
+              Max capacity: {eventInfo && eventInfo.maxCapacity}
+            </h3>
             <h3 className="page4-spaces-fields">Spaces left: </h3>
           </div>
+          <h3>
+            {eventInfo &&
+              eventInfo.hashTags.map((hashTag) => (
+                <span className="page4-hashtags">{hashTag}</span>
+              ))}
+          </h3>
           <div className="page4-users-attending">
             <h3 className="page4-users-attending-heading">Users attending</h3>
             <List
@@ -75,10 +97,10 @@ const EventMoreInfo = () => {
                 xl: 6,
                 xxl: 3,
               }}
-              dataSource={data}
+              dataSource={attendees}
               renderItem={(item) => (
                 <List.Item className="page4-grid-items">
-                  <Card title={item.username}>Card content</Card>
+                  <Card title={item}>User picture goes here</Card>
                 </List.Item>
               )}
             />
