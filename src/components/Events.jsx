@@ -6,6 +6,7 @@ import {
   CheckOutlined,
 } from "@ant-design/icons";
 import "./styling/events.css";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -101,7 +102,9 @@ const Events = () => {
           actions={[
             <PlusOutlined key="plus" />,
             <CheckOutlined key="check" />,
-            <EllipsisOutlined key="ellipsis" />,
+            <Link to="/events/1">
+              <EllipsisOutlined key="ellipsis" />
+            </Link>,
           ]}
         >
           <Meta

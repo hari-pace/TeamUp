@@ -92,7 +92,73 @@
 :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
-  max-width: 375px;
+  max-width: 500px;
   background-color: #536ce8;
   color: white;
+}
+:where.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+  max-width: 500px;
+  background-color: #536ce8;
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  .page4-container {
+    flex-direction: column;
+  }
+  .page4-left-column {
+    display: flex;
+
+    justify-content: center;
+    margin: 5% 10%;
+    width: 50%;
+    min-height: 50px;
+  }
+  .page4-avatar {
+    width: 30%;
+    margin-right: 10%;
+    margin-top: -6%;
+    margin-bottom: -5%;
+  }
+
+  .page4-right-column {
+    width: 65%;
+    margin: none;
+    padding: none;
+  }
+  .page4-btn-wrapper {
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 5%;
+  }
+  .page4-block-btn {
+    max-width: 375px;
+    font-size: 1.2rem;
+    height: 40px;
+  }
+
+  .page4-users-attending-heading {
+    font-size: 2rem;
+  }
+
+  .page4-input-fields {
+    font-size: 1rem;
+    border: 2px solid var(--primary);
+    width: 80%;
+    height: 3rem;
+    padding-left: 4%;
+  }
+  .page4-spaces-fields-container {
+    flex-direction: column;
+  }
+  .page4-spaces-fields {
+    font-size: 1rem;
+
+    width: 80%;
+    height: 3rem;
+
+    padding-left: 4%;
+    border-radius: 20px;
+    margin-bottom: 4%;
+  }
 }
