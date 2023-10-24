@@ -39,7 +39,7 @@ const Dashboard = () => {
           </div>
         </Link>
         <div className="2-my-events">
-          <div className="page2-subheading">My Events</div>
+          <div className="page2-subheading">Your upcoming events</div>
           <Carousel className="page2-carousel">
             <div>
               <h3 style={contentStyle}>My event 1</h3>
@@ -128,7 +128,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="page2-sports">
-          <div className="page2-subheading">Suggested events</div>
+          <div className="page2-subheading">Suggested events for you</div>
           <div className="page2-suggested-cards">
             <Card
               className="page2-suggested-individual-card"
