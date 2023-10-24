@@ -11,6 +11,7 @@ import "./styling/header.css"
 export default function Header() {
   const { logout, token } = useContext(AuthContext);
   const [loadings, setLoadings] = useState([]);
+  const [animate, setAnimate] = useState(false);
 
   const { decodedToken } = useJwt(token);
 
@@ -36,6 +37,20 @@ export default function Header() {
     logout()}, 5000);
   };
 
+  const handleAnimate = () => {
+    setAnimate(true);
+    const timer = setTimeout(() => {
+      setAnimate(false)
+    }, 1000);
+    return () => clearTimeout(timer);
+  }
+
+  useEffect(() => {
+    handleAnimate();
+    const interval = setInterval(handleAnimate, 10000);
+    return () => {clearInterval(interval)}
+  }, [])
+
   return (
 <>
 <div className="header">
@@ -45,11 +60,13 @@ export default function Header() {
 <div className="headerRight">
   {token !== null && (
     <>
-    <h3>Hello, {decodedToken?.name}</h3>
+    <div className={animate ? "animateGreeting" : "greeting"}>
+    <h3>Hello, {decodedToken?.name}!</h3>
+    </div>
   <Avatar />
     <Space> 
   <Button
-  className="loginButtons"
+  className="logoutButtons"
   type="primary" 
   ghost
   loading={loadings[0]} 

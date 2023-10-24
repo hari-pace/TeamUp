@@ -1,39 +1,36 @@
 import { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../context/authContext.jsx";
 import { useJwt } from "react-jwt";
+import Question from "../assets/question.png"
 
 export default function Avatar() {
     const { token } = useContext(AuthContext);
-    const [userDetails, setUserDetails] = useState([])
-    const [avatar, setAvatar] = useState("https://friconix.com/png/fi-cnsuxx-question-mark.png")
-    const [loading, setLoading] = useState(true)
-    const { decodedToken } = useJwt(token);
-    useEffect (() => {
-    const fetchUserData = async () => {
-    try {
-        const username = decodedToken?.name;
-        const data = await fetch(`https://teamup-service.onrender.com/user/users/search?username=${username}`)
-        const res = await data.json()
-        setUserDetails(res);
-        setAvatar(userDetails?.userInfo?.userImage)
-        setLoading(false);
-    } catch (error) {
-    console.log(error);
-    setLoading(false);
-    }
-    };
-    if (token) {
-        fetchUserData();
-    }
-    }, [])
+    const [avatar, setAvatar] = useState({ Question })
 
-    console.log(userDetails);
-    console.log(userDetails?.userInfo?.userImage);
+    const { decodedToken } = useJwt(token);
+    const username = decodedToken?.name;
+    const url = `https://teamup-service.onrender.com/user/users/search?username=Dazbot`;
+
+    const fetchData = async () => {
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            setAvatar(data?.userInfo?.userImage);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [token]);
+
     return (
         <>
-        {userDetails ? <img className="avatarMini" alt="avatar" src={avatar} width="150px" />  
-        : ( 
-        <h3> Loading...</h3>)}
+    {avatar?.length > 0 ? (<img className="avatarMini" alt="avatar" width="150px" src={avatar} />)
+    :
+    <img className="avatarMini" alt="questionMark" width="150px" src={Question} />   
+    }
         </>
     )
 }

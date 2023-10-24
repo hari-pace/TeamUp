@@ -1,91 +1,170 @@
 /* header styling */
 @media screen and (max-width: 800px) {
-.logo {
-    font-size: 1.5rem !important;
-    margin-bottom: 5%;
-}
-.loginButtons {
-    font-size: 1rem !important;
-}
-.avatarMini {
-    padding: 20% 10% !important;
-    margin-right: 0% !important;
-}
-}
-
-
-.logo {
-    background-color: var(--primary);
-    color: var(--tertiary);
-    font-family: var(--mainFont);
-    border-radius: 20px;
-    letter-spacing: 1px;
-    border-style: solid;
-    text-align: center;
-    font-size: 3rem;
-    padding: 20% 2%;
-    cursor: pointer;
-  }
-  
-  .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1% 5%;
-  }
-  
-  .headerLeft {
-      display: flex;
-  }
-  
-  .headerRight {
-      display: flex;
-      padding: 0% 10%;
-      justify-content: space-around;
-  }
-  
-  .avatarMini {
-      border-radius: 50%;
-      /* padding: 35% 25%; */
-      /* margin-right: 50%; */
-      /* background-color: var(--secondary); */
-      cursor: pointer;
-  }
-  
-  .loginSignup {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  /* ant buttons */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
-    color: var(--tertiary);
-    border-color: var(--tertiary);
-    margin: 0 10px;
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
-  color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-:where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
-  color: var(--tertiary);
-  border-color: var(--tertiary);
-  margin: 0 10px;
-}
-
-:where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
-color: var(--secondary);
-border-color: var(--secondary);
-}
-
-.loginButtons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.25rem;
-    padding: 20px 20px;
-
-}
+    .logo {
+        font-size: 1.5rem !important;
+        margin-bottom: 5%;
+    }
+    .loginButtons {
+        font-size: 1rem !important;
+        margin: 10px 10px !important;
+    }
+    .logoutButtons {
+        font-size: 1rem !important;
+        margin: 0px !important;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0px !important;
+    }
+    .headerRight {
+        padding: 0px !important;
+    }
+    .greeting {
+        font-size: 1rem !important;
+    }
+    .greeting h3 {
+        padding: 5px !important;
+        margin: 0px;
+    }
+    
+    .animateGreeting {
+        font-size: 1rem !important;
+    }
+    .animateGreeting h3 {
+        padding: 0px;
+        padding: 5px !important;
+        margin: 0px;
+    }
+    .avatarMini {
+        width: 75px;
+    }
+    }
+    
+    
+    .logo {
+        background-color: var(--primary);
+        color: var(--tertiary);
+        font-family: var(--mainFont);
+        border-radius: 20px;
+        letter-spacing: 1px;
+        border-style: solid;
+        text-align: center;
+        font-size: 3rem;
+        padding: 20% 2%;
+        cursor: pointer;
+      }
+      
+      .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 1% 5%;
+      }
+      
+      .headerLeft {
+          display: flex;
+      }
+      
+      .headerRight {
+          display: flex;
+          padding: 0% 10%;
+          justify-content: space-around;
+      }
+      
+      .greeting {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        text-align: center;
+      }
+    
+      .animateGreeting {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        text-align: center;
+        animation-name: greetingRotate;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    
+      .animateGreeting h3 {
+        padding: 0px;
+        margin: 0px;
+        border-radius: 20px;
+        background-color: var(--secondary)
+      }
+    
+      .greeting h3 {
+        padding: 0px;
+        margin: 0px;
+        border-radius: 20px;
+        background-color: var(--secondary)
+      }
+    
+      @keyframes greetingRotate {
+        0% {transform: rotate(0deg)}
+        12% {transform: rotate(45deg)}
+        25% {transform: rotate(0deg)}
+        38% {transform: rotate(-45deg)}
+        50% {transform: rotate(0deg)}
+      }
+    
+      .avatarMini {
+          border-radius: 50%;
+          margin: 5%;
+          /* padding: 35% 25%; */
+          /* margin-right: 50%; */
+          /* background-color: var(--secondary); */
+          cursor: pointer;
+      }
+    
+      .loginSignup {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+    
+      /* ant buttons */
+    :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+        color: var(--tertiary);
+        border-color: var(--tertiary);
+        margin: 0 10px;
+    }
+    
+    :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+      color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    
+    :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+      color: var(--tertiary);
+      border-color: var(--tertiary);
+      margin: 0 10px;
+    }
+    
+    :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+    color: var(--secondary);
+    border-color: var(--secondary);
+    }
+    
+    .loginButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+        padding: 20px 20px;
+    }
+    
+    .logoutButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+        padding: 20px 20px;
+    }
