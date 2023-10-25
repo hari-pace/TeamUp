@@ -6,12 +6,15 @@ import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
 import Events from "./components/Events";
 import EventMoreInfo from "./components/EventMoreInfo";
+import Profile from "./components/Profile";
 import { AuthContext } from "./context/authContext";
+import { useJwt } from "react-jwt";
 import "./App.css";
 
 function App() {
   const { token } = useContext(AuthContext);
-
+  const { decodedToken } = useJwt(token);
+  console.log(decodedToken)
   return (
     <>
       <Header />
@@ -21,7 +24,7 @@ function App() {
         <Route path="events" element={<Events />} />
         <Route path="events/:id" element={<EventMoreInfo />} />
         <Route path="events/create" element="" />
-        <Route path="profile/:username" element="" />
+        <Route path="profile/:username" element={<Profile />} />
         <Route path="contact" element="" />
         <Route path="about" element="" />
         <Route path="*" element="" />
