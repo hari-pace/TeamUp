@@ -14,6 +14,7 @@ const Events = () => {
   const [locationValue, setLocationValue] = useState(null);
   const [sportValue, setSportValue] = useState(null);
   const [events, setEvents] = useState([]);
+  const [searchValue, setSearchValue] = useState(null);
 
   const onChangeLocation = (e) => {
     console.log("radio checked", e.target.value);
@@ -42,8 +43,13 @@ const Events = () => {
     event.sportType[0].includes(sportValue)
   );
 
+  const filteredEventsByName = events.filter((event) =>
+    event.eventDescription.includes(searchValue)
+  );
+
   const clearFilter = () => {
     setSportValue("");
+    setSearchValue(null);
   };
 
   return (
@@ -53,11 +59,14 @@ const Events = () => {
       </div>
       <div className="events-search-section">
         <div className="events-searchbars">
-          {/* Add search logic here to search for events */}
           <input
             type="text"
             className="events-find-event"
             placeholder="What are you looking for today?"
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+            }}
           />
           <Button
             className="events-search-btn"
@@ -116,44 +125,79 @@ const Events = () => {
         </div>
       </div>
       <div className="page2-suggested-cards">
-        {filteredEvents.map((event, index) => (
-          <div key={index} className="page4-suggested-cards">
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <Link to={`/events/${event._id}`}>
-                  <EllipsisOutlined key="ellipsis" />
-                </Link>,
-              ]}
-            >
-              <Meta
-                // className="page2-suggested-individual-card-meta"
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title={event.eventDescription}
-                description={event.sportType[0]}
-              />
-            </Card>
-          </div>
-        ))}
+        {searchValue === null
+          ? filteredEvents.map((event, index) => (
+              <div key={index} className="page4-suggested-cards">
+                <Card
+                  className="page2-suggested-individual-card"
+                  style={{
+                    width: 300,
+                  }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <PlusOutlined key="plus" />,
+                    <CheckOutlined key="check" />,
+                    <Link to={`/events/${event._id}`}>
+                      <EllipsisOutlined key="ellipsis" />
+                    </Link>,
+                  ]}
+                >
+                  <Meta
+                    // className="page2-suggested-individual-card-meta"
+                    avatar={
+                      <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                    }
+                    title={event.eventDescription}
+                    description={event.sportType[0]}
+                  />
+                </Card>
+              </div>
+            ))
+          : filteredEventsByName.map((event, index) => (
+              <div key={index} className="page4-suggested-cards">
+                <Card
+                  className="page2-suggested-individual-card"
+                  style={{
+                    width: 300,
+                  }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <PlusOutlined key="plus" />,
+                    <CheckOutlined key="check" />,
+                    <Link to={`/events/${event._id}`}>
+                      <EllipsisOutlined key="ellipsis" />
+                    </Link>,
+                  ]}
+                >
+                  <Meta
+                    // className="page2-suggested-individual-card-meta"
+                    avatar={
+                      <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                    }
+                    title={event.eventDescription}
+                    description={event.sportType[0]}
+                  />
+                </Card>
+              </div>
+            ))}
       </div>
-      <div className="page3-btn-wrapper">
-        <Button className="page2-block-btn" type="primary" block>
-          Create an event
-        </Button>
-      </div>
+      <Link to="/events/create">
+        <div className="page3-btn-wrapper">
+          <Button className="page2-block-btn" type="primary" block>
+            Create an event
+          </Button>
+        </div>
+      </Link>
     </>
   );
 };

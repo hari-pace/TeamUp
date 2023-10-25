@@ -84,7 +84,7 @@
 @media screen and (max-width: 800px) {
   .events-heroDiv {
     height: 250px;
-    max-width: 350px;
+    max-width: 500px;
     margin: 0 auto;
   }
   .events-search-section {
