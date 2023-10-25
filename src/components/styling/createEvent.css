@@ -1,0 +1,58 @@
+.page5-subheadings {
+  font-size: 2rem;
+}
+
+.page5-btn {
+  font-size: 1.5rem;
+  min-height: 50px;
+  min-width: 300px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  margin: 10%;
+}
+
+.page4-suggested-cards {
+  margin: 1%;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+}
+
+.page5-left-column {
+  width: 15%;
+  margin-left: 5%;
+}
+
+.page5-images {
+  background-color: var(--secondary);
+  padding: 5%;
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.page5-individual-images {
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .page5-left-column {
+    display: none;
+  }
+  .page5-btn {
+    font-size: 1.2rem;
+    min-height: 50px;
+    min-width: 175px;
+  }
+
+  .page5-form {
+    width: 80%;
+  }
+}
