@@ -24,13 +24,16 @@ const { Meta } = Card;
 const Dashboard = () => {
   return (
     <>
-      <div className="page2-heading">Dashboard</div>
+      <div className="events-heroDiv">
+        <h1 className="events-h1"> Dashboard</h1>
+      </div>
       <Space
         direction="vertical"
         style={{
           width: "100%",
         }}
       >
+        <br />
         <Link to="/events">
           <div className="page2-btn-wrapper">
             <Button className="page2-block-btn" type="primary" block>
@@ -56,11 +59,13 @@ const Dashboard = () => {
             </div>
           </Carousel>
         </div>
-        <div className="page2-btn-wrapper">
-          <Button className="page2-block-btn" type="primary" block>
-            Create an event
-          </Button>
-        </div>
+        <Link to="/events/create">
+          <div className="page2-btn-wrapper">
+            <Button className="page2-block-btn" type="primary" block>
+              Create an event
+            </Button>
+          </div>
+        </Link>
         <div className="page2-section2">
           <div className="page2-sports">
             <div className="page2-subheading2">Sports you follow</div>

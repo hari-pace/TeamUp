@@ -48,25 +48,27 @@ const EventMoreInfo = () => {
 
   return (
     <>
+      <div className="events-heroDiv">
+        <h1 className="events-h1"> Event information</h1>
+      </div>
       <div className="page4-container">
         <div className="page4-left-column">
+          <h3>Event organiser:</h3>
           <div className="page4-avatar">
             <Avatar />
           </div>
           <div>Organiser info</div>
         </div>
         <div className="page4-right-column">
-          <h2 className="page4-heading">
-            {eventInfo && eventInfo.eventDescription}
-          </h2>
+          <h2 className="page4-heading">{eventInfo?.eventDescription}</h2>
           <h3 className="page4-input-fields">
-            Sport type: {eventInfo && eventInfo.sportType}
+            Sport type: {eventInfo?.sportType}
           </h3>
           <h3 className="page4-input-fields">
-            Date: {eventInfo && eventInfo.eventDateAndTime}
+            Date: {eventInfo?.eventDateAndTime}
           </h3>
           <h3 className="page4-input-fields">
-            Start time: {eventInfo && eventInfo.eventDateAndTime}
+            Start time: {eventInfo?.eventDateAndTime}
           </h3>
           <h3 className="page4-input-fields">Location: </h3>
           <h3 className="page4-input-fields" id="page-4-description">
@@ -74,7 +76,7 @@ const EventMoreInfo = () => {
           </h3>
           <div className="page4-spaces-fields-container">
             <h3 className="page4-spaces-fields">
-              Max capacity: {eventInfo && eventInfo.maxCapacity}
+              Max capacity: {eventInfo?.maxCapacity}
             </h3>
             <h3 className="page4-spaces-fields">Spaces left: </h3>
           </div>
@@ -100,7 +102,13 @@ const EventMoreInfo = () => {
               dataSource={attendees}
               renderItem={(item) => (
                 <List.Item className="page4-grid-items">
-                  <Card title={item}>User picture goes here</Card>
+                  <Card title={item.username}>
+                    <img
+                      src={item.userImage}
+                      alt="user-avatar"
+                      height={"175px"}
+                    />
+                  </Card>
                 </List.Item>
               )}
             />
