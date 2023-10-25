@@ -118,10 +118,13 @@
       .avatarMini {
           border-radius: 50%;
           margin: 5%;
+          border-style: solid;
+          border-width: 5px;
+          border-color: var(--tertiary);
+          width: 150px;
           /* padding: 35% 25%; */
           /* margin-right: 50%; */
           /* background-color: var(--secondary); */
-          cursor: pointer;
       }
     
       .loginSignup {

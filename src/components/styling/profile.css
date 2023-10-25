@@ -1,0 +1,51 @@
+h1 {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 3rem;
+    padding: 0px;
+    margin: 0px;
+}
+
+.profileWholeContainer {
+    background-color: var(--secondary);
+    margin: 0 10%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileContainer {
+    background-color: var(--secondary);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5% 0px;
+}
+
+.bioContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.avatarProfile {
+    border-radius: 50%;
+    margin: 5%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: var(--tertiary);
+    width: 400px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* width: 50%; */
+}

@@ -1,6 +1,7 @@
 import Logo from "./Logo"
 import Avatar from "./Avatar"
-import { Button, Space } from "antd";
+import { Button, Space, Divider } from "antd";
+import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../context/authContext.jsx";
 import { useJwt } from "react-jwt";
@@ -61,9 +62,9 @@ export default function Header() {
   {token !== null && (
     <>
     <div className={animate ? "animateGreeting" : "greeting"}>
-    <h3>Hello, {decodedToken?.name}!</h3>
+    <h3>Hello, <br/>{decodedToken?.name}!</h3>
     </div>
-  <Avatar />
+  <Link to={`profile/${decodedToken?.name}`}> <Avatar className="avatarMini" /> </Link>
     <Space> 
   <Button
   className="logoutButtons"
@@ -85,6 +86,7 @@ export default function Header() {
     )}
   </div>
   </div>
+  <Divider className="divider"/>
 </>
   )
 }

@@ -3,34 +3,67 @@ import { AuthContext } from "../context/authContext.jsx";
 import { useJwt } from "react-jwt";
 import Question from "../assets/question.png"
 
-export default function Avatar() {
+export default function Avatar({ className, src }) {
+
     const { token } = useContext(AuthContext);
-    const [avatar, setAvatar] = useState({ Question })
 
+
+    const [avatar, setAvatar] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    
     const { decodedToken } = useJwt(token);
-    const username = decodedToken?.name;
-    const url = `https://teamup-service.onrender.com/user/users/search?username=Dazbot`;
+    const username = decodedToken?.name
 
+    // https://teamup-service.onrender.com/user/users/search?username=Dazbot  
+    const url = username ? `https://teamup-service.onrender.com/user/users/search?username=${username}` : "https://teamup-service.onrender.com/user/users";
+
+    // fetching the userImage data specifically
     const fetchData = async () => {
         try {
             const res = await fetch(url);
             const data = await res.json();
             setAvatar(data?.userInfo?.userImage);
-        } catch (error) {
+          } catch (error) {
             console.error("Error fetching data:", error);
-        }
+          } finally {
+            setIsLoading(false);
+          }
+      
     }
 
     useEffect(() => {
-        fetchData();
-    }, [token]);
+        fetchData()
+    }, []);
 
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
     return (
         <>
-    {avatar?.length > 0 ? (<img className="avatarMini" alt="avatar" width="150px" src={avatar} />)
-    :
-    <img className="avatarMini" alt="questionMark" width="150px" src={Question} />   
-    }
+    <img
+      className={className}
+      alt={avatar ? "avatar" : "questionMark"}
+      src={avatar ? (className === "avatarMini" ? avatar : src) : Question}
+    />
         </>
     )
 }
+{/* {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {avatar?.length > 0 ? (
+            <img
+              className={className}
+              alt="avatar"
+              src={className === "avatarMini" ? avatar : src}
+            />
+          ) : (
+            <img
+              className={className}
+              alt="questionMark"
+              src={className === "avatarMini" ? Question : src}
+            />
+          )}
+        </>
+      )} */}
