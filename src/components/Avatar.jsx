@@ -6,42 +6,11 @@ import Question from "../assets/question.png"
 export default function Avatar({ className, src }) {
 
     const { token } = useContext(AuthContext);
-    const [avatar, setAvatar] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     
     const { decodedToken } = useJwt(token);
-    const username = decodedToken?.name
-
+    const avatar = decodedToken?.image
     
-    // console.log("@@@@@@@@", decodedToken)
-    
-    // https://teamup-service.onrender.com/user/users/search?username=Dazbot  
-    const url = username ? `https://teamup-service.onrender.com/user/users/search?username=${username}` : "https://teamup-service.onrender.com/user/users";
-
-    // console.log("$$$$$$", url)
-
-    // fetching the userImage data specifically
-    const fetchData = async () => {
-        try {
-            const res = await fetch(url);
-            const data = await res.json();
-            console.log("DATA",data)
-            setAvatar(data?.userInfo?.userImage);
-          } catch (error) {
-            console.error("Error fetching data:", error);
-          } finally {
-            setIsLoading(false);
-          }
-      
-    }
-
-    useEffect(() => {
-        fetchData()
-    }, [username]);
-
-    if (isLoading) {
-        return <p>Loading...</p>
-    }
     return (
         <>
     <img

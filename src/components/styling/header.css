@@ -37,6 +37,7 @@
     }
     .avatarMini {
         width: 75px;
+        height: 75px;
     }
     .divider {
    display: block;
@@ -126,6 +127,7 @@
           border-width: 5px;
           border-color: var(--tertiary);
           width: 150px;
+          height: 150px;
           /* padding: 35% 25%; */
           /* margin-right: 50%; */
           /* background-color: var(--secondary); */

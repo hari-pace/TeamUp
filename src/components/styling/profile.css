@@ -41,6 +41,7 @@ h3 {
     border-width: 10px;
     border-color: var(--tertiary);
     width: 400px;
+    height: 400px;
 }
 
 .infoContainer {
