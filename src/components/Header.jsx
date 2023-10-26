@@ -61,11 +61,13 @@ export default function Header() {
 <div className="headerRight">
   {token !== null && (
     <>
-    <div className={animate ? "animateGreeting" : "greeting"}>
-    <h3>Hello, <br/>{decodedToken?.name}!</h3>
-    </div>
+  
   <Link to={`profile/${decodedToken?.name}`}> <Avatar className="avatarMini" /> </Link>
-    <Space> 
+    <Space>
+  <div className="avatarCon">
+  <div className={animate ? "animateGreeting" : "greeting"}>
+    <h3>{decodedToken?.name}</h3>
+    </div>
   <Button
   className="logoutButtons"
   type="primary" 
@@ -75,6 +77,7 @@ export default function Header() {
   >
     Logout
   </Button>
+  </div> 
   </Space>
   </>
   )}
@@ -86,7 +89,7 @@ export default function Header() {
     )}
   </div>
   </div>
-  <Divider className="divider"/>
+  <Divider className="headerDivider"/>
 </>
   )
 }

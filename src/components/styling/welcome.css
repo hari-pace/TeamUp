@@ -1,0 +1,35 @@
+@media screen and (max-width: 800px) {
+    .welcomeButtons {
+        font-size: 2rem !important;
+        padding: 10% !important;
+    }
+    .welcomeContainer {
+        margin: 0px !important;
+    }
+}
+
+.welcomeContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-evenly;
+    margin: 0% 20%;
+}
+
+.welcomeButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    padding: 5%;
+    max-width: none
+}
+
+.welcomeButtons:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not( .ant-btn-disabled ):hover {
+    max-width: none;
+    /* background-color: var(--secondary); */
+}
+
+.welcomeButtons:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not( .ant-btn-disabled ):hover {
+    max-width: none;
+}
