@@ -13,12 +13,12 @@ export default function Avatar({ className, src }) {
     const username = decodedToken?.name
 
     
-    console.log("@@@@@@@@", decodedToken)
+    // console.log("@@@@@@@@", decodedToken)
     
     // https://teamup-service.onrender.com/user/users/search?username=Dazbot  
     const url = username ? `https://teamup-service.onrender.com/user/users/search?username=${username}` : "https://teamup-service.onrender.com/user/users";
 
-    console.log("$$$$$$", url)
+    // console.log("$$$$$$", url)
 
     // fetching the userImage data specifically
     const fetchData = async () => {

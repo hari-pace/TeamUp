@@ -116,7 +116,7 @@ export default function SignupForm () {
     <Form.Item
       label="Username"
       name="username"
-      rules={[
+      rules= {[
         {
           required: true,
           message: 'Please input your username!',
@@ -129,6 +129,7 @@ export default function SignupForm () {
       value={username}
       />
     </Form.Item>
+    {error ? <h4 className="errorH">{error}</h4> : null}
     <Form.Item 
     label="Bio"
     htmlFor="description"
