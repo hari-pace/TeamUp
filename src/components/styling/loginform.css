@@ -43,3 +43,13 @@ margin-bottom: 30px;
     border-radius: 5px;
     margin-bottom: 30px;
     }
+
+.errorH {
+    font-weight: 900;
+    background-color: black;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color: red;
+    padding: 0px 10px;
+    margin: 5px 0px;
+    }

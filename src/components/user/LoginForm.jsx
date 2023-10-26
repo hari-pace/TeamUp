@@ -103,6 +103,7 @@ export default function LoginForm() {
       value={password}
       />
     </Form.Item>
+    {error ? <h4 className="errorH">{error}</h4> : null}
     <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>

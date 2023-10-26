@@ -14,6 +14,7 @@ export default function Profile() {
 
     let extractedUsername = window.location.pathname
     extractedUsername = extractedUsername.replace("/profile/","");
+    extractedUsername = extractedUsername.replace("%20"," ")
     console.log(extractedUsername);
     const fetchData = async ()=> {
         const res = await fetch("https://teamup-service.onrender.com/user/users");
@@ -27,6 +28,7 @@ export default function Profile() {
 
     const inputDate = singleUser?.userInfo?.registrationDate;
     const formattedDate= dateFormatter(inputDate);
+    console.log(singleUser)
     return (
         <>
     <div className="profileWholeContainer">
