@@ -31,7 +31,12 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 50%;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 50px;
+    border-radius: 20px;
+    border-width: 20px;
+    /* width: 50%; */
 }
 
 .avatarProfile {
@@ -39,7 +44,7 @@ h3 {
     margin: 5%;
     border-style: solid;
     border-width: 10px;
-    border-color: var(--tertiary);
+    border-color: var(--primary);
     width: 400px;
     height: 400px;
 }
@@ -48,5 +53,88 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 50px;
+    border-radius: 20px;
+    border-width: 20px;
     /* width: 50%; */
+}
+
+.infoContainer h3 {
+margin: 0px;
+padding: 0px;
+}
+
+/* item */
+/* rating */
+:where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
+    background-color: white;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+}
+
+/* bio */
+.bioCon {
+    background-color: white;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+}
+
+/*info*/
+.infoItem {
+    background-color: white;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+    margin: 10px 0px;
+}
+
+/* Card */
+.eventsJoined .profileCards, .eventsCreated .profileCards {
+    width: 100px;
+    
+}
+.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
+    font-size: 0.6rem;
+    white-space: wrap;
+}
+
+.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+    font-size: 0.6rem;
+    white-space: wrap;
+}
+
+.avatarCard {
+    width: 30px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 50%;
+}
+
+.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-avatar {
+    margin: 0px;
+    padding: 0px;
+}
+
+.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-avatar {
+    margin: 0px;
+    padding: 0px;
+}
+
+.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-body {
+    padding: 24px 5px;
+}
+
+.profileCards:where(.css-3mqfnx).ant-card .ant-card-body {
+    padding: 24px 5px;
 }
