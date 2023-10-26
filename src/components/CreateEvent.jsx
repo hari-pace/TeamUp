@@ -1,5 +1,7 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import { useJwt } from "react-jwt";
 import "./styling/createEvent.css";
 import Swimming from "../assets/swimming2.jpg";
 import Cycling from "../assets/cycling.jpg";
@@ -27,12 +29,10 @@ const normFile = (e) => {
   return e?.fileList;
 };
 
-const format = "HH:mm";
-
 const CreateEvent = () => {
   const [error, setError] = useState(null);
   const [eventTitle, setEventTitle] = useState();
-  const [eventSportType, setEventSportType] = useState();
+  const [eventSportType, setEventSportType] = useState([]);
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState();
   const [eventMinimumPlayers, setEventMinimumPlayers] = useState();
@@ -40,6 +40,61 @@ const CreateEvent = () => {
   const [eventDescription, setEventDescription] = useState();
   const [eventPicture, setEventPicture] = useState();
   const [eventHashtags, setEventHashtags] = useState([]);
+  const [eventCity, setEventCity] = useState();
+  const [eventStreet, setEventStreet] = useState();
+  const [eventHouseNumber, setEventHouseNumber] = useState();
+
+  const { token } = useContext(AuthContext);
+  const { decodedToken } = useJwt(token);
+
+  const jsonData =
+    // sportType: eventSportType,
+    // eventPicture: eventPicture.fileList[0],
+    // minimumRequiredAmountOfPpl: eventMinimumPlayers,
+    // maxCapacity: eventMaximumPlayers,
+    // location: {
+    //   address: {
+    //     city: eventCity,
+    //     street: eventStreet,
+    //     houseNumber: eventHouseNumber,
+    //   },
+    // },
+    // hashTags: eventHashtags.hashtags,
+    // eventDescription: eventDescription,
+    // eventTitle: eventTitle,
+    // eventDateAndTime: {
+    //   eventDate: eventDate?.$d,
+    //   eventTime: `${eventTime?.$H}:${eventTime?.$m}`,
+    // },
+    // eventDateAndTime: {
+    //   eventDate: "2025-11-12",
+    //   eventTime: "20:00",
+    // },
+    // organizator: decodedToken.name,
+    {
+      sportType: "Swimming",
+
+      minimumRequiredAmountOfPpl: 5,
+      maxCapacity: 10,
+      location: {
+        LatLng: {
+          latitude: 50.44974899,
+          longitude: 30.52371788,
+        },
+        address: {
+          city: "Kyiv",
+          street: "Saksaganskogo",
+          houseNumber: 1,
+        },
+      },
+      eventDescription: "please god just work",
+      eventTitle: "Hari's teeest",
+      eventDateAndTime: {
+        eventDate: "2025-11-12",
+        eventTime: "20:00",
+      },
+      eventStatus: "upcoming",
+    };
 
   const handleSubmit = async () => {
     // e.preventDefault(); ant has built-in prevent default
@@ -47,27 +102,25 @@ const CreateEvent = () => {
 
     const response = await fetch("https://teamup-service.onrender.com/event/", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        eventDescription: eventDescription,
-        sportType: eventSportType,
-        minimumRequiredAmountOfPpl: eventMinimumPlayers,
-        maxCapacity: eventMaximumPlayers,
-        eventPicture: eventPicture,
-        hashTags: eventHashtags,
-      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(jsonData),
     });
-    console.log("data should now be successfully posted");
     const data = await response.json();
+    console.log(data);
 
     if (!response.ok) {
       setError(data.error);
+      console.log(error);
     }
   };
 
   const [form] = Form.useForm();
+  // console.log(eventHashtags.hashtags);
 
-  console.log(eventHashtags);
+  // console.log(decodedToken.name);
 
   return (
     <>
@@ -164,9 +217,10 @@ const CreateEvent = () => {
                 ]}
               >
                 <TimePicker
-                  format={format}
+                  format="HH:mm"
                   onChange={setEventTime}
                   value={eventTime}
+                  minuteStep="10"
                 />
               </Form.Item>
               <Form.Item
@@ -202,13 +256,9 @@ const CreateEvent = () => {
                   value={eventDescription}
                 />
               </Form.Item>
-              <Form.Item
-                label="Event picture"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
+              <Form.Item name="picture" label="Event picture">
                 <Upload
-                  action="/upload.do"
+                  beforeUpload={() => false}
                   listType="picture-card"
                   onChange={setEventPicture}
                   value={eventPicture}
@@ -269,7 +319,7 @@ const CreateEvent = () => {
                           >
                             <Form.Item name={[field.name, "name"]}>
                               <Input
-                                onChange={(e) =>
+                                onChange={() =>
                                   setEventHashtags(form.getFieldsValue())
                                 }
                                 value={eventHashtags}
@@ -295,7 +345,10 @@ const CreateEvent = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input
+                  onChange={(e) => setEventHouseNumber(e.target.value)}
+                  value={eventHouseNumber}
+                />
               </Form.Item>
               <Form.Item
                 label="* Street name"
@@ -305,7 +358,10 @@ const CreateEvent = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input
+                  onChange={(e) => setEventStreet(e.target.value)}
+                  value={eventStreet}
+                />
               </Form.Item>
               <Form.Item
                 label="* City"
@@ -315,9 +371,12 @@ const CreateEvent = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input
+                  onChange={(e) => setEventCity(e.target.value)}
+                  value={eventCity}
+                />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 label="* Postcode"
                 rules={[
                   {
@@ -326,7 +385,7 @@ const CreateEvent = () => {
                 ]}
               >
                 <Input />
-              </Form.Item>
+              </Form.Item> */}
 
               <Form.Item>
                 <Button className="page5-btn" onClick={handleSubmit}>
