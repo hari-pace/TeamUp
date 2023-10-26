@@ -6,6 +6,7 @@
   background-blend-mode: luminosity;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0px 1%;
   border-radius: 30px;
 }
