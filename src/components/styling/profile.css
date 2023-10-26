@@ -76,6 +76,14 @@ padding: 0px;
     border-radius: 5px;
     border-width: 10px;
 }
+:where(.css-3mqfnx).ant-rate {
+    background-color: white;
+    border-style: solid;
+    border-color: var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+}
 
 /* bio */
 .bioCon {
