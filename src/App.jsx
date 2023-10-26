@@ -9,6 +9,7 @@ import EventMoreInfo from "./components/EventMoreInfo";
 import Profile from "./components/Profile";
 import Welcome from "./components/Welcome";
 import CreateEvent from "./components/CreateEvent";
+import ScrollToTop from "./jsfunctions/ScrollToTop";
 import { AuthContext } from "./context/authContext";
 import { useJwt } from "react-jwt";
 import { useState, useEffect } from "react";
@@ -29,8 +30,11 @@ function App() {
       setName(null)
     }
   }, [decodedToken])
+
+
   return (
     <>
+    <ScrollToTop />
       <Header />
       <Routes>
         <Route

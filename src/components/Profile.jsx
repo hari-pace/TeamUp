@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
 import { format } from "date-fns";
-import { dateFormatter } from "./FormatDate";
+import { dateFormatter } from "../jsfunctions/FormatDate";
 import Avatar from "./Avatar.jsx";
 
 
