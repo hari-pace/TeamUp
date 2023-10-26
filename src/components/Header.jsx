@@ -52,6 +52,7 @@ export default function Header() {
     return () => {clearInterval(interval)}
   }, [])
 
+
   return (
 <>
 <div className="header">
