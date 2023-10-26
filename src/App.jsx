@@ -29,9 +29,6 @@ function App() {
       setName(null)
     }
   }, [decodedToken])
-
-  console.log("#####NAMEEEE", name)
-  
   return (
     <>
       <Header />
@@ -50,7 +47,6 @@ function App() {
         />
         <Route path="events" element={<Events />} />
         <Route path="events/:id" element={<EventMoreInfo />} />
-        <Route path="events/create" element="" />
         <Route path="profile/:username" element={<Profile />} />
         <Route path="events/create" element={<CreateEvent />} />
         <Route path="dashboard/user" element={<Welcome />} />
