@@ -55,9 +55,9 @@ const EventMoreInfo = () => {
         <div className="page4-left-column">
           <h3>Event organiser:</h3>
           <div className="page4-avatar">
-            <Avatar />
+            <Avatar className="avatarProfile-page4" />
           </div>
-          <div>Organiser info</div>
+          <h4>{eventInfo?.organizator}</h4>
         </div>
         <div className="page4-right-column">
           <h2 className="page4-heading">{eventInfo?.eventDescription}</h2>
@@ -65,10 +65,10 @@ const EventMoreInfo = () => {
             Sport type: {eventInfo?.sportType}
           </h3>
           <h3 className="page4-input-fields">
-            Date: {eventInfo?.eventDateAndTime}
+            Date: {eventInfo?.eventDateAndTime.eventDate}
           </h3>
           <h3 className="page4-input-fields">
-            Start time: {eventInfo?.eventDateAndTime}
+            Start time: {eventInfo?.eventDateAndTime.eventTime}
           </h3>
           <h3 className="page4-input-fields">Location: </h3>
           <h3 className="page4-input-fields" id="page-4-description">

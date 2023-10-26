@@ -23,6 +23,12 @@
   background-color: #536ce8;
   color: white;
 }
+:where.ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+}
 
 .page5-left-column {
   width: 15%;
