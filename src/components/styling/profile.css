@@ -109,6 +109,7 @@ padding: 0px;
 /* Card */
 .eventsJoined .profileCards, .eventsCreated .profileCards {
     width: 100px;
+    height: 150px;
     
 }
 .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
@@ -145,4 +146,12 @@ padding: 0px;
 
 .profileCards:where(.css-3mqfnx).ant-card .ant-card-body {
     padding: 24px 5px;
+}
+
+.eventsJoinedCon {
+    display: flex;
+}
+
+.eventsJoinedItem {
+    margin-right: 10px;
 }
