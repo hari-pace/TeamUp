@@ -21,22 +21,3 @@ export default function Avatar({ className, src }) {
         </>
     )
 }
-{/* {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {avatar?.length > 0 ? (
-            <img
-              className={className}
-              alt="avatar"
-              src={className === "avatarMini" ? avatar : src}
-            />
-          ) : (
-            <img
-              className={className}
-              alt="questionMark"
-              src={className === "avatarMini" ? Question : src}
-            />
-          )}
-        </>
-      )} */}

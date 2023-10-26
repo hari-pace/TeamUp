@@ -24,33 +24,35 @@ export default function Profile() {
         setUsers(data);
     }
     const singleUser = users?.find((element) => element?.username == extractedUsername);
-    useEffect(() => {
-        fetchData()
-    },[])
 
-    const eventAttendIds = singleUser?.userInfo?.eventsAttended;
+
+    const eventAttendedIds = singleUser?.userInfo?.eventsAttended;
     const eventOrganisedIds = singleUser?.userInfo?.eventsOrganized;
 
-    // const id = eventAttendIds[0];
-    const id = "6536acb0180c0b69a5146414";
-    console.log(id);
-
     const fetchEvent = async () => {
-        if (id) {
-        const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
+        const res = await fetch(`https://teamup-service.onrender.com/event`);
         const data = await res.json();
         setEvents(data);
-    }
 }
-    useEffect (() => {fetchEvent()}, [])
 
-    const inputDate = singleUser?.userInfo?.registrationDate;
-    const formattedDate= dateFormatter(inputDate);
+useEffect(() => {
+    fetchData();
+    fetchEvent();
+},[])
 
-    const { Meta } = Card;
+const filteredEventsArray = events?.filter((event) => event._id.includes(eventAttendedIds[0]) || event._id.includes(eventAttendedIds[1]) || event._id.includes(eventAttendedIds[2]));
 
-    console.log(events)
-    console.log(events?.eventDescription)
+const filteredOrganisedArray = events?.filter((event) => event._id.includes(eventOrganisedIds[0]) || event._id.includes(eventOrganisedIds[1]) || event._id.includes(eventOrganisedIds[2]));
+
+const filteredAvatarArray = users?.filter((user) => (user._id?.includes(filteredEventsArray[0]?.organizator) || user._id?.includes(filteredEventsArray[1]?.organizator)))
+
+console.log(filteredAvatarArray);
+
+const inputDate = singleUser?.userInfo?.registrationDate;
+const formattedDate= dateFormatter(inputDate);
+
+const { Meta } = Card;
+
     return (
         <>
     <div className="profileWholeContainer">
@@ -74,7 +76,10 @@ export default function Profile() {
         <br/>
 
         {/* Card */}
-        <Link to={`/events/${events._id}`} style={{textDecoration: "none"}}>
+        <div className="eventsJoinedCon">
+        {filteredEventsArray.map((event, index) =>(
+        <div className="eventsJoinedItem" key={index}>
+        <Link to={`/events/${event._id}`} style={{textDecoration: "none"}}>
         <Card
         className="profileCards"
         hoverable
@@ -86,22 +91,25 @@ export default function Profile() {
         }
         >
         <Meta
-        avatar={<Avatar className="avatarCard" src={singleUser?.userInfo?.userImage} />}
-        title={events?.eventDescription} />
+        avatar={<Avatar className="avatarCard" 
+        src={filteredAvatarArray?.map((avatar) => (
+            avatar.userInfo?.userImage))} />}
+        title={event?.eventDescription} />
         {/* // description={events?.sportType[0]}/> */}
         </Card>
-    {/* avatar={<Avatar className="avatar-mini"/>}
-    {/*<input type="text" value={singleUser?.userInfo?.eventsAttended} /> */}
     </Link>
-    {/* Card */}
-
+            </div>
+        ))}
+    </div>
     </div>
     <div className="eventsCreated">
     <h3>Events created</h3>
     <br/>
-
-        {/* Card */}
-        <Link to={`/events/${events._id}`} style={{textDecoration: "none"}}>
+    {/* Card */}
+    <div className="eventsJoinedCon">
+        {filteredOrganisedArray.map((event, index) =>(
+        <div className="eventsJoinedItem" key={index}>
+        <Link to={`/events/${event._id}`} style={{textDecoration: "none"}}>
         <Card
         className="profileCards"
         hoverable
@@ -114,17 +122,14 @@ export default function Profile() {
         >
         <Meta
         avatar={<Avatar className="avatarCard" src={singleUser?.userInfo?.userImage} />}
-        title={events?.eventDescription} />
+        title={event?.eventDescription} />
         {/* // description={events?.sportType[0]}/> */}
         </Card>
-    {/* avatar={<Avatar className="avatar-mini"/>}
-    {/*<input type="text" value={singleUser?.userInfo?.eventsAttended} /> */}
     </Link>
+            </div>
+        ))}
+    </div>
     {/* Card */}
-
-    {/* <input type="text" value={singleUser?.userInfo?.eventsOrganized} /> */}
-
-
         </div>
     </div>
     <div className="infoContainer">
