@@ -49,6 +49,21 @@
   margin: 2% 0;
 }
 
+.page4-input-field-location {
+  font-size: 1.5rem;
+  width: 70%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+  border-radius: 20px;
+  margin: 2% 0;
+}
+
+.page4-location-container {
+  margin-bottom: 5%;
+}
+
 #page-4-description {
   height: 10rem;
   align-items: flex-start;
