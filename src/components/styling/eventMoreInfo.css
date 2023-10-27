@@ -92,16 +92,22 @@
 
 .page4-btn-wrapper {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.page4-btn-wrapper-hidden {
+  display: none;
 }
 
 .page4-block-btn {
-  max-width: 375px;
+  max-width: 500px;
   background-color: var(--primary);
   color: var(--secondary);
   font-family: "Proxima Nova Condensed", sans-serif;
   font-size: 1.5rem;
   height: 50px;
-  margin: 1% 0.5% 5% 0.5%;
+  margin: 1% 0.5% 1% 0.5%;
 }
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(

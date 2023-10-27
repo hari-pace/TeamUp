@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
 import "./styling/createEvent.css";
@@ -47,6 +48,8 @@ const CreateEvent = () => {
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
+  const navigate = useNavigate();
+
   const jsonData = {
     sportType: eventSportType,
 
@@ -92,11 +95,18 @@ const CreateEvent = () => {
     if (!response.ok) {
       setError(data.error);
       console.log(error);
+      alert(error);
+    }
+
+    if (response.ok) {
+      alert("Your event was created successfully!");
+      navigate("/");
     }
   };
 
   const [form] = Form.useForm();
-  // console.log(eventHashtags.hashtags);
+  console.log(eventHashtags.hashtags);
+  // console.log(eventHashtags);
 
   // console.log(decodedToken.name);
   // console.log(eventTime?.$H);
@@ -255,7 +265,7 @@ const CreateEvent = () => {
                 </Upload>
               </Form.Item> */}
 
-              {/* <Form.Item label="Hashtags">
+              <Form.Item label="Hashtags">
                 <Form
                   labelCol={{
                     span: 6,
@@ -314,7 +324,7 @@ const CreateEvent = () => {
                     )}
                   </Form.List>
                 </Form>
-              </Form.Item> */}
+              </Form.Item>
               <h3 className="page5-subheadings">Event location</h3>
               <Form.Item
                 label="* Street number"

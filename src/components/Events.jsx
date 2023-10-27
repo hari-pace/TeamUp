@@ -152,7 +152,7 @@ const Events = () => {
                     avatar={
                       <Avatar src={event?.organizator?.userInfo?.userImage} />
                     }
-                    title={event.eventDescription}
+                    title={event.eventTitle}
                     description={event.sportType[0]}
                   />
                 </Card>
@@ -182,9 +182,9 @@ const Events = () => {
                   <Meta
                     // className="page2-suggested-individual-card-meta"
                     avatar={
-                      <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                      <Avatar src={event?.organizator?.userInfo?.userImage} />
                     }
-                    title={event.eventDescription}
+                    title={event.eventTitle}
                     description={event.sportType[0]}
                   />
                 </Card>
