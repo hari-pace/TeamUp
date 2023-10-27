@@ -4,9 +4,16 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../../jsfunctions/FormatDate";
-import { Rate, Card, Space } from "antd";
+import { Rate, Card, Space, Button } from "antd";
 import Avatar from "../Avatar.jsx";
 import Spinner from "../Spinner";
+import UsernameEdit from "./UsernameEdit";
+import BioEdit from "./BioEdit"
+import SportsEdit from "./SportsEdit"
+import LanguageEdit from "./LangaugeEdit"
+import ImageEdit from "./ImageEdit"
+import CityEdit from "./CityEdit"
+import DeleteUser from "./DeleteUser";
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -14,11 +21,16 @@ export default function Profile() {
   const [users, setUsers] = useState([]);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showUsernameEdit, setShowUsernameEdit] = useState(false);
+  const [showBioEdit, setBioEdit] = useState(false);
+  const [showSportsEdit, setSportsEdit] = useState(false);
+  const [showLanguageEdit, setLanguageEdit] = useState(false);
+  const [editImage, setEditImage] = useState(false);
+  const [showCity, setCity] = useState(false);
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
-  // extractedUsername = extractedUsername.replace("%20"," ")
-
+  const auth = extractedUsername === decodedToken?.name ? true : false;
   const fetchData = async () => {
     const res = await fetch("https://teamup-service.onrender.com/user/users");
     const data = await res.json();
@@ -42,8 +54,7 @@ export default function Profile() {
     fetchData();
     fetchEvent();
   }, []);
-console.log(users);
-  // const filteredEventsArray = events?.filter((event) => event._id?.includes(eventAttendedIds[0]) || event._id?.includes(eventAttendedIds[1]) || event._id?.includes(eventAttendedIds[2]));
+
   const filteredEventsArray = events?.filter((event) => {
     return (
       eventAttendedIds &&
@@ -83,23 +94,50 @@ console.log(users);
       <div className="profileWholeContainer">
         {loading ? <Spinner /> : (
           <>
+        {auth ? <DeleteUser /> : null}
         <h1>{singleUser?.username}</h1>
         <div className="profileContainer">
           <div className="bioContainer">
+          {editImage ?
+            <> 
+            <Avatar className="avatarProfile" alt="empty avatar"/>
+            <ImageEdit id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} /> 
+            <Button danger type="primary" onClick={() => setEditImage(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <>
+              {auth ? <Button onClick={() => setEditImage(true)}>
+              Edit
+              </Button> : null}
             <Avatar
               className="avatarProfile"
               src={singleUser?.userInfo?.userImage}
             />
+            </>
+            )}
             <label>
-              {" "}
               <h3>User Rating</h3>
             </label>
             <br />
             <Rate disabled defaultValue={5} className="rating" />
             <h3>Bio</h3>
-            <div className="bioCon">
+            {showBioEdit ?
+            <> 
+            <BioEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setBio = {setBioEdit} /> 
+            <Button danger type="primary" onClick={() => setBioEdit(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <div className="bioCon">
+              {auth ? <Button onClick={() => setBioEdit(true)}>
+              Edit
+              </Button> : null}
               <p>{singleUser?.userInfo?.description}</p>
-            </div>
+              
+            </div>)}
             <div className="eventsJoined">
               <h3>Events joined</h3>
               <br />
@@ -185,41 +223,103 @@ console.log(users);
           </div>
           <div className="infoContainer">
             <label>
-              {" "}
               <h3>Username</h3>
-            </label>
-            <br />
-            <p className="infoItem">{singleUser?.username}</p>
+              <br />
+              </label>
+              {showUsernameEdit ? (
+              <>
+              <UsernameEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setShowUsernameEdit={setShowUsernameEdit} />
+              <Button danger type="primary" onClick={() => setShowUsernameEdit(false)}>
+              Close X
+              </Button>
+              </>
+              ) : (
+              <>
+            <p className="infoItem">
+
+            {auth ? <Button onClick={() => setShowUsernameEdit(true)}>
+              Edit
+              </Button> : null}
+              {singleUser?.username}
+              </p>
+            </>
+            )}
             <label>
               <h3>Date joined</h3>
             </label>
             <br />
             <p className="infoItem">{formattedDate}</p>
             <label>
-              <h3>Sports followed</h3>
+              <h3>Sports following</h3>
             </label>
-            <br />
+            <br />            
+            {showSportsEdit ?
+            <> 
+            <SportsEdit id = {singleUser?._id} initialSports = {singleUser?.userInfo?.interestedInSports.map(
+              (sport) => sport + `, `
+            )} setSports = {setSportsEdit} /> 
+            <Button danger type="primary" onClick={() => setSportsEdit(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <>
             <p className="infoItem">
-              {singleUser?.userInfo?.interestedInSports.map(
-                (sport) => sport + `, `
+            {auth ? <Button onClick={() => setSportsEdit(true)}>
+              Edit
+              </Button> : null}
+            {singleUser?.userInfo?.interestedInSports.map(
+              (sport) => sport + `, `
+            )}
+          </p>
+          </>
               )}
-            </p>
             <label>
-              {" "}
               <h3>Languages</h3>
             </label>
             <br />
+            {showLanguageEdit ?
+            <> 
+            <LanguageEdit id = {singleUser?._id} initialLanguages ={singleUser?.userInfo?.languagesSpoken.map(
+                (language) => language + `, `
+              )}  setLanguageEdit = {setLanguageEdit} /> 
+            <Button danger type="primary" onClick={() => setLanguageEdit(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <>
             <p className="infoItem">
+            {auth ? <Button onClick={() => setLanguageEdit(true)}>
+              Edit
+              </Button> : null}
               {singleUser?.userInfo?.languagesSpoken.map(
                 (language) => language + `, `
-              )}{" "}
+              )}
             </p>
+            </>
+            )}
             <label>
-              {" "}
               <h3>Based in</h3>
             </label>
             <br />
-            <p className="infoItem">{singleUser?.userInfo?.city}</p>
+            {showCity ?
+            <> 
+            <CityEdit id = {singleUser?._id} initialCity ={singleUser?.userInfo?.city}  setCity = {setCity} /> 
+            <Button danger type="primary" onClick={() => setCity(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <>
+            <p className="infoItem">
+            {auth ? <Button onClick={() => setCity(true)}>
+              Edit
+              </Button> : null}
+              {singleUser?.userInfo?.city}
+            </p>
+            </>
+            )}
           </div>
         </div>
         </>
