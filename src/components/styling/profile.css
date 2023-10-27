@@ -155,3 +155,8 @@ padding: 0px;
 .eventsJoinedItem {
     margin-right: 10px;
 }
+
+.deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    width: 25%;
+    align-self: flex-end;
+}
