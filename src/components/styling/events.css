@@ -75,6 +75,13 @@
   color: white;
   max-width: 500px;
 }
+:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+  max-width: 500px;
+}
 
 .page3-btn-wrapper {
   display: flex;

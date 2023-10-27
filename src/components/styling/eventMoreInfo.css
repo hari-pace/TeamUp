@@ -14,11 +14,19 @@
 
 .avatarProfile-page4 {
   border-radius: 50%;
-  margin: 5%;
+
   border-style: solid;
   border-width: 10px;
   border-color: var(--tertiary);
   width: 200px;
+}
+
+.page4-organiser {
+  text-decoration: underline;
+}
+
+.page4-organiser-name {
+  margin: 10% 0;
 }
 
 .page4-right-column {
@@ -38,6 +46,7 @@
   align-items: center;
   padding-left: 2%;
   border-radius: 20px;
+  margin: 2% 0;
 }
 
 #page-4-description {
@@ -65,6 +74,7 @@
 .page4-users-attending-heading {
   font-size: 3rem;
   margin-top: 10%;
+  margin-bottom: 2%;
 }
 
 .page4-grid {
@@ -101,7 +111,9 @@
   background-color: #536ce8;
   color: white;
 }
-:where.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
   max-width: 500px;
   background-color: #536ce8;
   color: white;

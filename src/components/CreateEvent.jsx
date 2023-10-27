@@ -34,7 +34,7 @@ const CreateEvent = () => {
   const [eventTitle, setEventTitle] = useState();
   const [eventSportType, setEventSportType] = useState([]);
   const [eventDate, setEventDate] = useState("");
-  const [eventTime, setEventTime] = useState();
+  const [eventTime, setEventTime] = useState("");
   const [eventMinimumPlayers, setEventMinimumPlayers] = useState();
   const [eventMaximumPlayers, setEventMaximumPlayers] = useState();
   const [eventDescription, setEventDescription] = useState();
@@ -47,54 +47,32 @@ const CreateEvent = () => {
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
-  const jsonData =
-    // sportType: eventSportType,
-    // eventPicture: eventPicture.fileList[0],
-    // minimumRequiredAmountOfPpl: eventMinimumPlayers,
-    // maxCapacity: eventMaximumPlayers,
-    // location: {
-    //   address: {
-    //     city: eventCity,
-    //     street: eventStreet,
-    //     houseNumber: eventHouseNumber,
-    //   },
-    // },
-    // hashTags: eventHashtags.hashtags,
-    // eventDescription: eventDescription,
-    // eventTitle: eventTitle,
-    // eventDateAndTime: {
-    //   eventDate: eventDate?.$d,
-    //   eventTime: `${eventTime?.$H}:${eventTime?.$m}`,
-    // },
-    // eventDateAndTime: {
-    //   eventDate: "2025-11-12",
-    //   eventTime: "20:00",
-    // },
-    // organizator: decodedToken.name,
-    {
-      sportType: "Swimming",
+  const jsonData = {
+    sportType: eventSportType,
 
-      minimumRequiredAmountOfPpl: 5,
-      maxCapacity: 10,
-      location: {
-        LatLng: {
-          latitude: 50.44974899,
-          longitude: 30.52371788,
-        },
-        address: {
-          city: "Kyiv",
-          street: "Saksaganskogo",
-          houseNumber: 1,
-        },
+    minimumRequiredAmountOfPpl: eventMinimumPlayers,
+    maxCapacity: eventMaximumPlayers,
+    location: {
+      LatLng: {
+        latitude: 50.44974899,
+        longitude: 30.52371788,
       },
-      eventDescription: "please god just work",
-      eventTitle: "Hari's teeest",
-      eventDateAndTime: {
-        eventDate: "2025-11-12",
-        eventTime: "20:00",
+      address: {
+        city: eventCity,
+        street: eventStreet,
+        houseNumber: eventHouseNumber,
       },
-      eventStatus: "upcoming",
-    };
+      // eventPicture: eventPicture.fileList[0],
+      // hashTags: eventHashtags.hashtags,
+    },
+    eventDescription: eventDescription,
+    eventTitle: eventTitle,
+    eventDateAndTime: {
+      eventDate: eventDate?.$d,
+      eventTime: `${eventTime?.$H}:${eventTime?.$m}`,
+    },
+    eventStatus: "upcoming",
+  };
 
   const handleSubmit = async () => {
     // e.preventDefault(); ant has built-in prevent default
@@ -121,6 +99,7 @@ const CreateEvent = () => {
   // console.log(eventHashtags.hashtags);
 
   // console.log(decodedToken.name);
+  // console.log(eventTime?.$H);
 
   return (
     <>
@@ -192,10 +171,10 @@ const CreateEvent = () => {
                 <Select onChange={setEventSportType} value={eventSportType}>
                   <Select.Option value="Football">Football</Select.Option>
                   <Select.Option value="Basketball">Basketball</Select.Option>
-                  <Select.Option value="Beach volleyball">
-                    Beach volleyball
-                  </Select.Option>
+                  <Select.Option value="Volleyball">Volleyball</Select.Option>
                   <Select.Option value="Swimming">Swimming</Select.Option>
+                  <Select.Option value="Cycling">Cycling</Select.Option>
+                  <Select.Option value="Yoga">Yoga</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item
@@ -256,7 +235,7 @@ const CreateEvent = () => {
                   value={eventDescription}
                 />
               </Form.Item>
-              <Form.Item name="picture" label="Event picture">
+              {/* <Form.Item name="picture" label="Event picture">
                 <Upload
                   beforeUpload={() => false}
                   listType="picture-card"
@@ -274,9 +253,9 @@ const CreateEvent = () => {
                     </div>
                   </div>
                 </Upload>
-              </Form.Item>
+              </Form.Item> */}
 
-              <Form.Item label="Hashtags">
+              {/* <Form.Item label="Hashtags">
                 <Form
                   labelCol={{
                     span: 6,
@@ -335,7 +314,7 @@ const CreateEvent = () => {
                     )}
                   </Form.List>
                 </Form>
-              </Form.Item>
+              </Form.Item> */}
               <h3 className="page5-subheadings">Event location</h3>
               <Form.Item
                 label="* Street number"
