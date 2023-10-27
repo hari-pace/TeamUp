@@ -17,6 +17,7 @@
     "date-fns": "^2.30.0",
     "jsonwebtoken": "^9.0.2",
     "react": "^18.2.0",
+    "react-bingmaps": "^3.6.1",
     "react-dom": "^18.2.0",
     "react-jwt": "^1.2.0",
     "react-router-dom": "^6.17.0",

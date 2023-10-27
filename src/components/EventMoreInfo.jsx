@@ -5,16 +5,20 @@ import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { Card, List, Button, Modal, Space } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Question from "../assets/question.png";
 import { dateFormatter } from "../jsfunctions/FormatDate";
 import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
+import { ReactBingmaps } from "react-bingmaps";
 
 const EventMoreInfo = () => {
   const [attendees, setAttendees] = useState([]);
   const [eventInfo, setEventInfo] = useState();
   const [eventID, setEventID] = useState();
+  const [fetchMapToggle, setFetchMapToggle] = useState(false);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
 
   const { id } = useParams();
   const { token } = useContext(AuthContext);
@@ -30,6 +34,8 @@ const EventMoreInfo = () => {
     console.log(data);
     setEventInfo(data);
     setEventID(data._id);
+    setLatitude(data.location?.LatLng?.lat);
+    setLongitude(data.location?.LatLng?.lon);
     setAttendees(data.usersAttending);
   };
 
@@ -61,6 +67,8 @@ const EventMoreInfo = () => {
 
   useEffect(() => {
     fetchData();
+
+    // setFetchMapToggle(true);
   }, []);
 
   const data = attendees;
@@ -80,6 +88,27 @@ const EventMoreInfo = () => {
     setIsModalOpen(false);
   };
 
+  const bingMapKey =
+    "ApYJA9wirw_71Ky9Op1pVgSjw70J-frOoiEtOMfYsxsWVvsouz_X6BlYfqXMddSb";
+
+  const mapOptions = {
+    credentials: bingMapKey,
+    center: [latitude, longitude],
+    zoom: 12,
+  };
+
+  const pushPins = [
+    {
+      location: [latitude, longitude],
+      option: { color: "red" },
+    },
+  ];
+
+  console.log(
+    eventInfo?.location?.LatLng?.lat,
+    eventInfo?.location?.LatLng?.lon
+  );
+
   return (
     <>
       <div className="events-heroDiv">
@@ -93,16 +122,17 @@ const EventMoreInfo = () => {
           </h3>
           <div className="page4-avatar">
             {/* <Avatar className="avatarProfile-page4" /> */}
-
-            <img
-              className="avatarProfile-page4"
-              src={
-                eventInfo?.organizator.userInfo?.userImage
-                  ? eventInfo?.organizator.userInfo?.userImage
-                  : Question
-              }
-              alt="organiser-avatar"
-            />
+            <Link to={`/profile/${eventInfo?.organizator?.username}`}>
+              <img
+                className="avatarProfile-page4"
+                src={
+                  eventInfo?.organizator.userInfo?.userImage
+                    ? eventInfo?.organizator.userInfo?.userImage
+                    : Question
+                }
+                alt="organiser-avatar"
+              />
+            </Link>
           </div>
         </div>
         <div className="page4-right-column">
@@ -114,7 +144,18 @@ const EventMoreInfo = () => {
           <h3 className="page4-input-fields">
             Start time: {eventInfo?.eventDateAndTime.eventTime}
           </h3>
-          <h3 className="page4-input-fields">Location: </h3>
+          <div className="page4-location-container">
+            <h3 className="page4-input-field-location">Location: </h3>
+
+            <div style={{ height: "300px", width: "80%" }}>
+              <ReactBingmaps
+                bingmapKey={bingMapKey}
+                center={mapOptions.center}
+                zoom={mapOptions.zoom}
+                pushPins={pushPins}
+              />
+            </div>
+          </div>
           <h3 className="page4-input-fields" id="page-4-description">
             Description: {eventInfo?.eventDescription}
           </h3>
