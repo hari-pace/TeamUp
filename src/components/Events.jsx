@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import "./styling/events.css";
 import { Link } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -15,6 +16,7 @@ const Events = () => {
   const [sportValue, setSportValue] = useState(null);
   const [events, setEvents] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const onChangeLocation = (e) => {
     console.log("radio checked", e.target.value);
@@ -35,8 +37,12 @@ const Events = () => {
   };
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
     clearFilter();
     fetchEvents();
+    return () => clearTimeout(timer);
   }, []);
 
   const filteredEvents = events.filter((event) =>
@@ -124,6 +130,8 @@ const Events = () => {
           </Modal>
         </div>
       </div>
+      {loading ? <Spinner /> : (
+        <>
       <div className="page2-suggested-cards">
         {searchValue === null
           ? filteredEvents.map((event, index) => (
@@ -198,6 +206,8 @@ const Events = () => {
           </Button>
         </div>
       </Link>
+      </>
+      )}
     </>
   );
 };
