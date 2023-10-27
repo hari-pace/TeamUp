@@ -40,13 +40,29 @@ useEffect(() => {
     fetchEvent();
 },[])
 
-const filteredEventsArray = events?.filter((event) => event._id.includes(eventAttendedIds[0]) || event._id.includes(eventAttendedIds[1]) || event._id.includes(eventAttendedIds[2]));
+// const filteredEventsArray = events?.filter((event) => event._id?.includes(eventAttendedIds[0]) || event._id?.includes(eventAttendedIds[1]) || event._id?.includes(eventAttendedIds[2]));
+const filteredEventsArray = events?.filter((event) => {
+    return eventAttendedIds && eventAttendedIds.length > 0 &&
+      (event._id?.includes(eventAttendedIds[0]) || 
+       event._id?.includes(eventAttendedIds[1]) || 
+       event._id?.includes(eventAttendedIds[2])
+      );
+  });
 
-const filteredOrganisedArray = events?.filter((event) => event._id.includes(eventOrganisedIds[0]) || event._id.includes(eventOrganisedIds[1]) || event._id.includes(eventOrganisedIds[2]));
+const filteredOrganisedArray = events?.filter((event) => { 
+return eventOrganisedIds && eventOrganisedIds.length > 0 &&
+(event._id?.includes(eventOrganisedIds[0]) || 
+event._id?.includes(eventOrganisedIds[1]) || 
+event._id?.includes(eventOrganisedIds[2])
+)
+});
 
-const filteredAvatarArray = users?.filter((user) => (user._id?.includes(filteredEventsArray[0]?.organizator) || user._id?.includes(filteredEventsArray[1]?.organizator)))
-
-console.log(filteredAvatarArray);
+const filteredAvatarArray = users?.filter((user) => {
+return filteredEventsArray && filteredEventsArray.length > 0 &&
+(user?._id?.includes(filteredEventsArray[0]?.organizator) || 
+user?._id?.includes(filteredEventsArray[1]?.organizator)
+)
+});
 
 const inputDate = singleUser?.userInfo?.registrationDate;
 const formattedDate= dateFormatter(inputDate);
