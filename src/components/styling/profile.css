@@ -160,3 +160,8 @@ padding: 0px;
     width: 25%;
     align-self: flex-end;
 }
+
+.deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    width: 25%;
+    align-self: flex-end;
+}
