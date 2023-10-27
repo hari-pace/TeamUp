@@ -23,7 +23,8 @@
   background-color: #536ce8;
   color: white;
 }
-:where.ant-btn-default:not(:disabled):not(
+
+:where(.css-3mqfnx).ant-btn-default:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   background-color: #536ce8;

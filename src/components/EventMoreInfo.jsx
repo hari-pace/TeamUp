@@ -53,14 +53,21 @@ const EventMoreInfo = () => {
       </div>
       <div className="page4-container">
         <div className="page4-left-column">
-          <h3>Event organiser:</h3>
+          <h3 className="page4-organiser">Event organiser:</h3>
+          <h3 className="page4-organiser-name">
+            {eventInfo?.organizator.username}
+          </h3>
           <div className="page4-avatar">
-            <Avatar className="avatarProfile-page4" />
+            {/* <Avatar className="avatarProfile-page4" /> */}
+            <img
+              className="avatarProfile-page4"
+              src={eventInfo?.organizator.userInfo?.userImage}
+              alt="organiser-avatar"
+            />
           </div>
-          <h4>{eventInfo?.organizator}</h4>
         </div>
         <div className="page4-right-column">
-          <h2 className="page4-heading">{eventInfo?.eventDescription}</h2>
+          <h2 className="page4-heading">{eventInfo?.eventTitle}</h2>
           <h3 className="page4-input-fields">
             Sport type: {eventInfo?.sportType}
           </h3>
@@ -72,7 +79,7 @@ const EventMoreInfo = () => {
           </h3>
           <h3 className="page4-input-fields">Location: </h3>
           <h3 className="page4-input-fields" id="page-4-description">
-            Description:{" "}
+            Description: {eventInfo?.eventDescription}
           </h3>
           <div className="page4-spaces-fields-container">
             <h3 className="page4-spaces-fields">
@@ -80,12 +87,12 @@ const EventMoreInfo = () => {
             </h3>
             <h3 className="page4-spaces-fields">Spaces left: </h3>
           </div>
-          <h3>
+          {/* <h3>
             {eventInfo &&
               eventInfo.hashTags.map((hashTag) => (
                 <span className="page4-hashtags">{hashTag}</span>
               ))}
-          </h3>
+          </h3> */}
           <div className="page4-users-attending">
             <h3 className="page4-users-attending-heading">Users attending</h3>
             <List

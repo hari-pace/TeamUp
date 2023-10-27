@@ -45,7 +45,9 @@
   background-color: #536ce8;
   color: white;
 }
-:where.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
   max-width: 500px;
   background-color: #536ce8;
   color: white;
