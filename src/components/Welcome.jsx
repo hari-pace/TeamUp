@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import { AuthContext } from "../context/authContext.jsx";
 import { useJwt } from "react-jwt";
 import { Button, Space, Divider } from "antd";
+import Spinner from "./Spinner.jsx";
 import "./styling/welcome.css"
 
 export default function Welcome () {
