@@ -6,7 +6,7 @@ import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
 import Events from "./components/Events";
 import EventMoreInfo from "./components/EventMoreInfo";
-import Profile from "./components/Profile";
+import Profile from "./components/profile/Profile";
 import Welcome from "./components/Welcome";
 import CreateEvent from "./components/CreateEvent";
 import ScrollToTop from "./jsfunctions/ScrollToTop";
@@ -15,38 +15,38 @@ import { useJwt } from "react-jwt";
 import { useState, useEffect } from "react";
 import "./App.css";
 
-
 function App() {
   // const [username, setUsername] = useState(null)
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
-  const [name, setName] = useState(null)
+  const [name, setName] = useState(null);
 
   useEffect(() => {
-    if(decodedToken){
-      setName(decodedToken?.name)
+    if (decodedToken) {
+      setName(decodedToken?.name);
     }
-    if(!decodedToken){
-      setName(null)
+    if (!decodedToken) {
+      setName(null);
     }
-  }, [decodedToken])
-
+  }, [decodedToken]);
 
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route
           path="/"
           element={
-            !token ? <Homepage /> :
-             <Navigate to={`dashboard/${name ? name : "user"}`}/>
+            !token ? (
+              <Homepage />
+            ) : (
+              <Navigate to={`dashboard/${name ? name : "user"}`} />
+            )
           }
         />
         <Route
           path={`dashboard/${name ? name : "user"}`}
-
           element={token ? <Dashboard /> : <Navigate to="/" />}
         />
         <Route path="events" element={<Events />} />

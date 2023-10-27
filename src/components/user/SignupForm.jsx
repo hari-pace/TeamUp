@@ -6,7 +6,8 @@ import {
   Form,
   Input,
   Select, 
-  Space
+  Space,
+  Radio
 } from 'antd';
 import FormItem from 'antd/es/form/FormItem/index.js';
 
@@ -20,6 +21,8 @@ export default function SignupForm () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    const [city, setCity] = useState("");
+    const [country, setCountry] = useState("");
     const [error, setError] = useState(null);
     const [loadings, setLoadings] = useState([]);
 
@@ -32,7 +35,7 @@ export default function SignupForm () {
     const response = await fetch("https://teamup-service.onrender.com/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken }),
+      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, city, country }),
     });
 
     const data = await response.json();
@@ -233,7 +236,30 @@ htmlFor="languagesSpoken"
   </Select>
   </FormItem>
 {/* select language */}
-
+<FormItem
+label="City"
+htmlFor="city"
+>
+<Radio.Group onChange={(e) => setCity(e.target.value)} value={city}>
+              <Space direction="vertical">
+                <Radio value={"Berlin"}>Berlin</Radio>
+                <Radio value={"Munich"}>Munich</Radio>
+                <Radio value={"Hamburg"}>Hamburg</Radio>
+                <Radio value={"Stuttgart"}>Stuttgart</Radio>
+              </Space>
+            </Radio.Group>
+  </FormItem>
+  <Form.Item
+      label="Country of Origin"
+      name="country of origin"
+    >
+      <Input
+      type="text"
+      onChange={(e) => setCountry(e.target.value)}
+      value={country}
+      placeholder="Where are you from?"
+      />
+    </Form.Item>
     <Form.Item
       wrapperCol={{
         offset: 8,
