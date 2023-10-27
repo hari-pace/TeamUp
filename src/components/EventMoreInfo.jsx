@@ -11,6 +11,7 @@ import { dateFormatter } from "../jsfunctions/FormatDate";
 import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import { ReactBingmaps } from "react-bingmaps";
+import Spinner from "./Spinner";
 
 const EventMoreInfo = () => {
   const [attendees, setAttendees] = useState([]);
@@ -19,6 +20,7 @@ const EventMoreInfo = () => {
   const [fetchMapToggle, setFetchMapToggle] = useState(false);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
+  const [loading, setLoading] = useState(true)
 
   const { id } = useParams();
   const { token } = useContext(AuthContext);
@@ -66,8 +68,11 @@ const EventMoreInfo = () => {
   };
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
     fetchData();
-
+    return () => clearTimeout(timer);
     // setFetchMapToggle(true);
   }, []);
 
@@ -136,6 +141,8 @@ const EventMoreInfo = () => {
           </div>
         </div>
         <div className="page4-right-column">
+        {loading ? <Spinner/> : (
+          <>
           <h2 className="page4-heading">{eventInfo?.eventTitle}</h2>
           <h3 className="page4-input-fields">
             Sport type: {eventInfo?.sportType}
@@ -229,7 +236,10 @@ const EventMoreInfo = () => {
               onCancel={handleCancel}
             ></Modal>
           </div>
+          </> 
+        )}
         </div>
+
       </div>
     </>
   );
