@@ -1,43 +1,62 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
-import { Card, List, Button } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { Card, List, Button, Modal, Space } from "antd";
 import { useParams } from "react-router-dom";
+import Question from "../assets/question.png";
+import { dateFormatter } from "../jsfunctions/FormatDate";
+import { useJwt } from "react-jwt";
+import { useNavigate } from "react-router-dom";
 
 const EventMoreInfo = () => {
   const [attendees, setAttendees] = useState([]);
   const [eventInfo, setEventInfo] = useState();
+  const [eventID, setEventID] = useState();
 
   const { id } = useParams();
+  const { token } = useContext(AuthContext);
+  const { decodedToken } = useJwt(token);
 
-  //   const data = [
-  //     {
-  //       title: "Title 1",
-  //     },
-  //     {
-  //       title: "Title 2",
-  //     },
-  //     {
-  //       title: "Title 3",
-  //     },
-  //     {
-  //       title: "Title 4",
-  //     },
-  //     {
-  //       title: "Title 5",
-  //     },
-  //     {
-  //       title: "Title 6",
-  //     },
-  //   ];
+  console.log(decodedToken);
+
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
     const data = await res.json();
     console.log(data);
     setEventInfo(data);
+    setEventID(data._id);
     setAttendees(data.usersAttending);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      console.log(id.eventID);
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/${id.eventID}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("Item deleted successfully");
+        alert("Your event was deleted successfully!");
+        navigate("/");
+      } else {
+        console.error("Failed to delete item");
+      }
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
   };
 
   useEffect(() => {
@@ -45,6 +64,21 @@ const EventMoreInfo = () => {
   }, []);
 
   const data = attendees;
+
+  const inputDate = eventInfo?.eventDateAndTime.eventDate;
+  const formattedDate = dateFormatter(inputDate);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+    handleDelete({ eventID });
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -59,9 +93,14 @@ const EventMoreInfo = () => {
           </h3>
           <div className="page4-avatar">
             {/* <Avatar className="avatarProfile-page4" /> */}
+
             <img
               className="avatarProfile-page4"
-              src={eventInfo?.organizator.userInfo?.userImage}
+              src={
+                eventInfo?.organizator.userInfo?.userImage
+                  ? eventInfo?.organizator.userInfo?.userImage
+                  : Question
+              }
               alt="organiser-avatar"
             />
           </div>
@@ -71,9 +110,7 @@ const EventMoreInfo = () => {
           <h3 className="page4-input-fields">
             Sport type: {eventInfo?.sportType}
           </h3>
-          <h3 className="page4-input-fields">
-            Date: {eventInfo?.eventDateAndTime.eventDate}
-          </h3>
+          <h3 className="page4-input-fields">Date: {formattedDate}</h3>
           <h3 className="page4-input-fields">
             Start time: {eventInfo?.eventDateAndTime.eventTime}
           </h3>
@@ -127,6 +164,29 @@ const EventMoreInfo = () => {
             <Button className="page4-block-btn" type="primary" block>
               Attend this event
             </Button>
+          </div>
+          <div
+            className={
+              eventInfo?.organizator?.username === decodedToken?.name
+                ? "page4-btn-wrapper"
+                : "page4-btn-wrapper-hidden"
+            }
+          >
+            <Button
+              onClick={showModal}
+              className="page4-block-btn"
+              type="primary"
+              danger
+            >
+              Delete this event
+            </Button>
+            <Modal
+              title="Are you sure you want to delete this event?"
+              icon={<ExclamationCircleOutlined />}
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ></Modal>
           </div>
         </div>
       </div>
