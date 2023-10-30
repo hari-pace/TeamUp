@@ -42,7 +42,13 @@
     :where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
     padding: 0px !important;
     }
+    :where(.css-3mqfnx).ant-rate {
+        padding: 0px !important;
+        }
     .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-body {
+        padding: 5px 5px !important;
+    }
+    .profileCards:where(.css-3mqfnx).ant-card .ant-card-body {
         padding: 5px 5px !important;
     }
     .avatarCard {
@@ -52,12 +58,18 @@
     .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
     white-space: nowrap !important;
     }
+    .profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+        white-space: nowrap !important;
+        }
     .bioCon {
     border-width: 5px !important;
     }
     :where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
     border-width: 5px !important;
     }
+    :where(.css-3mqfnx).ant-rate {
+        border-width: 5px !important;
+        }
 }
 
 
