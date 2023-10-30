@@ -1,26 +1,29 @@
-import { Button, Modal } from 'antd';
+import { Button, Modal, Form } from 'antd';
 import { useState } from "react";
+import { Link } from "react-router-dom"
 import SignupForm from './SignupForm';
+import Login from './Login';
 
 export default function Signup() {
-    const [open, setOpen] = useState(false);
+    const [openReg, setRegOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState(<SignupForm/>);
     const showModal = () => {
-      setOpen(true);
+      setRegOpen(true);
     };
     const handleOk = () => {
       setModalText('The modal will be closed after two seconds');
       setConfirmLoading(true);
       setTimeout(() => {
-        setOpen(false);
+        setRegOpen(false);
         setConfirmLoading(false);
       }, 2000);
     };
     const handleCancel = () => {
       console.log('Clicked cancel button');
-      setOpen(false);
+      setRegOpen(false);
     };
+
 return (
     <>
     <Button
@@ -32,13 +35,16 @@ return (
       </Button>
       <Modal
         title="Sign up"
-        open={open}
+        open={openReg}
         onOk={handleOk}
         footer={null}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
         <p>{modalText}</p>
+        <Form.Item>
+        Or <Link onClick={() => {setRegOpen(false)}}><Login className="tinyLogin" /></Link>
+      </Form.Item>
       </Modal>
     </>
 )

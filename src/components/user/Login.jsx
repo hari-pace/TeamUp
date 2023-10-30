@@ -5,24 +5,24 @@ import { useState } from "react";
 import LoginForm from './LoginForm';
 
 export default function Login() {
-    const [open, setOpen] = useState(false);
+    const [loginOpen, setLoginOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState(<LoginForm />);
     const showModal = () => {
-      setOpen(true);
+      setLoginOpen(true);
     };
     const handleOk = () => {
       setModalText('Please wait whilst we sign you in');
       setConfirmLoading(true);
       setTimeout(() => {
-        setOpen(false);
+        setLoginOpen(false);
         setConfirmLoading(false);
       }, 2000);
       setModalText(<LoginForm />)
     };
     const handleCancel = () => {
       console.log('Clicked cancel button');
-      setOpen(false);
+      setLoginOpen(false);
     };
     return (
         <>
@@ -35,7 +35,7 @@ export default function Login() {
       </Button>
       <Modal
         title="Login"
-        open={open}
+        open={loginOpen}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
@@ -43,7 +43,7 @@ export default function Login() {
       >
         <p>{modalText}</p>
         <Form.Item>
-        Or <Link onClick={() => {setOpen(false)}}>register now!</Link>
+        Or <Link onClick={() => {setLoginOpen(false)}}> <Signup className="tinyRegister" /> </Link>
       </Form.Item>
       </Modal>
         </>
