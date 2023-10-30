@@ -59,8 +59,8 @@
     white-space: nowrap !important;
     }
     .profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
-        white-space: nowrap !important;
-        }
+    white-space: nowrap !important;
+    }
     .bioCon {
     border-width: 5px !important;
     }
@@ -247,3 +247,11 @@ padding: 0px;
     width: 25%;
     align-self: flex-end;
 }
+
+.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
+    white-space: nowrap;
+}
+
+.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+    white-space: nowrap;
+    }
