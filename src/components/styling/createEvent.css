@@ -17,6 +17,13 @@
   margin: 1%;
 }
 
+.create-event-switch > .ant-switch-inner > .ant-switch-inner-unchecked {
+  font-size: 1.2rem;
+}
+.create-event-switch > .ant-switch-inner > .ant-switch-inner-checked {
+  font-size: 1.2rem;
+}
+
 :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-default:not(:disabled):not(
     .ant-btn-disabled
   ):hover {

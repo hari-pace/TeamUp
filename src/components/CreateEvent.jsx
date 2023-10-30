@@ -20,6 +20,7 @@ import {
   Select,
   Upload,
   Space,
+  Switch,
   Typography,
 } from "antd";
 const { TextArea } = Input;
@@ -44,15 +45,45 @@ const CreateEvent = () => {
   const [eventCity, setEventCity] = useState();
   const [eventStreet, setEventStreet] = useState();
   const [eventHouseNumber, setEventHouseNumber] = useState();
+  const [eventUsersAttending, setEventUsersAttending] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
   const navigate = useNavigate();
 
+  const fetchUsers = async () => {
+    const response = await fetch(
+      "https://teamup-service.onrender.com/user/users",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    setUsers(data);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+    // setEventUsersAttending([decodedToken?.name]);
+  }, []);
+
+  const oneUser = users.filter((user) => user.username === decodedToken?.name);
+
+  console.log(oneUser[0]);
+
   const jsonData = {
     sportType: eventSportType,
-
+    usersAttending: [
+      {
+        username: oneUser[0]?.username,
+        userImage: oneUser[0]?.userInfo.userImage,
+      },
+    ],
     minimumRequiredAmountOfPpl: eventMinimumPlayers,
     maxCapacity: eventMaximumPlayers,
     location: {
@@ -66,7 +97,7 @@ const CreateEvent = () => {
         houseNumber: eventHouseNumber,
       },
       // eventPicture: eventPicture.fileList[0],
-      // hashTags: eventHashtags.hashtags,
+      hashTags: [eventHashtags.hashtags],
     },
     eventDescription: eventDescription,
     eventTitle: eventTitle,
@@ -104,8 +135,19 @@ const CreateEvent = () => {
     }
   };
 
+  // const onChangeSwitch = (checked) => {
+  //   console.log(`switch to ${checked}`);
+  //   if (checked) {
+  //     setEventUsersAttending([decodedToken?.name]);
+  //   } else {
+  //     setEventUsersAttending([]);
+  //   }
+  // };
+
+  // console.log(eventUsersAttending);
+
   const [form] = Form.useForm();
-  console.log(eventHashtags.hashtags);
+
   // console.log(eventHashtags);
 
   // console.log(decodedToken.name);
@@ -212,6 +254,7 @@ const CreateEvent = () => {
                   minuteStep="10"
                 />
               </Form.Item>
+
               <Form.Item
                 label="* Minimum no. of players"
                 rules={[
@@ -238,6 +281,16 @@ const CreateEvent = () => {
                   value={eventMaximumPlayers}
                 />
               </Form.Item>
+              {/* <Form.Item>
+                <Switch
+                  defaultChecked
+                  className="create-event-switch"
+                  onChange={onChangeSwitch}
+                  checkedChildren="I will be attending this event as a player"
+                  unCheckedChildren="I just want to organise the event, but not play"
+                />
+              </Form.Item> */}
+
               <Form.Item label="Short description of event">
                 <TextArea
                   rows={4}
@@ -265,7 +318,7 @@ const CreateEvent = () => {
                 </Upload>
               </Form.Item> */}
 
-              <Form.Item label="Hashtags">
+              {/* <Form.Item label="Hashtags">
                 <Form
                   labelCol={{
                     span: 6,
@@ -324,7 +377,7 @@ const CreateEvent = () => {
                     )}
                   </Form.List>
                 </Form>
-              </Form.Item>
+              </Form.Item> */}
               <h3 className="page5-subheadings">Event location</h3>
               <Form.Item
                 label="* Street number"

@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Avatar, Modal, Input, Radio, Space } from "antd";
+import React, { useEffect, useState, useContext } from "react";
+import {
+  Button,
+  Card,
+  Avatar,
+  Modal,
+  Input,
+  Pagination,
+  Radio,
+  Space,
+} from "antd";
 import {
   PlusOutlined,
   EllipsisOutlined,
@@ -8,6 +17,7 @@ import {
 import "./styling/events.css";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
+import { AuthContext } from "../context/authContext";
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -17,14 +27,29 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { token } = useContext(AuthContext);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handlePageSizeChange = (current, pageSize) => {
+    setItemsPerPage(pageSize);
+    setCurrentPage(1);
+  };
 
   const onChangeLocation = (e) => {
     console.log("radio checked", e.target.value);
     setLocationValue(e.target.value);
+    setCurrentPage(1);
   };
   const onChangeSport = (e) => {
     console.log("radio checked", e.target.value);
     setSportValue(e.target.value);
+    setCurrentPage(1);
   };
 
   const { Meta } = Card;
@@ -45,16 +70,31 @@ const Events = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredEvents = events.filter((event) =>
-    event.sportType[0].includes(sportValue)
+  const filteredEvents = events.filter(
+    (event) =>
+      event.sportType[0].includes(sportValue) &&
+      event.location?.address?.city?.includes(locationValue)
   );
 
   const filteredEventsByName = events.filter((event) =>
-    event.eventDescription.includes(searchValue)
+    event.eventTitle?.includes(searchValue)
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItemsFiltered = filteredEvents.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+  const currentItemsFilteredByName = filteredEventsByName.slice(
+    indexOfFirstItem,
+    indexOfLastItem
   );
 
   const clearFilter = () => {
     setSportValue("");
+    setLocationValue("");
     setSearchValue(null);
   };
 
@@ -88,12 +128,24 @@ const Events = () => {
             onOk={() => setModal1Open(false)}
             onCancel={() => setModal1Open(false)}
           >
-            <Radio.Group onChange={onChangeLocation} value={locationValue}>
+            <Radio.Group
+              onChange={onChangeLocation}
+              value={locationValue}
+              className="events-modal-text"
+            >
               <Space direction="vertical">
-                <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"Munich"}>Munich</Radio>
-                <Radio value={"Hamburg"}>Hamburg</Radio>
-                <Radio value={"Stuttgart"}>Stuttgart</Radio>
+                <Radio className="events-modal-text" value={"Berlin"}>
+                  Berlin
+                </Radio>
+                <Radio className="events-modal-text" value={"Munich"}>
+                  Munich
+                </Radio>
+                <Radio className="events-modal-text" value={"Hamburg"}>
+                  Hamburg
+                </Radio>
+                <Radio className="events-modal-text" value={"Stuttgart"}>
+                  Stuttgart
+                </Radio>
               </Space>
             </Radio.Group>
           </Modal>
@@ -121,92 +173,142 @@ const Events = () => {
           >
             <Radio.Group onChange={onChangeSport} value={sportValue}>
               <Space direction="vertical">
-                <Radio value={"Football"}>Football</Radio>
-                <Radio value={"Basketball"}>Basketball</Radio>
-                <Radio value={"Volleyball"}>Volleyball</Radio>
-                <Radio value={"Swimming"}>Swimming</Radio>
+                <Radio className="events-modal-text" value={"Football"}>
+                  Football
+                </Radio>
+                <Radio className="events-modal-text" value={"Basketball"}>
+                  Basketball
+                </Radio>
+                <Radio className="events-modal-text" value={"Volleyball"}>
+                  Volleyball
+                </Radio>
+                <Radio className="events-modal-text" value={"Swimming"}>
+                  Swimming
+                </Radio>
+                <Radio className="events-modal-text" value={"Cycling"}>
+                  Cycling
+                </Radio>
+                <Radio className="events-modal-text" value={"Yoga"}>
+                  Yoga
+                </Radio>
               </Space>
             </Radio.Group>
           </Modal>
         </div>
       </div>
-      {loading ? <Spinner /> : (
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
-      <div className="page2-suggested-cards">
-        {searchValue === null
-          ? filteredEvents.map((event, index) => (
-              <div key={index} className="page4-suggested-cards">
-                <Card
-                  className="page2-suggested-individual-card"
-                  style={{
-                    width: 300,
-                  }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <PlusOutlined key="plus" />,
-                    <CheckOutlined key="check" />,
-                    <Link to={`/events/${event._id}`}>
-                      <EllipsisOutlined key="ellipsis" />
-                    </Link>,
-                  ]}
-                >
-                  <Meta
-                    // className="page2-suggested-individual-card-meta"
-                    avatar={
-                      <Avatar src={event?.organizator?.userInfo?.userImage} />
-                    }
-                    title={event.eventTitle}
-                    description={event.sportType[0]}
-                  />
-                </Card>
-              </div>
-            ))
-          : filteredEventsByName.map((event, index) => (
-              <div key={index} className="page4-suggested-cards">
-                <Card
-                  className="page2-suggested-individual-card"
-                  style={{
-                    width: 300,
-                  }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <PlusOutlined key="plus" />,
-                    <CheckOutlined key="check" />,
-                    <Link to={`/events/${event._id}`}>
-                      <EllipsisOutlined key="ellipsis" />
-                    </Link>,
-                  ]}
-                >
-                  <Meta
-                    // className="page2-suggested-individual-card-meta"
-                    avatar={
-                      <Avatar src={event?.organizator?.userInfo?.userImage} />
-                    }
-                    title={event.eventTitle}
-                    description={event.sportType[0]}
-                  />
-                </Card>
-              </div>
-            ))}
-      </div>
-      <Link to="/events/create">
-        <div className="page3-btn-wrapper">
-          <Button className="page2-block-btn" type="primary" block>
-            Create an event
-          </Button>
-        </div>
-      </Link>
-      </>
+          <div className="page2-suggested-cards">
+            {searchValue === null
+              ? currentItemsFiltered.map((event, index) => (
+                  <div key={index} className="page4-suggested-cards">
+                    <Card
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 300,
+                      }}
+                      cover={
+                        <img
+                          alt="example"
+                          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                        />
+                      }
+                      actions={[
+                        <PlusOutlined key="plus" />,
+                        <CheckOutlined key="check" />,
+                        <Link to={`/events/${event._id}`}>
+                          <EllipsisOutlined key="ellipsis" />
+                        </Link>,
+                      ]}
+                    >
+                      <Meta
+                        className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${
+                          event.sportType[0]
+                        } // ${event.eventDateAndTime?.eventDate?.slice(
+                          0,
+                          10
+                        )} @ ${event.eventDateAndTime?.eventTime} // ${
+                          event.location?.address?.city
+                        }`}
+                      />
+                    </Card>
+                  </div>
+                ))
+              : currentItemsFilteredByName.map((event, index) => (
+                  <div key={index} className="page4-suggested-cards">
+                    <Card
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 300,
+                      }}
+                      cover={
+                        <img
+                          alt="example"
+                          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                        />
+                      }
+                      actions={[
+                        <PlusOutlined key="plus" />,
+                        <CheckOutlined key="check" />,
+                        <Link to={`/events/${event._id}`}>
+                          <EllipsisOutlined key="ellipsis" />
+                        </Link>,
+                      ]}
+                    >
+                      <Meta
+                        // className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${
+                          event.sportType[0]
+                        } // ${event.eventDateAndTime?.eventDate?.slice(
+                          0,
+                          10
+                        )} @ ${event.eventDateAndTime?.eventTime} // ${
+                          event.location?.address?.city
+                        }`}
+                      />
+                    </Card>
+                  </div>
+                ))}
+          </div>
+          <div className="events-pagination">
+            <Pagination
+              defaultCurrent={1}
+              total={
+                searchValue === null
+                  ? filteredEvents.length
+                  : filteredEventsByName.length
+              }
+              pageSize={itemsPerPage}
+              onChange={handlePageChange}
+              onShowSizeChange={handlePageSizeChange}
+            />
+          </div>
+          <Link
+            to="/events/create"
+            className={token ? "page2-link" : "page2-link-hidden"}
+          >
+            <div className="page3-btn-wrapper">
+              <Button className="page2-block-btn" type="primary" block>
+                Create an event
+              </Button>
+            </div>
+          </Link>
+        </>
       )}
     </>
   );

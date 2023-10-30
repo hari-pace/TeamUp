@@ -11,6 +11,9 @@ import Swimming from "../assets/swimming.jpg";
 import Beachvolleyball from "../assets/beachvolleyball.jpg";
 import "./styling/dashboard.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import { useJwt } from "react-jwt";
 
 const contentStyle = {
   height: "400px",
@@ -22,6 +25,29 @@ const contentStyle = {
 const { Meta } = Card;
 
 const Dashboard = () => {
+  const [events, setEvents] = useState([]);
+
+  const { token } = useContext(AuthContext);
+  const { decodedToken } = useJwt(token);
+
+  const fetchEvents = async () => {
+    const res = await fetch("https://teamup-service.onrender.com/event/");
+    const data = await res.json();
+    console.log(data);
+    setEvents(data);
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  // const filteredEvents = events.filter(
+  //   (event) =>
+  //     event.location?.address?.city ===
+  // );
+
+  console.log(decodedToken);
+
   return (
     <>
       <div className="events-heroDiv">
@@ -184,156 +210,6 @@ const Dashboard = () => {
                   <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
                 }
                 title="Football at Volkspark"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
                 description="This is the description"
               />
             </Card>
