@@ -68,15 +68,15 @@
     border-width: 5px !important;
     }
     :where(.css-3mqfnx).ant-rate {
-        border-width: 5px !important;
-        }
-        .deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
-            width: 40% !important;
-        }
+    border-width: 5px !important;
+    }
+    .deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    width: 40% !important;
+    }
         
-        .deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
-            width: 40%;
-        }
+    .deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    width: 40% !important;
+    }
 }
 
 
@@ -113,11 +113,11 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border-style: solid;
+    /* border-style: solid; */
     border-color: var(--primary);
     padding: 50px;
-    border-radius: 20px;
-    border-width: 20px;
+    /* border-radius: 20px;
+    border-width: 20px; */
     /* width: 50%; */
 }
 
@@ -135,11 +135,11 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border-style: solid;
+    /* border-style: solid; */
     border-color: var(--primary);
     padding: 50px;
-    border-radius: 20px;
-    border-width: 20px;
+    /* border-radius: 20px;
+    border-width: 20px; */
     /* width: 50%; */
 }
 
