@@ -70,6 +70,13 @@
     :where(.css-3mqfnx).ant-rate {
         border-width: 5px !important;
         }
+        .deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+            width: 40% !important;
+        }
+        
+        .deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+            width: 40%;
+        }
 }
 
 

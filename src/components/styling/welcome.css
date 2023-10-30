@@ -24,12 +24,28 @@
     padding: 5%;
     max-width: none
 }
+.welcomeButtons:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not( .ant-btn-disabled ) {
+    -webkit-box-shadow: 0px 14px 15px -1px rgba(0,0,0,0.73); 
+    box-shadow: 0px 14px 15px -1px rgba(0,0,0,0.73);
+}
 
 .welcomeButtons:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not( .ant-btn-disabled ):hover {
     max-width: none;
     /* background-color: var(--secondary); */
+    /* -webkit-box-shadow: 0px 14px 15px -1px rgba(0,0,0,0.73); 
+    box-shadow: 0px 14px 15px -1px rgba(0,0,0,0.73); */
+
 }
 
 .welcomeButtons:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not( .ant-btn-disabled ):hover {
     max-width: none;
+}
+
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn {
+transition: none;
+}
+
+:where(.css-3mqfnx).ant-btn {
+transition: none;
 }
