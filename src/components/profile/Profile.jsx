@@ -14,6 +14,7 @@ import LanguageEdit from "./LangaugeEdit"
 import ImageEdit from "./ImageEdit"
 import CityEdit from "./CityEdit"
 import DeleteUser from "./DeleteUser";
+import Question from "../../assets/question.png"
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -74,7 +75,8 @@ export default function Profile() {
         event._id?.includes(eventOrganisedIds[2]))
     );
   });
-
+const image = filteredEventsArray.map((event) => event.organizator?.userInfo?.userImage)
+console.log(image);
   const filteredAvatarArray = users?.filter((user) => {
     return (
       filteredEventsArray &&
@@ -88,6 +90,7 @@ export default function Profile() {
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
+  console.log(events)
 
   return (
     <>
@@ -166,9 +169,7 @@ export default function Profile() {
                           avatar={
                             <Avatar
                               className="avatarCard"
-                              src={filteredAvatarArray?.map(
-                                (avatar) => avatar.userInfo?.userImage
-                              )}
+                              src={event.organizator?.userInfo?.userImage ? event.organizator?.userInfo?.userImage : Question }
                             />
                           }
                           title={event?.eventDescription}
