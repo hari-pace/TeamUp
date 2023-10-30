@@ -75,22 +75,10 @@ export default function Profile() {
         event._id?.includes(eventOrganisedIds[2]))
     );
   });
-const image = filteredEventsArray.map((event) => event.organizator?.userInfo?.userImage)
-console.log(image);
-  const filteredAvatarArray = users?.filter((user) => {
-    return (
-      filteredEventsArray &&
-      filteredEventsArray.length > 0 &&
-      (user?._id?.includes(filteredEventsArray[0]?.organizator) ||
-        user?._id?.includes(filteredEventsArray[1]?.organizator))
-    );
-  });
-
   const inputDate = singleUser?.userInfo?.registrationDate;
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
-  console.log(events)
 
   return (
     <>
