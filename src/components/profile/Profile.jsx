@@ -66,6 +66,16 @@ export default function Profile() {
     );
   });
 
+  const EventsArray = events?.filter((event) => {
+    return (
+      singleUser &&
+      singleUser.length > 0 &&
+      event.usersAttending?.userRef?.includes("653a6195352f338321518709")
+    );
+  });
+console.log(EventsArray);
+// console.log(events[156].usersAttending[0].userRef);
+
   const filteredOrganisedArray = events?.filter((event) => {
     return (
       eventOrganisedIds &&
@@ -79,7 +89,8 @@ export default function Profile() {
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
-console.log(singleUser);
+console.log(events);
+console.log(singleUser)
   return (
     <>
       <div className="profileWholeContainer">
