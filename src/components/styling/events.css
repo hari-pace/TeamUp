@@ -56,6 +56,10 @@
   border-radius: 5px;
 }
 
+.events-modal-text {
+  font-size: 1.3rem;
+}
+
 .events-search-btn {
   font-size: 1.5rem;
   min-height: 50px;
@@ -87,6 +91,21 @@
   display: flex;
   justify-content: center;
   margin: 1%;
+}
+
+.page2-link-hidden {
+  display: none;
+}
+
+.events-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 4% auto;
+  background-color: var(--secondary);
+  width: 50%;
+  height: 75px;
+  align-items: center;
+  border-radius: 40px;
 }
 
 @media screen and (max-width: 800px) {
