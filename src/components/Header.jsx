@@ -67,7 +67,7 @@ export default function Header() {
     <Space>
   <div className="avatarCon">
   <div className={animate ? "animateGreeting" : "greeting"}>
-    <h3>{decodedToken?.name}</h3>
+    <h2>{decodedToken?.name}</h2>
     </div>
   <Button
   className="logoutButtons"
@@ -90,7 +90,6 @@ export default function Header() {
     )}
   </div>
   </div>
-  <Divider className="headerDivider"/>
 </>
   )
 }

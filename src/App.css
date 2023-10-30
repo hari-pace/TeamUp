@@ -28,6 +28,9 @@ body {
   h2 {
     font-size: 2rem !important;
   }
+  h3 {
+    font-size: 1.25rem;
+  }
 }
 
 h1,

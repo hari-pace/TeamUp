@@ -24,14 +24,14 @@
     .greeting {
         font-size: 1rem !important;
     }
-    .greeting h3 {
+    .greeting h2 {
         margin: 0px;
     }
     
     .animateGreeting {
         font-size: 1rem !important;
     }
-    .animateGreeting h3 {
+    .animateGreeting h2 {
         padding: 0px;
         margin: 0px;
     }
@@ -45,6 +45,12 @@
 
     }
     
+    .header {
+        -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
+        box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
+        width: 100%;
+        margin: 0px;
+    }
     .headerDivider {
         margin: 2% 0;
         background-color: var(--secondary);
@@ -61,17 +67,19 @@
         font-size: 3rem;
         padding: 20% 2%;
         cursor: pointer;
+        margin-bottom: 20px;
       }
       
       .header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin: 1% 5%;
+          margin: 10px 0px 40px 0px;
       }
       
       .headerLeft {
           display: flex;
+          margin-left: 20px;
       }
       
       .headerRight {
@@ -100,13 +108,13 @@
         animation-timing-function: linear;
       }
     
-      .animateGreeting h3 {
+      .animateGreeting h2 {
         padding: 0px;
         margin: 0px;
         border-radius: 20px;
       }
     
-      .greeting h3 {
+      .greeting h2 {
         padding: 0px;
         margin: 0px;
         border-radius: 20px;
@@ -122,7 +130,7 @@
     
       .avatarMini {
           border-radius: 50%;
-          margin: 0px 30px;
+          margin: 0px 30px 10px 30px;
           border-style: solid;
           border-width: 5px;
           border-color: var(--secondary);
@@ -144,11 +152,14 @@
         color: var(--tertiary);
         border-color: var(--tertiary);
         margin: 0 10px;
+
     }
     
     :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
       color: var(--secondary);
       border-color: var(--secondary);
+      -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
+      box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
     }
     
     :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
@@ -160,6 +171,8 @@
     :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
     color: var(--secondary);
     border-color: var(--secondary);
+    -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
+    box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
     }
     
     .loginButtons {

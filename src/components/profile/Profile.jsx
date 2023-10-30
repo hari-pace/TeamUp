@@ -79,7 +79,7 @@ export default function Profile() {
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
-
+console.log(singleUser);
   return (
     <>
       <div className="profileWholeContainer">
