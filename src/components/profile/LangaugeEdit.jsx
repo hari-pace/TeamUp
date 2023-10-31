@@ -77,7 +77,7 @@ htmlFor="languagesSpoken"
     placeholder="Select which languages you speak"
     optionLabelProp="label"
     value={languagesSpoken}
-    onChange={() => setLanguagesSpoken(languagesSpoken)}
+    onChange={setLanguagesSpoken}
   >
     <Option value="English" label="EN">
     {/* <Option value={languagesSpoken} label="EN"> */}
