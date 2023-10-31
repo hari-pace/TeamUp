@@ -18,6 +18,12 @@ import "./styling/events.css";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import { AuthContext } from "../context/authContext";
+import Swimming from "../assets/swimming2.jpg";
+import Basketball from "../assets/basketball3.jpg";
+import Cycling from "../assets/cycling2.jpg";
+import Football from "../assets/football2.jpg";
+import Volleyball from "../assets/volleyball2.jpg";
+import Yoga from "../assets/yoga.jpg";
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -96,6 +102,15 @@ const Events = () => {
     setSportValue("");
     setLocationValue("");
     setSearchValue(null);
+  };
+
+  const imageOptions = {
+    Football: Football,
+    Basketball: Basketball,
+    Volleyball: Volleyball,
+    Swimming: Swimming,
+    Cycling: Cycling,
+    Yoga: Yoga,
   };
 
   return (
@@ -212,12 +227,13 @@ const Events = () => {
                       cover={
                         <img
                           alt="example"
-                          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                          src={imageOptions[event?.sportType[0]]}
+                          className="events-card-cover"
                         />
                       }
                       actions={[
-                        <PlusOutlined key="plus" />,
-                        <CheckOutlined key="check" />,
+                        // <PlusOutlined key="plus" />,
+                        // <CheckOutlined key="check" />,
                         <Link to={`/events/${event._id}`}>
                           <EllipsisOutlined key="ellipsis" />
                         </Link>,
@@ -253,12 +269,13 @@ const Events = () => {
                       cover={
                         <img
                           alt="example"
-                          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                          src={imageOptions[event?.sportType[0]]}
+                          className="events-card-cover"
                         />
                       }
                       actions={[
-                        <PlusOutlined key="plus" />,
-                        <CheckOutlined key="check" />,
+                        // <PlusOutlined key="plus" />,
+                        // <CheckOutlined key="check" />,
                         <Link to={`/events/${event._id}`}>
                           <EllipsisOutlined key="ellipsis" />
                         </Link>,

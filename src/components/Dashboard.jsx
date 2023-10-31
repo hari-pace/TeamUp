@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
+import { dateFormatter } from "../jsfunctions/FormatDate";
 
 const contentStyle = {
   height: "400px",
@@ -26,6 +27,7 @@ const { Meta } = Card;
 
 const Dashboard = () => {
   const [events, setEvents] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
@@ -33,12 +35,27 @@ const Dashboard = () => {
   const fetchEvents = async () => {
     const res = await fetch("https://teamup-service.onrender.com/event/");
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setEvents(data);
+  };
+
+  const fetchUsers = async () => {
+    const response = await fetch(
+      "https://teamup-service.onrender.com/user/users",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    setUsers(data);
   };
 
   useEffect(() => {
     fetchEvents();
+    fetchUsers();
   }, []);
 
   // const filteredEvents = events.filter(
@@ -46,7 +63,25 @@ const Dashboard = () => {
   //     event.location?.address?.city ===
   // );
 
-  console.log(decodedToken);
+  const oneUser = users.filter((user) => user.username === decodedToken?.name);
+
+  // console.log(oneUser[0]);
+  // console.log(events[176]?.usersAttending);
+
+  const usersSuggestedEvents = events.filter(
+    (event) => event?.usersAttending?.username === oneUser[0]?.username
+  );
+
+  // console.log(usersSuggestedEvents);
+
+  const likedEvents = events.filter((event) =>
+    oneUser[0]?.userInfo?.eventsLiked.includes(event._id)
+  );
+
+  console.log(likedEvents);
+
+  const inputDate = events?.eventDateAndTime?.eventDate;
+  const formattedDate = dateFormatter(inputDate);
 
   return (
     <>
@@ -64,6 +99,13 @@ const Dashboard = () => {
           <div className="page2-btn-wrapper">
             <Button className="page2-block-btn" type="primary" block>
               Find an event
+            </Button>
+          </div>
+        </Link>
+        <Link to="/events/create">
+          <div className="page2-btn-wrapper">
+            <Button className="page2-block-btn" type="primary" block>
+              Create an event
             </Button>
           </div>
         </Link>
@@ -85,13 +127,30 @@ const Dashboard = () => {
             </div>
           </Carousel>
         </div>
-        <Link to="/events/create">
-          <div className="page2-btn-wrapper">
-            <Button className="page2-block-btn" type="primary" block>
-              Create an event
-            </Button>
-          </div>
-        </Link>
+        <div className="2-my-events">
+          <div className="page2-subheading">Your liked events</div>
+          <Carousel className="page2-carousel">
+            {likedEvents.length > 0 ? (
+              likedEvents.map((likedEvent, index) => (
+                <div key={index}>
+                  <Link to={`/events/${likedEvent?._id}`}>
+                    <h3 style={contentStyle}>
+                      {likedEvent?.eventTitle} -{"  "}
+                      {dateFormatter(
+                        likedEvent?.eventDateAndTime?.eventDate
+                      )} @ {likedEvent?.eventDateAndTime?.eventTime}{" "}
+                    </h3>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <div>
+                <h3 style={contentStyle}>You haven't liked any events yet</h3>
+              </div>
+            )}
+          </Carousel>
+        </div>
+
         <div className="page2-section2">
           <div className="page2-sports">
             <div className="page2-subheading2">Sports you follow</div>
@@ -160,6 +219,7 @@ const Dashboard = () => {
         </div>
         <div className="page2-sports">
           <div className="page2-subheading">Suggested events for you</div>
+
           <div className="page2-suggested-cards">
             <Card
               className="page2-suggested-individual-card"
@@ -184,82 +244,6 @@ const Dashboard = () => {
                   <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
                 }
                 title="Thursday night basketball"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                className=""
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Football at Volkspark"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title="Card title"
                 description="This is the description"
               />
             </Card>

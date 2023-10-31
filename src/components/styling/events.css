@@ -56,6 +56,12 @@
   border-radius: 5px;
 }
 
+.events-card-cover {
+  object-fit: cover;
+  /* overflow: hidden; */
+  height: 220px;
+}
+
 .events-modal-text {
   font-size: 1.3rem;
 }
