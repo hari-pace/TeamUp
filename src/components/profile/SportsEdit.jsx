@@ -1,5 +1,7 @@
 import { useState, useContext } from 'react';
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Select, Space } from "antd";
+
+const { Option } = Select;
 
 export default function UsernameEdit( { initialSports, id, setSports} ) {
   const [interestedInSports, setInterestedInSports] = useState(initialSports)
@@ -65,12 +67,106 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
       label="Sports Following"
       name="interestedInSports"
     >
-      <Input
-      type="text"
-      placeholder="Seperate more than one sport with a comma"
-      onChange={(e) => setInterestedInSports(e.target.value)}
-      value={interestedInSports}
-      />
+<Select
+    mode="multiple"
+    style={{
+      width: '100%',
+    }}
+    placeholder="Select which interests you"
+    optionLabelProp="label"
+    value={interestedInSports}
+    onChange={setInterestedInSports}
+  >
+    <Option value="Football" >
+      <Space>
+        <span role="img" aria-label="Football">
+        ⚽
+        </span>
+        Football
+      </Space>
+    </Option>
+    <Option value="Basketball">
+      <Space>
+        <span role="img" aria-label="Basketball">
+        🏀
+        </span>
+        Basketball
+      </Space>
+    </Option>
+    <Option value="Swimming">
+      <Space>
+        <span role="img" aria-label="Swimming">
+        🏊‍♂️
+        </span>
+        Swimming
+      </Space>
+    </Option>
+    <Option value="Tennis">
+      <Space>
+        <span role="img" aria-label="Tennis">
+        🎾
+        </span>
+        Tennis
+      </Space>
+    </Option>
+    <Option value="Volleyball">
+      <Space>
+        <span role="img" aria-label="Volleyball">
+        🏐
+        </span>
+        Volleyball
+      </Space>
+    </Option>
+    <Option value="Handball" label="HB">
+    {/* <Option value={languagesSpoken} label="JP"> */}
+      <Space>
+        <span role="img" aria-label="Handball">
+        🤾
+        </span>
+        Handball
+      </Space>
+    </Option>
+    <Option value="Cricket">
+      <Space>
+        <span role="img" aria-label="Cricket">
+        🏏
+        </span>
+        Cricket
+      </Space>
+    </Option>
+    <Option value="Fitness">
+      <Space>
+        <span role="img" aria-label="Fitness">
+        🏋️‍♂️
+        </span>
+        Fitness
+      </Space>
+    </Option>
+    <Option value="Yoga">
+      <Space>
+        <span role="img" aria-label="Yoga">
+        🧘
+        </span>
+        Yoga
+      </Space>
+    </Option>
+    <Option value="Ski">
+      <Space>
+        <span role="img" aria-label="Ski">
+        🎿
+        </span>
+        Ski
+      </Space>
+    </Option>
+    <Option value="Cycling">
+      <Space>
+        <span role="img" aria-label="Cycling">
+        🚲
+        </span>
+        Cycling
+      </Space>
+    </Option>
+  </Select>
     </Form.Item>
     {error ? <h4 className="errorH">{error}</h4> : null}
     <Button 
