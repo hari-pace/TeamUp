@@ -18,11 +18,9 @@ const EventMoreInfo = () => {
   const [interestedUsers, setInterestedUsers] = useState([]);
   const [eventInfo, setEventInfo] = useState();
   const [eventID, setEventID] = useState();
-  const [fetchMapToggle, setFetchMapToggle] = useState(false);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [loading, setLoading] = useState(true);
-  const [putRequestToggle, setPutRequestToggle] = useState(false);
 
   const { id } = useParams();
   const { token } = useContext(AuthContext);

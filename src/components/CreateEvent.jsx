@@ -135,17 +135,6 @@ const CreateEvent = () => {
     }
   };
 
-  // const onChangeSwitch = (checked) => {
-  //   console.log(`switch to ${checked}`);
-  //   if (checked) {
-  //     setEventUsersAttending([decodedToken?.name]);
-  //   } else {
-  //     setEventUsersAttending([]);
-  //   }
-  // };
-
-  // console.log(eventUsersAttending);
-
   const [form] = Form.useForm();
 
   // console.log(eventHashtags);
