@@ -135,6 +135,7 @@ console.log(EventsArray);
 console.log(events);
 console.log(users);
 console.log(id);
+console.log(singleUser?.userInfo?.averageRating)
   return (
     <>
       <div className="profileWholeContainer">
@@ -178,7 +179,8 @@ console.log(id);
             </label>
             <br />
             <Rate
-            value={singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]?.rating}
+            allowHalf
+            value={singleUser?.userInfo?.averageRating}
             onChange={(newValue) => setUserRating(newValue)}
             className="rating" />
       <Button 
@@ -223,6 +225,7 @@ console.log(id);
                       <Card
                         className="profileCards"
                         hoverable
+                        title={event?.eventDescription}
                         cover={
                           <img
                             alt="example"
@@ -239,7 +242,7 @@ console.log(id);
                               src={event.organizator?.userInfo?.userImage ? event.organizator?.userInfo?.userImage : Question }
                             />
                           }
-                          title={event?.eventDescription}
+                          // title={event?.eventDescription}
                         />
                         {/* // description={events?.sportType[0]}/> */}
                       </Card>
@@ -262,14 +265,7 @@ console.log(id);
                       <Card
                         className="profileCards"
                         hoverable
-                        cover={
-                          <img
-                            alt="example"
-                            src={
-                              "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            }
-                          />
-                        }
+                        title={event?.eventDescription}
                       >
                         <Meta
                           avatar={
@@ -278,7 +274,7 @@ console.log(id);
                               src={singleUser?.userInfo?.userImage}
                             />
                           }
-                          title={event?.eventDescription}
+                          // title={event?.eventDescription}
                         />
                         {/* // description={events?.sportType[0]}/> */}
                       </Card>
