@@ -143,6 +143,21 @@ const EventMoreInfo = () => {
   const inputDate = eventInfo?.eventDateAndTime?.eventDate;
   const formattedDate = dateFormatter(inputDate);
 
+  const longTime = eventInfo?.eventDateAndTime?.eventTime;
+  const date = new Date(longTime);
+
+  const formattedTime = date.toLocaleTimeString("de-DE", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  // const formattedTime = inputTime?.toLocaleDateString("en-GB", {
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  // });
+
+  // console.log(formattedTime);
+
   const checkForAttendeeMatch = attendees.filter(
     (attendee) => attendee.username === decodedToken?.name
   );
@@ -253,7 +268,7 @@ const EventMoreInfo = () => {
               </h3>
               <h3 className="page4-input-fields">Date: {formattedDate}</h3>
               <h3 className="page4-input-fields">
-                Start time: {eventInfo?.eventDateAndTime?.eventTime}
+                Start time: {formattedTime}
               </h3>
               <div className="page4-location-container">
                 <h3 className="page4-input-field-location">Location: </h3>

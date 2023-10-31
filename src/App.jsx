@@ -10,10 +10,12 @@ import Profile from "./components/profile/Profile";
 import Welcome from "./components/Welcome";
 import CreateEvent from "./components/CreateEvent";
 import ScrollToTop from "./jsfunctions/ScrollToTop";
+
 import { AuthContext } from "./context/authContext";
 import { useJwt } from "react-jwt";
 import { useState, useEffect } from "react";
 import "./App.css";
+import About from "./components/About";
 
 function App() {
   // const [username, setUsername] = useState(null)
@@ -55,7 +57,7 @@ function App() {
         <Route path="events/create" element={<CreateEvent />} />
         <Route path="dashboard/user" element={<Welcome />} />
         <Route path="contact" element="" />
-        <Route path="about" element="" />
+        <Route path="about" element={<About />} />
         <Route path="*" element="" />
       </Routes>
       <Footer />

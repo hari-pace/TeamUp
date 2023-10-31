@@ -103,7 +103,7 @@ const CreateEvent = () => {
     eventTitle: eventTitle,
     eventDateAndTime: {
       eventDate: eventDate?.$d,
-      eventTime: `${eventTime?.$H}:${eventTime?.$m}`,
+      eventTime: eventTime?.$d,
     },
     eventStatus: "upcoming",
   };
@@ -141,6 +141,7 @@ const CreateEvent = () => {
 
   // console.log(decodedToken.name);
   // console.log(eventTime?.$H);
+  console.log(eventTime);
 
   return (
     <>
