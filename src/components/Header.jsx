@@ -60,9 +60,8 @@ export default function Header() {
 <Logo />
 </div>
 <div className="headerRight">
-  {token !== null && (
+  {token !== null ? (
     <>
-  
   <Link to={`profile/${decodedToken?.name}`}> <Avatar className="avatarMini" /> </Link>
     <Space>
   <div className="avatarCon">
@@ -80,9 +79,8 @@ export default function Header() {
   </Button>
   </div> 
   </Space>
-  </>
-  )}
-  {token === null && (
+  </>)
+  : (
     <>
     <Login />
     <Signup />
