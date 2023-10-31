@@ -27,6 +27,11 @@
   color: var(--secondary);
 }
 
+.footer-links {
+  text-decoration: none;
+  color: black;
+}
+
 .footer-1,
 .footer-2,
 .footer-3 {

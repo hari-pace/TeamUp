@@ -65,7 +65,7 @@ const Dashboard = () => {
 
   const oneUser = users.filter((user) => user.username === decodedToken?.name);
 
-  // console.log(oneUser[0]);
+  console.log(oneUser[0]);
   // console.log(events[176]?.usersAttending);
 
   const usersSuggestedEvents = events.filter(
@@ -77,8 +77,12 @@ const Dashboard = () => {
   const likedEvents = events.filter((event) =>
     oneUser[0]?.userInfo?.eventsLiked.includes(event._id)
   );
+  const AttendedEvents = events.filter((event) =>
+    oneUser[0]?.userInfo?.eventsAttended.includes(event._id)
+  );
 
-  console.log(likedEvents);
+  // console.log(likedEvents);
+  console.log(AttendedEvents);
 
   const inputDate = events?.eventDateAndTime?.eventDate;
   const formattedDate = dateFormatter(inputDate);
@@ -112,19 +116,35 @@ const Dashboard = () => {
         <div className="2-my-events">
           <div className="page2-subheading">Your upcoming events</div>
           <Carousel className="page2-carousel">
-            <div>
-              <h3 style={contentStyle}>My event 1</h3>
-              {/* Add map method of events here */}
-            </div>
-            <div>
-              <h3 style={contentStyle}>My event 2</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>My event 3</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>My event 4</h3>
-            </div>
+            {AttendedEvents.length > 0 ? (
+              AttendedEvents.map((AttendedEvent, index) => (
+                <div key={index}>
+                  <Link to={`/events/${AttendedEvent?._id}`}>
+                    <h3 style={contentStyle}>
+                      {AttendedEvent?.eventTitle} -{"  "}
+                      {new Date(
+                        AttendedEvent?.eventDateAndTime?.eventDate
+                      ).toLocaleDateString("de-DE", {
+                        day: "numeric",
+                        month: "numeric",
+                        year: "numeric",
+                      })}{" "}
+                      @{"  "}
+                      {new Date(
+                        AttendedEvent?.eventDateAndTime?.eventTime
+                      ).toLocaleTimeString("de-DE", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
+                    </h3>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <div>
+                <h3 style={contentStyle}>You have no upcoming events</h3>
+              </div>
+            )}
           </Carousel>
         </div>
         <div className="2-my-events">
@@ -136,9 +156,20 @@ const Dashboard = () => {
                   <Link to={`/events/${likedEvent?._id}`}>
                     <h3 style={contentStyle}>
                       {likedEvent?.eventTitle} -{"  "}
-                      {dateFormatter(
+                      {new Date(
                         likedEvent?.eventDateAndTime?.eventDate
-                      )} @ {likedEvent?.eventDateAndTime?.eventTime}{" "}
+                      ).toLocaleDateString("de-DE", {
+                        day: "numeric",
+                        month: "numeric",
+                        year: "numeric",
+                      })}{" "}
+                      @{" "}
+                      {new Date(
+                        likedEvent?.eventDateAndTime?.eventTime
+                      ).toLocaleTimeString("de-DE", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
                     </h3>
                   </Link>
                 </div>

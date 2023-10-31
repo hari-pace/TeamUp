@@ -247,14 +247,18 @@ const Events = () => {
                           />
                         }
                         title={event.eventTitle}
-                        description={`${
-                          event.sportType[0]
-                        } // ${event.eventDateAndTime?.eventDate?.slice(
-                          0,
-                          10
-                        )} @ ${event.eventDateAndTime?.eventTime} // ${
-                          event.location?.address?.city
-                        }`}
+                        description={`${event.sportType[0]} // ${new Date(
+                          event?.eventDateAndTime?.eventDate
+                        ).toLocaleDateString("de-DE", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })} @ ${new Date(
+                          event?.eventDateAndTime?.eventTime
+                        ).toLocaleTimeString("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} // ${event.location?.address?.city}`}
                       />
                     </Card>
                   </div>

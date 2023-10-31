@@ -9,6 +9,7 @@ import {
 import Logo from "./Logo";
 import { Divider } from "antd";
 import "./styling/footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -28,7 +29,11 @@ function Footer() {
         </div>
         <div className="footer-2">
           <ul>
-            <li>About Us</li>
+            <li>
+              <Link className="footer-links" to={"/about"}>
+                About Us
+              </Link>
+            </li>
             <li>Contact Us</li>
             <li>Careers at TeamUp</li>
             <li>FAQ's</li>
