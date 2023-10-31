@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../../jsfunctions/FormatDate";
-import { Rate, Card, Space, Button } from "antd";
+import { Rate, Card, Space, Button, Form, Input } from "antd";
 import Avatar from "../Avatar.jsx";
 import Spinner from "../Spinner";
 import UsernameEdit from "./UsernameEdit";
@@ -15,6 +15,8 @@ import ImageEdit from "./ImageEdit"
 import CityEdit from "./CityEdit"
 import DeleteUser from "./DeleteUser";
 import Question from "../../assets/question.png"
+import FormItem from "antd/es/form/FormItem";
+
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -28,6 +30,9 @@ export default function Profile() {
   const [showLanguageEdit, setLanguageEdit] = useState(false);
   const [editImage, setEditImage] = useState(false);
   const [showCity, setCity] = useState(false);
+  const [rating, setUserRating] = useState()
+  const [error, setError] = useState()
+  const [loadings, setLoadings] = useState([]);
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
@@ -41,6 +46,7 @@ export default function Profile() {
     (element) => element?.username == extractedUsername
   );
 
+  const id = singleUser?._id
   const eventAttendedIds = singleUser?.userInfo?.eventsAttended;
   const eventOrganisedIds = singleUser?.userInfo?.eventsOrganized;
 
@@ -89,8 +95,46 @@ console.log(EventsArray);
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
+
+  const handleSubmit = async () => {
+    // e.preventDefault(); ant has built-in prevent default.
+    // this submit is for userRating
+    setError(null);
+
+    const response = await fetch(`https://teamup-service.onrender.com/user/users/${id}/rater-user`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
+      body: JSON.stringify({ userRating: { rating } }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.error);
+      console.log(error);
+    }
+
+    if (response.ok) {
+      console.log("SUCCESS!!!")
+    }
+  };
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 6000);
+  };
 console.log(events);
-console.log(singleUser)
+console.log(users);
+console.log(id);
   return (
     <>
       <div className="profileWholeContainer">
@@ -119,11 +163,35 @@ console.log(singleUser)
             />
             </>
             )}
+           {auth ? (
+              <Rate
+              disabled
+              value={singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]?.rating}
+              />) : (
+            <Form
+            onFinish={handleSubmit}
+            >
+            <FormItem
+            htmlfor="userRating">
             <label>
               <h3>User Rating</h3>
             </label>
             <br />
-            <Rate disabled defaultValue={5} className="rating" />
+            <Rate
+            value={singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]?.rating}
+            onChange={(newValue) => setUserRating(newValue)}
+            className="rating" />
+      <Button 
+      type="primary"
+      className="editConfirmButtons" 
+      htmlType="submit"
+      loading={loadings[0]} 
+      onClick={() => enterLoading(0)}>
+        Submit
+      </Button>
+      </FormItem>
+            </Form>
+            )}
             <h3>Bio</h3>
             {showBioEdit ?
             <> 
@@ -316,7 +384,7 @@ console.log(singleUser)
             {auth ? <Button onClick={() => setCity(true)}>
               Edit
               </Button> : null}
-              {singleUser?.userInfo?.city}
+              {singleUser?.userInfo?.location?.city}
             </p>
             </>
             )}
