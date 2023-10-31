@@ -16,6 +16,7 @@ import CityEdit from "./CityEdit"
 import DeleteUser from "./DeleteUser";
 import Question from "../../assets/question.png"
 import FormItem from "antd/es/form/FormItem";
+import RateEdit from "./RateEdit";
 
 
 export default function Profile() {
@@ -34,6 +35,7 @@ export default function Profile() {
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
   const [showdelete, setShowDelete] = useState(false);
+  const [showRate, setRate] = useState(false)
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
@@ -97,42 +99,42 @@ console.log(EventsArray);
 
   const { Meta } = Card;
 
-  const handleSubmit = async () => {
-    // e.preventDefault(); ant has built-in prevent default.
-    // this submit is for userRating
-    setError(null);
+  // const handleSubmit = async () => {
+  //   // e.preventDefault(); ant has built-in prevent default.
+  //   // this submit is for userRating
+  //   setError(null);
 
-    const response = await fetch(`https://teamup-service.onrender.com/user/users/${id}/rater-user`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
-      body: JSON.stringify({ userRating: { rating } }),
-    });
+  //   const response = await fetch(`https://teamup-service.onrender.com/user/users/${id}/rater-user`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
+  //     body: JSON.stringify({ userRating: { rating } }),
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (!response.ok) {
-      setError(data.error);
-      console.log(error);
-    }
+  //   if (!response.ok) {
+  //     setError(data.error);
+  //     console.log(error);
+  //   }
 
-    if (response.ok) {
-      console.log("SUCCESS!!!")
-    }
-  };
-  const enterLoading = (index) => {
-    setLoadings((prevLoadings) => {
-      const newLoadings = [...prevLoadings];
-      newLoadings[index] = true;
-      return newLoadings;
-    });
-    setTimeout(() => {
-      setLoadings((prevLoadings) => {
-        const newLoadings = [...prevLoadings];
-        newLoadings[index] = false;
-        return newLoadings;
-      });
-    }, 6000);
-  };
+  //   if (response.ok) {
+  //     console.log("SUCCESS!!!")
+  //   }
+  // };
+  // const enterLoading = (index) => {
+  //   setLoadings((prevLoadings) => {
+  //     const newLoadings = [...prevLoadings];
+  //     newLoadings[index] = true;
+  //     return newLoadings;
+  //   });
+  //   setTimeout(() => {
+  //     setLoadings((prevLoadings) => {
+  //       const newLoadings = [...prevLoadings];
+  //       newLoadings[index] = false;
+  //       return newLoadings;
+  //     });
+  //   }, 6000);
+  // };
 console.log(users)
 console.log(events)
   return (
@@ -168,34 +170,32 @@ console.log(events)
             </>
             )}
            {auth ? (
-              <Rate
-              disabled
-              value={singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]?.rating}
-              />) : (
-            <Form
-            onFinish={handleSubmit}
-            >
-            <FormItem
-            htmlfor="userRating">
-            <label>
-              <h3>User Rating</h3>
-            </label>
-            <br />
             <Rate
             allowHalf
-            value={singleUser?.userInfo?.averageRating}
-            onChange={(newValue) => setUserRating(newValue)}
-            className="rating" />
-      <Button 
-      type="primary"
-      className="editConfirmButtons" 
-      htmlType="submit"
-      loading={loadings[0]} 
-      onClick={() => enterLoading(0)}>
-        Submit
-      </Button>
-      </FormItem>
-            </Form>
+            allowQuarter
+            disabled
+            value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
+            />) : (
+            <>
+            {showRate ? (
+            <>
+             <RateEdit id = {singleUser?._id} initialRating = {singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]} setRate = {setRate}/>
+             <Button danger type="primary" onClick={() => setRate(false)}>
+             Close X
+             </Button>
+             </>)
+             : (
+              <>
+              <Rate
+              allowHalf
+              allowQuarter
+              disabled
+              value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
+              />
+              <Button onClick={() => setRate(true)}>Rate</Button>
+              </>
+             )}
+            </>
             )}
             <h3>Bio</h3>
             {showBioEdit ?
@@ -211,7 +211,6 @@ console.log(events)
               Edit
               </Button> : null}
               <p>{singleUser?.userInfo?.description}</p>
-              
             </div>)}
             <div className="eventsJoined">
               <h3>Events joined</h3>
@@ -229,14 +228,6 @@ console.log(events)
                         className="profileCards"
                         hoverable
                         title={event?.eventDescription}
-                        cover={
-                          <img
-                            alt="example"
-                            src={
-                              "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            }
-                          />
-                        }
                       >
                         <Meta
                           avatar={
@@ -387,6 +378,13 @@ console.log(events)
             </p>
             </>
             )}
+            <label>
+            <h3>From</h3>
+            </label>
+            <br />
+            <p className="infoItem">
+              {singleUser?.userInfo?.location?.country}
+            </p>
           </div>
         </div>
         </>
