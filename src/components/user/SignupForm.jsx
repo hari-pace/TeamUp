@@ -35,7 +35,7 @@ export default function SignupForm () {
     const response = await fetch("https://teamup-service.onrender.com/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, location: { city, country} }),
+      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, location: { city } } ),
     });
 
     const data = await response.json();

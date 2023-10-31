@@ -13,7 +13,7 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
         const response = await fetch(`https://teamup-service.onrender.com/user/edit/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userInfo: { city } }),
+          body: JSON.stringify({ userInfo: { location: { city } } }),
         });
     
         const data = await response.json();
