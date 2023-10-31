@@ -35,7 +35,7 @@ export default function SignupForm () {
     const response = await fetch("https://teamup-service.onrender.com/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, city, country }),
+      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, location: { city, country} }),
     });
 
     const data = await response.json();
@@ -236,11 +236,20 @@ htmlFor="languagesSpoken"
   </Select>
   </FormItem>
 {/* select language */}
-<FormItem
+<Form.Item
 label="City"
 htmlFor="city"
+rules={[
+  {
+    required: true,
+    message: 'Please choose your city!',
+  },
+]}
 >
-<Radio.Group onChange={(e) => setCity(e.target.value)} value={city}>
+<Radio.Group 
+onChange={(e) => setCity(e.target.value)} 
+value={city}
+>
               <Space direction="vertical">
                 <Radio value={"Berlin"}>Berlin</Radio>
                 <Radio value={"Munich"}>Munich</Radio>
@@ -248,10 +257,16 @@ htmlFor="city"
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
               </Space>
             </Radio.Group>
-  </FormItem>
+  </Form.Item>
   <Form.Item
       label="Country of Origin"
       name="country of origin"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your country!',
+        },
+      ]}
     >
       <Input
       type="text"
