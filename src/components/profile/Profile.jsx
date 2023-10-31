@@ -33,6 +33,7 @@ export default function Profile() {
   const [rating, setUserRating] = useState()
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+  const [showdelete, setShowDelete] = useState(false);
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
@@ -132,16 +133,18 @@ console.log(EventsArray);
       });
     }, 6000);
   };
-console.log(events);
-console.log(users);
-console.log(id);
-console.log(singleUser?.userInfo?.averageRating)
+console.log(users)
+console.log(events)
   return (
     <>
       <div className="profileWholeContainer">
         {loading ? <Spinner /> : (
           <>
-        {auth ? <DeleteUser /> : null}
+        {showdelete ? (
+          <h1 style={{textDecoration: "none", color: "red"}}>User has been deleted</h1>
+        ) : (
+          <>
+      {auth ? <DeleteUser setShowDelete = {setShowDelete} /> : null}
         <h1>{singleUser?.username}</h1>
         <div className="profileContainer">
           <div className="bioContainer">
@@ -386,6 +389,8 @@ console.log(singleUser?.userInfo?.averageRating)
             )}
           </div>
         </div>
+        </>
+        )}
         </>
         )}
       </div>

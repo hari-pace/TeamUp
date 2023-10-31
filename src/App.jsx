@@ -55,7 +55,7 @@ function App() {
         <Route path="events/:id" element={<EventMoreInfo />} />
         <Route path="profile/:username" element={<Profile />} />
         <Route path="events/create" element={<CreateEvent />} />
-        <Route path="dashboard/user" element={<Welcome />} />
+        <Route path="dashboard/user" element={token ? <Welcome /> : <Navigate to="/" />}/>
         <Route path="contact" element="" />
         <Route path="about" element={<About />} />
         <Route path="*" element="" />
