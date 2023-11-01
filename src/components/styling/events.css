@@ -1,0 +1,142 @@
+.events-heroDiv {
+  height: 400px;
+  background-color: var(--secondary);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 1%;
+  border-radius: 30px;
+}
+
+.events-heroBanner {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-heroDiv h1 {
+  position: absolute;
+  color: var(--tertiary);
+  background-color: #8298c67a;
+  padding: 4% 0%;
+  width: 100%;
+  text-align: center;
+}
+
+.events-search-section {
+  display: flex;
+  justify-content: center;
+}
+
+.events-searchbars,
+.events-filter {
+  margin: 2%;
+}
+
+.events-searchbars {
+  display: flex;
+  flex-flow: wrap;
+  margin-right: 10%;
+}
+
+.events-search-btn {
+  font-size: 1.5rem;
+  min-height: 50px;
+}
+
+.events-find-event {
+  min-height: 40px;
+  min-width: 300px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.events-card-cover {
+  object-fit: cover;
+  /* overflow: hidden; */
+  height: 220px;
+}
+
+.events-modal-text {
+  font-size: 1.3rem;
+}
+
+.events-search-btn {
+  font-size: 1.5rem;
+  min-height: 50px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
+
+.page4-suggested-cards {
+  margin: 1%;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+  max-width: 500px;
+}
+:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: #536ce8;
+  color: white;
+  max-width: 500px;
+}
+
+.page3-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.page2-link-hidden {
+  display: none;
+}
+
+.events-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 4% auto;
+  background-color: var(--secondary);
+  width: 50%;
+  height: 75px;
+  align-items: center;
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .events-heroDiv {
+    height: 250px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .events-search-section {
+    flex-flow: wrap;
+    margin: 5% 50%;
+  }
+  .events-find-event {
+    margin: 2% auto;
+    max-width: 300px;
+
+    text-align: center;
+
+    /* padding-left: 2%; */
+  }
+  .events-search-btn {
+    margin: 4% auto;
+  }
+  .page3-btn-wrapper {
+    max-width: 300px;
+    margin: 5% auto;
+  }
+}

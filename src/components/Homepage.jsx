@@ -6,6 +6,7 @@ import Swimming from "../assets/swimming.jpg"
 import Beachvolleyball from "../assets/beachvolleyball.jpg"
 import { ParallaxBanner } from "react-scroll-parallax";
 import Hero2 from "../assets/hero2.png"
+import "./styling/homepage.css"
 
 export default function Homepage() {
     const contentStyle = {
@@ -67,25 +68,25 @@ export default function Homepage() {
     autoplay
     dotHeight="30"
     >
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle}  src={Football} />
     <h3>Football</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Basketball} />
     <h3>Basketball</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Beachvolleyball} />
     <h3>Beach Volleyball</h3>
     </div>
     </Link>
-    <Link>
+    <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Swimming} />
     <h3>Swimming</h3>
@@ -100,16 +101,16 @@ export default function Homepage() {
     autoplay
     dotHeight="30"
     >
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great"- Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
-    <div>
+    <div className="reviewItem">
     <h3 style={contentStyle}>"These guys are great" - Tim</h3>
     </div>
   </Carousel>

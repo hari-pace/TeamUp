@@ -1,0 +1,179 @@
+/* homepage */
+@media screen and (max-width: 800px) {
+    .heroDiv {
+        /* margin-right: 25px !important; */
+    }
+    
+    .descriptionCon p {
+       width: 100% !important;
+       font-size: 1.25rem !important;
+    }
+    .descriptionCon {
+        padding: 5%;
+        /* margin-right: 25px !important; */
+    }
+    .stepsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .steps {
+        margin: 5% 0%;
+        width: 100px;
+        height: 100px;
+    }
+    .steps h3 {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+    .carouselItem img {
+        height: 150px !important;
+    }
+    .carouselItem {
+        /* margin-right: 25px !important; */
+    }
+    .carouselItem h3 {
+        font-size: 1.75rem !important;
+        margin: 0px;
+        padding: 0px;
+    }
+    .reviewItem h3 {
+        height: 150px !important;
+        line-height: 150px !important;
+        margin: 0px;
+        padding: 0px;
+        margin-right: 25px;
+    }
+}
+.heroDiv {
+    height: 700px;
+    background-color: var(--secondary);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    margin: 0px 1%;
+    border-radius: 30px;
+  }
+
+.heroBanner {
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroDiv h1 {
+    position: absolute;
+    color: var(--tertiary);
+    background-color:#8298c67a;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+.whatIsCon {
+    margin: 5% 1%;
+}
+
+.whatIsCon h2 {
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.descriptionCon {
+    background-color: var(--secondary);
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.descriptionCon h2 {
+    font-size: 4rem;
+    padding: 0px;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+.descriptionCon p {
+    font-size: 1.5rem;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    width: 50%;
+}
+
+.howContainer h2 {
+    margin: 1%;
+    text-decoration: underline;
+    font-size: 4rem;
+}
+
+/*steps */
+.stepsContainer {
+display: flex;
+justify-content: space-evenly;
+}
+
+.steps {
+    padding: 5%;
+    background-color: var(--secondary);
+    border-radius: 20px;
+    }
+
+.typeOfSportContainer {
+    margin: 5% 1%;
+}
+
+.typeOfSportContainer h2 {
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.carouselCon {
+    padding-bottom: 20px;
+}
+
+.carouselCon a {
+    color: var(--tertiary);
+}
+
+.carouselItem {
+    display: flex !important;
+    justify-content: center !important;
+    background-color: var(--secondary);
+    align-content: center !important;
+}
+
+.carouselItem img{
+    display: flex;
+    justify-content: center !important;
+    align-content: center !important;
+}
+
+.carouselItem h3 {
+    position: absolute;
+    top: 30%;
+    font-size: 3rem;
+    background-color:#8298c6aa;
+    color: var(--tertiary);
+    padding: 5px 20px;
+}
+
+.reviewContainer {
+    margin: 5% 1%;
+}
+
+.reviewContainer h2 {
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.carouselReviews {
+    padding-bottom: 20px;
+}
+
