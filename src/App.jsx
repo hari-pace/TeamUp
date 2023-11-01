@@ -16,6 +16,7 @@ import { useJwt } from "react-jwt";
 import { useState, useEffect } from "react";
 import "./App.css";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 function App() {
   // const [username, setUsername] = useState(null)
@@ -55,8 +56,11 @@ function App() {
         <Route path="events/:id" element={<EventMoreInfo />} />
         <Route path="profile/:username" element={<Profile />} />
         <Route path="events/create" element={<CreateEvent />} />
-        <Route path="dashboard/user" element={token ? <Welcome /> : <Navigate to="/" />}/>
-        <Route path="contact" element="" />
+        <Route
+          path="dashboard/user"
+          element={token ? <Welcome /> : <Navigate to="/" />}
+        />
+        <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         <Route path="*" element="" />
       </Routes>

@@ -23,8 +23,30 @@ function Footer() {
         </div>
         <div className="footer-1">
           <ul>
-            <li onClick={!token ? () => window.scrollTo(0, 0) : null}>Login</li>
-            <li onClick={!token ? () => window.scrollTo(0, 0) : null}>
+            <li
+              onClick={
+                !token
+                  ? () =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                  : null
+              }
+            >
+              Login
+            </li>
+            <li
+              onClick={
+                !token
+                  ? () =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                  : null
+              }
+            >
               Create an account
             </li>
             <li>
@@ -33,7 +55,10 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link className="footer-links" to="/events/create">
+              <Link
+                className="footer-links"
+                to={token ? "/events/create" : null}
+              >
                 Create an event
               </Link>
             </li>
@@ -47,7 +72,11 @@ function Footer() {
               </Link>
             </li>
 
-            <li>Contact Us</li>
+            <li>
+              <Link className="footer-links" to="/contact">
+                Contact Us
+              </Link>
+            </li>
             <li>Careers at TeamUp</li>
             <li>FAQ's</li>
           </ul>
