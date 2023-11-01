@@ -270,3 +270,7 @@ padding: 0px;
 .profileCards .ant-card-head-title {
     font-size: 1rem ;
 }
+
+.rateCloseButton :where(.css-dev-only-do-not-override-3mqfnx).ant-btn {
+width: 0%;
+}

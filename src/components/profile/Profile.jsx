@@ -180,7 +180,11 @@ console.log(events)
             {showRate ? (
             <>
              <RateEdit id = {singleUser?._id} initialRating = {singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]} setRate = {setRate}/>
-             <Button danger type="primary" onClick={() => setRate(false)}>
+             <Button 
+             danger
+             className="rateCloseButton" 
+             type="primary" 
+             onClick={() => setRate(false)}>
              Close X
              </Button>
              </>)
@@ -190,6 +194,7 @@ console.log(events)
               allowHalf
               allowQuarter
               disabled
+              className="rateButton"
               value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
               />
               <Button onClick={() => setRate(true)}>Rate</Button>

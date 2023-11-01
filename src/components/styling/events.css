@@ -22,7 +22,7 @@
   position: absolute;
   color: var(--tertiary);
   background-color: #8298c67a;
-  padding: 4%;
+  padding: 4% 0%;
   width: 100%;
   text-align: center;
 }
