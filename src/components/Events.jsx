@@ -29,6 +29,7 @@ import Handball from "../assets/handball1.jpg";
 import Cricket from "../assets/cricket2.jpg";
 import Fitness from "../assets/fitness1.jpg";
 import Skiing from "../assets/ski1.jpg";
+import VolleyballVid from "../assets/VolleyballVid.mp4"
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -136,9 +137,18 @@ const Events = () => {
 
   return (
     <>
-      <div className="events-heroDiv">
-        <h1 className="events-h1"> Find your event</h1>
-      </div>
+      <div className="video-container">
+    <div className="events-heroDiv">
+    <video 
+    autoPlay 
+    loop 
+    muted 
+    src={VolleyballVid} type="video/mp4">
+    </video>
+    <h1 className="events-h1"> Find your event</h1>
+    </div>
+    </div>
+
       <div className="events-search-section">
         <div className="events-searchbars">
           <input

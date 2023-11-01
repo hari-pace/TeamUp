@@ -11,7 +11,6 @@ import UsernameEdit from "./UsernameEdit";
 import BioEdit from "./BioEdit"
 import SportsEdit from "./SportsEdit"
 import LanguageEdit from "./LangaugeEdit"
-import ImageEdit from "./ImageEdit"
 import CityEdit from "./CityEdit"
 import DeleteUser from "./DeleteUser";
 import Question from "../../assets/question.png"

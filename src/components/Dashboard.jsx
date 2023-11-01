@@ -15,7 +15,6 @@ import Handball from "../assets/handball1.jpg";
 import Cricket from "../assets/cricket1.jpg";
 import Fitness from "../assets/fitness2.jpg";
 import Skiing from "../assets/ski3.jpg";
-
 import Yoga from "../assets/yoga3.jpg";
 import "./styling/dashboard.css";
 import { Link } from "react-router-dom";
