@@ -10,6 +10,7 @@ import {
   Radio
 } from 'antd';
 import FormItem from 'antd/es/form/FormItem/index.js';
+import PictureUpload from './PictureUpload.jsx';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -17,7 +18,7 @@ const { TextArea } = Input;
 export default function SignupForm () {
     const [languagesSpoken, setLanguage] = useState([])
     const [description, setDescription] = useState("");
-    const [userImage, setUserImage] = useState("");
+    // const [userImage, setUserImage] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -35,7 +36,7 @@ export default function SignupForm () {
     const response = await fetch("https://teamup-service.onrender.com/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username, description, userImage, languagesSpoken, location: { city } } ),
+      body: JSON.stringify({ email, password, username, description, languagesSpoken, location: { city } } ),
     });
 
     const data = await response.json();
@@ -143,7 +144,7 @@ export default function SignupForm () {
           value={description}
           />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
       label="Avatar URL"
       htmlFor="userImage"
     >
@@ -153,7 +154,9 @@ export default function SignupForm () {
       onChange={(e) => setUserImage(e.target.value)}
       value={userImage}
       />
-    </Form.Item>
+    </Form.Item> */}
+  
+<PictureUpload />
 
 {/* select language */}
 <FormItem
