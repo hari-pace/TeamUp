@@ -137,16 +137,8 @@ const Events = () => {
 
   return (
     <>
-      <div className="video-container">
     <div className="events-heroDiv">
-    <video 
-    autoPlay 
-    loop 
-    muted 
-    src={VolleyballVid} type="video/mp4">
-    </video>
     <h1 className="events-h1"> Find your event</h1>
-    </div>
     </div>
 
       <div className="events-search-section">
