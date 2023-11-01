@@ -336,7 +336,13 @@ const EventMoreInfo = () => {
                   )}
                 />
               </div>
-              <div className="page4-btn-wrapper">
+              <div
+                className={
+                  decodedToken
+                    ? "page4-btn-wrapper"
+                    : "page4-btn-wrapper-hidden"
+                }
+              >
                 <Button
                   className="page4-block-btn"
                   type="primary"

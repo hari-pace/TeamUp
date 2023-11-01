@@ -37,6 +37,10 @@
   border-radius: 20px;
 }
 
+.page4-heading {
+  width: 80%;
+}
+
 .page4-input-fields {
   font-size: 1.5rem;
   border: 2px solid var(--primary);
@@ -84,6 +88,10 @@
 
 .page4-spaces-fields-container {
   display: flex;
+}
+
+.page4-users-attending {
+  margin-bottom: 4%;
 }
 
 .page4-users-attending-heading {

@@ -23,7 +23,12 @@ import Basketball from "../assets/basketball3.jpg";
 import Cycling from "../assets/cycling2.jpg";
 import Football from "../assets/football2.jpg";
 import Volleyball from "../assets/volleyball2.jpg";
-import Yoga from "../assets/yoga.jpg";
+import Yoga from "../assets/yoga2.jpg";
+import Tennis from "../assets/tennis3.jpg";
+import Handball from "../assets/handball1.jpg";
+import Cricket from "../assets/cricket2.jpg";
+import Fitness from "../assets/fitness1.jpg";
+import Skiing from "../assets/ski1.jpg";
 
 const Events = () => {
   const [modal1Open, setModal1Open] = useState(false);
@@ -111,6 +116,11 @@ const Events = () => {
     Swimming: Swimming,
     Cycling: Cycling,
     Yoga: Yoga,
+    Tennis: Tennis,
+    Handball: Handball,
+    Cricket: Cricket,
+    Fitness: Fitness,
+    Ski: Skiing,
   };
 
   return (
@@ -205,6 +215,21 @@ const Events = () => {
                 </Radio>
                 <Radio className="events-modal-text" value={"Yoga"}>
                   Yoga
+                </Radio>
+                <Radio className="events-modal-text" value={"Tennis"}>
+                  Tennis
+                </Radio>
+                <Radio className="events-modal-text" value={"Handball"}>
+                  Handball
+                </Radio>
+                <Radio className="events-modal-text" value={"Cricket"}>
+                  Cricket
+                </Radio>
+                <Radio className="events-modal-text" value={"Fitness"}>
+                  Fitness
+                </Radio>
+                <Radio className="events-modal-text" value={"Skiing"}>
+                  Skiing
                 </Radio>
               </Space>
             </Radio.Group>

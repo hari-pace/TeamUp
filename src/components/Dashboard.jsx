@@ -8,7 +8,15 @@ import {
 import Football from "../assets/football.jpg";
 import Basketball from "../assets/basketball.jpg";
 import Swimming from "../assets/swimming.jpg";
-import Beachvolleyball from "../assets/beachvolleyball.jpg";
+import Volleyball from "../assets/beachvolleyball.jpg";
+import Cycling from "../assets/cycling2.jpg";
+import Tennis from "../assets/tennis2.jpg";
+import Handball from "../assets/handball1.jpg";
+import Cricket from "../assets/cricket1.jpg";
+import Fitness from "../assets/fitness2.jpg";
+import Skiing from "../assets/ski3.jpg";
+
+import Yoga from "../assets/yoga3.jpg";
 import "./styling/dashboard.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
@@ -17,8 +25,8 @@ import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
 
 const contentStyle = {
-  height: "400px",
-  lineHeight: "360px",
+  height: "19rem",
+  lineHeight: "16rem",
   textAlign: "center",
   background: "var(--secondary)",
 };
@@ -63,29 +71,50 @@ const Dashboard = () => {
   //     event.location?.address?.city ===
   // );
 
-  const oneUser = users.filter((user) => user.username === decodedToken?.name);
-
-  console.log(oneUser[0]);
-  // console.log(events[176]?.usersAttending);
-
-  const usersSuggestedEvents = events.filter(
-    (event) => event?.usersAttending?.username === oneUser[0]?.username
+  const oneUser = users?.filter(
+    (user) => user?.username === decodedToken?.name
   );
 
-  // console.log(usersSuggestedEvents);
+  // console.log(oneUser[0]?.userInfo);
+  // console.log(events[176]?.usersAttending);
+
+  const usersSuggestedEvents = events.filter((event) =>
+    event?.location?.address?.city.includes(
+      oneUser[0]?.userInfo?.location?.city
+    )
+  );
+
+  // console.log(oneUser[0]?.userInfo?.location?.city);
+  console.log(usersSuggestedEvents);
 
   const likedEvents = events.filter((event) =>
     oneUser[0]?.userInfo?.eventsLiked.includes(event._id)
   );
-  const AttendedEvents = events.filter((event) =>
-    oneUser[0]?.userInfo?.eventsAttended.includes(event._id)
+  const AttendedEvents = events.filter(
+    (event) =>
+      oneUser[0]?.userInfo?.eventsAttended.includes(event._id) ||
+      oneUser[0]?.userInfo?.eventsOrganized.includes(event._id)
   );
 
   // console.log(likedEvents);
-  console.log(AttendedEvents);
+  // console.log(AttendedEvents);
 
   const inputDate = events?.eventDateAndTime?.eventDate;
   const formattedDate = dateFormatter(inputDate);
+
+  const imageOptions = {
+    Football: Football,
+    Basketball: Basketball,
+    Volleyball: Volleyball,
+    Swimming: Swimming,
+    Cycling: Cycling,
+    Yoga: Yoga,
+    Tennis: Tennis,
+    Handball: Handball,
+    Cricket: Cricket,
+    Fitness: Fitness,
+    Ski: Skiing,
+  };
 
   return (
     <>
@@ -187,97 +216,79 @@ const Dashboard = () => {
             <div className="page2-subheading2">Sports you follow</div>
             <div className="page2-sports-cards">
               <Row className="page2-sports-cards-row" gutter={0}>
-                {/* Add map method of followed sports here */}
-                <Col className="page2-sports-cards-row-individual" span={5}>
-                  <Card
-                    title="Football"
-                    className="page2-sports-cards-col"
-                    bordered={true}
-                  >
-                    <img
-                      className="page2-sports-cards-individual"
-                      src={Football}
-                      alt="Football"
-                      height="200px"
-                    />
-                  </Card>
-                </Col>
-                <Col className="page2-sports-cards-row-individual" span={5}>
-                  <Card
-                    title="Basketball"
-                    className="page2-sports-cards-col"
-                    bordered={true}
-                  >
-                    <img
-                      className="page2-sports-cards-individual"
-                      src={Basketball}
-                      alt="Basketball"
-                      height="200px"
-                    />
-                  </Card>
-                </Col>
-                <Col className="page2-sports-cards-row-individual" span={5}>
-                  <Card
-                    title="Swimming"
-                    className="page2-sports-cards-col"
-                    bordered={true}
-                  >
-                    <img
-                      className="page2-sports-cards-individual"
-                      src={Swimming}
-                      alt="Swimming"
-                      height="200px"
-                    />
-                  </Card>
-                </Col>
-                <Col className="page2-sports-cards-row-individual" span={5}>
-                  <Card
-                    title="Beach Volleyball"
-                    className="page2-sports-cards-col"
-                    bordered={true}
-                  >
-                    <img
-                      className="page2-sports-cards-individual"
-                      src={Beachvolleyball}
-                      alt="BeachVolleyball"
-                      height="200px"
-                    />
-                  </Card>
-                </Col>
+                {oneUser &&
+                  oneUser[0]?.userInfo?.interestedInSports?.map((e, index) => (
+                    <Col
+                      key={index}
+                      className="page2-sports-cards-row-individual"
+                      span={5}
+                    >
+                      <Card
+                        title={e}
+                        className="page2-sports-cards-col"
+                        bordered={true}
+                      >
+                        <img
+                          className="page2-sports-cards-individual"
+                          src={imageOptions[e]}
+                          alt="Football"
+                          height="200px"
+                        />
+                      </Card>
+                    </Col>
+                  ))}
               </Row>
             </div>
           </div>
         </div>
         <div className="page2-sports">
-          <div className="page2-subheading">Suggested events for you</div>
+          <div className="page2-subheading">
+            Suggested events for you in {""}
+            {oneUser[0]?.userInfo?.location?.city}
+          </div>
 
           <div className="page2-suggested-cards">
-            <Card
-              className="page2-suggested-individual-card"
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-              }
-              actions={[
-                <PlusOutlined key="plus" />,
-                <CheckOutlined key="check" />,
-                <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Meta
-                // className="page2-suggested-individual-card-meta"
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+            {usersSuggestedEvents.map((event, index) => (
+              <Card
+                key={index}
+                className="page2-suggested-individual-card"
+                style={{
+                  width: 350,
+                }}
+                cover={
+                  <img
+                    className="events-card-cover"
+                    alt="example"
+                    src={imageOptions[event?.sportType[0]]}
+                  />
                 }
-                title="Thursday night basketball"
-                description="This is the description"
-              />
-            </Card>
+                actions={[
+                  <Link to={`/events/${event._id}`}>
+                    <EllipsisOutlined key="ellipsis" />
+                  </Link>,
+                ]}
+              >
+                <Meta
+                  // className="page2-suggested-individual-card-meta"
+                  avatar={
+                    <Avatar src={event?.organizator?.userInfo?.userImage} />
+                  }
+                  title={event.eventTitle}
+                  description={`${event.sportType[0]} // ${new Date(
+                    event?.eventDateAndTime?.eventDate
+                  ).toLocaleDateString("de-DE", {
+                    day: "numeric",
+                    month: "numeric",
+                    year: "numeric",
+                  })} @ ${new Date(
+                    event?.eventDateAndTime?.eventTime
+                  ).toLocaleTimeString("de-DE", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })} // ${event.location?.address?.city}`}
+                />
+              </Card>
+            ))}
           </div>
         </div>
       </Space>
