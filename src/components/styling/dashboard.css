@@ -74,8 +74,8 @@
 .page2-sports-cards-row {
   text-align: center;
   display: flex;
-  justify-content: center;
-
+  justify-content: flex-start;
+  margin-left: 5%;
   margin-bottom: 2%;
   padding-bottom: 2%;
 }
@@ -95,6 +95,7 @@
 
 .page2-suggested-individual-card {
   margin: 1%;
+
   font-family: "Proxima Nova Condensed", sans-serif;
   background-color: var(--secondary);
 }
@@ -142,5 +143,14 @@
   .page2-suggested-cards {
     display: flex;
     justify-content: center;
+  }
+
+  .page2-suggested-individual-card:hover {
+    transform: scale(1.02);
+  }
+
+  .page2-carousel {
+    max-width: 98%;
+    margin: 0 auto;
   }
 }

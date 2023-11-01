@@ -217,6 +217,11 @@ const CreateEvent = () => {
                   <Select.Option value="Swimming">Swimming</Select.Option>
                   <Select.Option value="Cycling">Cycling</Select.Option>
                   <Select.Option value="Yoga">Yoga</Select.Option>
+                  <Select.Option value="Tennis">Tennis</Select.Option>
+                  <Select.Option value="Handball">Handball</Select.Option>
+                  <Select.Option value="Cricket">Cricket</Select.Option>
+                  <Select.Option value="Fitness">Fitness</Select.Option>
+                  <Select.Option value="Ski">Ski</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item
