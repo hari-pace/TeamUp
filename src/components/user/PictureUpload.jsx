@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { PlusOutlined } from '@ant-design/icons';
-import { Upload, Form } from "antd";
+import { Upload, Form, Button } from "antd";
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -14,6 +14,7 @@ export default function PictureUpload() {
   const [form] = Form.useForm(); // Create a form instance
   const [image, setImage] = useState(null);
   const [error, setError] = useState(false);
+  const [loadings, setLoadings] = useState([])
 
   const handleSubmit = async () => {
     try {
@@ -29,18 +30,25 @@ export default function PictureUpload() {
   };
 
   const handleImageChange = (info) => {
-    if (info.file.status === 'done') {
-      setImage(info.file.originFileObj);
-    }
+      setImage(info.file);
+      console.log(info);
   };
 
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 6000);
+  };
   return (
-    <Form
-      form={form}
-      onFinish={handleSubmit}
-      name="picture_upload_form"
-      initialValues={{ fileList: [] }}
-    >
       <Form.Item
         label="Upload"
         name="fileList"
@@ -49,7 +57,7 @@ export default function PictureUpload() {
       >
         <Upload
           name="picture"
-          action="/signup"
+          action="https://teamup-service.onrender.com/user/signup"
           listType="picture-card"
           onChange={handleImageChange}
           beforeUpload={() => false} // Prevent default behavior of the Ant Design Upload component
@@ -62,6 +70,5 @@ export default function PictureUpload() {
           )}
         </Upload>
       </Form.Item>
-    </Form>
   );
 }
