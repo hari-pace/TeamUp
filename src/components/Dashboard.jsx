@@ -23,6 +23,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
+import Video720p from "../assets/Video720p.mp4"
 
 const contentStyle = {
   height: "19rem",
@@ -145,9 +146,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="events-heroDiv">
-        <h1 className="events-h1"> Dashboard</h1>
-      </div>
+    <div className="video-container">
+    <div className="events-heroDiv">
+    <video 
+    autoPlay 
+    loop 
+    muted 
+    src={Video720p} type="video/mp4">
+    </video>
+    <h1 className="events-h1"> Dashboard</h1>
+    </div>
+    </div>
       <Space
         direction="vertical"
         style={{
