@@ -7,6 +7,7 @@ import Beachvolleyball from "../assets/beachvolleyball.jpg"
 import { ParallaxBanner } from "react-scroll-parallax";
 import Hero2 from "../assets/hero2.png"
 import "./styling/homepage.css"
+import VolleyballVid from "../assets/VolleyballVid.mp4"
 
 export default function Homepage() {
     const contentStyle = {
@@ -18,7 +19,20 @@ export default function Homepage() {
       };
     return (
         <>
-        <div className="heroDiv">
+
+<div className="video-container">
+    <div className="heroDiv">
+    <h1 className="text"> Welcome to TeamUp</h1>
+    <video 
+    autoPlay 
+    loop 
+    muted 
+    src={VolleyballVid} type="video/mp4">
+    </video>
+    </div>
+    </div>
+
+        {/* <div className="heroDiv">
             <ParallaxBanner
                 className="heroBanner"
                 layers={[
@@ -35,7 +49,7 @@ export default function Homepage() {
                       >
         <h1> Welcome to TeamUp</h1>
         </ParallaxBanner>
-        </div>
+        </div> */}
         <div className="whatIsCon">
         <h2>What is TeamUp?</h2>
         <div className="descriptionCon">
