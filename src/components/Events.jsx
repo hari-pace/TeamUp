@@ -81,19 +81,30 @@ const Events = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredEvents = events.filter(
+  const futureEvents = events.filter(
+    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  );
+
+  const sortedFutureEvents = futureEvents.sort((a, b) => {
+    return (
+      new Date(a.eventDateAndTime?.eventDate) -
+      new Date(b.eventDateAndTime?.eventDate)
+    );
+  });
+
+  const filteredEvents = futureEvents.filter(
     (event) =>
       event.sportType[0].includes(sportValue) &&
       event.location?.address?.city?.includes(locationValue)
   );
 
-  const filteredEventsByName = events.filter((event) =>
+  const filteredEventsByName = futureEvents.filter((event) =>
     event.eventTitle?.includes(searchValue)
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = futureEvents.slice(indexOfFirstItem, indexOfLastItem);
   const currentItemsFiltered = filteredEvents.slice(
     indexOfFirstItem,
     indexOfLastItem

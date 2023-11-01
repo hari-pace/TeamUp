@@ -84,8 +84,12 @@ const Dashboard = () => {
     )
   );
 
+  const futureSuggestedEvents = usersSuggestedEvents.filter(
+    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  );
+
   // console.log(oneUser[0]?.userInfo?.location?.city);
-  console.log(usersSuggestedEvents);
+  // console.log(usersSuggestedEvents);
 
   const likedEvents = events.filter((event) =>
     oneUser[0]?.userInfo?.eventsLiked.includes(event._id)
@@ -95,9 +99,30 @@ const Dashboard = () => {
       oneUser[0]?.userInfo?.eventsAttended.includes(event._id) ||
       oneUser[0]?.userInfo?.eventsOrganized.includes(event._id)
   );
-
   // console.log(likedEvents);
   // console.log(AttendedEvents);
+
+  const futureAttendedEvents = AttendedEvents.filter(
+    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  );
+  // console.log(futureAttendedEvents);
+
+  const futureLikedEvents = likedEvents.filter(
+    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  );
+
+  const sortedAttendedEvents = futureAttendedEvents.sort((a, b) => {
+    return (
+      new Date(a.eventDateAndTime?.eventDate) -
+      new Date(b.eventDateAndTime?.eventDate)
+    );
+  });
+  const sortedLikedEvents = futureLikedEvents.sort((a, b) => {
+    return (
+      new Date(a.eventDateAndTime?.eventDate) -
+      new Date(b.eventDateAndTime?.eventDate)
+    );
+  });
 
   const inputDate = events?.eventDateAndTime?.eventDate;
   const formattedDate = dateFormatter(inputDate);
@@ -115,6 +140,8 @@ const Dashboard = () => {
     Fitness: Fitness,
     Ski: Skiing,
   };
+
+  console.log(decodedToken?.name);
 
   return (
     <>
@@ -145,8 +172,8 @@ const Dashboard = () => {
         <div className="2-my-events">
           <div className="page2-subheading">Your upcoming events</div>
           <Carousel className="page2-carousel">
-            {AttendedEvents.length > 0 ? (
-              AttendedEvents.map((AttendedEvent, index) => (
+            {futureAttendedEvents.length > 0 ? (
+              futureAttendedEvents.map((AttendedEvent, index) => (
                 <div key={index}>
                   <Link to={`/events/${AttendedEvent?._id}`}>
                     <h3 style={contentStyle}>
@@ -171,7 +198,12 @@ const Dashboard = () => {
               ))
             ) : (
               <div>
-                <h3 style={contentStyle}>You have no upcoming events</h3>
+                <h3
+                  className="dashboard-sports-and-suggested-h3"
+                  style={contentStyle}
+                >
+                  You have no upcoming events
+                </h3>
               </div>
             )}
           </Carousel>
@@ -179,8 +211,8 @@ const Dashboard = () => {
         <div className="2-my-events">
           <div className="page2-subheading">Your liked events</div>
           <Carousel className="page2-carousel">
-            {likedEvents.length > 0 ? (
-              likedEvents.map((likedEvent, index) => (
+            {futureLikedEvents.length > 0 ? (
+              futureLikedEvents.map((likedEvent, index) => (
                 <div key={index}>
                   <Link to={`/events/${likedEvent?._id}`}>
                     <h3 style={contentStyle}>
@@ -205,7 +237,12 @@ const Dashboard = () => {
               ))
             ) : (
               <div>
-                <h3 style={contentStyle}>You haven't liked any events yet</h3>
+                <h3
+                  className="dashboard-sports-and-suggested-h3"
+                  style={contentStyle}
+                >
+                  You haven't liked any events yet
+                </h3>
               </div>
             )}
           </Carousel>
@@ -216,7 +253,7 @@ const Dashboard = () => {
             <div className="page2-subheading2">Sports you follow</div>
             <div className="page2-sports-cards">
               <Row className="page2-sports-cards-row" gutter={0}>
-                {oneUser &&
+                {oneUser[0]?.userInfo?.interestedInSports.length > 0 ? (
                   oneUser[0]?.userInfo?.interestedInSports?.map((e, index) => (
                     <Col
                       key={index}
@@ -236,7 +273,19 @@ const Dashboard = () => {
                         />
                       </Card>
                     </Col>
-                  ))}
+                  ))
+                ) : (
+                  <h3 className="dashboard-sports-and-suggested-h3">
+                    {" "}
+                    You haven't followed any sports yet -{" "}
+                    <Link
+                      className="dashboard-suggested-link"
+                      to={`/profile/${decodedToken?.name}`}
+                    >
+                      you can do that in your profile here!
+                    </Link>
+                  </h3>
+                )}
               </Row>
             </div>
           </div>
@@ -248,47 +297,57 @@ const Dashboard = () => {
           </div>
 
           <div className="page2-suggested-cards">
-            {usersSuggestedEvents.map((event, index) => (
-              <Card
-                key={index}
-                className="page2-suggested-individual-card"
-                style={{
-                  width: 350,
-                }}
-                cover={
-                  <img
-                    className="events-card-cover"
-                    alt="example"
-                    src={imageOptions[event?.sportType[0]]}
-                  />
-                }
-                actions={[
-                  <Link to={`/events/${event._id}`}>
-                    <EllipsisOutlined key="ellipsis" />
-                  </Link>,
-                ]}
-              >
-                <Meta
-                  // className="page2-suggested-individual-card-meta"
-                  avatar={
-                    <Avatar src={event?.organizator?.userInfo?.userImage} />
+            {futureSuggestedEvents.length > 0 ? (
+              futureSuggestedEvents.map((event, index) => (
+                <Card
+                  key={index}
+                  className="page2-suggested-individual-card"
+                  style={{
+                    width: 350,
+                  }}
+                  cover={
+                    <img
+                      className="events-card-cover"
+                      alt="example"
+                      src={imageOptions[event?.sportType[0]]}
+                    />
                   }
-                  title={event.eventTitle}
-                  description={`${event.sportType[0]} // ${new Date(
-                    event?.eventDateAndTime?.eventDate
-                  ).toLocaleDateString("de-DE", {
-                    day: "numeric",
-                    month: "numeric",
-                    year: "numeric",
-                  })} @ ${new Date(
-                    event?.eventDateAndTime?.eventTime
-                  ).toLocaleTimeString("de-DE", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })} // ${event.location?.address?.city}`}
-                />
-              </Card>
-            ))}
+                  actions={[
+                    <Link to={`/events/${event._id}`}>
+                      <EllipsisOutlined key="ellipsis" />
+                    </Link>,
+                  ]}
+                >
+                  <Meta
+                    // className="page2-suggested-individual-card-meta"
+                    avatar={
+                      <Avatar src={event?.organizator?.userInfo?.userImage} />
+                    }
+                    title={event.eventTitle}
+                    description={`${event.sportType[0]} // ${new Date(
+                      event?.eventDateAndTime?.eventDate
+                    ).toLocaleDateString("de-DE", {
+                      day: "numeric",
+                      month: "numeric",
+                      year: "numeric",
+                    })} @ ${new Date(
+                      event?.eventDateAndTime?.eventTime
+                    ).toLocaleTimeString("de-DE", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })} // ${event.location?.address?.city}`}
+                  />
+                </Card>
+              ))
+            ) : (
+              <h3 className="dashboard-sports-and-suggested-h3">
+                {" "}
+                There are currently no events scheduled in your area -{" "}
+                <Link className="dashboard-suggested-link" to="/events/create">
+                  you can always create one here!
+                </Link>
+              </h3>
+            )}
           </div>
         </div>
       </Space>
