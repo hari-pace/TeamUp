@@ -17,6 +17,7 @@ import DeleteUser from "./DeleteUser";
 import Question from "../../assets/question.png"
 import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
+import ImageEditAx from "./ImageEditAx"
 
 
 export default function Profile() {
@@ -135,8 +136,8 @@ console.log(EventsArray);
   //     });
   //   }, 6000);
   // };
-console.log(users)
-console.log(events)
+console.log(singleUser)
+console.log(singleUser?.userInfo?.userImage)
   return (
     <>
       <div className="profileWholeContainer">
@@ -152,8 +153,8 @@ console.log(events)
           <div className="bioContainer">
           {editImage ?
             <> 
-            <Avatar className="avatarProfile" alt="empty avatar"/>
-            <ImageEdit id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} /> 
+            <Avatar className="avatarProfile" alt="emptyavatar"/>
+            <ImageEditAx id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} /> 
             <Button danger type="primary" onClick={() => setEditImage(false)}>
             Close X
             </Button>
@@ -163,7 +164,7 @@ console.log(events)
               {auth ? <Button onClick={() => setEditImage(true)}>
               Edit
               </Button> : null}
-            <Avatar
+            <img
               className="avatarProfile"
               src={singleUser?.userInfo?.userImage}
             />

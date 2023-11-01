@@ -123,7 +123,7 @@ h3 {
 .bioContainer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* border-style: solid; */
     border-color: var(--primary);
     padding: 50px;
@@ -139,7 +139,7 @@ h3 {
     border-width: 10px;
     border-color: var(--primary);
     width: 400px;
-    height: 400px;
+    height: 550px;
 }
 
 .infoContainer {
