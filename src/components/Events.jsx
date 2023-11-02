@@ -14,6 +14,10 @@ import {
   PlusOutlined,
   EllipsisOutlined,
   CheckOutlined,
+  SearchOutlined,
+  FilterOutlined,
+  ClearOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import "./styling/events.css";
 import { Link } from "react-router-dom";
@@ -177,22 +181,32 @@ const Events = () => {
 
       <div className="events-search-section">
         <div className="events-searchbars">
-          <input
-            type="text"
-            className="events-find-event"
-            placeholder="What are you looking for today?"
-            value={searchValue}
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-            }}
-          />
+          <div className="events-search">
+            <input
+              type="text"
+              className="events-find-event"
+              placeholder="What are you looking for today?"
+              value={searchValue}
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
+            />
+            <SearchOutlined className="events-search-icon" />
+          </div>
           <Button
             className="events-search-btn"
             type="primary"
             onClick={() => setModal1Open(true)}
           >
             {/* Make this dynamic for customer's chosen location */}
-            {locationValue ? locationValue : "Choose your location"}
+            {locationValue ? (
+              locationValue
+            ) : (
+              <div>
+                <HomeOutlined />
+                <span className="event-info-buttons">Choose your location</span>
+              </div>
+            )}
           </Button>
           <Modal
             title="Choose your city"
@@ -228,14 +242,20 @@ const Events = () => {
             type="primary"
             onClick={() => setModal2Open(true)}
           >
-            Filter results
+            <div>
+              <FilterOutlined />
+              <span className="event-info-buttons">Filter results</span>
+            </div>
           </Button>
           <Button
             className="events-search-btn"
             type="primary"
             onClick={clearFilter}
           >
-            Clear filter
+            <div>
+              <ClearOutlined />
+              <span className="event-info-buttons">Clear filter</span>
+            </div>
           </Button>
           <Modal
             title="Choose your sport"

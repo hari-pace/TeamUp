@@ -1,11 +1,3 @@
-@media screen and (max-width: 800px) {
-  .video-container video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .events-heroDiv {
   height: 400px;
   background-color: var(--secondary);
@@ -30,7 +22,7 @@
   position: absolute;
   color: var(--tertiary);
   background-color: #8298c67a;
-  padding: 10% 0%;
+  padding: 5% 0%;
   width: 100%;
   text-align: center;
 }
@@ -61,6 +53,9 @@
   margin: 2%;
 }
 
+.events-filter {
+}
+
 .events-searchbars {
   display: flex;
   flex-flow: wrap;
@@ -70,6 +65,16 @@
 .events-search-btn {
   font-size: 1.5rem;
   min-height: 50px;
+}
+
+.events-search-icon {
+  position: absolute;
+  right: 2%;
+  top: 30%;
+}
+
+.events-search {
+  position: relative;
 }
 
 .events-switch {
@@ -83,26 +88,30 @@
   margin-top: 7%;
 }
 
-:where(
+.events-switch:where(
     .css-dev-only-do-not-override-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
 }
 
-:where(
+.events-switch:where(
     .css-dev-only-do-not-override-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
 }
 
-:where(.css-3mqfnx).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
+.events-switch:where(
+    .css-3mqfnx
+  ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
 }
 
-:where(.css-3mqfnx).ant-switch.ant-switch-inner.ant-switch-inner-checked {
+.events-switch:where(
+    .css-3mqfnx
+  ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
 }
@@ -112,7 +121,7 @@
 }
 
 .events-find-event {
-  min-height: 40px;
+  min-height: 48px;
   min-width: 300px;
   font-size: 1rem;
   border: none;
@@ -139,6 +148,10 @@
 
 .page4-suggested-cards {
   margin: 1%;
+}
+
+.page2-suggested-individual-card-meta {
+  min-height: 75px;
 }
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
@@ -201,5 +214,15 @@
   .page3-btn-wrapper {
     max-width: 300px;
     margin: 5% auto;
+  }
+
+  .video-container video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .events-filter {
+    display: flex;
   }
 }
