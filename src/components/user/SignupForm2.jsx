@@ -41,6 +41,7 @@ export default function SignupForm2 () {
     const handleSubmit = async () => {
         try {
         setError(null);
+        console.log("City and Country values before appending to form data:", city, country);
         const formData = new FormData();
         formData.append("email", email);
         formData.append("password", password);
@@ -49,8 +50,9 @@ export default function SignupForm2 () {
         if (image) {
             formData.append("picture", image, image.name);
           }
-        formData.append("languagesSpoken", languagesSpoken);
-        formData.append("city", city);
+        formData.append("languagesSpoken", languagesSpoken)
+        formData.append("userInfo.location.city", city );
+        formData.append("userInfo.location.country", country );
         const response = await axios.post("https://teamup-service.onrender.com/user/signup", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -213,7 +215,7 @@ htmlFor="languagesSpoken"
         English
       </Space>
     </Option>
-    <Option value="German" label="DE">
+    <Option value="German" label="DE" >
     {/* <Option value={languagesSpoken} label="DE"> */}
       <Space>
         <span role="img" aria-label="German">
@@ -272,7 +274,7 @@ htmlFor="languagesSpoken"
 {/* select language */}
 <Form.Item
 label="City"
-htmlFor="city"
+htmlFor="userInfo.location.city"
 rules={[
   {
     required: true,
@@ -294,7 +296,7 @@ value={city}
   </Form.Item>
   <Form.Item
       label="Country of Origin"
-      name="country of origin"
+      htmlFor="userInfo.location.country"
       rules={[
         {
           required: true,
@@ -306,6 +308,7 @@ value={city}
       type="text"
       onChange={(e) => setCountry(e.target.value)}
       value={country}
+      name="userInfo.location.country"
       placeholder="Where are you from?"
       />
     </Form.Item>

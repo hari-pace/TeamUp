@@ -23,11 +23,11 @@ export default function UsernameEdit( { initialLanguages, id, setLanguageEdit} )
     
         if (!response.ok) {
           setError(data.error);
-          console.log("something has happened");
+          console.log(error);
         }
     
         if (response.ok) {
-          console.log("SUCCESS!!!")
+          console.log("SUCCESS!!!" + languagesSpoken)
         }
       };
       const enterLoading = (index) => {

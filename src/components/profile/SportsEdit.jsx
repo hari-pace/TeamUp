@@ -44,6 +44,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
           });
         }, 6000);
       };
+    console.log(interestedInSports)
     return (
         <>
         <Form
