@@ -83,16 +83,26 @@
   margin-top: 7%;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-switch
-  .ant-switch-inner
-  .ant-switch-inner-unchecked {
+:where(
+    .css-dev-only-do-not-override-3mqfnx
+  ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-switch
-  .ant-switch-inner
-  .ant-switch-inner-checked {
+:where(
+    .css-dev-only-do-not-override-3mqfnx
+  ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
+  font-size: 1.2rem;
+  padding-top: 3.5%;
+}
+
+:where(.css-3mqfnx).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
+  font-size: 1.2rem;
+  padding-top: 1.5%;
+}
+
+:where(.css-3mqfnx).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
 }
