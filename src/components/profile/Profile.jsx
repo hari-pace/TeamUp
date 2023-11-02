@@ -205,7 +205,7 @@ console.log(singleUser?.userInfo?.userImage)
             <h3>Bio</h3>
             {showBioEdit ?
             <> 
-            <BioEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setBio = {setBioEdit} /> 
+            <BioEdit id = {singleUser?._id} initialDescription = {singleUser?.userInfo?.description} setBio = {setBioEdit} /> 
             <Button danger type="primary" onClick={() => setBioEdit(false)}>
             Close X
             </Button>
