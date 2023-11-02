@@ -72,6 +72,35 @@
   min-height: 50px;
 }
 
+.events-switch {
+  padding-bottom: 2%;
+  padding-top: 4%;
+  height: 50px;
+  width: 170px;
+}
+
+.ant-switch-handle {
+  margin-top: 7%;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-switch
+  .ant-switch-inner
+  .ant-switch-inner-unchecked {
+  font-size: 1.2rem;
+  padding-top: 1.5%;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-switch
+  .ant-switch-inner
+  .ant-switch-inner-checked {
+  font-size: 1.2rem;
+  padding-top: 3.5%;
+}
+
+.ant-switch-inner {
+  font-size: 2rem;
+}
+
 .events-find-event {
   min-height: 40px;
   min-width: 300px;

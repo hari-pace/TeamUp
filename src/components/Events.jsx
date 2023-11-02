@@ -8,6 +8,7 @@ import {
   Pagination,
   Radio,
   Space,
+  Switch,
 } from "antd";
 import {
   PlusOutlined,
@@ -29,11 +30,13 @@ import Handball from "../assets/handball1.jpg";
 import Cricket from "../assets/cricket2.jpg";
 import Fitness from "../assets/fitness1.jpg";
 import Skiing from "../assets/ski1.jpg";
-import VolleyballVid from "../assets/VolleyballVid.mp4"
+import VolleyballVid from "../assets/VolleyballVid.mp4";
 
 const Events = () => {
+  const [toggleEventType, setToggleEventType] = useState(true);
   const [modal1Open, setModal1Open] = useState(false);
   const [modal2Open, setModal2Open] = useState(false);
+  const [modal3Open, setModal3Open] = useState(false);
   const [locationValue, setLocationValue] = useState(null);
   const [sportValue, setSportValue] = useState(null);
   const [events, setEvents] = useState([]);
@@ -82,30 +85,51 @@ const Events = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const futureEvents = events.filter(
-    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  // const futureEvents = events.filter(
+  //   (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+  // );
+  const upcomingEvents = events.filter(
+    (event) => event.eventStatus === "upcoming"
+  );
+  const completedEvents = events.filter(
+    (event) => event.eventStatus === "completed"
   );
 
-  const sortedFutureEvents = futureEvents.sort((a, b) => {
+  const sortedEvents = upcomingEvents.sort((a, b) => {
+    return (
+      new Date(a.eventDateAndTime?.eventDate) -
+      new Date(b.eventDateAndTime?.eventDate)
+    );
+  });
+  const sortedCompletedEvents = completedEvents.sort((a, b) => {
     return (
       new Date(a.eventDateAndTime?.eventDate) -
       new Date(b.eventDateAndTime?.eventDate)
     );
   });
 
-  const filteredEvents = futureEvents.filter(
+  const filteredEvents = upcomingEvents.filter(
     (event) =>
       event.sportType[0].includes(sportValue) &&
       event.location?.address?.city?.includes(locationValue)
   );
 
-  const filteredEventsByName = futureEvents.filter((event) =>
+  const filteredEventsByName = upcomingEvents.filter((event) =>
+    event.eventTitle?.includes(searchValue)
+  );
+  const filteredEventsCompleted = completedEvents.filter(
+    (event) =>
+      event.sportType[0].includes(sportValue) &&
+      event.location?.address?.city?.includes(locationValue)
+  );
+
+  const filteredEventsByNameCompleted = completedEvents.filter((event) =>
     event.eventTitle?.includes(searchValue)
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = futureEvents.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
   const currentItemsFiltered = filteredEvents.slice(
     indexOfFirstItem,
     indexOfLastItem
@@ -135,11 +159,21 @@ const Events = () => {
     Ski: Skiing,
   };
 
+  const onChangeSwitch = (checked) => {
+    console.log(`switch to ${checked}`);
+    if (checked === true) {
+      setToggleEventType(true);
+    }
+    if (checked === false) {
+      setToggleEventType(false);
+    }
+  };
+
   return (
     <>
-    <div className="events-heroDiv">
-    <h1 className="events-h1"> Find your event</h1>
-    </div>
+      <div className="events-heroDiv">
+        <h1 className="events-h1"> Find your event</h1>
+      </div>
 
       <div className="events-search-section">
         <div className="events-searchbars">
@@ -241,12 +275,21 @@ const Events = () => {
                 <Radio className="events-modal-text" value={"Fitness"}>
                   Fitness
                 </Radio>
-                <Radio className="events-modal-text" value={"Skiing"}>
-                  Skiing
+                <Radio className="events-modal-text" value={"Ski"}>
+                  Ski
                 </Radio>
               </Space>
             </Radio.Group>
           </Modal>
+        </div>
+        <div className="events-filter">
+          <Switch
+            className="events-switch"
+            checkedChildren="Upcoming events"
+            unCheckedChildren="Past events"
+            defaultChecked
+            onChange={onChangeSwitch}
+          />
         </div>
       </div>
       {loading ? (
@@ -254,7 +297,7 @@ const Events = () => {
       ) : (
         <>
           <div className="page2-suggested-cards">
-            {searchValue === null
+            {toggleEventType && searchValue === null
               ? currentItemsFiltered.map((event, index) => (
                   <div key={index} className="page4-suggested-cards">
                     <Card
@@ -302,6 +345,97 @@ const Events = () => {
                   </div>
                 ))
               : currentItemsFilteredByName.map((event, index) => (
+                  <div key={index} className="page4-suggested-cards">
+                    <Card
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 300,
+                      }}
+                      cover={
+                        <img
+                          alt="example"
+                          src={imageOptions[event?.sportType[0]]}
+                          className="events-card-cover"
+                        />
+                      }
+                      actions={[
+                        // <PlusOutlined key="plus" />,
+                        // <CheckOutlined key="check" />,
+                        <Link to={`/events/${event._id}`}>
+                          <EllipsisOutlined key="ellipsis" />
+                        </Link>,
+                      ]}
+                    >
+                      <Meta
+                        // className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${
+                          event.sportType[0]
+                        } // ${event.eventDateAndTime?.eventDate?.slice(
+                          0,
+                          10
+                        )} @ ${event.eventDateAndTime?.eventTime} // ${
+                          event.location?.address?.city
+                        }`}
+                      />
+                    </Card>
+                  </div>
+                ))}
+          </div>
+          <div className="page2-suggested-cards">
+            {!toggleEventType && searchValue === null
+              ? filteredEventsCompleted.map((event, index) => (
+                  <div key={index} className="page4-suggested-cards">
+                    <Card
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 300,
+                      }}
+                      cover={
+                        <img
+                          alt="example"
+                          src={imageOptions[event?.sportType[0]]}
+                          className="events-card-cover"
+                        />
+                      }
+                      actions={[
+                        // <PlusOutlined key="plus" />,
+                        // <CheckOutlined key="check" />,
+                        <Link to={`/events/${event._id}`}>
+                          <EllipsisOutlined key="ellipsis" />
+                        </Link>,
+                      ]}
+                    >
+                      <Meta
+                        className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${event.sportType[0]} // ${new Date(
+                          event?.eventDateAndTime?.eventDate
+                        ).toLocaleDateString("de-DE", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })} @ ${new Date(
+                          event?.eventDateAndTime?.eventTime
+                        ).toLocaleTimeString("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} // ${event.location?.address?.city}`}
+                      />
+                    </Card>
+                  </div>
+                ))
+              : filteredEventsByNameCompleted.map((event, index) => (
                   <div key={index} className="page4-suggested-cards">
                     <Card
                       className="page2-suggested-individual-card"
