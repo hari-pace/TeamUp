@@ -14,6 +14,7 @@ import { ReactBingmaps } from "react-bingmaps";
 import Spinner from "./Spinner";
 
 const EventMoreInfo = () => {
+  const [users, setUsers] = useState([]);
   const [attendees, setAttendees] = useState([]);
   const [interestedUsers, setInterestedUsers] = useState([]);
   const [eventInfo, setEventInfo] = useState();
@@ -26,14 +27,12 @@ const EventMoreInfo = () => {
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
-  // console.log(decodedToken);
-
   const navigate = useNavigate();
 
   const fetchData = async () => {
     const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setEventInfo(data);
     setEventID(data._id);
     setLatitude(data.location?.LatLng?.lat);
@@ -41,6 +40,11 @@ const EventMoreInfo = () => {
     setAttendees(data.usersAttending);
     setInterestedUsers(data.usersInterested);
   };
+
+  // console.log(eventInfo);
+  // console.log(decodedToken);
+  // console.log(attendees);
+  // console.log(interestedUsers);
 
   const handleDelete = async (id) => {
     try {
@@ -68,16 +72,9 @@ const EventMoreInfo = () => {
     }
   };
 
-  // useEffect(() => {
-  //   attendees.push(decodedToken?.name);
-  //   console.log(attendees);
-  //   handleUpdate(eventID);
-  //   setPutRequestToggle(false);
-  // }, [putRequestToggle]);
-
   const handleUpdateAttending = async (id) => {
-    console.log(id);
-    console.log(attendees);
+    // console.log(id);
+    // console.log(attendees);
     try {
       const response = await fetch(
         `https://teamup-service.onrender.com/event/attend?id=${id}`,
@@ -94,6 +91,33 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("user attend updated successfully");
         alert("Your have been successfully subscribed for this event!");
+        navigate("/");
+      } else {
+        console.error("Failed to update item");
+      }
+    } catch (error) {
+      console.error("Error updating item:", error);
+    }
+  };
+  const handleUpdateNoLongerAttending = async (id) => {
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/attend?id=${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ usersAttending: attendees }),
+        }
+      );
+      console.log(response.status);
+      const result = await response.json();
+      console.log(result);
+      if (response.ok) {
+        console.log("user no longer attending updated successfully");
+        alert("Your have been successfully removed from this event!");
         navigate("/");
       } else {
         console.error("Failed to update item");
@@ -128,11 +152,57 @@ const EventMoreInfo = () => {
       console.error("Error updating item:", error);
     }
   };
+  const handleUpdateNoLongerInterested = async (id) => {
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/like?id=${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ usersInterested: interestedUsers }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("user like array updated successfully");
+        alert("This event has been successfully removed from your watchlist!");
+        navigate("/");
+      } else {
+        console.error("Failed to update item");
+      }
+    } catch (error) {
+      console.error("Error updating item:", error);
+    }
+  };
+
+  const fetchUsers = async () => {
+    const response = await fetch(
+      "https://teamup-service.onrender.com/user/users",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    setUsers(data);
+  };
+
+  const oneUser = users?.filter(
+    (user) => user?.username === decodedToken?.name
+  );
+
+  // console.log(oneUser[0]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
+    fetchUsers();
     fetchData();
     return () => clearTimeout(timer);
     // setFetchMapToggle(true);
@@ -161,8 +231,12 @@ const EventMoreInfo = () => {
   const checkForAttendeeMatch = attendees.filter(
     (attendee) => attendee.username === decodedToken?.name
   );
+  const checkForLikeMatch = interestedUsers.filter(
+    (interestedUser) => interestedUser === decodedToken?._id
+  );
 
-  console.log(checkForAttendeeMatch);
+  // console.log(checkForAttendeeMatch);
+  // console.log(interestedUsers[0]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -181,12 +255,18 @@ const EventMoreInfo = () => {
   };
   const handleOk2 = () => {
     setIsModal2Open(false);
-    if (checkForAttendeeMatch.length > 0) {
-      alert("You are already subscribed to this event");
-    } else if (attendees?.length >= eventInfo?.maxCapacity) {
+    if (attendees?.length >= eventInfo?.maxCapacity) {
       alert("This event is unfortunately already fully booked");
     } else {
-      attendees.push(decodedToken?.name);
+      attendees.push({
+        username: oneUser[0]?.username,
+        _id: oneUser[0]?._id,
+        userImage: oneUser[0]?.userInfo?.userImage
+          ? oneUser[0]?.userInfo?.userImage
+          : "",
+      });
+      console.log(attendees);
+      // console.log(eventID);
       handleUpdateAttending(eventID);
     }
   };
@@ -199,15 +279,41 @@ const EventMoreInfo = () => {
   };
   const handleOk3 = () => {
     setIsModal3Open(false);
-    if (checkForAttendeeMatch.length > 0) {
-      alert("You are already subscribed to this event");
-    } else {
-      interestedUsers.push(decodedToken?.name);
-      handleUpdateInterested(eventID);
-    }
+    interestedUsers.push(decodedToken?.name);
+    handleUpdateInterested(eventID);
   };
   const handleCancel3 = () => {
     setIsModal3Open(false);
+  };
+  const [isModal4Open, setIsModal4Open] = useState(false);
+  const showModal4 = () => {
+    setIsModal4Open(true);
+  };
+  const handleOk4 = () => {
+    setIsModal4Open(false);
+    const updatedAttendees = attendees.filter(
+      (attendee) => attendee?.username !== decodedToken?.name
+    );
+    setAttendees(updatedAttendees);
+    handleUpdateNoLongerAttending(eventID);
+  };
+  const handleCancel4 = () => {
+    setIsModal4Open(false);
+  };
+  const [isModal5Open, setIsModal5Open] = useState(false);
+  const showModal5 = () => {
+    setIsModal5Open(true);
+  };
+  const handleOk5 = () => {
+    setIsModal5Open(false);
+    const updatedInterestedUsers = interestedUsers.filter(
+      (interestedUser) => interestedUser !== decodedToken?._id
+    );
+    setInterestedUsers(updatedInterestedUsers);
+    handleUpdateNoLongerInterested(eventID);
+  };
+  const handleCancel5 = () => {
+    setIsModal5Open(false);
   };
 
   const bingMapKey =
@@ -225,11 +331,6 @@ const EventMoreInfo = () => {
       option: { color: "red" },
     },
   ];
-
-  // console.log(
-  //   eventInfo?.location?.LatLng?.lat,
-  //   eventInfo?.location?.LatLng?.lon
-  // );
 
   return (
     <>
@@ -347,9 +448,13 @@ const EventMoreInfo = () => {
                   className="page4-block-btn"
                   type="primary"
                   block
-                  onClick={showModal3}
+                  onClick={
+                    checkForLikeMatch.length > 0 ? showModal5 : showModal3
+                  }
                 >
-                  Like this event
+                  {checkForLikeMatch.length > 0
+                    ? "Remove this event from my watchlist"
+                    : "Like this event"}
                 </Button>
                 <Modal
                   title="Add this event to your watchlist?"
@@ -357,19 +462,35 @@ const EventMoreInfo = () => {
                   onOk={handleOk3}
                   onCancel={handleCancel3}
                 ></Modal>
+                <Modal
+                  title="Are you sure you want to remove this event from your watchlist?"
+                  open={isModal5Open}
+                  onOk={handleOk5}
+                  onCancel={handleCancel5}
+                ></Modal>
                 <Button
                   className="page4-block-btn"
                   type="primary"
                   block
-                  onClick={showModal2}
+                  onClick={
+                    checkForAttendeeMatch.length > 0 ? showModal4 : showModal2
+                  }
                 >
-                  Attend this event
+                  {checkForAttendeeMatch.length > 0
+                    ? "I no longer wish to attend"
+                    : "Attend this event"}
                 </Button>
                 <Modal
                   title="Are you sure you want to attend this event?"
                   open={isModal2Open}
                   onOk={handleOk2}
                   onCancel={handleCancel2}
+                ></Modal>
+                <Modal
+                  title="Are you sure that you no longer want to attend this event?"
+                  open={isModal4Open}
+                  onOk={handleOk4}
+                  onCancel={handleCancel4}
                 ></Modal>
               </div>
               <div
