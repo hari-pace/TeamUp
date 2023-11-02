@@ -3,7 +3,16 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import {
+  ExclamationCircleOutlined,
+  LikeOutlined,
+  CheckOutlined,
+  DeleteOutlined,
+  CloseOutlined,
+  DislikeOutlined,
+  EnvironmentOutlined,
+  DoubleRightOutlined,
+} from "@ant-design/icons";
 import { Card, List, Button, Modal, Space } from "antd";
 import { useParams, Link } from "react-router-dom";
 import Question from "../assets/question.png";
@@ -339,10 +348,12 @@ const EventMoreInfo = () => {
       </div>
       <div className="page4-container">
         <div className="page4-left-column">
-          <h3 className="page4-organiser">Event organiser:</h3>
-          <h3 className="page4-organiser-name">
-            {eventInfo?.organizator?.username}
-          </h3>
+          <div className="page4-organiser-container">
+            <h3 className="page4-organiser">Event organiser:</h3>
+            <h3 className="page4-organiser-name">
+              {eventInfo?.organizator?.username}
+            </h3>
+          </div>
           <div className="page4-avatar">
             {/* <Avatar className="avatarProfile-page4" /> */}
             <Link to={`/profile/${eventInfo?.organizator?.username}`}>
@@ -365,14 +376,24 @@ const EventMoreInfo = () => {
             <>
               <h2 className="page4-heading">{eventInfo?.eventTitle}</h2>
               <h3 className="page4-input-fields">
-                Sport type: {eventInfo?.sportType}
+                Sport type:
+                <span className="event-info-buttons">
+                  {eventInfo?.sportType}
+                </span>
               </h3>
-              <h3 className="page4-input-fields">Date: {formattedDate}</h3>
               <h3 className="page4-input-fields">
-                Start time: {formattedTime}
+                Date:{" "}
+                <span className="event-info-buttons">{formattedDate}</span>{" "}
+              </h3>
+              <h3 className="page4-input-fields">
+                Start time:{" "}
+                <span className="event-info-buttons">{formattedTime}</span>
               </h3>
               <div className="page4-location-container">
-                <h3 className="page4-input-field-location">Location: </h3>
+                <h3 className="page4-input-field-location">
+                  <EnvironmentOutlined />
+                  <h4 className="event-info-buttons">Location:</h4>
+                </h3>
 
                 <div style={{ height: "300px", width: "80%" }}>
                   <ReactBingmaps
@@ -384,14 +405,27 @@ const EventMoreInfo = () => {
                 </div>
               </div>
               <h3 className="page4-input-fields" id="page-4-description">
-                Description: {eventInfo?.eventDescription}
+                Description:
+                <span className="event-info-buttons">
+                  {eventInfo?.eventDescription}
+                </span>
               </h3>
               <div className="page4-spaces-fields-container">
                 <h3 className="page4-spaces-fields">
-                  Max capacity: {eventInfo?.maxCapacity}
+                  <div className="page4-spaces-fields-div">
+                    <DoubleRightOutlined />
+                    <span className="event-info-buttons">
+                      Max capacity: {eventInfo?.maxCapacity}
+                    </span>
+                  </div>
                 </h3>
                 <h3 className="page4-spaces-fields">
-                  Spaces left: {eventInfo?.maxCapacity - attendees?.length}{" "}
+                  <div className="page4-spaces-fields-div">
+                    <DoubleRightOutlined />
+                    <span className="event-info-buttons">
+                      Spaces left: {eventInfo?.maxCapacity - attendees?.length}
+                    </span>
+                  </div>
                 </h3>
               </div>
               {/* <h3>
@@ -452,9 +486,22 @@ const EventMoreInfo = () => {
                     checkForLikeMatch.length > 0 ? showModal5 : showModal3
                   }
                 >
-                  {checkForLikeMatch.length > 0
-                    ? "Remove this event from my watchlist"
-                    : "Like this event"}
+                  {checkForLikeMatch.length > 0 ? (
+                    <div>
+                      <DislikeOutlined />
+
+                      <span className="event-info-buttons">
+                        Remove event from watchlist
+                      </span>
+                    </div>
+                  ) : (
+                    <div>
+                      <LikeOutlined />{" "}
+                      <span className="event-info-buttons">
+                        Like this event
+                      </span>
+                    </div>
+                  )}
                 </Button>
                 <Modal
                   title="Add this event to your watchlist?"
@@ -476,9 +523,21 @@ const EventMoreInfo = () => {
                     checkForAttendeeMatch.length > 0 ? showModal4 : showModal2
                   }
                 >
-                  {checkForAttendeeMatch.length > 0
-                    ? "I no longer wish to attend"
-                    : "Attend this event"}
+                  {checkForAttendeeMatch.length > 0 ? (
+                    <div>
+                      <CloseOutlined />
+                      <span className="event-info-buttons">
+                        I no longer wish to attend
+                      </span>{" "}
+                    </div>
+                  ) : (
+                    <div>
+                      <CheckOutlined />{" "}
+                      <span className="event-info-buttons">
+                        Attend this event
+                      </span>
+                    </div>
+                  )}
                 </Button>
                 <Modal
                   title="Are you sure you want to attend this event?"
@@ -506,7 +565,12 @@ const EventMoreInfo = () => {
                   type="primary"
                   danger
                 >
-                  Delete this event
+                  <div>
+                    <DeleteOutlined />
+                    <span className="event-info-buttons">
+                      Delete this event
+                    </span>
+                  </div>
                 </Button>
                 <Modal
                   title="Are you sure you want to delete this event?"
