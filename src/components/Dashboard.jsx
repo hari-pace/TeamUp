@@ -23,7 +23,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
-import Video720p from "../assets/Video720p.mp4"
+import Video720p from "../assets/Video720p.mp4";
 
 const contentStyle = {
   height: "19rem",
@@ -67,17 +67,9 @@ const Dashboard = () => {
     fetchUsers();
   }, []);
 
-  // const filteredEvents = events.filter(
-  //   (event) =>
-  //     event.location?.address?.city ===
-  // );
-
   const oneUser = users?.filter(
     (user) => user?.username === decodedToken?.name
   );
-
-  // console.log(oneUser[0]?.userInfo);
-  // console.log(events[176]?.usersAttending);
 
   const usersSuggestedEvents = events.filter((event) =>
     event?.location?.address?.city.includes(
@@ -89,9 +81,6 @@ const Dashboard = () => {
     (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
   );
 
-  // console.log(oneUser[0]?.userInfo?.location?.city);
-  // console.log(usersSuggestedEvents);
-
   const likedEvents = events.filter((event) =>
     oneUser[0]?.userInfo?.eventsLiked.includes(event._id)
   );
@@ -100,13 +89,10 @@ const Dashboard = () => {
       oneUser[0]?.userInfo?.eventsAttended.includes(event._id) ||
       oneUser[0]?.userInfo?.eventsOrganized.includes(event._id)
   );
-  // console.log(likedEvents);
-  // console.log(AttendedEvents);
 
   const futureAttendedEvents = AttendedEvents.filter(
     (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
   );
-  // console.log(futureAttendedEvents);
 
   const futureLikedEvents = likedEvents.filter(
     (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
@@ -142,21 +128,14 @@ const Dashboard = () => {
     Ski: Skiing,
   };
 
-  console.log(decodedToken?.name);
-
   return (
     <>
-    <div className="video-container">
-    <div className="events-heroDiv">
-    <video 
-    autoPlay 
-    loop 
-    muted 
-    src={Video720p} type="video/mp4">
-    </video>
-    <h1 className="events-h1"> Dashboard</h1>
-    </div>
-    </div>
+      <div className="video-container">
+        <div className="events-heroDiv">
+          <video autoPlay loop muted src={Video720p} type="video/mp4"></video>
+          <h1 className="events-h1"> Dashboard</h1>
+        </div>
+      </div>
       <Space
         direction="vertical"
         style={{
