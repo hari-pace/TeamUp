@@ -1,13 +1,13 @@
 import { Button, Modal, Form } from 'antd';
 import { useState } from "react";
 import { Link } from "react-router-dom"
-import SignupForm from './SignupForm';
+import SignupForm2 from './SignupForm2';
 import Login from './Login';
 
 export default function Signup() {
     const [openReg, setRegOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-    const [modalText, setModalText] = useState(<SignupForm/>);
+    const [modalText, setModalText] = useState(<SignupForm2/>);
     const showModal = () => {
       setRegOpen(true);
     };
