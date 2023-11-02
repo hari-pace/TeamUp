@@ -3,10 +3,11 @@ import { Form, Input, Button } from "antd";
 
 const { TextArea } = Input;
 
-export default function UsernameEdit( { initialBio, id, setBio} ) {
-  const [description, setDescription] = useState(initialBio)
+export default function UsernameEdit( { initialDescription, id, setBio} ) {
+  const [description, setDescription] = useState(initialDescription)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -39,7 +40,6 @@ export default function UsernameEdit( { initialBio, id, setBio} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setBio(false);
-
             return newLoadings;
           });
         }, 6000);

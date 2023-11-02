@@ -28,12 +28,14 @@
   width: 75%;
 }
 
-.avatarProfile {
+/* not sure what this does on the About page but was causing Profile picture to be small on profile
+page, so commented it out for now.
+/* .avatarProfile { 
   width: 150px !important;
   height: 150px !important;
   border-width: 1px !important;
   margin: 0px !important;
-}
+} */
 
 .about-img {
   object-fit: cover;
