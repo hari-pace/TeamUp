@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/authContext.jsx";
-import Signup from './SignupForm.jsx';
+import Signup2 from './SignupForm2.jsx';
 import "../styling/loginform.css"
 
 export default function LoginForm() {
