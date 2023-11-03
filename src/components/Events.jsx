@@ -34,7 +34,7 @@ import Handball from "../assets/handball1.jpg";
 import Cricket from "../assets/cricket2.jpg";
 import Fitness from "../assets/fitness1.jpg";
 import Skiing from "../assets/ski1.jpg";
-import VolleyballVid from "../assets/VolleyballVid.mp4";
+import { ParallaxBanner } from "react-scroll-parallax";
 
 const Events = () => {
   const [toggleEventType, setToggleEventType] = useState(true);
@@ -181,9 +181,27 @@ const Events = () => {
 
   return (
     <>
-      <div className="events-heroDiv">
+
+<ParallaxBanner
+                className="events-heroDiv"
+                layers={[
+                    {
+                    speed: -30,
+                    children: (
+                    <div className="">
+                    <h1 className="events-h1">Find your event</h1>
+                    </div>
+                    ),
+                    },
+                    { image: Cycling, speed: 20 },
+                      ]}
+                      >
+        <h1> Find your event</h1>
+</ParallaxBanner>
+
+      {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Find your event</h1>
-      </div>
+      </div> */}
 
       <div className="events-search-section">
         <div className="events-searchbars">

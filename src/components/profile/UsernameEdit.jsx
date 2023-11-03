@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Popconfirm } from "antd";
+import { AuthContext } from "../../context/authContext";
 
-export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit} ) {
+export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit, setLoggedOut} ) {
+  const { token, logout } = useContext(AuthContext);
   const [username, setUsername] = useState(initialUsername)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
@@ -37,10 +39,18 @@ export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setShowUsernameEdit(false);
+            localStorage.removeItem("token");
+            logout();
+            setLoggedOut(true);
+
             return newLoadings;
           });
-        }, 6000);
+        }, 500);
       };
+const confirm = () =>
+new Promise((resolve) => {
+setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
+});
     return (
         <>
         <Form
@@ -77,14 +87,21 @@ export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit
       />
     </Form.Item>
     {error ? <h4 className="errorH">{error}</h4> : null}
+
+    <Popconfirm
+      className="changeUsername" 
+      title="WARNING"
+      description="Are you sure? You will have to login to your account again."
+      onConfirm={confirm}
+      onOpenChange={() => console.log('open change')}
+    >
     <Button 
       type="primary"
       className="editConfirmButtons"
-      loading={loadings[0]} 
-      onClick={() => enterLoading(0)} 
       htmlType="submit">
         Submit
       </Button>
+    </Popconfirm>
     </Form>
         </>
     )

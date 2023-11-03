@@ -39,12 +39,12 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
-            
             return newLoadings;
           });
         }, 6000);
       };
     console.log(interestedInSports)
+    console.log(initialSports)
     return (
         <>
         <Form

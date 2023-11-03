@@ -51,8 +51,8 @@ export default function SignupForm2 () {
             formData.append("picture", image, image.name);
           }
         formData.append("languagesSpoken", languagesSpoken)
-        formData.append("userInfo.location.city", city );
-        formData.append("userInfo.location.country", country );
+        formData.append("city", city );
+        formData.append("country", country );
         const response = await axios.post("https://teamup-service.onrender.com/user/signup", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -291,6 +291,12 @@ value={city}
                 <Radio value={"Munich"}>Munich</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
+                <Radio value={"Düsseldorf"}>Düsseldorf</Radio>
+                <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
+                <Radio value={"Cologne"}>Cologne</Radio>
+                <Radio value={"Essen"}>Essen</Radio>
+                <Radio value={"Hannover"}>Hannover</Radio>
+                <Radio value={"Dortmund"}>Dortmund</Radio>
               </Space>
             </Radio.Group>
   </Form.Item>

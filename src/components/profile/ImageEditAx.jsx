@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { PlusOutlined } from '@ant-design/icons';
-import { Upload, Form, Button } from "antd";
+import { Upload, Form, Button, Popconfirm } from "antd";
+import { AuthContext } from "../../context/authContext";
+import { useJwt } from "react-jwt";
+
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -10,8 +13,10 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-export default function PictureUpload({id}) {
+export default function PictureUpload({id, setLoggedOut}) {
   const [form] = Form.useForm(); // Create a form instance
+  const { token, logout } = useContext(AuthContext);
+  const { decodedToken } = useJwt(token);
   const [image, setImage] = useState(null);
   const [error, setError] = useState(false);
   const [loadings, setLoadings] = useState([])
@@ -44,10 +49,18 @@ export default function PictureUpload({id}) {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
         newLoadings[index] = false;
+        localStorage.removeItem("token");
+        logout();
+        setLoggedOut(true);
+
         return newLoadings;
       });
-    }, 6000);
+    }, 500);
   };
+const confirm = () =>
+new Promise((resolve) => {
+setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
+});
   return (
     <Form
       form={form}
@@ -76,14 +89,21 @@ export default function PictureUpload({id}) {
           )}
         </Upload>
       </Form.Item>
+
+      <Popconfirm
+      className="changeUsername" 
+      title="WARNING"
+      description="Are you sure? You will have to login to your account again."
+      onConfirm={confirm}
+      onOpenChange={() => console.log('open change')}
+    >
       <Button 
       type="primary"
       className="editConfirmButtons"
-      loading={loadings[0]} 
-      onClick={() => enterLoading(0)} 
       htmlType="submit">
         Submit
       </Button>
+      </Popconfirm>
     </Form>
   );
 }

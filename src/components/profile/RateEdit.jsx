@@ -45,6 +45,7 @@ export default function RateEdit({id, setRate}) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setRate(false)
+            document.location.reload();
             return newLoadings;
           });
         }, 6000);
