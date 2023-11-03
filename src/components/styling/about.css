@@ -12,20 +12,27 @@
   margin-bottom: 2%;
 }
 
+.about-subheading {
+  padding-top: 3%;
+  padding-left: 2%;
+}
+
 .about-person-container {
-  height: 30vh;
+  height: 35vh;
   display: flex;
   border: 2px solid black;
+  border-radius: 20px;
+  min-height: 310px;
 }
 
 .about-person-pic {
   height: 30vh;
-  width: 25%;
-  background-color: beige;
+  width: 35%;
+  min-width: 200px;
 }
 .about-person-text {
-  height: 30vh;
-  width: 75%;
+  height: 0vh;
+  width: 65%;
   padding-left: 1.5%;
 }
 
@@ -35,8 +42,9 @@
 
 .about-img {
   object-fit: cover;
-  height: 200px;
+  height: 250px;
   width: 100%;
+  border-radius: 20px 0 20px 0;
 }
 
 .about-socials {

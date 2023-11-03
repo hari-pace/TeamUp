@@ -58,6 +58,10 @@
   border-radius: 10px;
 }
 
+.create-map-container {
+  height: 400px;
+}
+
 @media screen and (max-width: 800px) {
   .page5-left-column {
     display: none;

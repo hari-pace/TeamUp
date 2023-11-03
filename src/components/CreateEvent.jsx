@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useJwt } from "react-jwt";
 import "./styling/createEvent.css";
+import MapComponent from "./mapfunctions/MapComponent";
+import SearchBar from "./mapfunctions/SearchBar";
+import axios from "axios";
 import Swimming from "../assets/swimming2.jpg";
 import Cycling from "../assets/cycling.jpg";
 import Basketball from "../assets/basketball2.jpg";
@@ -32,6 +35,7 @@ const normFile = (e) => {
 };
 
 const CreateEvent = () => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const [error, setError] = useState(null);
   const [eventTitle, setEventTitle] = useState();
   const [eventSportType, setEventSportType] = useState([]);
@@ -74,8 +78,6 @@ const CreateEvent = () => {
 
   const oneUser = users.filter((user) => user.username === decodedToken?.name);
 
-  console.log(oneUser[0]);
-
   const jsonData = {
     sportType: eventSportType,
     usersAttending: [
@@ -88,8 +90,8 @@ const CreateEvent = () => {
     maxCapacity: eventMaximumPlayers,
     location: {
       LatLng: {
-        latitude: 50.44974899,
-        longitude: 30.52371788,
+        latitude: 10,
+        longitude: 10,
       },
       address: {
         city: eventCity,
@@ -97,7 +99,7 @@ const CreateEvent = () => {
         houseNumber: eventHouseNumber,
       },
       // eventPicture: eventPicture.fileList[0],
-      hashTags: [eventHashtags.hashtags],
+      // hashTags: [eventHashtags.hashtags],
     },
     eventDescription: eventDescription,
     eventTitle: eventTitle,
@@ -137,11 +139,34 @@ const CreateEvent = () => {
 
   const [form] = Form.useForm();
 
-  // console.log(eventHashtags);
+  // const handleLocationSelect = (location) => {
+  //   console.log("Selected Location:", location);
+  //   setSelectedLocation(location);
+  // };
 
-  // console.log(decodedToken.name);
-  // console.log(eventTime?.$H);
-  console.log(eventTime);
+  // console.log(selectedLocation.lat, selectedLocation.lng);
+
+  const handleLocationSelected = (location) => {
+    // Send the location data via a POST request or handle it as needed
+    console.log("Location selected:", location);
+    setSelectedLocation(location);
+    // Example: Send a POST request using Axios
+    // axios.post('YOUR_API_ENDPOINT', location)
+    //   .then(response => {
+    //     console.log('Location sent successfully:', response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error sending location:', error);
+    //   });
+  };
+
+  const handleAddressSelect = (address) => {
+    // Handle the selected address logic here
+    console.log("Selected address:", address);
+    setSelectedLocation(address);
+  };
+
+  // console.log(selectedLocation.lat, selectedLocation.lng);
 
   return (
     <>
@@ -374,6 +399,13 @@ const CreateEvent = () => {
                 </Form>
               </Form.Item> */}
               <h3 className="page5-subheadings">Event location</h3>
+              {/* <div>
+                <SearchBar onAddressSelect={handleAddressSelect} />
+                <MapComponent
+                  selectedLocation={selectedLocation}
+                  onLocationSelected={handleLocationSelected}
+                />
+              </div> */}
               <Form.Item
                 label="* Street number"
                 rules={[
