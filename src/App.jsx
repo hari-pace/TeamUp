@@ -10,13 +10,13 @@ import Profile from "./components/profile/Profile";
 import Welcome from "./components/Welcome";
 import CreateEvent from "./components/CreateEvent";
 import ScrollToTop from "./jsfunctions/ScrollToTop";
-
 import { AuthContext } from "./context/authContext";
 import { useJwt } from "react-jwt";
 import { useState, useEffect } from "react";
 import "./App.css";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Error from "./components/Error"
 
 function App() {
   // const [username, setUsername] = useState(null)
@@ -62,7 +62,7 @@ function App() {
         />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
-        <Route path="*" element="" />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </>

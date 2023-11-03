@@ -21,6 +21,18 @@ import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import { ReactBingmaps } from "react-bingmaps";
 import Spinner from "./Spinner";
+import Swimming from "../assets/swimming2.jpg";
+import Basketball from "../assets/basketball3.jpg";
+import Cycling from "../assets/cycling2.jpg";
+import Football from "../assets/football2.jpg";
+import Volleyball from "../assets/volleyball2.jpg";
+import Yoga from "../assets/yoga2.jpg";
+import Tennis from "../assets/tennis3.jpg";
+import Handball from "../assets/handball1.jpg";
+import Cricket from "../assets/cricket2.jpg";
+import Fitness from "../assets/fitness1.jpg";
+import Skiing from "../assets/ski1.jpg";
+import { ParallaxBanner } from "react-scroll-parallax";
 
 const EventMoreInfo = () => {
   const [users, setUsers] = useState([]);
@@ -340,12 +352,32 @@ const EventMoreInfo = () => {
       option: { color: "red" },
     },
   ];
-
+const sportArray = [Skiing, Fitness, Cricket, Handball, Tennis, Yoga, Volleyball, Football, Cycling, Basketball, Swimming]
+// const randomIndex = Math.floor(Math.random() * 11)
+const sportImage = sportArray[4]
   return (
     <>
-      <div className="events-heroDiv">
+
+<ParallaxBanner
+                className="events-heroDiv"
+                layers={[
+                    {
+                    speed: -30,
+                    children: (
+                    <div className="">
+                    <h1 className="events-h1">Event Information</h1>
+                    </div>
+                    ),
+                    },
+                    {image: sportImage, speed: 20 },
+                      ]}
+                      >
+        <h1> Event Information</h1>
+</ParallaxBanner>
+
+      {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Event information</h1>
-      </div>
+      </div> */}
       <div className="page4-container">
         <div className="page4-left-column">
           <div className="page4-organiser-container">

@@ -1,5 +1,5 @@
 import "../styling/profile.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useJwt } from "react-jwt";
@@ -10,13 +10,13 @@ import Spinner from "../Spinner";
 import UsernameEdit from "./UsernameEdit";
 import BioEdit from "./BioEdit"
 import SportsEdit from "./SportsEdit"
-import LanguageEdit from "./LangaugeEdit"
 import CityEdit from "./CityEdit"
 import DeleteUser from "./DeleteUser";
 import Question from "../../assets/question.png"
 import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
 import ImageEditAx from "./ImageEditAx"
+
 
 
 export default function Profile() {
@@ -33,9 +33,9 @@ export default function Profile() {
   const [showCity, setCity] = useState(false);
   const [rating, setUserRating] = useState()
   const [error, setError] = useState()
-  const [loadings, setLoadings] = useState([]);
   const [showdelete, setShowDelete] = useState(false);
   const [showRate, setRate] = useState(false)
+  const [loggedout, setLoggedOut] = useState(false)
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
@@ -99,42 +99,6 @@ console.log(EventsArray);
 
   const { Meta } = Card;
 
-  // const handleSubmit = async () => {
-  //   // e.preventDefault(); ant has built-in prevent default.
-  //   // this submit is for userRating
-  //   setError(null);
-
-  //   const response = await fetch(`https://teamup-service.onrender.com/user/users/${id}/rater-user`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
-  //     body: JSON.stringify({ userRating: { rating } }),
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (!response.ok) {
-  //     setError(data.error);
-  //     console.log(error);
-  //   }
-
-  //   if (response.ok) {
-  //     console.log("SUCCESS!!!")
-  //   }
-  // };
-  // const enterLoading = (index) => {
-  //   setLoadings((prevLoadings) => {
-  //     const newLoadings = [...prevLoadings];
-  //     newLoadings[index] = true;
-  //     return newLoadings;
-  //   });
-  //   setTimeout(() => {
-  //     setLoadings((prevLoadings) => {
-  //       const newLoadings = [...prevLoadings];
-  //       newLoadings[index] = false;
-  //       return newLoadings;
-  //     });
-  //   }, 6000);
-  // };
 console.log(singleUser)
 console.log(singleUser?.userInfo?.userImage)
   return (
@@ -146,6 +110,7 @@ console.log(singleUser?.userInfo?.userImage)
           <h1 style={{textDecoration: "none", color: "red"}}>User has been deleted</h1>
         ) : (
           <>
+        {loggedout ? <Navigate to="/" /> : null}
       {auth ? <DeleteUser setShowDelete = {setShowDelete} /> : null}
         <h1>{singleUser?.username}</h1>
         <div className="profileContainer">
@@ -153,7 +118,7 @@ console.log(singleUser?.userInfo?.userImage)
           {editImage ?
             <> 
             <Avatar className="avatarProfile" alt="emptyavatar"/>
-            <ImageEditAx id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} /> 
+            <ImageEditAx id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} setLoggedOut = {setLoggedOut} /> 
             <Button danger type="primary" onClick={() => setEditImage(false)}>
             Close X
             </Button>
@@ -172,7 +137,6 @@ console.log(singleUser?.userInfo?.userImage)
            {auth ? (
             <Rate
             allowHalf
-            allowQuarter
             disabled
             value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
             />) : (
@@ -291,7 +255,7 @@ console.log(singleUser?.userInfo?.userImage)
               </label>
               {showUsernameEdit ? (
               <>
-              <UsernameEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setShowUsernameEdit={setShowUsernameEdit} />
+              <UsernameEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setShowUsernameEdit={setShowUsernameEdit} setLoggedOut = {setLoggedOut}/>
               <Button danger type="primary" onClick={() => setShowUsernameEdit(false)}>
               Close X
               </Button>
@@ -319,8 +283,7 @@ console.log(singleUser?.userInfo?.userImage)
             {showSportsEdit ?
             <> 
             <SportsEdit id = {singleUser?._id} initialSports = {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => `${sport} `
-            )} setSports = {setSportsEdit} /> 
+              (sport) => sport)} setSports = {setSportsEdit} />
             <Button danger type="primary" onClick={() => setSportsEdit(false)}>
             Close X
             </Button>
@@ -332,7 +295,7 @@ console.log(singleUser?.userInfo?.userImage)
               Edit
               </Button> : null}
             {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => `${sport} `
+              (sport) => <li>{sport}</li>
             )}
           </p>
           </>
@@ -341,27 +304,9 @@ console.log(singleUser?.userInfo?.userImage)
               <h3>Languages</h3>
             </label>
             <br />
-            {showLanguageEdit ?
-            <> 
-            <LanguageEdit id = {singleUser?._id} initialLanguages ={singleUser?.userInfo?.languagesSpoken.map(
-                (language) => language
-              )}  setLanguageEdit = {setLanguageEdit} /> 
-            <Button danger type="primary" onClick={() => setLanguageEdit(false)}>
-            Close X
-            </Button>
-            </>
-            : (
-              <>
             <p className="infoItem">
-            {auth ? <Button onClick={() => setLanguageEdit(true)}>
-              Edit
-              </Button> : null}
-              {singleUser?.userInfo?.languagesSpoken.map(
-                (language) => `${language} `
-              )}
+              {singleUser?.userInfo?.languagesSpoken}
             </p>
-            </>
-            )}
             <label>
               <h3>Based in</h3>
             </label>

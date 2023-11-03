@@ -40,6 +40,7 @@ export default function UsernameEdit( { initialDescription, id, setBio} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setBio(false);
+            document.location.reload();
             return newLoadings;
           });
         }, 6000);
