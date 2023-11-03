@@ -26,16 +26,12 @@
 .about-person-text {
   height: 30vh;
   width: 75%;
+  padding-left: 1.5%;
 }
 
-/* not sure what this does on the About page but was causing Profile picture to be small on profile
-page, so commented it out for now.
-/* .avatarProfile { 
-  width: 150px !important;
-  height: 150px !important;
-  border-width: 1px !important;
-  margin: 0px !important;
-} */
+.about-person-title {
+  padding: 1% 0;
+}
 
 .about-img {
   object-fit: cover;
@@ -49,4 +45,12 @@ page, so commented it out for now.
   align-items: center;
   height: 20%;
   font-size: 2rem;
+}
+
+.about-social-icons {
+  color: var(--primary);
+}
+
+.about-socials-text {
+  font-size: 1.5rem;
 }
