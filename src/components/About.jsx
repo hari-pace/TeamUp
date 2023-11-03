@@ -23,29 +23,121 @@ const About = () => {
                 />
               </div>
               <div className="about-socials">
-                <LinkedinOutlined />
-                <GithubOutlined />
+                <p className="about-socials-text">Find me here: </p>
+                <a
+                  className="about-social-icons"
+                  href="https://www.linkedin.com/in/hari-pace/"
+                >
+                  <LinkedinOutlined />
+                </a>
+                <a
+                  className="about-social-icons"
+                  href="https://github.com/hari-pace"
+                >
+                  <GithubOutlined />
+                </a>
               </div>
             </div>
-            <div className="about-person-text">TEXT GOES HERE</div>
+            <div className="about-person-text">
+              <h3 className="about-person-title">Hari</h3>
+              <div>TEXT GOES HERE</div>
+            </div>
           </div>
         </div>
         <div className="about-container">
           <div className="about-person-container">
-            <div className="about-person-pic"></div>
-            <div className="about-person-text">TEXT GOES HERE</div>
+            <div className="about-person-pic">
+              <div>
+                <img
+                  className="about-img"
+                  src="https://www.aquasabi.de/media/image/product/19046/md/back-to-nature-river-stone.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="about-socials">
+                <p className="about-socials-text">Find me here: </p>
+                <a
+                  className="about-social-icons"
+                  href="https://www.linkedin.com/in/hari-pace/"
+                >
+                  <LinkedinOutlined />
+                </a>
+                <a
+                  className="about-social-icons"
+                  href="https://github.com/hari-pace"
+                >
+                  <GithubOutlined />
+                </a>
+              </div>
+            </div>
+            <div className="about-person-text">
+              <h3 className="about-person-title">Stoneman</h3>
+              <div>TEXT GOES HERE</div>
+            </div>
           </div>
         </div>
         <div className="about-container">
           <div className="about-person-container">
-            <div className="about-person-pic">PHOTO GOES HERE</div>
-            <div className="about-person-text">TEXT GOES HERE</div>
+            <div className="about-person-pic">
+              <div>
+                <img
+                  className="about-img"
+                  src="https://thumbs.dreamstime.com/z/man-watermelon-head-man-watermelon-head-minimal-concept-107767608.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="about-socials">
+                <p className="about-socials-text">Find me here: </p>
+                <a
+                  className="about-social-icons"
+                  href="https://www.linkedin.com/in/hari-pace/"
+                >
+                  <LinkedinOutlined />
+                </a>
+                <a
+                  className="about-social-icons"
+                  href="https://github.com/hari-pace"
+                >
+                  <GithubOutlined />
+                </a>
+              </div>
+            </div>
+            <div className="about-person-text">
+              <h3 className="about-person-title">Lazyman</h3>
+              <div>TEXT GOES HERE</div>
+            </div>
           </div>
         </div>
         <div className="about-container">
           <div className="about-person-container">
-            <div className="about-person-pic">PHOTO GOES HERE</div>
-            <div className="about-person-text">TEXT GOES HERE</div>
+            <div className="about-person-pic">
+              <div>
+                <img
+                  className="about-img"
+                  src="https://i.redd.it/6zp2o12uk7x61.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="about-socials">
+                <p className="about-socials-text">Find me here: </p>
+                <a
+                  className="about-social-icons"
+                  href="https://www.linkedin.com/in/hari-pace/"
+                >
+                  <LinkedinOutlined />
+                </a>
+                <a
+                  className="about-social-icons"
+                  href="https://github.com/hari-pace"
+                >
+                  <GithubOutlined />
+                </a>
+              </div>
+            </div>
+            <div className="about-person-text">
+              <h3 className="about-person-title">Crazyman</h3>
+              <div>TEXT GOES HERE</div>
+            </div>
           </div>
         </div>
       </div>
