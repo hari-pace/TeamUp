@@ -156,6 +156,9 @@ font-size: 1.2rem;
   :where(.css-3mqfnx).ant-switch .ant-switch-inner {
   font-size: 1.2rem;
   }
+  :where(.css-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+font-size: 1.2rem;
+  }
 /* End of Switch fontsize */
 
 .events-find-event  {
