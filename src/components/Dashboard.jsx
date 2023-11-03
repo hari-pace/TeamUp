@@ -29,6 +29,8 @@ const contentStyle = {
   lineHeight: "16rem",
   textAlign: "center",
   background: "var(--secondary)",
+  color: "var(--tertiary)",
+  fontFamily: "var(--secondary)",
 };
 
 const { Meta } = Card;

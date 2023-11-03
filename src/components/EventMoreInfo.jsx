@@ -12,6 +12,7 @@ import {
   DislikeOutlined,
   EnvironmentOutlined,
   DoubleRightOutlined,
+  CommentOutlined,
 } from "@ant-design/icons";
 import { Card, List, Button, Modal, Space } from "antd";
 import { useParams, Link } from "react-router-dom";
@@ -23,6 +24,10 @@ import { ReactBingmaps } from "react-bingmaps";
 import Spinner from "./Spinner";
 
 const EventMoreInfo = () => {
+  const [eventComments, setEventComments] = useState([]);
+  const [eventNewComment, setEventNewComment] = useState();
+  const [eventNewReply, setEventNewReply] = useState();
+  const [commentID, setCommentID] = useState();
   const [users, setUsers] = useState([]);
   const [attendees, setAttendees] = useState([]);
   const [interestedUsers, setInterestedUsers] = useState([]);
@@ -31,6 +36,8 @@ const EventMoreInfo = () => {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [loading, setLoading] = useState(true);
+  const [commentPopup, setCommentPopup] = useState(false);
+  const [replyPopup, setReplyPopup] = useState(false);
 
   const { id } = useParams();
   const { token } = useContext(AuthContext);
@@ -41,17 +48,18 @@ const EventMoreInfo = () => {
   const fetchData = async () => {
     const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
     const data = await res.json();
-    // console.log(data);
+    console.log(data.eventComment);
     setEventInfo(data);
     setEventID(data._id);
     setLatitude(data.location?.LatLng?.lat);
     setLongitude(data.location?.LatLng?.lon);
     setAttendees(data.usersAttending);
     setInterestedUsers(data.usersInterested);
+    setEventComments(data.eventComment);
   };
 
   // console.log(eventInfo);
-  // console.log(decodedToken);
+  console.log(token);
   // console.log(attendees);
   // console.log(interestedUsers);
 
@@ -187,6 +195,80 @@ const EventMoreInfo = () => {
     }
   };
 
+  const sendComment = () => {
+    setIsModal6Open(false);
+    setCommentPopup(false);
+    sendCommentPost(eventID);
+  };
+  const sendReply = (commentID) => {
+    setIsModal7Open(false);
+    setCommentID(commentID);
+    sendReplyPost(eventID, commentID);
+  };
+
+  const sendCommentPost = async (id) => {
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/${id}/comment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            eventComment: [
+              {
+                content: eventNewComment,
+              },
+            ],
+          }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("new comment added successfully");
+        alert("Your comment has been successfully added!");
+        navigate(-1);
+      } else {
+        console.error("Failed to add comment");
+      }
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+  const sendReplyPost = async (id, commentID) => {
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/${id}/comment/${commentID}/replies`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            replies: [
+              {
+                content: eventNewReply,
+              },
+            ],
+          }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("new reply added successfully");
+        alert("Your reply has been successfully added!");
+        navigate(-1);
+      } else {
+        console.error("Failed to add reply");
+      }
+    } catch (error) {
+      console.error("Error adding reply:", error);
+    }
+  };
+
   const fetchUsers = async () => {
     const response = await fetch(
       "https://teamup-service.onrender.com/user/users",
@@ -213,8 +295,8 @@ const EventMoreInfo = () => {
     }, 3000);
     fetchUsers();
     fetchData();
+
     return () => clearTimeout(timer);
-    // setFetchMapToggle(true);
   }, []);
 
   const data = attendees;
@@ -230,22 +312,12 @@ const EventMoreInfo = () => {
     minute: "2-digit",
   });
 
-  // const formattedTime = inputTime?.toLocaleDateString("en-GB", {
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  // });
-
-  // console.log(formattedTime);
-
   const checkForAttendeeMatch = attendees.filter(
     (attendee) => attendee.username === decodedToken?.name
   );
   const checkForLikeMatch = interestedUsers.filter(
     (interestedUser) => interestedUser === decodedToken?._id
   );
-
-  // console.log(checkForAttendeeMatch);
-  // console.log(interestedUsers[0]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -275,7 +347,7 @@ const EventMoreInfo = () => {
           : "",
       });
       console.log(attendees);
-      // console.log(eventID);
+
       handleUpdateAttending(eventID);
     }
   };
@@ -323,6 +395,25 @@ const EventMoreInfo = () => {
   };
   const handleCancel5 = () => {
     setIsModal5Open(false);
+  };
+  const [isModal6Open, setIsModal6Open] = useState(false);
+  const showModal6 = () => {
+    setIsModal6Open(true);
+  };
+  const handleOk6 = () => {
+    setCommentPopup(true);
+  };
+  const handleCancel6 = () => {
+    setIsModal6Open(false);
+    setCommentPopup(false);
+  };
+  const [isModal7Open, setIsModal7Open] = useState(false);
+  const showModal7 = () => {
+    setIsModal7Open(true);
+  };
+
+  const handleCancel7 = () => {
+    setIsModal7Open(false);
   };
 
   const bingMapKey =
@@ -478,6 +569,92 @@ const EventMoreInfo = () => {
                     : "page4-btn-wrapper-hidden"
                 }
               >
+                <Button
+                  className="page4-block-btn"
+                  type="primary"
+                  onClick={showModal6}
+                >
+                  <div>
+                    <CommentOutlined />
+                    <span className="event-info-buttons">
+                      Go to event comments
+                    </span>
+                  </div>
+                </Button>
+                <Modal
+                  className="event-comments-modal"
+                  centered
+                  title="Comments for this event"
+                  open={isModal6Open}
+                  onOk={!commentPopup ? handleOk6 : sendComment}
+                  onCancel={handleCancel6}
+                  okText="Add comment"
+                >
+                  <div className="event-comments">
+                    {eventComments.length > 0
+                      ? eventComments.map(
+                          (comment) =>
+                            comment.content && (
+                              <div className="event-individual-comment">
+                                <div className="event-individual-comment-text">
+                                  {comment.content}
+                                </div>
+                                <div className="event-individual-comment-date">
+                                  on{" "}
+                                  {new Date(
+                                    comment.timestamp
+                                  ).toLocaleDateString("de-DE", {
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                    day: "numeric",
+                                    month: "numeric",
+                                    year: "numeric",
+                                  })}
+                                </div>
+                                <button onClick={showModal7}>
+                                  Reply to this comment
+                                </button>
+                                <Modal
+                                  title="Write your reply"
+                                  open={isModal7Open}
+                                  onOk={() => sendReply(comment._id)}
+                                  onCancel={handleCancel7}
+                                >
+                                  <textarea
+                                    onChange={(e) =>
+                                      setEventNewReply(e.target.value)
+                                    }
+                                    name="add-reply"
+                                    id="add-reply"
+                                    width="100%"
+                                    cols="50"
+                                    rows="5"
+                                  ></textarea>
+                                </Modal>
+                              </div>
+                            )
+                        )
+                      : "There aren't any comments yet"}
+                  </div>
+                  <div className="event-add-new">
+                    {commentPopup ? (
+                      <>
+                        <div className="event-add-new-comment-heading">
+                          Please write your comment below:
+                        </div>
+
+                        <textarea
+                          onChange={(e) => setEventNewComment(e.target.value)}
+                          name="add-comment"
+                          id="add-comment"
+                          width="100%"
+                          cols="50"
+                          rows="10"
+                        ></textarea>
+                      </>
+                    ) : null}
+                  </div>
+                </Modal>
                 <Button
                   className="page4-block-btn"
                   type="primary"

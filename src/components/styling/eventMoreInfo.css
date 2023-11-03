@@ -172,6 +172,20 @@
   margin-left: 2%;
 }
 
+.event-individual-comment {
+  margin-bottom: 5%;
+}
+
+.event-individual-comment-text {
+  font-size: 1.2rem;
+}
+.event-individual-comment-date {
+  font-size: 1rem;
+}
+
+.event-comments-modal {
+}
+
 @media screen and (max-width: 800px) {
   .page4-container {
     flex-direction: column;
