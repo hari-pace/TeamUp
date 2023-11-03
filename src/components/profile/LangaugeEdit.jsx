@@ -145,7 +145,7 @@ htmlFor="languagesSpoken"
   </Select>
   </FormItem>
 
-    {error ? <h4 className="errorH">{error}</h4> : null}
+    {error ? <h4 className="errorH">{error} </h4> : null}
     <Button 
       type="primary"
       className="editConfirmButtons"

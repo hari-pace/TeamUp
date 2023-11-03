@@ -319,7 +319,7 @@ console.log(singleUser?.userInfo?.userImage)
             {showSportsEdit ?
             <> 
             <SportsEdit id = {singleUser?._id} initialSports = {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => sport + `, `
+              (sport) => `${sport} `
             )} setSports = {setSportsEdit} /> 
             <Button danger type="primary" onClick={() => setSportsEdit(false)}>
             Close X
@@ -332,7 +332,7 @@ console.log(singleUser?.userInfo?.userImage)
               Edit
               </Button> : null}
             {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => sport + `, `
+              (sport) => `${sport} `
             )}
           </p>
           </>
@@ -344,7 +344,7 @@ console.log(singleUser?.userInfo?.userImage)
             {showLanguageEdit ?
             <> 
             <LanguageEdit id = {singleUser?._id} initialLanguages ={singleUser?.userInfo?.languagesSpoken.map(
-                (language) => language[singleUser?.userInfo?.languagesSpoken.length - 1] ? language : language + `, `
+                (language) => language
               )}  setLanguageEdit = {setLanguageEdit} /> 
             <Button danger type="primary" onClick={() => setLanguageEdit(false)}>
             Close X
@@ -357,7 +357,7 @@ console.log(singleUser?.userInfo?.userImage)
               Edit
               </Button> : null}
               {singleUser?.userInfo?.languagesSpoken.map(
-                (language) => language[singleUser?.userInfo?.languagesSpoken.length - 1] ? language : language + `, `
+                (language) => `${language} `
               )}
             </p>
             </>

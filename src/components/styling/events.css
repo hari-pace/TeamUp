@@ -88,35 +88,77 @@
   margin-top: 7%;
 }
 
-.ant-switch-inner:where(
+/* .ant-switch-inner:where(
     .css-dev-only-do-not-override-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
-}
+} */
 
-.ant-switch-inner:where(
+/* .ant-switch-inner:where(
     .css-dev-only-do-not-override-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
-}
+} */
 
-.ant-switch-inner:where(
+/* .ant-switch-inner:where(
     .css-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
-}
+} */
 
-.ant-switch-inner:where(
+/* .ant-switch-inner-checked, .ant-switch.inner.unchecked {
+  font-size: 5rem;
+} */
+
+/* .ant-switch-inner:where(
     .css-3mqfnx
   ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
+} */
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+font-size: 1.2rem;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-.events-find-event {
+/* :where(.css-dev-only-do-not-override-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  } */
+
+/* Switch fontsize */
+  :where(.css-dev-only-do-not-override-3mqfnx).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+font-size: 1.2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-switch .ant-switch-inner {
+font-size: 1.2rem;
+}
+
+:where(.css-3mqfnx).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  :where(.css-3mqfnx).ant-switch .ant-switch-inner {
+  font-size: 1.2rem;
+  }
+/* End of Switch fontsize */
+
+.events-find-event  {
   min-height: 48px;
   min-width: 300px;
   font-size: 1rem;
