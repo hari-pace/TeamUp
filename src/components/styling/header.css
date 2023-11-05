@@ -1,48 +1,50 @@
 /* header styling */
 @media screen and (max-width: 800px) {
-    .logo {
-        font-size: 1.5rem !important;
+    .logo.logo {
+        font-size: 1.5rem;
         margin-bottom: 5%;
     }
-    .loginButtons {
-        font-size: 1rem !important;
-        margin: 10px 10px !important;
+    .loginButtons.loginButtons {
+        font-size: 1rem;
+        margin: 10px 10px;
     }
-    .logoutButtons {
-        font-size: 1rem !important;
-        margin: 0px !important;
+    .logoutButtons.logoutButtons {
+        font-size: 1rem;
+        margin: 0px;
     }
     
-    .header {
+    .header.header {
         flex-direction: column;
         align-items: center;
-        margin-left: 0px !important;
+        margin-left: 0px;
     }
-    .headerRight {
-        padding: 0px !important;
+    .headerRight.headerRight {
+        padding: 0px;
     }
-    .greeting {
-        font-size: 1rem !important;
+    .greeting.greeting {
+        font-size: 1rem;
     }
     .greeting h2 {
         margin: 0px;
     }
     
-    .animateGreeting {
-        font-size: 1rem !important;
+    .animateGreeting.animateGreeting {
+        font-size: 1rem;
     }
     .animateGreeting h2 {
         padding: 0px;
         margin: 0px;
     }
-    .avatarMini {
-        width: 75px;
-        height: 75px;
+    .avatarMini.avatarMini {
+        width: 100px;
+        height: 150px;
     }
     .divider {
    display: block;
     }
-
+.profileWholeContainer.profileWholeContainer {
+    padding: 0 0 5% 0;
+    }
     }
     
     .header {
@@ -135,7 +137,7 @@
           border-width: 5px;
           border-color: var(--secondary);
           width: 150px;
-          height: 150px;
+          height: 200px;
           /* padding: 35% 25%; */
           /* margin-right: 50%; */
           /* background-color: var(--secondary); */

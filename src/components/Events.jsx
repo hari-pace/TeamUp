@@ -255,21 +255,24 @@ const Events = () => {
                 <Radio className="events-modal-text" value={"Stuttgart"}>
                   Stuttgart
                 </Radio>
-                <Radio className="events-modal-text" value={"Düsseldorf"}>
-                  Düsseldorf
+                <Radio className="events-modal-text" value={"Dresden"}>
+                  Dresden
                 </Radio>
-                <Radio
-                  className="events-modal-text"
-                  value={"Frankfurt am Main"}
-                >
+                <Radio className="events-modal-text" value={"Frankfurt am Main"}>
                   Frankfurt am Main
-                </Radio>
+                  </Radio>
                 <Radio className="events-modal-text" value={"Cologne"}>
                   Cologne
-                </Radio>
-                <Radio className="events-modal-text" value={"Essen"}>
-                  Essen
-                </Radio>
+                  </Radio>
+                <Radio className="events-modal-text" value={"Nuremberg"}>
+                  Nuremberg
+                  </Radio>
+                <Radio className="events-modal-text" value={"Hannover"}>
+                  Hannover
+                  </Radio>
+                <Radio className="events-modal-text" value={"Bremen"}>
+                  Bremen
+                  </Radio>
               </Space>
             </Radio.Group>
           </Modal>

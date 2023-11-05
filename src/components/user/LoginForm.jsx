@@ -104,14 +104,6 @@ export default function LoginForm() {
       />
     </Form.Item>
     {error ? <h4 className="errorH">{error}</h4> : null}
-    <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-          <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item> 
 
     <Form.Item
       wrapperCol={{

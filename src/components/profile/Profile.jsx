@@ -106,8 +106,8 @@ console.log(singleUser?.userInfo?.userImage)
       <div className="profileWholeContainer">
         {loading ? <Spinner /> : (
           <>
-        {showdelete ? (
-          <h1 style={{textDecoration: "none", color: "red"}}>User has been deleted</h1>
+        {showdelete ?
+          (<h1 style={{textDecoration: "none", color: "red"}}>User has been deleted</h1>
         ) : (
           <>
         {loggedout ? <Navigate to="/" /> : null}
