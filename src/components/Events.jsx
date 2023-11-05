@@ -562,7 +562,13 @@ const Events = () => {
           >
             <div className="page3-btn-wrapper">
               <Button className="page2-block-btn" type="primary" block>
-                Create an event
+                <PlusOutlined />
+                <span
+                  className="event-info-buttons"
+                  id="dashboard-button-create"
+                >
+                  Create an event
+                </span>
               </Button>
             </div>
           </Link>

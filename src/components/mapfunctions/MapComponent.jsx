@@ -84,7 +84,7 @@ const MapComponent = ({ selectedLocation, onLocationSelected }) => {
               Selected Location: <br />
               Latitude: {selectedLocation.lat} <br />
               Longitude: {selectedLocation.lng} <br />
-              <button onClick={handleSendLocation}>Send Location</button>
+              {/* <button onClick={handleSendLocation}>Send Location</button> */}
             </Popup>
           </Marker>
         )}

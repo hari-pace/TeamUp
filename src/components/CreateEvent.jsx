@@ -39,6 +39,7 @@ const normFile = (e) => {
 
 const CreateEvent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [eventAddress, setEventAddress] = useState(null);
   const [error, setError] = useState(null);
   const [eventTitle, setEventTitle] = useState();
   const [eventSportType, setEventSportType] = useState([]);
@@ -93,8 +94,8 @@ const CreateEvent = () => {
     maxCapacity: eventMaximumPlayers,
     location: {
       LatLng: {
-        latitude: 10,
-        longitude: 10,
+        lat: selectedLocation?.lat,
+        lon: selectedLocation?.lng,
       },
       address: {
         city: eventCity,
@@ -152,6 +153,7 @@ const CreateEvent = () => {
   const handleLocationSelected = (location) => {
     // Send the location data via a POST request or handle it as needed
     console.log("Location selected:", location);
+    setEventAddress(null);
     setSelectedLocation(location);
     // Example: Send a POST request using Axios
     // axios.post('YOUR_API_ENDPOINT', location)
@@ -167,9 +169,11 @@ const CreateEvent = () => {
     // Handle the selected address logic here
     console.log("Selected address:", address);
     setSelectedLocation(address);
+    setEventAddress(address.userAddress);
   };
 
   // console.log(selectedLocation.lat, selectedLocation.lng);
+  // console.log(selectedLocation);
 
   return (
     <>
@@ -414,14 +418,21 @@ const CreateEvent = () => {
                 </Form>
               </Form.Item> */}
               <h3 className="page5-subheadings">Event location</h3>
-              {/* <div>
+              <div className="page5-map-container">
                 <SearchBar onAddressSelect={handleAddressSelect} />
                 <MapComponent
                   selectedLocation={selectedLocation}
                   onLocationSelected={handleLocationSelected}
                 />
-              </div> */}
-              <Form.Item
+              </div>
+
+              {eventAddress ? (
+                <div className="page5-event-address">
+                  This event will take place at: <div>{eventAddress}</div>
+                </div>
+              ) : null}
+
+              {/* <Form.Item
                 label="* Street number"
                 rules={[
                   {
@@ -459,7 +470,7 @@ const CreateEvent = () => {
                   onChange={(e) => setEventCity(e.target.value)}
                   value={eventCity}
                 />
-              </Form.Item>
+              </Form.Item> */}
               {/* <Form.Item
                 label="* Postcode"
                 rules={[
