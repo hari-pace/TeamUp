@@ -45,17 +45,17 @@
     padding: 0px !important;
     }
     :where(.css-qgg3xn).ant-rate {
-        padding: 0px !important;
-        }
+    padding: 0px !important;
+    }
     .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-body {
-        padding: 5px 5px !important;
+    padding: 5px 5px !important;
     }
     .profileCards:where(.css-qgg3xn).ant-card .ant-card-body {
-        padding: 5px 5px !important;
+    padding: 5px 5px !important;
     }
     .avatarCard {
     width: 30px !important;
-    height: 30px !important;
+    height: 50px !important;
     }
     .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap !important;
@@ -219,9 +219,9 @@ padding: 0px;
 
 .avatarCard {
     width: 60px;
-    height: 60px;
+    height: 80px;
     margin: 0px;
-    padding: 0px;
+    padding-top: 0px;
     border-radius: 50%;
 }
 
@@ -236,11 +236,11 @@ padding: 0px;
 }
 
 .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-body {
-    padding: 24px 5px;
+    padding: 14px 18px;
 }
 
 .profileCards:where(.css-qgg3xn).ant-card .ant-card-body {
-    padding: 24px 5px;
+    padding: 14px 18px;
 }
 
 .eventsJoinedCon {
@@ -275,4 +275,12 @@ padding: 0px;
 
 .rateCloseButton :where(.css-dev-only-do-not-override-qgg3xn).ant-btn {
 width: 0%;
+}
+
+:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-head {
+padding: 0px 3px;
+}
+
+:where(.css-qgg3xn).ant-card .ant-card-head {
+padding: 0px 3px;
 }

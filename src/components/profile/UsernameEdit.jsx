@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Form, Input, Button, Popconfirm } from "antd";
 import { AuthContext } from "../../context/authContext";
+import FormItem from 'antd/es/form/FormItem/index.js';
 
 export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit, setLoggedOut} ) {
   const { token, logout } = useContext(AuthContext);
@@ -51,6 +52,7 @@ const confirm = () =>
 new Promise((resolve) => {
 setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
 });
+console.log(username);
     return (
         <>
         <Form
@@ -70,9 +72,9 @@ setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
         }}
         autoComplete="off"
         >
-        <Form.Item
+        <FormItem
       label="Username"
-      name="username"
+      htmlFor="username"
       rules= {[
         {
           required: true,
@@ -85,7 +87,7 @@ setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
       onChange={(e) => setUsername(e.target.value)}
       value={username}
       />
-    </Form.Item>
+    </FormItem>
     {error ? <h4 className="errorH">{error}</h4> : null}
 
     <Popconfirm

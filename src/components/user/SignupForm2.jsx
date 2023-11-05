@@ -7,7 +7,8 @@ import {
   Select, 
   Space,
   Radio,
-  Upload
+  Upload,
+  Checkbox
 } from 'antd';
 import FormItem from 'antd/es/form/FormItem/index.js';
 import axios from "axios";
@@ -24,7 +25,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 export default function SignupForm2 () {
-    // const [form] = Form.useForm();
+    const [componentDisabled, setComponentDisabled] = useState(true);
     const [languagesSpoken, setLanguage] = useState([])
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
@@ -92,10 +93,38 @@ export default function SignupForm2 () {
         };
     return (
         <>
+    <h4>Are you over 18?</h4>
+    <Radio.Group
+        className="ageAuth"
+        rules={[
+          {
+          required: true,
+          message: 'Please confirm!',
+          },
+          ]}
+          warnings="Please confirm!"
+    >
+      <Radio
+    onChange={() => setComponentDisabled(false)}
+    unchecked="true"
+    value="Yes"
+    >
+    Yes
+    </Radio>
+    <Radio
+    checked="true"
+    onChange={() => setComponentDisabled(true)}
+    value="No"
+    >
+    No
+    </Radio>
+      </Radio.Group>
+
     <Form
     onFinish={handleSubmit}
     // form={form}
     name="basic"
+    disabled={componentDisabled}
     labelCol={{
       span: 8,
     }}
