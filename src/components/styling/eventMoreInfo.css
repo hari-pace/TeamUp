@@ -35,6 +35,9 @@
   padding-left: 10%;
   margin-left: 10%;
   border-radius: 20px;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  padding-bottom: 2%;
 }
 
 .page4-heading {
@@ -70,8 +73,14 @@
 
 #page-4-description {
   height: 10rem;
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   padding-top: 2%;
+}
+
+.page-4-description-text {
+  margin-top: 3%;
 }
 
 .page4-spaces-fields {
@@ -183,7 +192,13 @@
   font-size: 1rem;
 }
 
-.event-comments-modal {
+.event-add-new-comment-heading {
+  font-size: 1.2rem;
+  padding-bottom: 1%;
+}
+
+.event-comments-none-yet {
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -207,7 +222,8 @@
 
   .page4-right-column {
     width: 65%;
-    margin: none;
+    margin-top: 5%;
+    margin-bottom: 5%;
     padding: none;
   }
   .page4-btn-wrapper {

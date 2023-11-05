@@ -71,7 +71,7 @@ const EventMoreInfo = () => {
   };
 
   // console.log(eventInfo);
-  console.log(token);
+  // console.log(token);
   // console.log(attendees);
   // console.log(interestedUsers);
 
@@ -102,8 +102,6 @@ const EventMoreInfo = () => {
   };
 
   const handleUpdateAttending = async (id) => {
-    // console.log(id);
-    // console.log(attendees);
     try {
       const response = await fetch(
         `https://teamup-service.onrender.com/event/attend?id=${id}`,
@@ -141,7 +139,6 @@ const EventMoreInfo = () => {
           body: JSON.stringify({ usersAttending: attendees }),
         }
       );
-      console.log(response.status);
       const result = await response.json();
       console.log(result);
       if (response.ok) {
@@ -358,7 +355,6 @@ const EventMoreInfo = () => {
           ? oneUser[0]?.userInfo?.userImage
           : "",
       });
-      console.log(attendees);
 
       handleUpdateAttending(eventID);
     }
@@ -444,53 +440,49 @@ const EventMoreInfo = () => {
     },
   ];
 
-// Chooses sport background according to which type of sport the event is
-const sportFunction = () => {
-if (eventInfo?.sportType[0] == "Swimming") {
-return Swimming
-} else if (eventInfo?.sportType[0] == "Basketball") {
-return Basketball
-} else if (eventInfo?.sportType[0] == "Cycling") {
-return Cycling
-} else if (eventInfo?.sportType[0] == "Football") {
-return Football
-} else if (eventInfo?.sportType[0] == "Volleyball") {
-return Volleyball
-} else if (eventInfo?.sportType[0] == "Yoga") {
-return Yoga
-} else if (eventInfo?.sportType[0] == "Tennis") {
-return Tennis
-} else if (eventInfo?.sportType[0] == "Handball") {
-return Handball
-} else if (eventInfo?.sportType[0] == "Cricket") {
-return Cricket
-} else if (eventInfo?.sportType[0] == "Fitness") {
-return Fitness
-} else if (eventInfo?.sportType[0] == "Ski") {
-return Skiing
-} else {
-return null
-}
-}
+  // Chooses sport background according to which type of sport the event is
+  const sportFunction = () => {
+    if (eventInfo?.sportType[0] == "Swimming") {
+      return Swimming;
+    } else if (eventInfo?.sportType[0] == "Basketball") {
+      return Basketball;
+    } else if (eventInfo?.sportType[0] == "Cycling") {
+      return Cycling;
+    } else if (eventInfo?.sportType[0] == "Football") {
+      return Football;
+    } else if (eventInfo?.sportType[0] == "Volleyball") {
+      return Volleyball;
+    } else if (eventInfo?.sportType[0] == "Yoga") {
+      return Yoga;
+    } else if (eventInfo?.sportType[0] == "Tennis") {
+      return Tennis;
+    } else if (eventInfo?.sportType[0] == "Handball") {
+      return Handball;
+    } else if (eventInfo?.sportType[0] == "Cricket") {
+      return Cricket;
+    } else if (eventInfo?.sportType[0] == "Fitness") {
+      return Fitness;
+    } else if (eventInfo?.sportType[0] == "Ski") {
+      return Skiing;
+    } else {
+      return null;
+    }
+  };
 
   return (
     <>
-
-<ParallaxBanner
-                className="events-heroDiv"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    </div>
-                    ),
-                    },
-                    {image: sportFunction(), speed: 20 },
-                      ]}
-                      >
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: <div className=""></div>,
+          },
+          { image: sportFunction(), speed: 20 },
+        ]}
+      >
         <h1> Event Information</h1>
-</ParallaxBanner>
+      </ParallaxBanner>
 
       {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Event information</h1>
@@ -555,9 +547,9 @@ return null
               </div>
               <h3 className="page4-input-fields" id="page-4-description">
                 Description:
-                <span className="event-info-buttons">
+                <div className="page-4-description-text">
                   {eventInfo?.eventDescription}
-                </span>
+                </div>
               </h3>
               <div className="page4-spaces-fields-container">
                 <h3 className="page4-spaces-fields">
@@ -649,50 +641,55 @@ return null
                   okText="Add comment"
                 >
                   <div className="event-comments">
-                    {eventComments.length > 0
-                      ? eventComments.map(
-                          (comment) =>
-                            comment.content && (
-                              <div className="event-individual-comment">
-                                <div className="event-individual-comment-text">
-                                  {comment.content}
-                                </div>
-                                <div className="event-individual-comment-date">
-                                  on{" "}
-                                  {new Date(
-                                    comment.timestamp
-                                  ).toLocaleDateString("de-DE", {
+                    {eventComments.length > 0 ? (
+                      eventComments.map(
+                        (comment) =>
+                          comment.content && (
+                            <div className="event-individual-comment">
+                              <div className="event-individual-comment-text">
+                                {comment.content}
+                              </div>
+                              <div className="event-individual-comment-date">
+                                on{" "}
+                                {new Date(comment.timestamp).toLocaleDateString(
+                                  "de-DE",
+                                  {
                                     hour: "numeric",
                                     minute: "numeric",
                                     day: "numeric",
                                     month: "numeric",
                                     year: "numeric",
-                                  })}
-                                </div>
-                                <button onClick={showModal7}>
-                                  Reply to this comment
-                                </button>
-                                <Modal
-                                  title="Write your reply"
-                                  open={isModal7Open}
-                                  onOk={() => sendReply(comment._id)}
-                                  onCancel={handleCancel7}
-                                >
-                                  <textarea
-                                    onChange={(e) =>
-                                      setEventNewReply(e.target.value)
-                                    }
-                                    name="add-reply"
-                                    id="add-reply"
-                                    width="100%"
-                                    cols="50"
-                                    rows="5"
-                                  ></textarea>
-                                </Modal>
+                                  }
+                                )}
                               </div>
-                            )
-                        )
-                      : "There aren't any comments yet"}
+                              <button onClick={showModal7}>
+                                Reply to this comment
+                              </button>
+                              <Modal
+                                title="Write your reply"
+                                open={isModal7Open}
+                                onOk={() => sendReply(comment._id)}
+                                onCancel={handleCancel7}
+                              >
+                                <textarea
+                                  onChange={(e) =>
+                                    setEventNewReply(e.target.value)
+                                  }
+                                  name="add-reply"
+                                  id="add-reply"
+                                  width="100%"
+                                  cols="50"
+                                  rows="5"
+                                ></textarea>
+                              </Modal>
+                            </div>
+                          )
+                      )
+                    ) : (
+                      <div className="event-comments-none-yet">
+                        There aren't any comments yet
+                      </div>
+                    )}
                   </div>
                   <div className="event-add-new">
                     {commentPopup ? (
