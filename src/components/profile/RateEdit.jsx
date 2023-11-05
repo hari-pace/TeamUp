@@ -50,6 +50,7 @@ export default function RateEdit({id, setRate}) {
           });
         }, 6000);
       };
+      const desc = ['terrible person', 'bad sportsmanship', 'team-player', 'amazing positive attitude', 'a role model for all'];
 console.log(id)
     return (
         <>
@@ -62,11 +63,16 @@ console.log(id)
     <h3>User Rating</h3>
     </label>
     <br />
+    <span>
     <Rate
     allowHalf
     value={rating}
     onChange={(newValue) => setUserRating(newValue)}
-    className="rating" />
+    className="rating" 
+    tooltips={desc}
+    />
+    {rating ? <span className="ant-rate-text">{desc[rating - 1]}</span> : ''}
+    </span>
     <Button 
     type="primary"
     className="editConfirmButtons" 
