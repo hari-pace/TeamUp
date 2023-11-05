@@ -181,23 +181,22 @@ const Events = () => {
 
   return (
     <>
-
-<ParallaxBanner
-                className="events-heroDiv"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    <h1 className="events-h1">Find your event</h1>
-                    </div>
-                    ),
-                    },
-                    { image: Cycling, speed: 20 },
-                      ]}
-                      >
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: (
+              <div className="">
+                <h1 className="events-h1">Find your event</h1>
+              </div>
+            ),
+          },
+          { image: Cycling, speed: 20 },
+        ]}
+      >
         <h1> Find your event</h1>
-</ParallaxBanner>
+      </ParallaxBanner>
 
       {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Find your event</h1>
@@ -563,7 +562,13 @@ const Events = () => {
           >
             <div className="page3-btn-wrapper">
               <Button className="page2-block-btn" type="primary" block>
-                Create an event
+                <PlusOutlined />
+                <span
+                  className="event-info-buttons"
+                  id="dashboard-button-create"
+                >
+                  Create an event
+                </span>
               </Button>
             </div>
           </Link>

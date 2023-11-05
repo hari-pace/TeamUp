@@ -41,6 +41,7 @@
 .page5-left-column {
   width: 15%;
   margin-left: 5%;
+  margin-top: 1%;
 }
 
 .page5-images {
@@ -60,6 +61,11 @@
 
 .create-map-container {
   height: 400px;
+}
+
+.page5-event-address {
+  font-size: 1.4rem;
+  margin-top: 4%;
 }
 
 @media screen and (max-width: 800px) {
