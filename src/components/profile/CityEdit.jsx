@@ -65,6 +65,7 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
 <FormItem
 label="City"
 htmlFor="city"
+defaultValue={initialCity}
 >
 <Radio.Group onChange={(e) => setBasedCity(e.target.value)} value={city}>
               <Space direction="vertical">
@@ -72,12 +73,12 @@ htmlFor="city"
                 <Radio value={"Munich"}>Munich</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
-                <Radio value={"Düsseldorf"}>Düsseldorf</Radio>
+                <Radio value={"Dresden"}>Dresden</Radio>
                 <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
                 <Radio value={"Cologne"}>Cologne</Radio>
-                <Radio value={"Essen"}>Essen</Radio>
+                <Radio value={"Nuremberg"}>Nuremberg</Radio>
                 <Radio value={"Hannover"}>Hannover</Radio>
-                <Radio value={"Dortmund"}>Dortmund</Radio>
+                <Radio value={"Bremen"}>Bremen</Radio>
               </Space>
             </Radio.Group>
   </FormItem>

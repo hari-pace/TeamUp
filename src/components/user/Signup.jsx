@@ -21,6 +21,7 @@ export default function Signup() {
     };
     const handleCancel = () => {
       console.log('Clicked cancel button');
+      
       setRegOpen(false);
     };
 

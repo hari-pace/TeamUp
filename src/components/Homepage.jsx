@@ -16,6 +16,9 @@ import Hero2 from "../assets/hero2.png"
 import "./styling/homepage.css"
 import VolleyballVid from "../assets/VolleyballVid.mp4"
 import Team from "../assets/team.png"
+import Register from "../assets/register.png"
+import Search from "../assets/search.png"
+import Fun from "../assets/fun.png"
 
 export default function Homepage() {
     const contentStyle = {
@@ -59,9 +62,18 @@ export default function Homepage() {
             <div className="howContainer">
             <h2>How it works</h2>
                 <div className="stepsContainer">
-                    <div className="steps"><h3>1. Register <br/>an account</h3></div>
-                    <div className="steps"><h3>2. Look for <br/>or create<br/> a sport event</h3></div>
-                    <div className="steps"><h3>3. Attend <br/>the event<br/> and have fun!</h3></div>
+                    <div className="steps">
+                        <h3>1. Register </h3> 
+                        <img className="stepsIcons" src={Register} alt="register" /> 
+                        </div>
+                    <div className="steps">
+                        <h3>2. Look for <br/>or create<br/> a sport event</h3>
+                        <img className="stepsIcons" src={Search} alt="search" />
+                        </div>
+                    <div className="steps">
+                        <h3>3. Attend <br/> and have fun!</h3>
+                        <img className="stepsIcons" src={Fun} alt="fun" />
+                    </div>
                 </div>
          </div>
     <div className="typeOfSportContainer">

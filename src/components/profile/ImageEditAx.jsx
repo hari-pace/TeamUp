@@ -13,11 +13,11 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-export default function PictureUpload({id, setLoggedOut}) {
+export default function PictureUpload({initialImage, id, setLoggedOut}) {
   const [form] = Form.useForm(); // Create a form instance
   const { token, logout } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(initialImage);
   const [error, setError] = useState(false);
   const [loadings, setLoadings] = useState([])
 
@@ -61,6 +61,8 @@ const confirm = () =>
 new Promise((resolve) => {
 setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
 });
+
+console.log(decodedToken?.image)
   return (
     <Form
       form={form}
@@ -81,12 +83,10 @@ setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
           onChange={handleImageChange}
           beforeUpload={() => false} // Prevent default behavior of the Ant Design Upload component
         >
-          {image ? null : (
-            <div>
+              <div>
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
-          )}
         </Upload>
       </Form.Item>
 

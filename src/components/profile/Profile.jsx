@@ -313,7 +313,7 @@ console.log(singleUser?.userInfo?.userImage)
             <br />
             {showCity ?
             <> 
-            <CityEdit id = {singleUser?._id} initialCity ={singleUser?.userInfo?.city}  setCity = {setCity} /> 
+            <CityEdit id = {singleUser?._id} initialCity ={singleUser?.userInfo?.location.city}  setCity = {setCity} /> 
             <Button danger type="primary" onClick={() => setCity(false)}>
             Close X
             </Button>
