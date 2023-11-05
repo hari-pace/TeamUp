@@ -38,14 +38,14 @@
   margin-bottom: 1%;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
   background-color: #536ce8;
   color: white;
 }
-:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
