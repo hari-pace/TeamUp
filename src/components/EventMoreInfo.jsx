@@ -443,9 +443,36 @@ const EventMoreInfo = () => {
       option: { color: "red" },
     },
   ];
-const sportArray = [Skiing, Fitness, Cricket, Handball, Tennis, Yoga, Volleyball, Football, Cycling, Basketball, Swimming]
-// const randomIndex = Math.floor(Math.random() * 11)
-const sportImage = sportArray[4]
+
+// Chooses sport background according to which type of sport the event is
+const sportFunction = () => {
+if (eventInfo?.sportType[0] == "Swimming") {
+return Swimming
+} else if (eventInfo?.sportType[0] == "Basketball") {
+return Basketball
+} else if (eventInfo?.sportType[0] == "Cycling") {
+return Cycling
+} else if (eventInfo?.sportType[0] == "Football") {
+return Football
+} else if (eventInfo?.sportType[0] == "Volleyball") {
+return Volleyball
+} else if (eventInfo?.sportType[0] == "Yoga") {
+return Yoga
+} else if (eventInfo?.sportType[0] == "Tennis") {
+return Tennis
+} else if (eventInfo?.sportType[0] == "Handball") {
+return Handball
+} else if (eventInfo?.sportType[0] == "Cricket") {
+return Cricket
+} else if (eventInfo?.sportType[0] == "Fitness") {
+return Fitness
+} else if (eventInfo?.sportType[0] == "Ski") {
+return Skiing
+} else {
+return null
+}
+}
+
   return (
     <>
 
@@ -456,11 +483,10 @@ const sportImage = sportArray[4]
                     speed: -30,
                     children: (
                     <div className="">
-                    <h1 className="events-h1">Event Information</h1>
                     </div>
                     ),
                     },
-                    {image: sportImage, speed: 20 },
+                    {image: sportFunction(), speed: 20 },
                       ]}
                       >
         <h1> Event Information</h1>
