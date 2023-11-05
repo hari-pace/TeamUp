@@ -135,11 +135,14 @@ console.log(singleUser?.userInfo?.userImage)
             </>
             )}
            {auth ? (
+            <>
             <Rate
             allowHalf
             disabled
             value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
-            />) : (
+            />
+            <p>Total: {singleUser?.userInfo?.userRating?.length} ratings</p>
+            </>) : (
             <>
             {showRate ? (
             <>
@@ -154,6 +157,7 @@ console.log(singleUser?.userInfo?.userImage)
              </>)
              : (
               <>
+
               <Rate
               allowHalf
               allowQuarter
@@ -161,6 +165,7 @@ console.log(singleUser?.userInfo?.userImage)
               className="rateButton"
               value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
               />
+              <p>Total: {singleUser?.userInfo?.userRating?.length} ratings</p>
               <Button onClick={() => setRate(true)}>Rate</Button>
               </>
              )}
