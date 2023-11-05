@@ -89,21 +89,21 @@
 }
 
 /* .ant-switch-inner:where(
-    .css-dev-only-do-not-override-3mqfnx
+    .css-dev-only-do-not-override-qgg3xn
   ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
 } */
 
 /* .ant-switch-inner:where(
-    .css-dev-only-do-not-override-3mqfnx
+    .css-dev-only-do-not-override-qgg3xn
   ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
 } */
 
 /* .ant-switch-inner:where(
-    .css-3mqfnx
+    .css-qgg3xn
   ).ant-switch.ant-switch-inner.ant-switch-inner-unchecked {
   font-size: 1.2rem;
   padding-top: 1.5%;
@@ -114,20 +114,20 @@
 } */
 
 /* .ant-switch-inner:where(
-    .css-3mqfnx
+    .css-qgg3xn
   ).ant-switch.ant-switch-inner.ant-switch-inner-checked {
   font-size: 1.2rem;
   padding-top: 3.5%;
 } */
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
 font-size: 1.2rem;
 display: flex;
 justify-content: center;
 align-items: center;
 }
 
-/* :where(.css-dev-only-do-not-override-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+/* :where(.css-dev-only-do-not-override-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
@@ -135,28 +135,28 @@ align-items: center;
   } */
 
 /* Switch fontsize */
-  :where(.css-dev-only-do-not-override-3mqfnx).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+  :where(.css-dev-only-do-not-override-qgg3xn).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
 font-size: 1.2rem;
 display: flex;
 justify-content: center;
 align-items: center;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-switch .ant-switch-inner {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-switch .ant-switch-inner {
 font-size: 1.2rem;
 }
 
-:where(.css-3mqfnx).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+:where(.css-qgg3xn).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   }
   
-  :where(.css-3mqfnx).ant-switch .ant-switch-inner {
+  :where(.css-qgg3xn).ant-switch .ant-switch-inner {
   font-size: 1.2rem;
   }
-  :where(.css-3mqfnx).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+  :where(.css-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
 font-size: 1.2rem;
   }
 /* End of Switch fontsize */
@@ -195,14 +195,14 @@ font-size: 1.2rem;
   min-height: 75px;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   background-color: #536ce8;
   color: white;
   max-width: 500px;
 }
-:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   background-color: #536ce8;

@@ -148,27 +148,27 @@
       }
     
       /* ant buttons */
-    :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+    :where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-background-ghost {
         color: var(--tertiary);
         border-color: var(--tertiary);
         margin: 0 10px;
 
     }
     
-    :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+    :where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
       color: var(--secondary);
       border-color: var(--secondary);
       -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
       box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
     }
     
-    :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost {
+    :where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost {
       color: var(--tertiary);
       border-color: var(--tertiary);
       margin: 0 10px;
     }
     
-    :where(.css-3mqfnx).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
+    :where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
     color: var(--secondary);
     border-color: var(--secondary);
     -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 

@@ -1,43 +1,43 @@
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-content {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
     
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-title {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
     background-color: var(--primary);
 }
 
-:where(.css-3mqfnx).ant-modal .ant-modal-content {
+:where(.css-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
     
-:where(.css-3mqfnx).ant-modal .ant-modal-title {
+:where(.css-qgg3xn).ant-modal .ant-modal-title {
     background-color: var(--primary);
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-title {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
 }
 
-:where(.css-3mqfnx).ant-modal .ant-modal-title {
+:where(.css-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-form-item .ant-form-item-label >label {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
 font-size: 1.2rem;
 }
 
-:where(.css-3mqfnx).ant-form-item .ant-form-item-label >label {
+:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
     font-size: 1.2rem;
     }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-form-item .ant-form-item-explain-error {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-explain-error {
 font-weight: 900;
 background-color: rgba(0, 0, 0, 0.514);
 border-radius: 5px;
 margin-bottom: 30px;
 }
 
-:where(.css-3mqfnx).ant-form-item .ant-form-item-explain-error {
+:where(.css-qgg3xn).ant-form-item .ant-form-item-explain-error {
     font-weight: 900;
     background-color: rgba(0, 0, 0, 0.514);
     border-radius: 5px;
