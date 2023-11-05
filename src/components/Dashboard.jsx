@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Space, Carousel, Card, Col, Row, Avatar } from "antd";
 import {
-  PlusOutlined,
+  SearchOutlined,
   EllipsisOutlined,
-  CheckOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
 import Football from "../assets/football.jpg";
 import Basketball from "../assets/basketball.jpg";
@@ -147,18 +147,24 @@ const Dashboard = () => {
         <Link to="/events">
           <div className="page2-btn-wrapper">
             <Button className="page2-block-btn" type="primary" block>
-              Find an event
+              <SearchOutlined />
+              <span className="event-info-buttons" id="dashboard-button-find">
+                Find an event
+              </span>
             </Button>
           </div>
         </Link>
         <Link to="/events/create">
           <div className="page2-btn-wrapper">
             <Button className="page2-block-btn" type="primary" block>
-              Create an event
+              <PlusOutlined />
+              <span className="event-info-buttons" id="dashboard-button-create">
+                Create an event
+              </span>
             </Button>
           </div>
         </Link>
-        <div className="2-my-events">
+        <div className="page2-my-events">
           <div className="page2-subheading">Your upcoming events</div>
           <Carousel className="page2-carousel">
             {futureAttendedEvents.length > 0 ? (
@@ -183,6 +189,11 @@ const Dashboard = () => {
                       })}{" "}
                     </h3>
                   </Link>
+                  <img
+                    alt="example"
+                    src={imageOptions[AttendedEvent?.sportType[0]]}
+                    className="dashboard-carousel-img"
+                  />
                 </div>
               ))
             ) : (
@@ -197,7 +208,7 @@ const Dashboard = () => {
             )}
           </Carousel>
         </div>
-        <div className="2-my-events">
+        <div className="page2-my-events">
           <div className="page2-subheading">Your liked events</div>
           <Carousel className="page2-carousel">
             {futureLikedEvents.length > 0 ? (
@@ -220,6 +231,11 @@ const Dashboard = () => {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}{" "}
+                      <img
+                        alt="example"
+                        src={imageOptions[likedEvent?.sportType[0]]}
+                        className="dashboard-carousel-img"
+                      />
                     </h3>
                   </Link>
                 </div>

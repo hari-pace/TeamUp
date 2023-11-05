@@ -22,7 +22,14 @@ const SearchBar = ({ onAddressSelect, onLocationSelected }) => {
       </label>
       <div style={{ margin: "1% 0" }}>
         <input
-          style={{ height: "20px", width: "300px" }}
+          style={{
+            height: "25px",
+            width: "80%",
+            marginTop: "10px",
+            marginBottom: "5px",
+            border: "none",
+            paddingLeft: "2%",
+          }}
           type="text"
           placeholder="Enter location"
           value={query}
@@ -30,7 +37,7 @@ const SearchBar = ({ onAddressSelect, onLocationSelected }) => {
         />
         <button
           onClick={handleSearch}
-          style={{ height: "26px", width: "100px" }}
+          style={{ height: "29px", width: "100px", marginBottom: "5px" }}
         >
           Set location
         </button>

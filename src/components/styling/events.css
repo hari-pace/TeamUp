@@ -120,11 +120,13 @@
   padding-top: 3.5%;
 } */
 
-:where(.css-dev-only-do-not-override-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
-font-size: 1.2rem;
-display: flex;
-justify-content: center;
-align-items: center;
+:where(.css-dev-only-do-not-override-qgg3xn).ant-switch.ant-switch-checked
+  .ant-switch-inner
+  .ant-switch-inner-checked {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* :where(.css-dev-only-do-not-override-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
@@ -135,15 +137,17 @@ align-items: center;
   } */
 
 /* Switch fontsize */
-  :where(.css-dev-only-do-not-override-qgg3xn).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
-font-size: 1.2rem;
-display: flex;
-justify-content: center;
-align-items: center;
+:where(.css-dev-only-do-not-override-qgg3xn).ant-switch
+  .ant-switch-inner
+  .ant-switch-inner-unchecked {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :where(.css-dev-only-do-not-override-qgg3xn).ant-switch .ant-switch-inner {
-font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 :where(.css-qgg3xn).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
@@ -151,17 +155,19 @@ font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  
-  :where(.css-qgg3xn).ant-switch .ant-switch-inner {
+}
+
+:where(.css-qgg3xn).ant-switch .ant-switch-inner {
   font-size: 1.2rem;
-  }
-  :where(.css-qgg3xn).ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
-font-size: 1.2rem;
-  }
+}
+:where(.css-qgg3xn).ant-switch.ant-switch-checked
+  .ant-switch-inner
+  .ant-switch-inner-checked {
+  font-size: 1.2rem;
+}
 /* End of Switch fontsize */
 
-.events-find-event  {
+.events-find-event {
   min-height: 48px;
   min-width: 300px;
   font-size: 1rem;
@@ -265,5 +271,9 @@ font-size: 1.2rem;
 
   .events-filter {
     display: flex;
+  }
+
+  .events-pagination {
+    height: 50px;
   }
 }
