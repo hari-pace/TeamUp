@@ -1,29 +1,46 @@
 .events-heroDiv {
   height: 400px;
-  background-color: var(--secondary);
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: luminosity;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0px 1%;
-  border-radius: 30px;
+  /* margin: 0 1%; */
+  /* margin: 0 1%; */
+  /* border-radius: 30px; */
 }
 
 .events-heroBanner {
-  border-radius: 30px;
+  /* border-radius: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.events-heroDiv h1 {
+.events-text-hero {
   position: absolute;
   color: var(--tertiary);
-  background-color: #8298c67a;
-  padding: 5% 0%;
+  /* background-color: #8298c67a; */
+  background-color:rgba(233, 231, 219, 0.55);
   width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.events-vid-hero {
+  position: absolute;
+  color: var(--tertiary);
+  /* background-color: #8298c67a; */
+  background-color:rgba(233, 231, 219, 0.55);
+  width: 100%;
+  height: 400px;
+  border-radius: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -33,7 +50,7 @@
   width: 100%;
   z-index: -1;
   overflow: hidden;
-  border-radius: 500px;
+  /* border-radius: 500px; */
 }
 
 /* Style the video element within the container */
@@ -233,6 +250,11 @@ font-size: 1.2rem;
 
 @media screen and (max-width: 800px) {
   .events-heroDiv {
+    height: 250px;
+    max-width: 500px;
+    margin: 0px;
+  }
+  .events-heroDiv h1 {
     height: 250px;
     max-width: 500px;
     margin: 0 auto;

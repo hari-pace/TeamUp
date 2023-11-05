@@ -489,7 +489,7 @@ return null
                     {image: sportFunction(), speed: 20 },
                       ]}
                       >
-        <h1> Event Information</h1>
+        <h1 className="events-text-hero"> Event Information</h1>
 </ParallaxBanner>
 
       {/* <div className="events-heroDiv">

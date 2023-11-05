@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   Button,
   Card,
@@ -189,14 +189,13 @@ const Events = () => {
                     speed: -30,
                     children: (
                     <div className="">
-                    <h1 className="events-h1">Find your event</h1>
                     </div>
                     ),
                     },
                     { image: Cycling, speed: 20 },
                       ]}
                       >
-        <h1> Find your event</h1>
+        <h1 className="events-text-hero"> Find your event</h1>
 </ParallaxBanner>
 
       {/* <div className="events-heroDiv">

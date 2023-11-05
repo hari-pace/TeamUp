@@ -4,10 +4,18 @@ import Football from "../assets/football.jpg"
 import Basketball from "../assets/basketball.jpg"
 import Swimming from "../assets/swimming.jpg"
 import Beachvolleyball from "../assets/beachvolleyball.jpg"
+import Cycling from "../assets/cycling2.jpg";
+import Yoga from "../assets/yoga2.jpg";
+import Tennis from "../assets/tennis3.jpg";
+import Handball from "../assets/handball1.jpg";
+import Cricket from "../assets/cricket2.jpg";
+import Fitness from "../assets/fitness1.jpg";
+import Skiing from "../assets/ski1.jpg";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Hero2 from "../assets/hero2.png"
 import "./styling/homepage.css"
 import VolleyballVid from "../assets/VolleyballVid.mp4"
+import Team from "../assets/team.png"
 
 export default function Homepage() {
     const contentStyle = {
@@ -19,7 +27,6 @@ export default function Homepage() {
       };
     return (
         <>
-
 <div className="video-container">
     <div className="heroDiv">
     <h1 className="text"> Welcome to TeamUp</h1>
@@ -31,29 +38,10 @@ export default function Homepage() {
     </video>
     </div>
     </div>
-
-        {/* <div className="heroDiv">
-            <ParallaxBanner
-                className="heroBanner"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    <h1 className="text">Welcome to TeamUp</h1>
-                    </div>
-                    ),
-                    },
-                    { image: Hero2, speed: 20 },
-                      ]}
-                      >
-        <h1> Welcome to TeamUp</h1>
-        </ParallaxBanner>
-        </div> */}
         <div className="whatIsCon">
         <h2>What is TeamUp?</h2>
         <div className="descriptionCon">
-            <p>When you moved to a new city, it can be hard to make new friends. We all have our own story, our own background and it's what makes us unique. 
+            <p>When you move to a new city, it can be hard to make new friends. We all have our own story, our own background and it's what makes us unique. 
                 <br />
                 However, no matter where you are, sport is what unites us. And that's why we created TeamUp. 
                 <br/>
@@ -65,6 +53,7 @@ export default function Homepage() {
                   <br/>
                   The perfect way to get outside and form new connections.  
                   </p>
+        <img src={Team} alt="team" className="teamImage" />
                 </div>
             </div>
             <div className="howContainer">
@@ -85,25 +74,89 @@ export default function Homepage() {
     <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle}  src={Football} />
+    <div className="carouselTitle">
     <h3>Football</h3>
+    </div>
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Basketball} />
     <h3>Basketball</h3>
+    <div className="carouselTitle">
+    </div>
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Beachvolleyball} />
+    <div className="carouselTitle">
     <h3>Beach Volleyball</h3>
+    </div>
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
     <img style={contentStyle} src={Swimming} />
+    <div className="carouselTitle">
     <h3>Swimming</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Cycling} />
+    <div className="carouselTitle">
+    <h3>Cycling</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Yoga} />
+    <div className="carouselTitle">
+    <h3>Yoga</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Tennis} />
+    <div className="carouselTitle">
+    <h3 className="carouselTitle">Tennis</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Handball} />
+    <div className="carouselTitle">
+    <h3>Handball</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Cricket} />
+    <div className="carouselTitle">
+    <h3>Cricket</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Fitness} />
+    <div className="carouselTitle">
+    <h3>Fitness</h3>
+    </div>
+    </div>
+    </Link>
+    <Link to="events">
+    <div className="carouselItem">
+    <img style={contentStyle} src={Skiing} />
+    <div className="carouselTitle">
+    <h3 >Skiing</h3>
+    </div>
     </div>
     </Link>
   </Carousel>
@@ -116,16 +169,16 @@ export default function Homepage() {
     dotHeight="30"
     >
     <div className="reviewItem">
-    <h3 style={contentStyle}>"These guys are great" - Tim</h3>
+    <h3 style={contentStyle}>"So easy now to play a game of B-ball" - Kate</h3>
     </div>
     <div className="reviewItem">
-    <h3 style={contentStyle}>"These guys are great"- Tim</h3>
+    <h3 style={contentStyle}>"Perfect for Handball"- Hari</h3>
     </div>
     <div className="reviewItem">
-    <h3 style={contentStyle}>"These guys are great" - Tim</h3>
+    <h3 style={contentStyle}>"Sport is the true panacea" - Dazbot</h3>
     </div>
     <div className="reviewItem">
-    <h3 style={contentStyle}>"These guys are great" - Tim</h3>
+    <h3 style={contentStyle}>"Perfect for organising cricket!" - Ehsan</h3>
     </div>
   </Carousel>
   </div>
