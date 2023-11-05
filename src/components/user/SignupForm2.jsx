@@ -62,11 +62,13 @@ export default function SignupForm2 () {
             const data = response.data;
             localStorage.setItem("token", data.token);
             login(data.token);
-          } else {
-            setError("An error occurred during signup.");
-          }
+        }
+          // } else {
+          //   setError("An error occurred during signup.");
+          // }
         } catch (error) {
-          console.log(error);
+          setError(error);
+          console.log(error)
         }
       };
 
@@ -157,7 +159,7 @@ export default function SignupForm2 () {
       value={username}
       />
     </Form.Item>
-    {error ? <h4 className="errorH">{error}</h4> : null}
+    {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null}
     <Form.Item 
     label="Bio"
     htmlFor="description"
@@ -291,12 +293,12 @@ value={city}
                 <Radio value={"Munich"}>Munich</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
-                <Radio value={"Düsseldorf"}>Düsseldorf</Radio>
+                <Radio value={"Dresden"}>Dresden</Radio>
                 <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
                 <Radio value={"Cologne"}>Cologne</Radio>
-                <Radio value={"Essen"}>Essen</Radio>
+                <Radio value={"Nuremberg"}>Nuremberg</Radio>
                 <Radio value={"Hannover"}>Hannover</Radio>
-                <Radio value={"Dortmund"}>Dortmund</Radio>
+                <Radio value={"Bremen"}>Bremen</Radio>
               </Space>
             </Radio.Group>
   </Form.Item>
@@ -333,6 +335,7 @@ value={city}
       htmlType="submit">
         Submit
       </Button>
+      {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null}
     </Form.Item>
       </Form>
         </>
