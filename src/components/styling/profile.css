@@ -6,10 +6,12 @@
     .profileContainer {
         padding: 0px !important;
     }
-
+    .profileWholeContainer.profileWholeContainer {
+        padding: 0 0 5% 0;
+        }
     .avatarProfile {
         width: 150px !important;
-        height: 150px !important;
+        height: 200px !important;
         border-width: 1px !important;
         margin: 0px !important;
     }

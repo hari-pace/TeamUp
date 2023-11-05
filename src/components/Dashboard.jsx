@@ -134,7 +134,7 @@ const Dashboard = () => {
       <div className="video-container">
         <div className="events-heroDiv">
           <video autoPlay loop muted src={Video720p} type="video/mp4"></video>
-          <h1 className="events-h1"> Dashboard</h1>
+          <h1 className="events-vid-hero">Dashboard</h1>
         </div>
       </div>
       <Space

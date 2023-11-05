@@ -1,21 +1,19 @@
 /* header styling */
 @media screen and (max-width: 800px) {
-    .logo.logo {
-        font-size: 1.5rem;
-        margin-bottom: 5%;
+    .logo {
+        font-size: 1.5rem !important;
+        margin-bottom: 5% !important;
     }
-    .loginButtons.loginButtons {
+    .loginButtons {
         font-size: 1rem;
-        margin: 10px 10px;
+        margin: 10px 10px !important;
     }
-    .logoutButtons.logoutButtons {
-        font-size: 1rem;
-        margin: 0px;
+    .logoutButtons {
+        font-size: 1rem !important;
+        margin: 10px 0px 10px 0px !important;
     }
-    
-    .header.header {
-        flex-direction: column;
-        align-items: center;
+    .header {
+        display: grid;
         margin-left: 0px;
     }
     .headerRight.headerRight {
@@ -25,28 +23,21 @@
         font-size: 1rem;
     }
     .greeting h2 {
-        margin: 0px;
+        margin-right: 20px !important;
     }
-    
     .animateGreeting.animateGreeting {
         font-size: 1rem;
     }
     .animateGreeting h2 {
         padding: 0px;
-        margin: 0px;
+        /* margin: 0px; */
+        margin-right: 20px !important;
     }
     .avatarMini.avatarMini {
         width: 100px;
         height: 150px;
     }
-    .divider {
-   display: block;
-    }
-.profileWholeContainer.profileWholeContainer {
-    padding: 0 0 5% 0;
-    }
-    }
-    
+}
     .header {
         -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
         box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);

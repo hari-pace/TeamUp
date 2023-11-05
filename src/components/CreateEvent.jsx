@@ -190,7 +190,7 @@ const CreateEvent = () => {
                     { image: Skiing, speed: 20 },
                       ]}
                       >
-        <h1> Create your event</h1>
+        <h1 className="events-text-hero"> Create your event</h1>
 </ParallaxBanner>
       <div className="page4-container">
         <div className="page5-left-column">

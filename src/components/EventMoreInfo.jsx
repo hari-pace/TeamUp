@@ -471,18 +471,22 @@ const EventMoreInfo = () => {
 
   return (
     <>
-      <ParallaxBanner
-        className="events-heroDiv"
-        layers={[
-          {
-            speed: -30,
-            children: <div className=""></div>,
-          },
-          { image: sportFunction(), speed: 20 },
-        ]}
-      >
-        <h1> Event Information</h1>
-      </ParallaxBanner>
+
+<ParallaxBanner
+                className="events-heroDiv"
+                layers={[
+                    {
+                    speed: -30,
+                    children: (
+                    <div className="">
+                    </div>
+                    ),
+                    },
+                    {image: sportFunction(), speed: 20 },
+                      ]}
+                      >
+        <h1 className="events-text-hero"> Event Information</h1>
+</ParallaxBanner>
 
       {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Event information</h1>
