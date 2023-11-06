@@ -200,6 +200,11 @@ const EventMoreInfo = () => {
     }
   };
 
+  const settingCommentForReply = (commentID) => {
+    setCommentID(commentID);
+    showModal7();
+  };
+
   const sendComment = () => {
     setIsModal6Open(false);
     setCommentPopup(false);
@@ -207,9 +212,7 @@ const EventMoreInfo = () => {
   };
   const sendReply = (commentID) => {
     setIsModal7Open(false);
-    console.log(commentID);
-    setCommentID(commentID);
-    // sendReplyPost(eventID, commentID);
+    sendReplyPost(eventID);
   };
 
   const sendCommentPost = async (id) => {
@@ -243,9 +246,9 @@ const EventMoreInfo = () => {
       console.error("Error adding comment:", error);
     }
   };
-  const sendReplyPost = async (id, commentID) => {
-    console.log(id);
-    console.log(commentID);
+  const sendReplyPost = async (id) => {
+    // console.log(id);
+    // console.log(commentID);
     try {
       const response = await fetch(
         `https://teamup-service.onrender.com/event/${id}/comment/${commentID}/replies`,
@@ -651,22 +654,53 @@ const EventMoreInfo = () => {
                               <div className="event-individual-comment-text">
                                 {comment.content}
                               </div>
-                              <div className="event-individual-comment-date">
-                                on{" "}
-                                {new Date(comment.timestamp).toLocaleDateString(
-                                  "de-DE",
-                                  {
+                              <div className="event-individual-comment-time-and-button">
+                                <div className="event-individual-comment-date">
+                                  on{" "}
+                                  {new Date(
+                                    comment?.timestamp
+                                  ).toLocaleDateString("de-DE", {
                                     hour: "numeric",
                                     minute: "numeric",
                                     day: "numeric",
                                     month: "numeric",
                                     year: "numeric",
+                                  })}
+                                </div>
+                                <button
+                                  className="event-individual-comment-button"
+                                  onClick={() =>
+                                    settingCommentForReply(comment?._id)
                                   }
-                                )}
+                                >
+                                  Reply to this comment
+                                </button>
                               </div>
-                              <button onClick={showModal7}>
-                                Reply to this comment
-                              </button>
+                              {comment?.replies.length > 0 && (
+                                <div className="event-individual-comment-reply-heading">
+                                  Replies to this comment:
+                                </div>
+                              )}
+                              {comment?.replies.length > 0 &&
+                                comment?.replies.map((reply, index) => (
+                                  <div key={index}>
+                                    <div className="event-individual-comment-reply-text">
+                                      {reply?.content}
+                                    </div>
+                                    <div className="event-individual-comment-reply-date">
+                                      on{" "}
+                                      {new Date(
+                                        reply?.timestamp
+                                      ).toLocaleDateString("de-DE", {
+                                        hour: "numeric",
+                                        minute: "numeric",
+                                        day: "numeric",
+                                        month: "numeric",
+                                        year: "numeric",
+                                      })}
+                                    </div>
+                                  </div>
+                                ))}
                               <Modal
                                 title="Write your reply"
                                 open={isModal7Open}
