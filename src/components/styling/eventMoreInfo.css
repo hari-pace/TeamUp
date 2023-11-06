@@ -214,6 +214,8 @@
 
 .event-individual-comment-button {
   font-size: 1rem;
+  width: 6rem;
+  height: 2rem;
 }
 
 .event-individual-comment-time-and-button {
@@ -234,6 +236,10 @@
 .event-individual-comment-reply-date {
   margin-left: 10%;
   font-size: 1rem;
+}
+
+.event-info-comment-buttons {
+  margin-left: 4%;
 }
 
 @media screen and (max-width: 800px) {
@@ -308,5 +314,15 @@
   .page4-organiser-container {
     /* margin-right: 5%; */
     padding-right: 5%;
+  }
+
+  .event-individual-comment-time-and-button {
+    display: flex;
+  }
+
+  .event-individual-comment-buttons {
+    display: flex;
+
+    flex-direction: column;
   }
 }
