@@ -40,6 +40,7 @@ const normFile = (e) => {
 const CreateEvent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [eventAddress, setEventAddress] = useState(null);
+  const [eventLocation, setEventLocation] = useState(null);
   const [error, setError] = useState(null);
   const [eventTitle, setEventTitle] = useState();
   const [eventSportType, setEventSportType] = useState([]);
@@ -94,14 +95,14 @@ const CreateEvent = () => {
     maxCapacity: eventMaximumPlayers,
     location: {
       LatLng: {
-        lat: selectedLocation?.lat,
-        lon: selectedLocation?.lng,
+        latitude: selectedLocation?.lat,
+        longitude: selectedLocation?.lng,
       },
-      address: {
-        city: eventCity,
-        street: eventStreet,
-        houseNumber: eventHouseNumber,
-      },
+      // address: {
+      //   city: eventCity,
+      //   street: eventStreet,
+      //   houseNumber: eventHouseNumber,
+      // },
       // eventPicture: eventPicture.fileList[0],
       // hashTags: [eventHashtags.hashtags],
     },
@@ -155,6 +156,7 @@ const CreateEvent = () => {
     console.log("Location selected:", location);
     setEventAddress(null);
     setSelectedLocation(location);
+    setEventLocation(location);
     // Example: Send a POST request using Axios
     // axios.post('YOUR_API_ENDPOINT', location)
     //   .then(response => {
@@ -168,6 +170,7 @@ const CreateEvent = () => {
   const handleAddressSelect = (address) => {
     // Handle the selected address logic here
     console.log("Selected address:", address);
+    setEventLocation(null);
     setSelectedLocation(address);
     setEventAddress(address.userAddress);
   };
@@ -177,21 +180,22 @@ const CreateEvent = () => {
 
   return (
     <>
-<ParallaxBanner
-                className="events-heroDiv"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    </div>
-                    ),
-                    },
-                    { image: Skiing, speed: 20 },
-                      ]}
-                      >
-        <h1 className="events-text-hero"> Create your event</h1>
-</ParallaxBanner>
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: (
+              <div className="">
+                <h1 className="events-h1">Create an event</h1>
+              </div>
+            ),
+          },
+          { image: Skiing, speed: 20 },
+        ]}
+      >
+        <h1> Create an event</h1>
+      </ParallaxBanner>
       <div className="page4-container">
         <div className="page5-left-column">
           <div className="page5-images">
@@ -431,6 +435,13 @@ const CreateEvent = () => {
                   This event will take place at: <div>{eventAddress}</div>
                 </div>
               ) : null}
+              {/* {eventLocation ? (
+                <div className="page5-event-address">
+                  This event will take place at:{" "}
+                  <div>Latitude: {eventLocation.lat}</div>
+                  <div>Longitude: {eventLocation.lng}</div>
+                </div>
+              ) : null} */}
 
               {/* <Form.Item
                 label="* Street number"
