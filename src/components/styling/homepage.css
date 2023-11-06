@@ -1,9 +1,6 @@
 /* homepage */
 @media screen and (max-width: 800px) {
-    .heroDiv {
-        /* margin-right: 25px !important; */
-    }
-    
+
 .heroDiv h1 {
     width: 100%;
 }
@@ -25,15 +22,16 @@
     }
     .steps {
         /* display: flex !important; */
-        margin: 5% 0%;
+        margin: 2% 0% !important;
         padding: 5% 10% !important;
+        width: 150px !important
         /* width: 100px;
         height: 100px; */
     }
     .steps h3 {
         margin: 0px;
         padding: 0px;
-        text-align: center;
+        text-align: start;
     }
     .steps img {
         width: 50px !important;
@@ -174,16 +172,20 @@ justify-content: space-evenly;
     align-items: center; */
     display: grid;
     grid-template-rows: 1fr 1fr;
-    align-items:center;
+    grid-template-columns: 1fr;
+    /* align-items:start; */
     justify-items: center;
     background-color: var(--secondary);
     border-radius: 20px;
+    margin: 0px 1%;
+    width: 350px;
 
     }
 
 .steps img {
     width: 100px;
     height: 150px;
+    align-self:flex-end;
 }
 
 .typeOfSportContainer {
@@ -214,16 +216,24 @@ justify-content: space-evenly;
     display: flex;
     justify-content: center !important;
     align-content: center !important;
+    width: 600px;
+    height: 400px; 
 }
 
 .carouselTitle {
-    position: absolute;
-    font-size: 3rem;
-    /* display: none; */
-    /* padding: 5px 20px; */
-    /* height: 400px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    font-size: 3rem;
+    background-color: var(--secondary);
     text-align: center;
+}
+
+.carouselTitle h3 {
+border-style: solid;
+padding: 30px 60px;
+border-width: 5px;
 }
 
 .reviewContainer {
