@@ -60,20 +60,16 @@ const EventMoreInfo = () => {
   const fetchData = async () => {
     const res = await fetch(`https://teamup-service.onrender.com/event/${id}`);
     const data = await res.json();
-    console.log(data.eventComment);
+    // console.log(data.eventComment);
+    console.log(data);
     setEventInfo(data);
     setEventID(data._id);
-    setLatitude(data.location?.LatLng?.lat);
-    setLongitude(data.location?.LatLng?.lon);
+    setLatitude(data.location?.LatLng?.latitude);
+    setLongitude(data.location?.LatLng?.longitude);
     setAttendees(data.usersAttending);
     setInterestedUsers(data.usersInterested);
     setEventComments(data.eventComment);
   };
-
-  // console.log(eventInfo);
-  // console.log(token);
-  // console.log(attendees);
-  // console.log(interestedUsers);
 
   const handleDelete = async (id) => {
     try {
@@ -211,8 +207,9 @@ const EventMoreInfo = () => {
   };
   const sendReply = (commentID) => {
     setIsModal7Open(false);
+    console.log(commentID);
     setCommentID(commentID);
-    sendReplyPost(eventID, commentID);
+    // sendReplyPost(eventID, commentID);
   };
 
   const sendCommentPost = async (id) => {
@@ -247,6 +244,8 @@ const EventMoreInfo = () => {
     }
   };
   const sendReplyPost = async (id, commentID) => {
+    console.log(id);
+    console.log(commentID);
     try {
       const response = await fetch(
         `https://teamup-service.onrender.com/event/${id}/comment/${commentID}/replies`,
@@ -471,22 +470,18 @@ const EventMoreInfo = () => {
 
   return (
     <>
-
-<ParallaxBanner
-                className="events-heroDiv"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    </div>
-                    ),
-                    },
-                    {image: sportFunction(), speed: 20 },
-                      ]}
-                      >
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: <div className=""></div>,
+          },
+          { image: sportFunction(), speed: 20 },
+        ]}
+      >
         <h1 className="events-text-hero"> Event Information</h1>
-</ParallaxBanner>
+      </ParallaxBanner>
 
       {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Event information</h1>
@@ -647,9 +642,12 @@ const EventMoreInfo = () => {
                   <div className="event-comments">
                     {eventComments.length > 0 ? (
                       eventComments.map(
-                        (comment) =>
+                        (comment, index) =>
                           comment.content && (
-                            <div className="event-individual-comment">
+                            <div
+                              key={index}
+                              className="event-individual-comment"
+                            >
                               <div className="event-individual-comment-text">
                                 {comment.content}
                               </div>
@@ -672,7 +670,7 @@ const EventMoreInfo = () => {
                               <Modal
                                 title="Write your reply"
                                 open={isModal7Open}
-                                onOk={() => sendReply(comment._id)}
+                                onOk={() => sendReply(comment?._id)}
                                 onCancel={handleCancel7}
                               >
                                 <textarea
