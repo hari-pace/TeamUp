@@ -85,90 +85,90 @@ export default function Homepage() {
     >
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle}  src={Football} />
     <div className="carouselTitle">
     <h3>Football</h3>
     </div>
+    <img style={contentStyle}  src={Football} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Basketball} />
+    <div className="carouselTitle">
     <h3>Basketball</h3>
-    <div className="carouselTitle">
     </div>
+    <img style={contentStyle} src={Basketball} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
+    <div className="carouselTitle">
+    <h3>Volleyball</h3>
+    </div>
     <img style={contentStyle} src={Beachvolleyball} />
-    <div className="carouselTitle">
-    <h3>Beach Volleyball</h3>
-    </div>
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Swimming} />
     <div className="carouselTitle">
     <h3>Swimming</h3>
     </div>
+    <img style={contentStyle} src={Swimming} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Cycling} />
     <div className="carouselTitle">
     <h3>Cycling</h3>
     </div>
+    <img style={contentStyle} src={Cycling} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Yoga} />
     <div className="carouselTitle">
     <h3>Yoga</h3>
     </div>
+    <img style={contentStyle} src={Yoga} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Tennis} />
     <div className="carouselTitle">
-    <h3 className="carouselTitle">Tennis</h3>
+    <h3>Tennis</h3>
     </div>
+    <img style={contentStyle} src={Tennis} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Handball} />
     <div className="carouselTitle">
     <h3>Handball</h3>
     </div>
+    <img style={contentStyle} src={Handball} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Cricket} />
     <div className="carouselTitle">
     <h3>Cricket</h3>
     </div>
+    <img style={contentStyle} src={Cricket} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Fitness} />
     <div className="carouselTitle">
     <h3>Fitness</h3>
     </div>
+    <img style={contentStyle} src={Fitness} />
     </div>
     </Link>
     <Link to="events">
     <div className="carouselItem">
-    <img style={contentStyle} src={Skiing} />
     <div className="carouselTitle">
-    <h3 >Skiing</h3>
+    <h3>Skiing</h3>
     </div>
+    <img style={contentStyle} src={Skiing} />
     </div>
     </Link>
   </Carousel>
