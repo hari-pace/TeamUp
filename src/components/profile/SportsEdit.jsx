@@ -41,9 +41,10 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
+            document.location.reload();
             return newLoadings;
           });
-        }, 6000);
+        }, 4000);
       };
     console.log(initialSports)
     return (

@@ -1,9 +1,9 @@
-import { useState, useContext } from 'react';
-import { Form, Input, Button, Space, Radio } from "antd";
+import { useState } from 'react';
+import { Form, Input, Button } from "antd";
 import FormItem from 'antd/es/form/FormItem/index.js';
 
-export default function UsernameEdit( { initialCity, id, setCity} ) {
-  const [city, setBasedCity] = useState(initialCity)
+export default function UsernameEdit( { initialCountry, id, setShowCountryEdit } ) {
+  const [country, setCountry] = useState(initialCountry)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
     const handleSubmit = async () => {
@@ -13,7 +13,7 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
         const response = await fetch(`https://teamup-service.onrender.com/user/edit/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userInfo: { location: { city } } }),
+          body: JSON.stringify({ userInfo: { location: { country } } }),
         });
     
         const data = await response.json();
@@ -37,7 +37,7 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
           setLoadings((prevLoadings) => {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
-            setCity(false);
+            setShowCountryEdit(false);
             document.location.reload();
             return newLoadings;
           });
@@ -62,26 +62,16 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
         }}
         autoComplete="off"
         >
-<FormItem
-label="City"
-htmlFor="city"
-defaultValue={initialCity}
->
-<Radio.Group onChange={(e) => setBasedCity(e.target.value)} value={city}>
-              <Space direction="vertical">
-              <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"Munich"}>Munich</Radio>
-                <Radio value={"Hamburg"}>Hamburg</Radio>
-                <Radio value={"Stuttgart"}>Stuttgart</Radio>
-                <Radio value={"Dresden"}>Dresden</Radio>
-                <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
-                <Radio value={"Cologne"}>Cologne</Radio>
-                <Radio value={"Nuremberg"}>Nuremberg</Radio>
-                <Radio value={"Hannover"}>Hannover</Radio>
-                <Radio value={"Bremen"}>Bremen</Radio>
-              </Space>
-            </Radio.Group>
-  </FormItem>
+        <FormItem
+      label="Country"
+      htmlFor="country"
+    >
+      <Input
+      type="text"
+      onChange={(e) => setCountry(e.target.value)}
+      value={country}
+      />
+    </FormItem>
     {error ? <h4 className="errorH">{error}</h4> : null}
     <Button 
       type="primary"
@@ -89,7 +79,7 @@ defaultValue={initialCity}
       loading={loadings[0]} 
       onClick={() => enterLoading(0)} 
       htmlType="submit">
-        Submit
+      Submit
       </Button>
     </Form>
         </>
