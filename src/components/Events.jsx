@@ -181,22 +181,18 @@ const Events = () => {
 
   return (
     <>
-
-<ParallaxBanner
-                className="events-heroDiv"
-                layers={[
-                    {
-                    speed: -30,
-                    children: (
-                    <div className="">
-                    </div>
-                    ),
-                    },
-                    { image: Cycling, speed: 20 },
-                      ]}
-                      >
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: <div className=""></div>,
+          },
+          { image: Cycling, speed: 20 },
+        ]}
+      >
         <h1 className="events-text-hero"> Find your event</h1>
-</ParallaxBanner>
+      </ParallaxBanner>
 
       {/* <div className="events-heroDiv">
         <h1 className="events-h1"> Find your event</h1>
@@ -258,21 +254,24 @@ const Events = () => {
                 <Radio className="events-modal-text" value={"Dresden"}>
                   Dresden
                 </Radio>
-                <Radio className="events-modal-text" value={"Frankfurt am Main"}>
+                <Radio
+                  className="events-modal-text"
+                  value={"Frankfurt am Main"}
+                >
                   Frankfurt am Main
-                  </Radio>
+                </Radio>
                 <Radio className="events-modal-text" value={"Cologne"}>
                   Cologne
-                  </Radio>
+                </Radio>
                 <Radio className="events-modal-text" value={"Nuremberg"}>
                   Nuremberg
-                  </Radio>
+                </Radio>
                 <Radio className="events-modal-text" value={"Hannover"}>
                   Hannover
-                  </Radio>
+                </Radio>
                 <Radio className="events-modal-text" value={"Bremen"}>
                   Bremen
-                  </Radio>
+                </Radio>
               </Space>
             </Radio.Group>
           </Modal>
@@ -372,6 +371,7 @@ const Events = () => {
                             alt="example"
                             src={imageOptions[event?.sportType[0]]}
                             className="events-card-cover"
+                            loading="lazy"
                           />
                         }
                         actions={[

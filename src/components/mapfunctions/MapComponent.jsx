@@ -8,6 +8,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
+import L from "leaflet";
 
 const MapComponent = ({ selectedLocation, onLocationSelected }) => {
   const [address, setAddress] = useState("");
@@ -62,11 +63,13 @@ const MapComponent = ({ selectedLocation, onLocationSelected }) => {
   //   console.log("Selected Location:", selectedLocation); // Log selectedLocation changes
   // }, [selectedLocation]);
 
-  // const customMarkerIcon = L.icon({
-  //   iconUrl:
-  //     "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png",
-  //   iconSize: [32, 32], // Adjust the size of the icon as needed
-  // });
+  const customMarkerIcon = L.icon({
+    iconUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Map_pin_icon.svg/800px-Map_pin_icon.svg.png",
+    iconSize: [32, 40],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+  });
 
   return (
     <div className="map-container" style={{ height: "400px", width: "100%" }}>
@@ -79,7 +82,10 @@ const MapComponent = ({ selectedLocation, onLocationSelected }) => {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <ClickHandler />
         {selectedLocation && (
-          <Marker position={[selectedLocation.lat, selectedLocation.lng]}>
+          <Marker
+            position={[selectedLocation.lat, selectedLocation.lng]}
+            icon={customMarkerIcon}
+          >
             <Popup>
               Selected Location: <br />
               Latitude: {selectedLocation.lat} <br />
