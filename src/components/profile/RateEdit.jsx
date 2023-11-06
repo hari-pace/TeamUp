@@ -48,7 +48,7 @@ export default function RateEdit({id, setRate}) {
             document.location.reload();
             return newLoadings;
           });
-        }, 6000);
+        }, 4000);
       };
       const desc = ['terrible person', 'bad sportsmanship', 'team-player', 'amazing positive attitude', 'a role model for all'];
 console.log(id)

@@ -43,7 +43,7 @@ export default function UsernameEdit( { initialDescription, id, setBio} ) {
             document.location.reload();
             return newLoadings;
           });
-        }, 6000);
+        }, 4000);
       };
     return (
         <>

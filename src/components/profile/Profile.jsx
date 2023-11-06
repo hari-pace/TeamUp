@@ -16,6 +16,7 @@ import Question from "../../assets/question.png"
 import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
 import ImageEditAx from "./ImageEditAx"
+import CountryEdit from "./CountryEdit.jsx"
 
 
 
@@ -31,10 +32,9 @@ export default function Profile() {
   const [showLanguageEdit, setLanguageEdit] = useState(false);
   const [editImage, setEditImage] = useState(false);
   const [showCity, setCity] = useState(false);
-  const [rating, setUserRating] = useState()
-  const [error, setError] = useState()
   const [showdelete, setShowDelete] = useState(false);
   const [showRate, setRate] = useState(false)
+  const [showCountry, setShowCountryEdit] = useState(false)
   const [loggedout, setLoggedOut] = useState(false)
 
   let extractedUsername = window.location.pathname;
@@ -333,13 +333,27 @@ console.log(singleUser?.userInfo?.userImage)
             </p>
             </>
             )}
-            <label>
-            <h3>From</h3>
-            </label>
-            <br />
+          <label>
+          <h3>Country of Origin</h3>
+          </label>
+          <br />
+          {showCountry ?
+          <> 
+            <CountryEdit id = {singleUser?._id} initialCountry ={singleUser?.userInfo?.location.country}  setShowCountryEdit = {setShowCountryEdit} /> 
+            <Button danger type="primary" onClick={() => setShowCountryEdit(false)}>
+            Close X
+            </Button>
+            </>
+            : (
+              <>
             <p className="infoItem">
+            {auth ? <Button onClick={() => setShowCountryEdit(true)}>
+              Edit
+              </Button> : null}
               {singleUser?.userInfo?.location?.country}
             </p>
+            </>
+            )}
           </div>
         </div>
         </>
