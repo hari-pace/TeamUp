@@ -40,6 +40,7 @@ const EventMoreInfo = () => {
   const [eventNewComment, setEventNewComment] = useState();
   const [eventNewReply, setEventNewReply] = useState();
   const [commentID, setCommentID] = useState();
+  const [replyID, setReplyID] = useState();
   const [users, setUsers] = useState([]);
   const [attendees, setAttendees] = useState([]);
   const [interestedUsers, setInterestedUsers] = useState([]);
@@ -204,6 +205,15 @@ const EventMoreInfo = () => {
     setCommentID(commentID);
     showModal7();
   };
+  const settingCommentForDeleteComment = (commentID) => {
+    setCommentID(commentID);
+    showModal8();
+  };
+  const settingCommentForDeleteReply = (commentID, replyID) => {
+    setCommentID(commentID);
+    setReplyID(replyID);
+    showModal9();
+  };
 
   const sendComment = () => {
     setIsModal6Open(false);
@@ -213,6 +223,14 @@ const EventMoreInfo = () => {
   const sendReply = (commentID) => {
     setIsModal7Open(false);
     sendReplyPost(eventID);
+  };
+  const deleteComment = (commentID) => {
+    setIsModal8Open(false);
+    handleDeleteComment(eventID);
+  };
+  const deleteReply = (commentID) => {
+    setIsModal9Open(false);
+    handleDeleteReply(eventID);
   };
 
   const sendCommentPost = async (id) => {
@@ -277,6 +295,58 @@ const EventMoreInfo = () => {
       }
     } catch (error) {
       console.error("Error adding reply:", error);
+    }
+  };
+  const handleDeleteReply = async (id) => {
+    // console.log(id);
+    // console.log(commentID);
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/${id}/comment/${commentID}/replies/${replyID}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("reply deleted successfully");
+        alert("Your reply has been successfully deleted!");
+        navigate(-1);
+      } else {
+        console.error("Failed to delete reply");
+      }
+    } catch (error) {
+      console.error("Error deleting reply:", error);
+    }
+  };
+  const handleDeleteComment = async (id) => {
+    // console.log(id);
+    // console.log(commentID);
+    try {
+      const response = await fetch(
+        `https://teamup-service.onrender.com/event/${id}/comment/${commentID}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("comment deleted successfully");
+        alert("Your comment has been successfully deleted!");
+        navigate(-1);
+      } else {
+        console.error("Failed to delete comment");
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
     }
   };
 
@@ -424,6 +494,22 @@ const EventMoreInfo = () => {
 
   const handleCancel7 = () => {
     setIsModal7Open(false);
+  };
+  const [isModal8Open, setIsModal8Open] = useState(false);
+  const showModal8 = () => {
+    setIsModal8Open(true);
+  };
+
+  const handleCancel8 = () => {
+    setIsModal8Open(false);
+  };
+  const [isModal9Open, setIsModal9Open] = useState(false);
+  const showModal9 = () => {
+    setIsModal9Open(true);
+  };
+
+  const handleCancel9 = () => {
+    setIsModal9Open(false);
   };
 
   const bingMapKey =
@@ -667,14 +753,36 @@ const EventMoreInfo = () => {
                                     year: "numeric",
                                   })}
                                 </div>
-                                <button
-                                  className="event-individual-comment-button"
-                                  onClick={() =>
-                                    settingCommentForReply(comment?._id)
-                                  }
-                                >
-                                  Reply to this comment
-                                </button>
+                                <div className="event-individual-comment-buttons">
+                                  <button
+                                    className={
+                                      comment?.userId === decodedToken?._id
+                                        ? "event-individual-comment-button"
+                                        : "page4-btn-wrapper-hidden"
+                                    }
+                                    onClick={() =>
+                                      settingCommentForDeleteComment(
+                                        comment?._id
+                                      )
+                                    }
+                                  >
+                                    <DeleteOutlined />
+                                    <span className="event-info-comment-buttons">
+                                      Delete
+                                    </span>
+                                  </button>
+                                  <button
+                                    className="event-individual-comment-button"
+                                    onClick={() =>
+                                      settingCommentForReply(comment?._id)
+                                    }
+                                  >
+                                    <CommentOutlined />
+                                    <span className="event-info-comment-buttons">
+                                      Reply
+                                    </span>
+                                  </button>
+                                </div>
                               </div>
                               {comment?.replies.length > 0 && (
                                 <div className="event-individual-comment-reply-heading">
@@ -687,20 +795,52 @@ const EventMoreInfo = () => {
                                     <div className="event-individual-comment-reply-text">
                                       {reply?.content}
                                     </div>
-                                    <div className="event-individual-comment-reply-date">
-                                      on{" "}
-                                      {new Date(
-                                        reply?.timestamp
-                                      ).toLocaleDateString("de-DE", {
-                                        hour: "numeric",
-                                        minute: "numeric",
-                                        day: "numeric",
-                                        month: "numeric",
-                                        year: "numeric",
-                                      })}
+                                    <div className="event-individual-comment-time-and-button">
+                                      <div className="event-individual-comment-reply-date">
+                                        on{" "}
+                                        {new Date(
+                                          reply?.timestamp
+                                        ).toLocaleDateString("de-DE", {
+                                          hour: "numeric",
+                                          minute: "numeric",
+                                          day: "numeric",
+                                          month: "numeric",
+                                          year: "numeric",
+                                        })}
+                                      </div>
+                                      <button
+                                        className={
+                                          reply?.userId === decodedToken?._id
+                                            ? "event-individual-comment-button"
+                                            : "page4-btn-wrapper-hidden"
+                                        }
+                                        onClick={() =>
+                                          settingCommentForDeleteReply(
+                                            comment?._id,
+                                            reply?._id
+                                          )
+                                        }
+                                      >
+                                        <DeleteOutlined />
+                                        <span className="event-info-comment-buttons">
+                                          Delete
+                                        </span>
+                                      </button>
+                                      <Modal
+                                        title="Are you sure you want to delete this reply?"
+                                        open={isModal9Open}
+                                        onOk={() => deleteReply(comment?._id)}
+                                        onCancel={handleCancel9}
+                                      ></Modal>
                                     </div>
                                   </div>
                                 ))}
+                              <Modal
+                                title="Are you sure you want to delete this comment?"
+                                open={isModal8Open}
+                                onOk={() => deleteComment(comment?._id)}
+                                onCancel={handleCancel8}
+                              ></Modal>
                               <Modal
                                 title="Write your reply"
                                 open={isModal7Open}
