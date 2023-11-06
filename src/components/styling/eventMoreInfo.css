@@ -124,6 +124,8 @@
 
 .page4-grid-cards {
   height: 100%;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .gridProfile-page4 {
@@ -183,10 +185,18 @@
 
 .event-individual-comment {
   margin-bottom: 5%;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  padding: 3%;
+  background: radial-gradient(
+    circle at 90% 90%,
+    var(--secondary),
+    var(--primary)
+  );
 }
 
 .event-individual-comment-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .event-individual-comment-date {
   font-size: 1rem;
@@ -195,10 +205,35 @@
 .event-add-new-comment-heading {
   font-size: 1.2rem;
   padding-bottom: 1%;
+  margin-top: 5%;
 }
 
 .event-comments-none-yet {
   font-size: 1.2rem;
+}
+
+.event-individual-comment-button {
+  font-size: 1rem;
+}
+
+.event-individual-comment-time-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-individual-comment-reply-heading {
+  margin-top: 2%;
+  margin-left: 10%;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.event-individual-comment-reply-text {
+  margin-left: 10%;
+  font-size: 1.3rem;
+}
+.event-individual-comment-reply-date {
+  margin-left: 10%;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 800px) {

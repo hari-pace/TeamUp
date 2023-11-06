@@ -1,185 +1,202 @@
 /* header styling */
 @media screen and (max-width: 800px) {
-    .logo {
-        font-size: 1.5rem !important;
-        margin-bottom: 5% !important;
-    }
-    .loginButtons {
-        font-size: 1rem;
-        margin: 10px 10px !important;
-    }
-    .logoutButtons {
-        font-size: 1rem !important;
-        margin: 10px 0px 10px 0px !important;
-    }
-    .header {
-        display: grid;
-        margin-left: 0px;
-    }
-    .headerRight.headerRight {
-        padding: 0px;
-    }
-    .greeting.greeting {
-        font-size: 1rem;
-    }
-    .greeting h2 {
-        margin-right: 20px !important;
-    }
-    .animateGreeting.animateGreeting {
-        font-size: 1rem;
-    }
-    .animateGreeting h2 {
-        padding: 0px;
-        /* margin: 0px; */
-        margin-right: 20px !important;
-    }
-    .avatarMini.avatarMini {
-        width: 100px;
-        height: 150px;
-    }
+  .logo {
+    font-size: 1.5rem !important;
+    margin-bottom: 5% !important;
+  }
+  .loginButtons {
+    font-size: 1rem;
+    margin: 10px 10px !important;
+  }
+  .logoutButtons {
+    font-size: 1rem !important;
+    margin: 10px 0px 10px 0px !important;
+  }
+  .header {
+    display: grid;
+    margin-left: 0px;
+  }
+  .headerRight.headerRight {
+    padding: 0px;
+  }
+  .greeting.greeting {
+    font-size: 1rem;
+  }
+  .greeting h2 {
+    margin-right: 20px !important;
+  }
+  .animateGreeting.animateGreeting {
+    font-size: 1rem;
+  }
+  .animateGreeting h2 {
+    padding: 0px;
+    /* margin: 0px; */
+    margin-right: 20px !important;
+  }
+  .avatarMini.avatarMini {
+    width: 100px;
+    height: 150px;
+  }
 }
-    .header {
-        -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
-        box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
-        width: 100%;
-        margin: 0px;
-    }
-    .headerDivider {
-        margin: 2% 0;
-        background-color: var(--secondary);
-    }
+.header {
+  -webkit-box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+  width: 100%;
+  margin: 0px;
+}
+.headerDivider {
+  margin: 2% 0;
+  background-color: var(--secondary);
+}
 
-    .logo {
-        background-color: var(--primary);
-        color: var(--tertiary);
-        font-family: var(--mainFont);
-        border-radius: 20px;
-        letter-spacing: 1px;
-        border-style: solid;
-        text-align: center;
-        font-size: 3rem;
-        padding: 20% 2%;
-        cursor: pointer;
-        margin-bottom: 20px;
-      }
-      
-      .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin: 10px 0px 40px 0px;
-      }
-      
-      .headerLeft {
-          display: flex;
-          margin-left: 20px;
-      }
-      
-      .headerRight {
-          display: flex;
-          padding: 0% 10%;
-          justify-content: space-around;
-      }
-      
-      .greeting {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        text-align: center;
-      }
-    
-      .animateGreeting {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        text-align: center;
-        animation-name: greetingRotate;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-    
-      .animateGreeting h2 {
-        padding: 0px;
-        margin: 0px;
-        border-radius: 20px;
-      }
-    
-      .greeting h2 {
-        padding: 0px;
-        margin: 0px;
-        border-radius: 20px;
-      }
-    
-      @keyframes greetingRotate {
-        0% {transform: rotate(0deg)}
-        12% {transform: rotate(45deg)}
-        25% {transform: rotate(0deg)}
-        38% {transform: rotate(-45deg)}
-        50% {transform: rotate(0deg)}
-      }
-    
-      .avatarMini {
-          border-radius: 50%;
-          margin: 0px 30px 10px 30px;
-          border-style: solid;
-          border-width: 5px;
-          border-color: var(--secondary);
-          width: 150px;
-          height: 200px;
-          /* padding: 35% 25%; */
-          /* margin-right: 50%; */
-          /* background-color: var(--secondary); */
-      }
-    
-      .loginSignup {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
-    
-      /* ant buttons */
-    :where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-background-ghost {
-        color: var(--tertiary);
-        border-color: var(--tertiary);
-        margin: 0 10px;
+.logo {
+  background-color: var(--primary);
+  color: var(--tertiary);
+  font-family: var(--mainFont);
+  border-radius: 20px;
+  letter-spacing: 1px;
+  border-style: solid;
+  text-align: center;
+  font-size: 3rem;
+  padding: 20% 2%;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 
-    }
-    
-    :where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
-      color: var(--secondary);
-      border-color: var(--secondary);
-      -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
-      box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
-    }
-    
-    :where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost {
-      color: var(--tertiary);
-      border-color: var(--tertiary);
-      margin: 0 10px;
-    }
-    
-    :where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover {
-    color: var(--secondary);
-    border-color: var(--secondary);
-    -webkit-box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34); 
-    box-shadow: 0px 14px 15px -5px rgba(0,0,0,0.34);
-    }
-    
-    .loginButtons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.25rem;
-        padding: 20px 20px;
-    }
-    
-    .logoutButtons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.25rem;
-        padding: 20px 20px;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px 40px 0px;
+}
+
+.headerLeft {
+  display: flex;
+  margin-left: 20px;
+}
+
+.headerRight {
+  display: flex;
+  padding: 0% 10%;
+  justify-content: space-around;
+}
+
+.greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.animateGreeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+  animation-name: greetingRotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.animateGreeting h2 {
+  padding: 0px;
+  margin: 0px;
+  border-radius: 20px;
+}
+
+.greeting h2 {
+  padding: 0px;
+  margin: 0px;
+  border-radius: 20px;
+}
+
+@keyframes greetingRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  38% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+.avatarMini {
+  border-radius: 50%;
+  margin: 0px 30px 10px 30px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: var(--secondary);
+  width: 150px;
+  height: 200px;
+  /* padding: 35% 25%; */
+  /* margin-right: 50%; */
+  /* background-color: var(--secondary); */
+}
+
+.loginSignup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ant buttons */
+:where(
+    .css-dev-only-do-not-override-qgg3xn
+  ).ant-btn-primary.ant-btn-background-ghost {
+  color: var(--tertiary);
+  border-color: var(--tertiary);
+  margin: 0 10px;
+}
+
+:where(
+    .css-dev-only-do-not-override-qgg3xn
+  ).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  -webkit-box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+}
+
+:where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost {
+  color: var(--tertiary);
+  border-color: var(--tertiary);
+  margin: 0 10px;
+}
+
+:where(.css-qgg3xn).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  -webkit-box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 14px 15px -5px rgba(0, 0, 0, 0.34);
+}
+
+.loginButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 20px 20px;
+}
+
+.logoutButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 20px 20px;
+}
