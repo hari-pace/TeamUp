@@ -72,10 +72,13 @@ const Dashboard = () => {
     (user) => user?.username === decodedToken?.name
   );
 
-  const usersSuggestedEvents = events.filter((event) =>
-    event?.location?.address?.city.includes(
-      oneUser[0]?.userInfo?.location?.city
-    )
+  // console.log(oneUser[0]);
+
+  const usersSuggestedEvents = events.filter(
+    (event) =>
+      event?.location?.address?.city.includes(
+        oneUser[0]?.userInfo?.location?.city
+      ) && event?.organizator?.username !== oneUser[0]?.username
   );
 
   const futureSuggestedEvents = usersSuggestedEvents.filter(

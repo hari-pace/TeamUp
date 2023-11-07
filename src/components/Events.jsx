@@ -554,6 +554,18 @@ const Events = () => {
                   ))}
             </div>
           )}
+          {toggleEventType && currentItemsFiltered.length === 0 && (
+            <div className="events-cards-no-events-available">
+              There are currently no events. If you are logged in, please feel
+              free to create an event using the button below
+            </div>
+          )}
+          {!toggleEventType && completedItemsFiltered.length === 0 && (
+            <div className="events-cards-no-events-available">
+              No past events to show
+            </div>
+          )}
+
           <div className="events-pagination">
             <Pagination
               defaultCurrent={1}
