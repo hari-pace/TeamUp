@@ -12,7 +12,7 @@ export default function LoginForm() {
   const [error, setError] = useState(null);
   const [loadings, setLoadings] = useState([]);
 
-  const { login } = useContext(AuthContext);
+  const { login, token } = useContext(AuthContext);
 
   const handleSubmit = async () => {
     // e.preventDefault(); ant has built-in prevent default
@@ -33,7 +33,9 @@ export default function LoginForm() {
     if (response.ok) {
       setTimeout(() => {
       localStorage.setItem("token", data.token);
-      login(data.token)}, 5000);
+      login(data.token)
+      setLoadings([false])
+    }, 5000);
     }
   };
   const enterLoading = (index) => {
@@ -42,6 +44,7 @@ export default function LoginForm() {
       newLoadings[index] = true;
       return newLoadings;
     });
+    if (token) {
     setTimeout(() => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
@@ -49,7 +52,8 @@ export default function LoginForm() {
         return newLoadings;
       });
     }, 6000);
-  };
+  }
+}
 
     return(
         <>

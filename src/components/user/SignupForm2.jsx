@@ -38,7 +38,7 @@ export default function SignupForm2 () {
     const [loadings, setLoadings] = useState([]);
     const [age, setAge] = useState(true)
 
-    const { login } = useContext(AuthContext);
+    const { token, login } = useContext(AuthContext);
 
     const handleSubmit = async () => {
         try {
@@ -62,14 +62,18 @@ export default function SignupForm2 () {
         });
         if (response.status >= 200 && response.status < 300) {
             const data = response.data;
+            setTimeout(() => {
             localStorage.setItem("token", data.token);
-            login(data.token);
+            login(data.token)
+            setLoadings([false])
+          }, 5000);
         }
           // } else {
           //   setError("An error occurred during signup.");
           // }
         } catch (error) {
           setError(error);
+          setLoadings([false])
           console.log(error)
         }
       };
@@ -80,6 +84,7 @@ export default function SignupForm2 () {
             newLoadings[index] = true;
             return newLoadings;
           });
+          if (token) {
           setTimeout(() => {
             setLoadings((prevLoadings) => {
               const newLoadings = [...prevLoadings];
@@ -87,7 +92,10 @@ export default function SignupForm2 () {
               return newLoadings;
             });
           }, 6000);
+          }
         };
+      
+
         const handleImageChange = (info) => {
           if (info?.fileList.length > 0) {
             setImage(info.file);
