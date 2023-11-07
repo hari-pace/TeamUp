@@ -73,7 +73,10 @@ export default function Profile() {
       eventAttendedIds.length > 0 &&
       (event._id?.includes(eventAttendedIds[0]) ||
         event._id?.includes(eventAttendedIds[1]) ||
-        event._id?.includes(eventAttendedIds[2]))
+        event._id?.includes(eventAttendedIds[2]) ||
+        event._id?.includes(eventAttendedIds[3]) ||
+        event._id?.includes(eventAttendedIds[4]) ||
+        event._id?.includes(eventAttendedIds[5]))
     );
   });
 
@@ -93,7 +96,10 @@ export default function Profile() {
       eventOrganisedIds.length > 0 &&
       (event._id?.includes(eventOrganisedIds[0]) ||
         event._id?.includes(eventOrganisedIds[1]) ||
-        event._id?.includes(eventOrganisedIds[2]))
+        event._id?.includes(eventOrganisedIds[2]) ||
+        event._id?.includes(eventOrganisedIds[3]) ||
+        event._id?.includes(eventOrganisedIds[4]) ||
+        event._id?.includes(eventOrganisedIds[5]))
     );
   });
   const inputDate = singleUser?.userInfo?.registrationDate;
@@ -103,7 +109,6 @@ export default function Profile() {
 
   console.log(singleUser);
   console.log(singleUser?.userInfo?.userImage);
-  console.log(events)
   return (
     <>
       <div
@@ -294,8 +299,8 @@ export default function Profile() {
                         ))}
                       </div>
                     </div>
+                    <h3>Events created</h3>
                     <div className="eventsCreated">
-                      <h3>Events created</h3>
                       <br />
                       {/* Card */}
                       <div className="eventsJoinedCon">
