@@ -10,6 +10,7 @@ export default function ThemeContextProvider(props) {
     ui: "var(--primary)",
     bg: "var(--primary)",
     grey: "var(--secondary)",
+    navbar: "#93A5CA",
   });
 
   const [dark, setDark] = useState({
@@ -19,6 +20,7 @@ export default function ThemeContextProvider(props) {
     grey: "#555",
     light: "#DDD",
     midgrey: "#777",
+    navbar: "#666",
   });
 
   const toggleTheme = () => {
