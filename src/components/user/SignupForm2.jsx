@@ -36,6 +36,7 @@ export default function SignupForm2 () {
     const [country, setCountry] = useState("");
     const [error, setError] = useState(null);
     const [loadings, setLoadings] = useState([]);
+    const [isRequired, setIsRequired] = useState(true);
     const [age, setAge] = useState(true)
 
     const { token, login } = useContext(AuthContext);
@@ -138,7 +139,6 @@ export default function SignupForm2 () {
       </div>
     <Form
     onFinish={handleSubmit}
-    // form={form}
     name="basic"
     disabled={componentDisabled}
     labelCol={{
@@ -239,15 +239,20 @@ export default function SignupForm2 () {
 
 {/* select language */}
 <Form.Item
-label="Languages"
+label="* Languages"
 htmlFor="languagesSpoken"
-rules={[{ required: true }]}
+rules={[
+    { required: true },
+    ]}
 >
 <Select
     mode="multiple"
     style={{
       width: '100%',
     }}
+    rules={[
+      { required: true },
+      ]}
     placeholder="Select which languages you speak"
     optionLabelProp="label"
     value={languagesSpoken}
@@ -320,7 +325,7 @@ rules={[{ required: true }]}
   </Form.Item>
 {/* select language */}
 <Form.Item
-label="City"
+label="*City"
 htmlFor="userInfo.location.city"
 rules={[
   {

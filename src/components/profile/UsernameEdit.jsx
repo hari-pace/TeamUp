@@ -104,7 +104,8 @@ console.log(username);
     <Button 
       type="primary"
       className="editConfirmButtons"
-      htmlType="submit">
+      // htmlType="submit">
+      >
         Submit
       </Button>
     </Popconfirm>
