@@ -3,7 +3,7 @@ import "./styling/about.css";
 import Kate from "../assets/Kate.jpg";
 import Hari1 from "../assets/Hari1.jpg";
 import Ehsan from "../assets/Ehsan.jpg";
-import Darrell from "../assets/Darrell.jpg"
+import Darrell from "../assets/darrell.jpg"
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
