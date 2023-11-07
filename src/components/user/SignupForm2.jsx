@@ -88,8 +88,15 @@ export default function SignupForm2 () {
           }, 6000);
         };
         const handleImageChange = (info) => {
+          if (image) {
             setImage(info.file);
             console.log(info);
+          }
+          if (!image) {
+            setImage("");
+            console.log(image)
+          }
+
         };
     return (
         <>
@@ -232,6 +239,12 @@ htmlFor="languagesSpoken"
     style={{
       width: '100%',
     }}
+    rules={[
+      {
+        required: true,
+        message: 'Please input your password!',
+      },
+    ]}
     placeholder="Select which languages you speak"
     optionLabelProp="label"
     value={languagesSpoken}

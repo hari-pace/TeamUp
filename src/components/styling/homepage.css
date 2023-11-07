@@ -40,20 +40,18 @@
     .carouselItem img {
         height: 150px !important;
     }
-    .carouselItem {
-        /* margin-right: 25px !important; */
-    }
-    .carouselItem h3 {
-        font-size: 1.75rem !important;
+    .carouselTitle h3 {
+        font-size: 1.25rem !important;
         margin: 0px;
-        padding: 0px;
+        padding: 5px 10px !important;
+        border-width: 2px !important;
     }
     .reviewItem h3 {
         height: 150px !important;
         line-height: 150px !important;
         margin: 0px;
         padding: 0px;
-        margin-right: 25px;
+        font-size: 1.25rem !important;
     }
 }
 
