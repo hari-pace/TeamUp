@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useJwt } from "react-jwt";
 import "./styling/createEvent.css";
 import MapComponent from "./mapfunctions/MapComponent";
@@ -56,6 +57,9 @@ const CreateEvent = () => {
   const [eventHouseNumber, setEventHouseNumber] = useState();
   const [eventUsersAttending, setEventUsersAttending] = useState([]);
   const [users, setUsers] = useState([]);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
@@ -199,21 +203,30 @@ const CreateEvent = () => {
       </ParallaxBanner>
       <div className="page4-container">
         <div className="page5-left-column">
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Cycling}
               alt="cycling"
             />
           </div>
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Swimming}
               alt="cycling"
             />
           </div>
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Basketball}
@@ -221,7 +234,10 @@ const CreateEvent = () => {
             />
           </div>
         </div>
-        <div className="page4-right-column">
+        <div
+          className="page4-right-column"
+          style={{ background: themeStyles.midgrey }}
+        >
           <div className="page5-form-container">
             <Form
               className="page5-form"
