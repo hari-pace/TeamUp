@@ -274,8 +274,8 @@ const Events = () => {
                 <Radio className="events-modal-text" value={"Köln"}>
                   Köln
                 </Radio>
-                <Radio className="events-modal-text" value={"Nuremberg"}>
-                  Nuremberg
+                <Radio className="events-modal-text" value={"Nürnberg"}>
+                  Nürnberg
                 </Radio>
                 <Radio className="events-modal-text" value={"Hannover"}>
                   Hannover

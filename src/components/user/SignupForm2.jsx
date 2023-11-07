@@ -319,13 +319,13 @@ value={city}
 >
               <Space direction="vertical">
                 <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"Munich"}>Munich</Radio>
+                <Radio value={"München"}>München</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
                 <Radio value={"Dresden"}>Dresden</Radio>
                 <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
-                <Radio value={"Cologne"}>Cologne</Radio>
-                <Radio value={"Nuremberg"}>Nuremberg</Radio>
+                <Radio value={"Köln"}>Köln</Radio>
+                <Radio value={"Nürnberg"}>Nürnberg</Radio>
                 <Radio value={"Hannover"}>Hannover</Radio>
                 <Radio value={"Bremen"}>Bremen</Radio>
               </Space>
