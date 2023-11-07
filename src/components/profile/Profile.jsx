@@ -245,7 +245,10 @@ export default function Profile() {
                         </Button>
                       </>
                     ) : (
-                      <div className="bioCon">
+                      <div
+                        className="bioCon"
+                        style={{ background: themeStyles.midgrey }}
+                      >
                         {auth ? (
                           <Button onClick={() => setBioEdit(true)}>Edit</Button>
                         ) : null}
@@ -347,7 +350,10 @@ export default function Profile() {
                       </>
                     ) : (
                       <>
-                        <p className="infoItem">
+                        <p
+                          className="infoItem"
+                          style={{ background: themeStyles.midgrey }}
+                        >
                           {auth ? (
                             <Button onClick={() => setShowUsernameEdit(true)}>
                               Edit
@@ -361,7 +367,12 @@ export default function Profile() {
                       <h3>Date joined</h3>
                     </label>
                     <br />
-                    <p className="infoItem">{formattedDate}</p>
+                    <p
+                      style={{ background: themeStyles.midgrey }}
+                      className="infoItem"
+                    >
+                      {formattedDate}
+                    </p>
                     <label>
                       <h3>Sports following</h3>
                     </label>
@@ -385,7 +396,10 @@ export default function Profile() {
                       </>
                     ) : (
                       <>
-                        <p className="infoItem">
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
                           {auth ? (
                             <Button onClick={() => setSportsEdit(true)}>
                               Edit
@@ -403,7 +417,10 @@ export default function Profile() {
                       <h3>Languages</h3>
                     </label>
                     <br />
-                    <p className="infoItem">
+                    <p
+                      style={{ background: themeStyles.midgrey }}
+                      className="infoItem"
+                    >
                       {singleUser?.userInfo?.languagesSpoken}
                     </p>
                     <label>
@@ -427,7 +444,10 @@ export default function Profile() {
                       </>
                     ) : (
                       <>
-                        <p className="infoItem">
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
                           {auth ? (
                             <Button onClick={() => setCity(true)}>Edit</Button>
                           ) : null}
@@ -458,7 +478,10 @@ export default function Profile() {
                       </>
                     ) : (
                       <>
-                        <p className="infoItem">
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
                           {auth ? (
                             <Button onClick={() => setShowCountryEdit(true)}>
                               Edit

@@ -18,6 +18,7 @@ export default function ThemeContextProvider(props) {
     bg: "#DDD",
     grey: "#555",
     light: "#DDD",
+    midgrey: "#777",
   });
 
   const toggleTheme = () => {
