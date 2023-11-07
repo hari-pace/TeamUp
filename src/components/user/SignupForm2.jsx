@@ -238,21 +238,16 @@ export default function SignupForm2 () {
 
 
 {/* select language */}
-<FormItem
+<Form.Item
 label="Languages"
 htmlFor="languagesSpoken"
+rules={[{ required: true }]}
 >
 <Select
     mode="multiple"
     style={{
       width: '100%',
     }}
-    rules={[
-      {
-        required: true,
-        message: 'Please input your password!',
-      },
-    ]}
     placeholder="Select which languages you speak"
     optionLabelProp="label"
     value={languagesSpoken}
@@ -322,7 +317,7 @@ htmlFor="languagesSpoken"
       </Space>
     </Option>
   </Select>
-  </FormItem>
+  </Form.Item>
 {/* select language */}
 <Form.Item
 label="City"

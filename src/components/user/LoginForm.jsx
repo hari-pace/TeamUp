@@ -5,13 +5,15 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/authContext.jsx";
 import Signup2 from './SignupForm2.jsx';
 import "../styling/loginform.css"
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loadings, setLoadings] = useState([]);
-
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+  const themeStyles = isLightTheme ? light : dark;
   const { login, token } = useContext(AuthContext);
 
   const handleSubmit = async () => {
@@ -67,7 +69,7 @@ export default function LoginForm() {
       span: 16,
     }}
     style={{
-      maxWidth: 600,
+      maxWidth: 600, background: themeStyles.ui, color: themeStyles.text
     }}
     initialValues={{
       remember: true,

@@ -52,6 +52,9 @@ const confirm = () =>
 new Promise((resolve) => {
 setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
 });
+const handleCancel = () => {
+  console.log('Clicked cancel button');
+};
 console.log(username);
     return (
         <>
@@ -96,6 +99,7 @@ console.log(username);
       description="Are you sure? You will have to login to your account again."
       onConfirm={confirm}
       onOpenChange={() => console.log('open change')}
+      onCancel={handleCancel}
     >
     <Button 
       type="primary"
