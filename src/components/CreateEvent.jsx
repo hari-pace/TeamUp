@@ -182,6 +182,11 @@ const CreateEvent = () => {
   // console.log(selectedLocation.lat, selectedLocation.lng);
   // console.log(selectedLocation);
 
+  const onFinish = (values) => {
+    // Handle form submission logic here
+    console.log("Received values:", values);
+  };
+
   return (
     <>
       <ParallaxBanner
@@ -240,6 +245,7 @@ const CreateEvent = () => {
         >
           <div className="page5-form-container">
             <Form
+              onFinish={onFinish}
               className="page5-form"
               labelCol={{
                 span: 8,
@@ -254,10 +260,12 @@ const CreateEvent = () => {
             >
               <h3 className="page5-subheadings">Event information</h3>
               <Form.Item
-                label="* Event title"
+                label="Event title"
+                name="Event title"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter a title",
                   },
                 ]}
               >
@@ -268,10 +276,12 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="* Sport type"
+                label="Sport type"
+                name="Sport type"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter a sport type",
                   },
                 ]}
               >
@@ -290,20 +300,24 @@ const CreateEvent = () => {
                 </Select>
               </Form.Item>
               <Form.Item
-                label="* Event date"
+                label="Event date"
+                rootClassName="Event date"
                 rules={[
                   {
                     required: true,
+                    message: "Please select a date",
                   },
                 ]}
               >
                 <DatePicker onChange={setEventDate} value={eventDate} />
               </Form.Item>
               <Form.Item
-                label="* Event time"
+                label="Event time"
+                name="Event time"
                 rules={[
                   {
                     required: true,
+                    message: "Please select a time",
                   },
                 ]}
               >
@@ -316,10 +330,12 @@ const CreateEvent = () => {
               </Form.Item>
 
               <Form.Item
-                label="* Minimum no. of players"
+                label="Minimum no. of players"
+                name="Minimum no. of players"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter minimum number of players",
                   },
                 ]}
               >
@@ -329,10 +345,12 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="* Max no. of players"
+                label="Max no. of players"
+                name="Max no. of players"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter maximum number of players",
                   },
                 ]}
               >
@@ -351,7 +369,16 @@ const CreateEvent = () => {
                 />
               </Form.Item> */}
 
-              <Form.Item label="Short description of event">
+              <Form.Item
+                label="Short event description"
+                name="Short event description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter event description",
+                  },
+                ]}
+              >
                 <TextArea
                   rows={4}
                   onChange={(e) => setEventDescription(e.target.value)}
