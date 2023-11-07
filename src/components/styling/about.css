@@ -1,3 +1,16 @@
+.about-us-hero {
+  background-color: var(--secondary);
+  padding: 2% 0;
+}
+.about-us-hero-gradient-1 {
+  height: 4rem;
+  background: linear-gradient(to top, var(--secondary), var(--primary));
+}
+.about-us-hero-gradient-2 {
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--secondary), var(--primary));
+}
+
 .about-main-container {
   background-color: var(--secondary);
   height: 100%;
@@ -27,13 +40,17 @@
 
 .about-person-pic {
   height: 30vh;
-  width: 35%;
+  width: 20%;
   min-width: 200px;
 }
 .about-person-text {
   height: 0vh;
   width: 65%;
   padding-left: 1.5%;
+}
+
+.about-person-text-paragraph {
+  font-size: 1.4rem;
 }
 
 .about-person-title {
@@ -61,4 +78,18 @@
 
 .about-socials-text {
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .about-person-text-paragraph {
+    font-size: 1rem;
+    padding: 2%;
+  }
+  .about-person-title {
+    padding: 2% 2%;
+    font-size: 2rem;
+  }
+  .about-socials-text {
+    font-size: 1.2rem;
+  }
 }
