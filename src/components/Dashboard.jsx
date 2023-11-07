@@ -85,6 +85,23 @@ const Dashboard = () => {
       ) && event?.organizator?.username !== oneUser[0]?.username
   );
 
+  const usersSuggestedEventsWithFollowedSports = events.filter(
+    (event) =>
+      event?.location?.address?.city.includes(
+        oneUser[0]?.userInfo?.location?.city
+      ) &&
+      oneUser[0]?.userInfo?.interestedInSports?.includes(
+        event?.sportType[0][0]
+      ) &&
+      event?.organizator?.username !== oneUser[0]?.username
+  );
+
+  console.log(usersSuggestedEventsWithFollowedSports);
+
+  const futureSuggestedEventsWithFollowedSports =
+    usersSuggestedEventsWithFollowedSports.filter(
+      (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
+    );
   const futureSuggestedEvents = usersSuggestedEvents.filter(
     (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
   );
@@ -309,57 +326,110 @@ const Dashboard = () => {
           </div>
 
           <div className="page2-suggested-cards">
-            {futureSuggestedEvents.length > 0 ? (
-              futureSuggestedEvents.map((event, index) => (
-                <Card
-                  key={index}
-                  className="page2-suggested-individual-card"
-                  style={{
-                    width: 350,
-                  }}
-                  cover={
-                    <img
-                      className="events-card-cover"
-                      alt="example"
-                      src={imageOptions[event?.sportType[0]]}
-                    />
-                  }
-                  actions={[
-                    <Link to={`/events/${event._id}`}>
-                      <EllipsisOutlined key="ellipsis" />
-                    </Link>,
-                  ]}
-                >
-                  <Meta
-                    // className="page2-suggested-individual-card-meta"
-                    avatar={
-                      <Avatar src={event?.organizator?.userInfo?.userImage} />
-                    }
-                    title={event.eventTitle}
-                    description={`${event.sportType[0]} // ${new Date(
-                      event?.eventDateAndTime?.eventDate
-                    ).toLocaleDateString("de-DE", {
-                      day: "numeric",
-                      month: "numeric",
-                      year: "numeric",
-                    })} @ ${new Date(
-                      event?.eventDateAndTime?.eventTime
-                    ).toLocaleTimeString("de-DE", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })} // ${event.location?.address?.city}`}
-                  />
-                </Card>
-              ))
-            ) : (
+            {oneUser[0]?.userInfo?.interestedInSports.length === 0 &&
+            futureSuggestedEvents.length > 0
+              ? futureSuggestedEvents.map((event, index) => (
+                  <Link to={`/events/${event._id}`}>
+                    <Card
+                      key={index}
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 350,
+                      }}
+                      cover={
+                        <img
+                          className="events-card-cover"
+                          alt="example"
+                          src={imageOptions[event?.sportType[0]]}
+                        />
+                      }
+                      actions={[<EllipsisOutlined key="ellipsis" />]}
+                    >
+                      <Meta
+                        // className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${event.sportType[0]} // ${new Date(
+                          event?.eventDateAndTime?.eventDate
+                        ).toLocaleDateString("de-DE", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })} @ ${new Date(
+                          event?.eventDateAndTime?.eventTime
+                        ).toLocaleTimeString("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} // ${event.location?.address?.city}`}
+                      />
+                    </Card>
+                  </Link>
+                ))
+              : null}
+            {oneUser[0]?.userInfo?.interestedInSports.length > 0 &&
+            futureSuggestedEventsWithFollowedSports.length > 0
+              ? futureSuggestedEventsWithFollowedSports.map((event, index) => (
+                  <Link to={`/events/${event._id}`}>
+                    <Card
+                      key={index}
+                      className="page2-suggested-individual-card"
+                      style={{
+                        width: 350,
+                      }}
+                      cover={
+                        <img
+                          className="events-card-cover"
+                          alt="example"
+                          src={imageOptions[event?.sportType[0]]}
+                        />
+                      }
+                      actions={[<EllipsisOutlined key="ellipsis" />]}
+                    >
+                      <Meta
+                        // className="page2-suggested-individual-card-meta"
+                        avatar={
+                          <Avatar
+                            src={event?.organizator?.userInfo?.userImage}
+                          />
+                        }
+                        title={event.eventTitle}
+                        description={`${event.sportType[0]} // ${new Date(
+                          event?.eventDateAndTime?.eventDate
+                        ).toLocaleDateString("de-DE", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })} @ ${new Date(
+                          event?.eventDateAndTime?.eventTime
+                        ).toLocaleTimeString("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} // ${event.location?.address?.city}`}
+                      />
+                    </Card>
+                  </Link>
+                ))
+              : null}
+            {futureSuggestedEvents.length === 0 &&
+            futureSuggestedEventsWithFollowedSports.length === 0 ? (
               <h3 className="dashboard-sports-and-suggested-h3">
                 {" "}
                 There are currently no events scheduled in your area -{" "}
-                <Link className="dashboard-suggested-link" to="/events/create">
+                <Link
+                  style={{
+                    color: themeStyles.text,
+                  }}
+                  className="dashboard-suggested-link"
+                  to="/events/create"
+                >
                   you can always create one here!
                 </Link>
               </h3>
-            )}
+            ) : null}
           </div>
         </div>
       </Space>

@@ -61,7 +61,13 @@ export default function Header() {
 
   return (
     <>
-      <div className="header">
+      <div
+        className="header"
+        style={{
+          background: themeStyles.navbar,
+          color: themeStyles.text,
+        }}
+      >
         <div className="headerLeft">
           <Logo />
         </div>
