@@ -202,25 +202,27 @@ export default function Homepage() {
       </div>
       <div className="reviewContainer">
         <h2>Reviews</h2>
-        <Carousel className="carouselReviews" autoplay dotHeight="30">
-          <div className="reviewItem">
-            <h3 style={contentStyle}>
-              "So easy now to play a game of B-ball" - Kate
-            </h3>
-          </div>
-          <div className="reviewItem">
-            <h3 style={contentStyle}>"Perfect for Handball"- Hari</h3>
-          </div>
-          <div className="reviewItem">
-            <h3 style={contentStyle}>"Sport is the true panacea" - Dazbot</h3>
-          </div>
-          <div className="reviewItem">
-            <h3 style={contentStyle}>
-              "Perfect for organising cricket!" - Ehsan
-            </h3>
-          </div>
-        </Carousel>
-      </div>
-    </>
-  );
+
+    <Carousel 
+    className="carouselReviews"
+    autoplay
+    dotHeight="30"
+    >
+    <div className="reviewItem">
+    <h3 style={contentStyle}>"So easy now to play a game of B-ball" <br/> - Kate</h3>
+    </div>
+    <div className="reviewItem">
+    <h3 style={contentStyle}>"Perfect for Handball" <br/> - Hari</h3>
+    </div>
+    <div className="reviewItem">
+    <h3 style={contentStyle}>"Sport is the true panacea"  <br/> - Dazbot</h3>
+    </div>
+    <div className="reviewItem">
+    <h3 style={contentStyle}>"Perfect for organising cricket!" - Ehsan</h3>
+    </div>
+  </Carousel>
+  </div>
+        </>
+    )
 }
+

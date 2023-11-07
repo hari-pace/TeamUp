@@ -36,6 +36,7 @@ export default function SignupForm2 () {
     const [country, setCountry] = useState("");
     const [error, setError] = useState(null);
     const [loadings, setLoadings] = useState([]);
+    const [age, setAge] = useState(true)
 
     const { login } = useContext(AuthContext);
 
@@ -88,11 +89,20 @@ export default function SignupForm2 () {
           }, 6000);
         };
         const handleImageChange = (info) => {
+          if (image) {
             setImage(info.file);
             console.log(info);
+          }
+          if (!image) {
+            setImage("");
+            console.log(image)
+          }
+
         };
     return (
         <>
+        <div className="formDiv">
+        <div className={age ? "eighteenAnimation" : "eighteen"}>
     <h4>Are you over 18?</h4>
     <Radio.Group
         className="ageAuth"
@@ -105,7 +115,7 @@ export default function SignupForm2 () {
           warnings="Please confirm!"
     >
       <Radio
-    onChange={() => setComponentDisabled(false)}
+    onChange={() => {setComponentDisabled(false); setAge(false)}}
     unchecked="true"
     value="Yes"
     >
@@ -113,13 +123,13 @@ export default function SignupForm2 () {
     </Radio>
     <Radio
     checked="true"
-    onChange={() => setComponentDisabled(true)}
+    onChange={() => {setComponentDisabled(true); setAge(true)}}
     value="No"
     >
     No
     </Radio>
       </Radio.Group>
-
+      </div>
     <Form
     onFinish={handleSubmit}
     // form={form}
@@ -232,6 +242,12 @@ htmlFor="languagesSpoken"
     style={{
       width: '100%',
     }}
+    rules={[
+      {
+        required: true,
+        message: 'Please input your password!',
+      },
+    ]}
     placeholder="Select which languages you speak"
     optionLabelProp="label"
     value={languagesSpoken}
@@ -319,13 +335,13 @@ value={city}
 >
               <Space direction="vertical">
                 <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"Munich"}>Munich</Radio>
+                <Radio value={"München"}>München</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
                 <Radio value={"Dresden"}>Dresden</Radio>
                 <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
-                <Radio value={"Cologne"}>Cologne</Radio>
-                <Radio value={"Nuremberg"}>Nuremberg</Radio>
+                <Radio value={"Köln"}>Köln</Radio>
+                <Radio value={"Nürnberg"}>Nürnberg</Radio>
                 <Radio value={"Hannover"}>Hannover</Radio>
                 <Radio value={"Bremen"}>Bremen</Radio>
               </Space>
@@ -367,6 +383,7 @@ value={city}
       {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null}
     </Form.Item>
       </Form>
+      </div>
         </>
     )
 }
