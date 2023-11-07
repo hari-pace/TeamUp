@@ -10,6 +10,14 @@
   height: 4rem;
   background: linear-gradient(to bottom, var(--secondary), var(--primary));
 }
+.about-us-hero-gradient-1-dark {
+  height: 4rem;
+  background: linear-gradient(to top, #555, #333);
+}
+.about-us-hero-gradient-2-dark {
+  height: 4rem;
+  background: linear-gradient(to bottom, #555, #333);
+}
 
 .about-main-container {
   background-color: var(--secondary);
