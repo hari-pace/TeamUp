@@ -36,6 +36,7 @@ export default function SignupForm2 () {
     const [country, setCountry] = useState("");
     const [error, setError] = useState(null);
     const [loadings, setLoadings] = useState([]);
+    const [age, setAge] = useState(true)
 
     const { login } = useContext(AuthContext);
 
@@ -100,6 +101,8 @@ export default function SignupForm2 () {
         };
     return (
         <>
+        <div className="formDiv">
+        <div className={age ? "eighteenAnimation" : "eighteen"}>
     <h4>Are you over 18?</h4>
     <Radio.Group
         className="ageAuth"
@@ -112,7 +115,7 @@ export default function SignupForm2 () {
           warnings="Please confirm!"
     >
       <Radio
-    onChange={() => setComponentDisabled(false)}
+    onChange={() => {setComponentDisabled(false); setAge(false)}}
     unchecked="true"
     value="Yes"
     >
@@ -120,13 +123,13 @@ export default function SignupForm2 () {
     </Radio>
     <Radio
     checked="true"
-    onChange={() => setComponentDisabled(true)}
+    onChange={() => {setComponentDisabled(true); setAge(true)}}
     value="No"
     >
     No
     </Radio>
       </Radio.Group>
-
+      </div>
     <Form
     onFinish={handleSubmit}
     // form={form}
@@ -380,6 +383,7 @@ value={city}
       {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null}
     </Form.Item>
       </Form>
+      </div>
         </>
     )
 }

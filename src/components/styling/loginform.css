@@ -53,3 +53,44 @@ margin-bottom: 30px;
     padding: 0px 10px;
     margin: 5px 0px;
     }
+
+    .eighteenAnimation {
+        font-size: 2rem;
+        align-self: flex-end;
+        border-style: dotted;
+        padding: 5px 30px;
+        border-width: 5px;
+        margin-bottom: 20px;
+        animation-name: border;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    .eighteen{
+        font-size: 2rem;
+        align-self: flex-end;
+        padding: 5px 30px;
+        margin-bottom: 20px;
+    }
+
+    @keyframes border {
+        0% {border-color: var(--primary)}
+        50% {border-color: red}
+        100% {border-color: var(--primary)}
+        }
+
+    .eighteen h4, .eighteenAnimation h4 {
+        font-size: 2rem;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .formDiv {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+
+
