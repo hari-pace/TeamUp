@@ -20,6 +20,7 @@ import "./styling/dashboard.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
 import Video720p from "../assets/Video720p.mp4";
@@ -38,6 +39,9 @@ const { Meta } = Card;
 const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);

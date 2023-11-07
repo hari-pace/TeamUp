@@ -11,8 +11,12 @@ import { Divider } from "antd";
 import "./styling/footer.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 function Footer() {
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
   const { token } = useContext(AuthContext);
   return (
     <section>
@@ -50,12 +54,21 @@ function Footer() {
               Create an account
             </li>
             <li>
-              <Link className="footer-links" to="/events">
+              <Link
+                className="footer-links"
+                to="/events"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
                 Find an event
               </Link>
             </li>
             <li>
               <Link
+                style={{
+                  color: themeStyles.light,
+                }}
                 className="footer-links"
                 to={token ? "/events/create" : null}
               >
@@ -67,13 +80,25 @@ function Footer() {
         <div className="footer-2">
           <ul>
             <li>
-              <Link className="footer-links" to="/about">
+              <Link
+                className="footer-links"
+                to="/about"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
                 About Us
               </Link>
             </li>
 
             <li>
-              <Link className="footer-links" to="/contact">
+              <Link
+                className="footer-links"
+                to="/contact"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
                 Contact Us
               </Link>
             </li>
