@@ -59,6 +59,8 @@ export default function LoginForm() {
 
     return(
         <>
+        <div className=":where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content" style={{background: themeStyles.ui,
+          color: themeStyles.text,}}>
         <Form
     onFinish={handleSubmit}
     name="basic"
@@ -79,6 +81,8 @@ export default function LoginForm() {
     <Form.Item
       label="Email"
       name="email"
+      style={{background: themeStyles.ui,
+        color: themeStyles.text,}}
       rules={[
         {
           required: true,
@@ -129,6 +133,7 @@ export default function LoginForm() {
       </Button>
     </Form.Item>
   </Form>
+  </div>
         </>
     )
 }
