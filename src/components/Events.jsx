@@ -47,7 +47,7 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
 
@@ -250,6 +250,7 @@ const Events = () => {
           <Modal
             title="Choose your city"
             open={modal1Open}
+            className={isLightTheme ? "lightModal" : "darkModal"}
             onOk={() => setModal1Open(false)}
             onCancel={() => setModal1Open(false)}
           >
@@ -259,37 +260,37 @@ const Events = () => {
               className="events-modal-text"
             >
               <Space direction="vertical">
-                <Radio className="events-modal-text" value={"Berlin"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Berlin"}>
                   Berlin
                 </Radio>
-                <Radio className="events-modal-text" value={"München"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"München"}>
                   München
                 </Radio>
-                <Radio className="events-modal-text" value={"Hamburg"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Hamburg"}>
                   Hamburg
                 </Radio>
-                <Radio className="events-modal-text" value={"Stuttgart"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Stuttgart"}>
                   Stuttgart
                 </Radio>
-                <Radio className="events-modal-text" value={"Dresden"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Dresden"}>
                   Dresden
                 </Radio>
-                <Radio
+                <Radio style={{color: themeStyles.text}}
                   className="events-modal-text"
                   value={"Frankfurt am Main"}
                 >
                   Frankfurt am Main
                 </Radio>
-                <Radio className="events-modal-text" value={"Köln"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Köln"}>
                   Köln
                 </Radio>
-                <Radio className="events-modal-text" value={"Nürnberg"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Nürnberg"}>
                   Nürnberg
                 </Radio>
-                <Radio className="events-modal-text" value={"Hannover"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Hannover"}>
                   Hannover
                 </Radio>
-                <Radio className="events-modal-text" value={"Bremen"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Bremen"}>
                   Bremen
                 </Radio>
               </Space>
@@ -318,6 +319,7 @@ const Events = () => {
             </div>
           </Button>
           <Modal
+            className={isLightTheme ? "lightModal" : "darkModal"}
             title="Choose your sport"
             open={modal2Open}
             onOk={() => setModal2Open(false)}
@@ -325,37 +327,37 @@ const Events = () => {
           >
             <Radio.Group onChange={onChangeSport} value={sportValue}>
               <Space direction="vertical">
-                <Radio className="events-modal-text" value={"Football"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Football"}>
                   Football
                 </Radio>
-                <Radio className="events-modal-text" value={"Basketball"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Basketball"}>
                   Basketball
                 </Radio>
-                <Radio className="events-modal-text" value={"Volleyball"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Volleyball"}>
                   Volleyball
                 </Radio>
-                <Radio className="events-modal-text" value={"Swimming"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Swimming"}>
                   Swimming
                 </Radio>
-                <Radio className="events-modal-text" value={"Cycling"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Cycling"}>
                   Cycling
                 </Radio>
-                <Radio className="events-modal-text" value={"Yoga"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Yoga"}>
                   Yoga
                 </Radio>
-                <Radio className="events-modal-text" value={"Tennis"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Tennis"}>
                   Tennis
                 </Radio>
-                <Radio className="events-modal-text" value={"Handball"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Handball"}>
                   Handball
                 </Radio>
-                <Radio className="events-modal-text" value={"Cricket"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Cricket"}>
                   Cricket
                 </Radio>
-                <Radio className="events-modal-text" value={"Fitness"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Fitness"}>
                   Fitness
                 </Radio>
-                <Radio className="events-modal-text" value={"Ski"}>
+                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Ski"}>
                   Ski
                 </Radio>
               </Space>
