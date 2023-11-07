@@ -431,44 +431,47 @@ const Events = () => {
                   ))
                 : currentItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <Link to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </Link>,
-                        ]}
-                      >
-                        <Meta
-                          // className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
-                          title={event.eventTitle}
-                          description={`${
-                            event.sportType[0]
-                          } // ${event.eventDateAndTime?.eventDate?.slice(
-                            0,
-                            10
-                          )} @ ${event.eventDateAndTime?.eventTime} // ${
-                            event.location?.address?.city
-                          }`}
-                        />
-                      </Card>
+                          actions={[
+                            // <PlusOutlined key="plus" />,
+                            // <CheckOutlined key="check" />,
+
+                            <EllipsisOutlined key="ellipsis" />,
+                          ]}
+                        >
+                          <Meta
+                            // className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${
+                              event.sportType[0]
+                            } // ${event.eventDateAndTime?.eventDate?.slice(
+                              0,
+                              10
+                            )} @ ${event.eventDateAndTime?.eventTime} // ${
+                              event.location?.address?.city
+                            }`}
+                          />
+                        </Card>
+                      </Link>
                     </div>
                   ))}
             </div>
@@ -478,90 +481,96 @@ const Events = () => {
               {searchValue === null
                 ? completedItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <Link to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </Link>,
-                        ]}
-                      >
-                        <Meta
-                          className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
-                          title={event.eventTitle}
-                          description={`${event.sportType[0]} // ${new Date(
-                            event?.eventDateAndTime?.eventDate
-                          ).toLocaleDateString("de-DE", {
-                            day: "numeric",
-                            month: "numeric",
-                            year: "numeric",
-                          })} @ ${new Date(
-                            event?.eventDateAndTime?.eventTime
-                          ).toLocaleTimeString("de-DE", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })} // ${event.location?.address?.city}`}
-                        />
-                      </Card>
+                          actions={[
+                            // <PlusOutlined key="plus" />,
+                            // <CheckOutlined key="check" />,
+
+                            <EllipsisOutlined key="ellipsis" />,
+                          ]}
+                        >
+                          <Meta
+                            className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
+                          />
+                        </Card>
+                      </Link>
                     </div>
                   ))
                 : completedItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <Link to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </Link>,
-                        ]}
-                      >
-                        <Meta
-                          // className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
-                          title={event.eventTitle}
-                          description={`${
-                            event.sportType[0]
-                          } // ${event.eventDateAndTime?.eventDate?.slice(
-                            0,
-                            10
-                          )} @ ${event.eventDateAndTime?.eventTime} // ${
-                            event.location?.address?.city
-                          }`}
-                        />
-                      </Card>
+                          actions={[
+                            // <PlusOutlined key="plus" />,
+                            // <CheckOutlined key="check" />,
+
+                            <EllipsisOutlined key="ellipsis" />,
+                          ]}
+                        >
+                          <Meta
+                            // className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${
+                              event.sportType[0]
+                            } // ${event.eventDateAndTime?.eventDate?.slice(
+                              0,
+                              10
+                            )} @ ${event.eventDateAndTime?.eventTime} // ${
+                              event.location?.address?.city
+                            }`}
+                          />
+                        </Card>
+                      </Link>
                     </div>
                   ))}
             </div>
