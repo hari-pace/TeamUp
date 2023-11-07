@@ -89,15 +89,13 @@ export default function SignupForm2 () {
           }, 6000);
         };
         const handleImageChange = (info) => {
-          if (image) {
+          if (info?.fileList.length > 0) {
             setImage(info.file);
             console.log(info);
-          }
-          if (!image) {
+          } else {
             setImage("");
             console.log(image)
           }
-
         };
     return (
         <>
@@ -222,12 +220,11 @@ export default function SignupForm2 () {
           onChange={handleImageChange}
           beforeUpload={() => false} // Prevent default behavior of the Ant Design Upload component
         >
-          {image ? null : (
+
             <div>
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
-          )}
         </Upload>
       </Form.Item>
 

@@ -11,7 +11,7 @@
         }
     .avatarProfile {
         width: 150px !important;
-        height: 200px !important;
+        height: 150px !important;
         border-width: 1px !important;
         margin: 0px !important;
     }
@@ -141,7 +141,7 @@ h3 {
     border-width: 10px;
     border-color: var(--primary);
     width: 400px;
-    height: 550px;
+    height: 400px;
 }
 
 .infoContainer {

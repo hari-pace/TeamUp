@@ -36,7 +36,7 @@
   }
   .avatarMini.avatarMini {
     width: 100px;
-    height: 150px;
+    height: 100px;
   }
 }
 .header {
@@ -139,8 +139,8 @@
   border-style: solid;
   border-width: 5px;
   border-color: var(--secondary);
-  width: 150px;
-  height: 200px;
+  width: 123px;
+  height: 123px;
   /* padding: 35% 25%; */
   /* margin-right: 50%; */
   /* background-color: var(--secondary); */
