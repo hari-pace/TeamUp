@@ -3,6 +3,7 @@ import "./styling/about.css";
 import Kate from "../assets/Kate.jpg";
 import Hari1 from "../assets/Hari1.jpg";
 import Ehsan from "../assets/Ehsan.jpg";
+import Darrell from "../assets/Darrell.jpg"
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
@@ -139,29 +140,29 @@ const About = () => {
               <div>
                 <img
                   className="about-img"
-                  src="https://i.redd.it/6zp2o12uk7x61.jpg"
-                  alt=""
+                  src={Darrell}
+                  alt="darrell"
                 />
               </div>
               <div className="about-socials">
                 <p className="about-socials-text">Find me here: </p>
                 <a
                   className="about-social-icons"
-                  href="https://www.linkedin.com/in/hari-pace/"
+                  href="https://www.linkedin.com/in/droberts-developer/"
                 >
                   <LinkedinOutlined />
                 </a>
                 <a
                   className="about-social-icons"
-                  href="https://github.com/hari-pace"
+                  href="https://github.com/DarrellRoberts"
                 >
                   <GithubOutlined />
                 </a>
               </div>
             </div>
             <div className="about-person-text">
-              <h3 className="about-person-title">Crazyman</h3>
-              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
+              <h3 className="about-person-title">Darrell</h3>
+              <div className="about-person-text-paragraph">From the UK and moved to Germany in October 2020. Not particularly sporty nor competitive but love exercising outdoors. A son to a personal trainer, I know that the main barrier to exercise is in the mind, not in the body. Playing for fun and laughs is a big thing for me and I think this sentiment is lost, particularly in serious sport groups. Sport should be open to everyone and a way to unwind, decompress and have a laugh with other people. That way, it is a significant mood booster and something we can all benefit from</div>
             </div>
           </div>
         </div>
