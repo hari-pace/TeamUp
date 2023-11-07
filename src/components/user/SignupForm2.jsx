@@ -13,6 +13,7 @@ import {
 import FormItem from 'antd/es/form/FormItem/index.js';
 import axios from "axios";
 import { PlusOutlined } from '@ant-design/icons';
+import { ThemeContext } from "../../context/ThemeContext";
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -38,6 +39,10 @@ export default function SignupForm2 () {
     const [loadings, setLoadings] = useState([]);
     const [isRequired, setIsRequired] = useState(true);
     const [age, setAge] = useState(true)
+
+    const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+    const themeStyles = isLightTheme ? light : dark;
 
     const { token, login } = useContext(AuthContext);
 
@@ -110,7 +115,7 @@ export default function SignupForm2 () {
         <>
         <div className="formDiv">
         <div className={age ? "eighteenAnimation" : "eighteen"}>
-    <h4>Are you over 18?</h4>
+    <h4 style={{color: themeStyles.text}}>Are you over 18?</h4>
     <Radio.Group
         className="ageAuth"
         rules={[
@@ -122,6 +127,7 @@ export default function SignupForm2 () {
           warnings="Please confirm!"
     >
       <Radio
+    style={{color: themeStyles.text}}
     onChange={() => {setComponentDisabled(false); setAge(false)}}
     unchecked="true"
     value="Yes"
@@ -129,6 +135,7 @@ export default function SignupForm2 () {
     Yes
     </Radio>
     <Radio
+    style={{color: themeStyles.text}}
     checked="true"
     onChange={() => {setComponentDisabled(true); setAge(true)}}
     value="No"
@@ -231,7 +238,7 @@ export default function SignupForm2 () {
 
             <div>
               <PlusOutlined />
-              <div style={{ marginTop: 8 }}>Upload</div>
+              <div style={{ marginTop: 8, color: themeStyles.text }}>Upload</div>
             </div>
         </Upload>
       </Form.Item>
@@ -339,16 +346,16 @@ onChange={(e) => setCity(e.target.value)}
 value={city}
 >
               <Space direction="vertical">
-                <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"München"}>München</Radio>
-                <Radio value={"Hamburg"}>Hamburg</Radio>
-                <Radio value={"Stuttgart"}>Stuttgart</Radio>
-                <Radio value={"Dresden"}>Dresden</Radio>
-                <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
-                <Radio value={"Köln"}>Köln</Radio>
-                <Radio value={"Nürnberg"}>Nürnberg</Radio>
-                <Radio value={"Hannover"}>Hannover</Radio>
-                <Radio value={"Bremen"}>Bremen</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Berlin"}>Berlin</Radio>
+                <Radio style={{color: themeStyles.text}} value={"München"}>München</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Hamburg"}>Hamburg</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Stuttgart"}>Stuttgart</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Dresden"}>Dresden</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Köln"}>Köln</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Nürnberg"}>Nürnberg</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Hannover"}>Hannover</Radio>
+                <Radio style={{color: themeStyles.text}} value={"Bremen"}>Bremen</Radio>
               </Space>
             </Radio.Group>
   </Form.Item>
@@ -380,6 +387,7 @@ value={city}
       type="primary"
       ghost
       className="loginButtons"
+      style={{color: themeStyles.text}}
       loading={loadings[0]} 
       onClick={() => enterLoading(0)} 
       htmlType="submit">
