@@ -3,7 +3,7 @@ import "./styling/about.css";
 import Kate from "../assets/Kate.jpg";
 import Hari1 from "../assets/Hari1.jpg";
 import Ehsan from "../assets/Ehsan.jpg";
-import Darrell from "../assets/darrell.jpg"
+import Darrell from "../assets/darrell.jpg";
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
@@ -43,7 +43,7 @@ const About = () => {
           <h2 className="about-subheading">The team</h2>
         </div>
         <div className="about-container">
-          <div className="about-person-container">
+          <div className="about-person-container" id="about-hari">
             <div className="about-person-pic">
               <div>
                 <img className="about-img" src={Hari1} alt="" />
@@ -71,15 +71,16 @@ const About = () => {
                 almost 5 years living in Germany and can't see myself leaving
                 any time soon! A keen football player for over 20 years, I have
                 experienced first-hand how easily new friendships can be formed
-                through sport, hence the creation of this app. Upon completion
-                of our Full-Stack Web Development course, I look forward to
-                kick-starting my new career in tech.{" "}
+                through sport, hence the creation of this app. I've loved being
+                a part of the TeamUp team, and upon completion of our Full-Stack
+                Web Development course, I look forward to kick-starting my new
+                career in tech.{" "}
               </div>
             </div>
           </div>
         </div>
         <div className="about-container">
-          <div className="about-person-container">
+          <div className="about-person-container" id="about-kate">
             <div className="about-person-pic">
               <div>
                 <img className="about-img" src={Kate} alt="" />
@@ -102,12 +103,21 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Kate</h3>
-              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">
+                As a basketball lover I think that it must be very easy to bond
+                with new people via sport. Since the time I became a foreigner
+                in Germany I do not find it easy no more: lack of courts and
+                language barrier makes it very difficult to find your crew. I
+                truly believe that no matter where you are or who you are, you
+                should be able to play your favorite sport. I am very pleased
+                with opportunity to build this app with my new team of Hari,
+                Ehsan and Darrell (yes, JavaScript is also a team sport!)
+              </div>
             </div>
           </div>
         </div>
         <div className="about-container">
-          <div className="about-person-container">
+          <div className="about-person-container" id="about-ehsan">
             <div className="about-person-pic">
               <div>
                 <img className="about-img" src={Ehsan} alt="" />
@@ -135,14 +145,10 @@ const About = () => {
           </div>
         </div>
         <div className="about-container">
-          <div className="about-person-container">
+          <div className="about-person-container" id="about-darrell">
             <div className="about-person-pic">
               <div>
-                <img
-                  className="about-img"
-                  src={Darrell}
-                  alt="darrell"
-                />
+                <img className="about-img" src={Darrell} alt="darrell" />
               </div>
               <div className="about-socials">
                 <p className="about-socials-text">Find me here: </p>
@@ -162,7 +168,17 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Darrell</h3>
-              <div className="about-person-text-paragraph">From the UK and moved to Germany in October 2020. Not particularly sporty nor competitive but love exercising outdoors. A son to a personal trainer, I know that the main barrier to exercise is in the mind, not in the body. Playing for fun and laughs is a big thing for me and I think this sentiment is lost, particularly in serious sport groups. Sport should be open to everyone and a way to unwind, decompress and have a laugh with other people. That way, it is a significant mood booster and something we can all benefit from</div>
+              <div className="about-person-text-paragraph">
+                From the UK and moved to Germany in October 2020. Not
+                particularly sporty nor competitive but love exercising
+                outdoors. A son to a personal trainer, I know that the main
+                barrier to exercise is in the mind, not in the body. Playing for
+                fun and laughs is a big thing for me and I think this sentiment
+                is lost, particularly in serious sport groups. Sport should be
+                open to everyone and a way to unwind, decompress and have a
+                laugh with other people. That way, it is a significant mood
+                booster and something we can all benefit from
+              </div>
             </div>
           </div>
         </div>

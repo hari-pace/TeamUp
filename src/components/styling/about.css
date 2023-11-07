@@ -110,6 +110,16 @@
   }
 
   .about-person-container {
-    height: 35vh;
+    height: 25rem;
+  }
+
+  #about-hari {
+    height: 28rem;
+  }
+  #about-kate {
+    height: 29rem;
+  }
+  #about-darrell {
+    height: 32rem;
   }
 }
