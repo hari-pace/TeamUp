@@ -8,9 +8,19 @@
   margin-left: 1%;
   font-size: 3rem;
 }
+.contact-link {
+  font-family: var(--secondaryFont);
+  margin-left: 1%;
+  font-size: 3rem;
+}
 
 @media screen and (max-width: 800px) {
   .contact-text {
-    font-size: 24px;
+    font-size: 1.8rem;
+  }
+  .contact-link {
+    font-family: var(--secondaryFont);
+    margin-left: 1%;
+    font-size: 1.8rem;
   }
 }

@@ -5,9 +5,11 @@ import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 const About = () => {
   return (
     <>
-      <div className="events-heroDiv">
-        <h1 className="events-h1"> About us</h1>
+      <div className="about-us-hero-gradient-1"></div>
+      <div className="about-us-hero">
+        <h1 className="about-us-heading"> About us</h1>
       </div>
+      <div className="about-us-hero-gradient-2"></div>
       <div className="about-main-container">
         <div className="about-heading">
           <h2 className="about-subheading">The team</h2>
@@ -18,7 +20,7 @@ const About = () => {
               <div>
                 <img
                   className="about-img"
-                  src="https://media.licdn.com/dms/image/D4E16AQGbX5xeyuyeRQ/profile-displaybackgroundimage-shrink_350_1400/0/1678264630025?e=1704326400&v=beta&t=eBipnOgkfoqPYrwyQ6DT06UA1zF4hi0zS2emy1TPtEk"
+                  src="https://media.licdn.com/dms/image/D4E03AQGuKSjFnZKGjw/profile-displayphoto-shrink_800_800/0/1678264513860?e=2147483647&v=beta&t=7ifUNCsjqp99sSfwq0r8t_XH9BH_qO3HDp3-vNDYpHI"
                   alt=""
                 />
               </div>
@@ -40,7 +42,15 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Hari</h3>
-              <div>TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">
+                Moving from the UK to Munich at the end of 2018, I've enjoyed
+                almost 5 years living in Germany and can't see myself leaving
+                any time soon! A keen football player for over 20 years, I have
+                experienced first-hand how easily new friendships can be formed
+                through sport, hence the creation of this app. Upon completion
+                of our Full-Stack Web Development course, I look forward to
+                kick-starting my new career in tech.{" "}
+              </div>
             </div>
           </div>
         </div>
@@ -72,7 +82,7 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Stoneman</h3>
-              <div>TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
             </div>
           </div>
         </div>
@@ -104,7 +114,7 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Lazyman</h3>
-              <div>TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
             </div>
           </div>
         </div>
@@ -136,7 +146,7 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Crazyman</h3>
-              <div>TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
             </div>
           </div>
         </div>

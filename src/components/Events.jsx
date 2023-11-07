@@ -140,11 +140,22 @@ const Events = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+
   const currentItemsFiltered = filteredEvents.slice(
     indexOfFirstItem,
     indexOfLastItem
   );
   const currentItemsFilteredByName = filteredEventsByName.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const completedItemsFiltered = filteredEventsCompleted.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const completedItemsFilteredByName = filteredEventsByNameCompleted.slice(
     indexOfFirstItem,
     indexOfLastItem
   );
@@ -453,7 +464,7 @@ const Events = () => {
           {!toggleEventType && (
             <div className="page2-suggested-cards">
               {searchValue === null
-                ? filteredEventsCompleted.map((event, index) => (
+                ? completedItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
                       <Card
                         className="page2-suggested-individual-card"
@@ -499,7 +510,7 @@ const Events = () => {
                       </Card>
                     </div>
                   ))
-                : filteredEventsByNameCompleted.map((event, index) => (
+                : completedItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
                       <Card
                         className="page2-suggested-individual-card"
