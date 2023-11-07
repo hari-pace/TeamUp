@@ -103,6 +103,7 @@ export default function Profile() {
 
   console.log(singleUser);
   console.log(singleUser?.userInfo?.userImage);
+  console.log(events)
   return (
     <>
       <div
@@ -270,7 +271,7 @@ export default function Profile() {
                               <Card
                                 className="profileCards"
                                 hoverable
-                                title={event?.eventDescription}
+                                title={event?.eventTitle}
                               >
                                 <Meta
                                   avatar={
@@ -307,7 +308,7 @@ export default function Profile() {
                               <Card
                                 className="profileCards"
                                 hoverable
-                                title={event?.eventDescription}
+                                title={event?.eventTitle}
                               >
                                 <Meta
                                   avatar={
