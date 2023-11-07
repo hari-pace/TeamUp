@@ -81,6 +81,7 @@
   display: flex;
   padding: 0% 10%;
   justify-content: space-around;
+  align-items: center;
 }
 
 .greeting {

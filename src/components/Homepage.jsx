@@ -31,7 +31,9 @@ export default function Homepage() {
     height: "400px",
     lineHeight: "360px",
     textAlign: "center",
-    background: "var(--secondary)",
+    // background: "var(--secondary)",
+    background: themeStyles.grey, 
+    color: themeStyles.text,
   };
   return (
     <>
@@ -111,88 +113,88 @@ export default function Homepage() {
         <h2>Sport</h2>
         <Carousel className="carouselCon" autoplay dotHeight="30">
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
-                <h3>Football</h3>
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
+                <h3 >Football</h3>
               </div>
               <img style={contentStyle} src={Football} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div   className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Basketball</h3>
               </div>
               <img style={contentStyle} src={Basketball} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Volleyball</h3>
               </div>
               <img style={contentStyle} src={Beachvolleyball} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Swimming</h3>
               </div>
               <img style={contentStyle} src={Swimming} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Cycling</h3>
               </div>
               <img style={contentStyle} src={Cycling} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Yoga</h3>
               </div>
               <img style={contentStyle} src={Yoga} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Tennis</h3>
               </div>
               <img style={contentStyle} src={Tennis} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Handball</h3>
               </div>
               <img style={contentStyle} src={Handball} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Cricket</h3>
               </div>
               <img style={contentStyle} src={Cricket} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Fitness</h3>
               </div>
               <img style={contentStyle} src={Fitness} />
             </div>
           </Link>
           <Link to="events">
-            <div className="carouselItem">
-              <div className="carouselTitle">
+            <div  className="carouselItem">
+              <div style={{background: themeStyles.grey, color: themeStyles.text}} className="carouselTitle">
                 <h3>Skiing</h3>
               </div>
               <img style={contentStyle} src={Skiing} />
@@ -209,13 +211,13 @@ export default function Homepage() {
     dotHeight="30"
     >
     <div className="reviewItem">
-    <h3 style={contentStyle}>"So easy now to play a game of B-ball" <br/> - Kate</h3>
+    <h3 style={contentStyle}>"So easy now to play a game of B-ball" - Kate</h3>
     </div>
     <div className="reviewItem">
-    <h3 style={contentStyle}>"Perfect for Handball" <br/> - Hari</h3>
+    <h3 style={contentStyle}>"Perfect for Handball" - Hari</h3>
     </div>
     <div className="reviewItem">
-    <h3 style={contentStyle}>"Sport is the true panacea"  <br/> - Dazbot</h3>
+    <h3 style={contentStyle}>"Sport is the true panacea"  - Dazbot</h3>
     </div>
     <div className="reviewItem">
     <h3 style={contentStyle}>"Perfect for organising cricket!" - Ehsan</h3>
