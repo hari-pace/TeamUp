@@ -54,8 +54,9 @@
     padding: 5px 5px !important;
     }
     .avatarCard {
+    margin-top: 10px !important;
     width: 30px !important;
-    height: 50px !important;
+    height: 30px !important;
     }
     .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap !important;
@@ -219,7 +220,7 @@ padding: 0px;
 
 .avatarCard {
     width: 60px;
-    height: 80px;
+    height: 60px;
     margin: 0px;
     padding-top: 0px;
     border-radius: 50%;

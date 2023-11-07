@@ -25,14 +25,6 @@ import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
 import Video720p from "../assets/Video720p.mp4";
 
-const contentStyle = {
-  height: "19rem",
-  lineHeight: "16rem",
-  textAlign: "center",
-  background: "var(--secondary)",
-  color: "var(--tertiary)",
-  fontFamily: "var(--secondary)",
-};
 
 const { Meta } = Card;
 
@@ -45,6 +37,15 @@ const Dashboard = () => {
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
+
+  const contentStyle = {
+    height: "19rem",
+    lineHeight: "16rem",
+    textAlign: "center",
+    background: themeStyles.grey,
+    color: themeStyles.text,
+    fontFamily: "var(--secondary)",
+  };
 
   const fetchEvents = async () => {
     const res = await fetch("https://teamup-service.onrender.com/event/");
@@ -277,17 +278,18 @@ const Dashboard = () => {
           </Carousel>
         </div>
 
-        <div className="page2-section2">
-          <div className="page2-sports">
-            <div className="page2-subheading2">Sports you follow</div>
-            <div className="page2-sports-cards">
-              <Row className="page2-sports-cards-row" gutter={0}>
+        <div style={{backgroundColor: themeStyles.grey }} className="page2-section2">
+          <div style={{backgroundColor: themeStyles.grey }} className="page2-sports">
+            <div style={{color: themeStyles.text, backgroundColor: themeStyles.grey}} className="page2-subheading2">Sports you follow</div>
+            <div style={{backgroundColor: themeStyles.grey }}  className="page2-sports-cards">
+              <Row style={{backgroundColor: themeStyles.grey }} className="page2-sports-cards-row" gutter={0}>
                 {oneUser[0]?.userInfo?.interestedInSports.length > 0 ? (
                   oneUser[0]?.userInfo?.interestedInSports?.map((e, index) => (
                     <Col
                       key={index}
                       className="page2-sports-cards-row-individual"
                       span={5}
+                      style={{backgroundColor: themeStyles.grey }}
                     >
                       <Card
                         title={e}
