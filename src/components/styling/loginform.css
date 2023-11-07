@@ -4,11 +4,25 @@
     background-color:#333;
 }
 
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    /* background-color: var(--primary); */
+    background-color:#333;
+}
+
 .lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
-    
+
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    background-color: var(--primary);
+}
+
 .darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
+    background-color:#333;
+    color: #DDD;
+}
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
     background-color:#333;
     color: #DDD;
 }
@@ -17,12 +31,7 @@
     background-color: var(--primary);
 }
 
-
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
-    background-color: var(--primary);
-}
-    
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
     background-color: var(--primary);
 }
 
@@ -30,7 +39,15 @@
     color: var(--tertiary);
 }
 
+.lightModal:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: var(--tertiary);
+}
+
 .darkModal :where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkModal :where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
     color: #DDD;
 }
 
@@ -38,46 +55,9 @@
 color: white;
 }
 
-/* for deployed version darkmode */
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
-    /* background-color: var(--primary); */
-    background-color:#333;
-}
-
-.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
-    background-color: var(--primary);
-}
-    
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
-    background-color:#333;
-    color: #DDD;
-}
-
-.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
-    background-color: var(--primary);
-}
-
-
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
-    background-color: var(--primary);
-}
-    
-.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
-    background-color: var(--primary);
-}
-
-.lightModal:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
-    color: var(--tertiary);
-}
-
-.darkModal :where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
-    color: #DDD;
-}
-
 .darkModal:where(.css-qgg3xn).ant-modal .ant-modal-close {
 color: white;
 }
-
 
 :where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
@@ -103,11 +83,11 @@ margin-bottom: 30px;
 }
 
 :where(.css-qgg3xn).ant-form-item .ant-form-item-explain-error {
-    font-weight: 900;
-    background-color: rgba(0, 0, 0, 0.514);
-    border-radius: 5px;
-    margin-bottom: 30px;
-    }
+font-weight: 900;
+background-color: rgba(0, 0, 0, 0.514);
+border-radius: 5px;
+margin-bottom: 30px;
+}
 
 .errorH {
     font-weight: 900;
