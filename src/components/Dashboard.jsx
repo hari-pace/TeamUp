@@ -293,7 +293,8 @@ const Dashboard = () => {
                     >
                       <Card
                         title={e}
-                        className="page2-sports-cards-col"
+                        className={isLightTheme ? "lightPage2-sports-cards-col" : "darkPage2-sports-cards-col"} 
+                        // className="lightpage2-section2 div"
                         bordered={true}
                       >
                         <img
@@ -335,7 +336,7 @@ const Dashboard = () => {
                   <Link to={`/events/${event._id}`}>
                     <Card
                       key={index}
-                      className="page2-suggested-individual-card"
+                      className={isLightTheme ? "lightPage2-suggested-individual-card" : "darkPage2-suggested-individual-card"}
                       style={{
                         width: 350,
                       }}
@@ -381,7 +382,7 @@ const Dashboard = () => {
                   <Link to={`/events/${event._id}`}>
                     <Card
                       key={index}
-                      className="page2-suggested-individual-card"
+                      className={isLightTheme ? "lightPage2-suggested-individual-card" : "darkPage2-suggested-individual-card"}
                       style={{
                         width: 350,
                       }}
