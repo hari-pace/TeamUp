@@ -44,7 +44,9 @@ export default function Login() {
         Login
       </Button>
       <Modal
+        bodyStyle={{ backgroundColor: themeStyles.ui, color: themeStyles.text}}
         title="Login"
+        className={isLightTheme ? "lightModal" : "darkModal"}
         open={loginOpen}
         onOk={handleOk}
         confirmLoading={confirmLoading}
@@ -60,7 +62,7 @@ export default function Login() {
             }}
           >
             {" "}
-            <Signup className="tinyRegister" />{" "}
+            <Signup className="tinyRegister" />
           </Link>
         </Form.Item>
       </Modal>

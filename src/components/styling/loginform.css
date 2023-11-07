@@ -1,19 +1,83 @@
 
-:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
+    /* background-color: var(--primary); */
+    background-color:#333;
+}
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
     
-:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
+    background-color:#333;
+    color: #DDD;
+}
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
     background-color: var(--primary);
 }
 
-:where(.css-qgg3xn).ant-modal .ant-modal-content {
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
     
-:where(.css-qgg3xn).ant-modal .ant-modal-title {
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
     background-color: var(--primary);
 }
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: var(--tertiary);
+}
+
+.darkModal :where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-close {
+color: white;
+}
+
+/* for deployed version darkmode */
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    /* background-color: var(--primary); */
+    background-color:#333;
+}
+
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    background-color: var(--primary);
+}
+    
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+    background-color:#333;
+    color: #DDD;
+}
+
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+    background-color: var(--primary);
+}
+
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    background-color: var(--primary);
+}
+    
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+    background-color: var(--primary);
+}
+
+.lightModal:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: var(--tertiary);
+}
+
+.darkModal :where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-close {
+color: white;
+}
+
 
 :where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
@@ -28,8 +92,8 @@ font-size: 1.2rem;
 }
 
 :where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
-    font-size: 1.2rem;
-    }
+font-size: 1.2rem;
+}
 
 :where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-explain-error {
 font-weight: 900;

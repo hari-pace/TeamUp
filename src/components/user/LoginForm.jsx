@@ -126,6 +126,7 @@ export default function LoginForm() {
       ghost
       className="loginButtons" 
       htmlType="submit"
+      style={{color: themeStyles.text}}
       loading={loadings[0]} 
       onClick={() => enterLoading(0)}
       >

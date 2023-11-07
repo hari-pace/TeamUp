@@ -45,6 +45,8 @@ export default function Signup() {
         Sign up
       </Button>
       <Modal
+        bodyStyle={{ backgroundColor: themeStyles.ui}}
+        className={isLightTheme ? "lightModal" : "darkModal"}
         title="Sign up"
         open={openReg}
         onOk={handleOk}
