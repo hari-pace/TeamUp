@@ -35,6 +35,7 @@ import Cricket from "../assets/cricket2.jpg";
 import Fitness from "../assets/fitness1.jpg";
 import Skiing from "../assets/ski1.jpg";
 import { ParallaxBanner } from "react-scroll-parallax";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Events = () => {
   const [toggleEventType, setToggleEventType] = useState(true);
@@ -48,6 +49,9 @@ const Events = () => {
   const [loading, setLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const { token } = useContext(AuthContext);
 
@@ -212,7 +216,9 @@ const Events = () => {
       <div className="events-search-section">
         <div className="events-searchbars">
           <div className="events-search">
+            <SearchOutlined className="events-search-icon" />
             <input
+              style={{ background: themeStyles.light }}
               type="text"
               className="events-find-event"
               placeholder="What are you looking for today?"
@@ -221,23 +227,26 @@ const Events = () => {
                 setSearchValue(e.target.value);
               }}
             />
-            <SearchOutlined className="events-search-icon" />
           </div>
-          <Button
-            className="events-search-btn"
-            type="primary"
-            onClick={() => setModal1Open(true)}
-          >
-            {/* Make this dynamic for customer's chosen location */}
-            {locationValue ? (
-              locationValue
-            ) : (
-              <div>
-                <HomeOutlined />
-                <span className="event-info-buttons">Choose your location</span>
-              </div>
-            )}
-          </Button>
+          <div className="events-search-location-button">
+            <Button
+              className="events-search-btn"
+              type="primary"
+              onClick={() => setModal1Open(true)}
+            >
+              {/* Make this dynamic for customer's chosen location */}
+              {locationValue ? (
+                locationValue
+              ) : (
+                <div>
+                  <HomeOutlined />
+                  <span className="event-info-buttons">
+                    Choose your location
+                  </span>
+                </div>
+              )}
+            </Button>
+          </div>
           <Modal
             title="Choose your city"
             open={modal1Open}
@@ -274,8 +283,8 @@ const Events = () => {
                 <Radio className="events-modal-text" value={"Köln"}>
                   Köln
                 </Radio>
-                <Radio className="events-modal-text" value={"Nuremberg"}>
-                  Nuremberg
+                <Radio className="events-modal-text" value={"Nürnberg"}>
+                  Nürnberg
                 </Radio>
                 <Radio className="events-modal-text" value={"Hannover"}>
                   Hannover
@@ -352,15 +361,15 @@ const Events = () => {
               </Space>
             </Radio.Group>
           </Modal>
-        </div>
-        <div className="events-filter">
-          <Switch
-            className="events-switch"
-            checkedChildren="Upcoming events"
-            unCheckedChildren="Past events"
-            defaultChecked
-            onChange={onChangeSwitch}
-          />
+          <div>
+            <Switch
+              className="events-switch"
+              checkedChildren="Upcoming events"
+              unCheckedChildren="Past events"
+              defaultChecked
+              onChange={onChangeSwitch}
+            />
+          </div>
         </div>
       </div>
       {loading ? (
@@ -372,49 +381,52 @@ const Events = () => {
               {searchValue === null
                 ? currentItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                            loading="lazy"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <Link to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </Link>,
-                        ]}
-                      >
-                        <Meta
-                          className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
+                              loading="lazy"
                             />
                           }
-                          title={event.eventTitle}
-                          description={`${event.sportType[0]} // ${new Date(
-                            event?.eventDateAndTime?.eventDate
-                          ).toLocaleDateString("de-DE", {
-                            day: "numeric",
-                            month: "numeric",
-                            year: "numeric",
-                          })} @ ${new Date(
-                            event?.eventDateAndTime?.eventTime
-                          ).toLocaleTimeString("de-DE", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })} // ${event.location?.address?.city}`}
-                        />
-                      </Card>
+                          actions={[
+                            // <PlusOutlined key="plus" />,
+                            // <CheckOutlined key="check" />,
+
+                            <EllipsisOutlined key="ellipsis" />,
+                          ]}
+                        >
+                          <Meta
+                            className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
+                          />
+                        </Card>
+                      </Link>
                     </div>
                   ))
                 : currentItemsFilteredByName.map((event, index) => (

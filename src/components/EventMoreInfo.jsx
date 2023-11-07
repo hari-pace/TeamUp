@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 import "./styling/eventMoreInfo.css";
 import Avatar from "./Avatar";
 import {
@@ -51,6 +52,9 @@ const EventMoreInfo = () => {
   const [loading, setLoading] = useState(true);
   const [commentPopup, setCommentPopup] = useState(false);
   const [replyPopup, setReplyPopup] = useState(false);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const { id } = useParams();
   const { token } = useContext(AuthContext);
@@ -598,7 +602,10 @@ const EventMoreInfo = () => {
             </Link>
           </div>
         </div>
-        <div className="page4-right-column">
+        <div
+          className="page4-right-column"
+          style={{ background: themeStyles.grey, color: themeStyles.text }}
+        >
           {loading ? (
             <Spinner />
           ) : (
@@ -685,6 +692,10 @@ const EventMoreInfo = () => {
                       <List.Item className="page4-grid-items">
                         <Card
                           className="page4-grid-cards"
+                          style={{
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
                           title={item?.username}
                         >
                           <img
