@@ -13,7 +13,8 @@
         margin: 10px 0px 10px 0px !important;
     }
     .header {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         margin-left: 0px;
     }
     .headerRight.headerRight {

@@ -1,7 +1,5 @@
-import { useState, useContext, useEffect} from 'react';
+import { useState, useContext } from 'react';
 import { Form, Input, Button, Select, Space } from "antd";
-import FormItem from 'antd/es/form/FormItem/index.js';
-
 
 const { Option } = Select;
 
@@ -9,10 +7,10 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
   const [interestedInSports, setInterestedInSports] = useState(initialSports)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
-
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
+    
         const response = await fetch(`https://teamup-service.onrender.com/user/edit/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -41,12 +39,11 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
-            document.location.reload();
+            
             return newLoadings;
           });
-        }, 4000);
+        }, 6000);
       };
-    console.log(initialSports)
     return (
         <>
         <Form
@@ -66,9 +63,9 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         }}
         autoComplete="off"
         >
-    <FormItem
+            <Form.Item
       label="Sports Following"
-      htmlFor="interestedInSports"
+      // htmlFor="interestedInSports"
     >
 <Select
     mode="multiple"
@@ -80,7 +77,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
     value={interestedInSports}
     onChange={setInterestedInSports}
   >
-    <Option value="Football" label="Football">
+    <Option value="Football" >
       <Space>
         <span role="img" aria-label="Football">
         ⚽
@@ -88,7 +85,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Football
       </Space>
     </Option>
-    <Option value="Basketball" label="Basketball">
+    <Option value="Basketball">
       <Space>
         <span role="img" aria-label="Basketball">
         🏀
@@ -96,7 +93,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Basketball
       </Space>
     </Option>
-    <Option value="Swimming" label="Swimming">
+    <Option value="Swimming">
       <Space>
         <span role="img" aria-label="Swimming">
         🏊‍♂️
@@ -104,7 +101,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Swimming
       </Space>
     </Option>
-    <Option value="Tennis" label="Tennis">
+    <Option value="Tennis">
       <Space>
         <span role="img" aria-label="Tennis">
         🎾
@@ -112,7 +109,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Tennis
       </Space>
     </Option>
-    <Option value="Volleyball" label="Volleyball">
+    <Option value="Volleyball">
       <Space>
         <span role="img" aria-label="Volleyball">
         🏐
@@ -120,7 +117,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Volleyball
       </Space>
     </Option>
-    <Option value="Handball" label="Handball">
+    <Option value="Handball" label="HB">
     {/* <Option value={languagesSpoken} label="JP"> */}
       <Space>
         <span role="img" aria-label="Handball">
@@ -129,7 +126,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Handball
       </Space>
     </Option>
-    <Option value="Cricket" label="Cricket">
+    <Option value="Cricket">
       <Space>
         <span role="img" aria-label="Cricket">
         🏏
@@ -137,7 +134,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Cricket
       </Space>
     </Option>
-    <Option value="Fitness" label="Fitness">
+    <Option value="Fitness">
       <Space>
         <span role="img" aria-label="Fitness">
         🏋️‍♂️
@@ -145,7 +142,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Fitness
       </Space>
     </Option>
-    <Option value="Yoga" label="Yoga">
+    <Option value="Yoga">
       <Space>
         <span role="img" aria-label="Yoga">
         🧘
@@ -153,7 +150,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Yoga
       </Space>
     </Option>
-    <Option value="Ski" label="Ski">
+    <Option value="Ski">
       <Space>
         <span role="img" aria-label="Ski">
         🎿
@@ -161,7 +158,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         Ski
       </Space>
     </Option>
-    <Option value="Cycling" label="Cycling">
+    <Option value="Cycling">
       <Space>
         <span role="img" aria-label="Cycling">
         🚲
@@ -170,7 +167,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
       </Space>
     </Option>
   </Select>
-    </FormItem>
+    </Form.Item>
     {error ? <h4 className="errorH">{error}</h4> : null}
     <Button 
       type="primary"
