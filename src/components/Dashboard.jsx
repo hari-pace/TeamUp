@@ -331,6 +331,7 @@ const Dashboard = () => {
             {oneUser[0]?.userInfo?.interestedInSports.length === 0 &&
             futureSuggestedEvents.length > 0
               ? futureSuggestedEvents.map((event, index) => (
+                <>
                   <Link to={`/events/${event._id}`}>
                     <Card
                       key={index}
@@ -370,11 +371,13 @@ const Dashboard = () => {
                       />
                     </Card>
                   </Link>
+                  </>
                 ))
               : null}
             {oneUser[0]?.userInfo?.interestedInSports.length > 0 &&
             futureSuggestedEventsWithFollowedSports.length > 0
               ? futureSuggestedEventsWithFollowedSports.map((event, index) => (
+                <>
                   <Link to={`/events/${event._id}`}>
                     <Card
                       key={index}
@@ -414,6 +417,7 @@ const Dashboard = () => {
                       />
                     </Card>
                   </Link>
+                  </>
                 ))
               : null}
             {futureSuggestedEvents.length === 0 &&

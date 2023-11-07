@@ -3,7 +3,7 @@ import { Form, Input, Button, Select, Space } from "antd";
 
 const { Option } = Select;
 
-export default function UsernameEdit( { initialSports, id, setSports} ) {
+export default function SportEdit( { initialSports, id, setSports} ) {
   const [interestedInSports, setInterestedInSports] = useState(initialSports)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
@@ -39,7 +39,6 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
-            
             return newLoadings;
           });
         }, 6000);
@@ -65,7 +64,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
         >
             <Form.Item
       label="Sports Following"
-      // htmlFor="interestedInSports"
+      name="interestedInSports"
     >
 <Select
     mode="multiple"
