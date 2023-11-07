@@ -204,7 +204,7 @@ export default function SignupForm2 () {
       value={username}
       />
     </Form.Item>
-    {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null}
+    {/* {error ? <h4 className="errorH">{error?.response?.data?.error}</h4> : null} */}
     <Form.Item 
     label="Bio"
     htmlFor="description"
