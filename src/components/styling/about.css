@@ -31,7 +31,7 @@
 }
 
 .about-person-container {
-  height: 35vh;
+  height: 40vh;
   display: flex;
   border: 2px solid black;
   border-radius: 20px;
@@ -40,7 +40,7 @@
 
 .about-person-pic {
   height: 30vh;
-  width: 20%;
+  width: 30%;
   min-width: 200px;
 }
 .about-person-text {
@@ -59,7 +59,8 @@
 
 .about-img {
   object-fit: cover;
-  height: 250px;
+  min-height: 16rem;
+  max-height: 18rem;
   width: 100%;
   border-radius: 20px 0 20px 0;
 }
@@ -91,5 +92,16 @@
   }
   .about-socials-text {
     font-size: 1.2rem;
+  }
+  .about-person-pic {
+    min-width: 175px;
+  }
+  .about-img {
+    object-fit: cover;
+    height: 16rem;
+  }
+
+  .about-person-container {
+    height: 35vh;
   }
 }

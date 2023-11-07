@@ -1,5 +1,8 @@
 import React from "react";
 import "./styling/about.css";
+import Kate from "../assets/Kate.jpg";
+import Hari1 from "../assets/Hari1.jpg";
+import Ehsan from "../assets/Ehsan.jpg";
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 
 const About = () => {
@@ -18,11 +21,7 @@ const About = () => {
           <div className="about-person-container">
             <div className="about-person-pic">
               <div>
-                <img
-                  className="about-img"
-                  src="https://media.licdn.com/dms/image/D4E03AQGuKSjFnZKGjw/profile-displayphoto-shrink_800_800/0/1678264513860?e=2147483647&v=beta&t=7ifUNCsjqp99sSfwq0r8t_XH9BH_qO3HDp3-vNDYpHI"
-                  alt=""
-                />
+                <img className="about-img" src={Hari1} alt="" />
               </div>
               <div className="about-socials">
                 <p className="about-socials-text">Find me here: </p>
@@ -58,30 +57,26 @@ const About = () => {
           <div className="about-person-container">
             <div className="about-person-pic">
               <div>
-                <img
-                  className="about-img"
-                  src="https://www.aquasabi.de/media/image/product/19046/md/back-to-nature-river-stone.jpg"
-                  alt=""
-                />
+                <img className="about-img" src={Kate} alt="" />
               </div>
               <div className="about-socials">
                 <p className="about-socials-text">Find me here: </p>
                 <a
                   className="about-social-icons"
-                  href="https://www.linkedin.com/in/hari-pace/"
+                  href="https://www.linkedin.com/in/katerynatsyklauri/"
                 >
                   <LinkedinOutlined />
                 </a>
                 <a
                   className="about-social-icons"
-                  href="https://github.com/hari-pace"
+                  href="https://github.com/KateOblomova"
                 >
                   <GithubOutlined />
                 </a>
               </div>
             </div>
             <div className="about-person-text">
-              <h3 className="about-person-title">Stoneman</h3>
+              <h3 className="about-person-title">Kate</h3>
               <div className="about-person-text-paragraph">TEXT GOES HERE</div>
             </div>
           </div>
@@ -90,30 +85,26 @@ const About = () => {
           <div className="about-person-container">
             <div className="about-person-pic">
               <div>
-                <img
-                  className="about-img"
-                  src="https://thumbs.dreamstime.com/z/man-watermelon-head-man-watermelon-head-minimal-concept-107767608.jpg"
-                  alt=""
-                />
+                <img className="about-img" src={Ehsan} alt="" />
               </div>
               <div className="about-socials">
                 <p className="about-socials-text">Find me here: </p>
                 <a
                   className="about-social-icons"
-                  href="https://www.linkedin.com/in/hari-pace/"
+                  href="https://www.linkedin.com/in/ehsan-shahdoust/"
                 >
                   <LinkedinOutlined />
                 </a>
                 <a
                   className="about-social-icons"
-                  href="https://github.com/hari-pace"
+                  href="https://github.com/Shahdoust"
                 >
                   <GithubOutlined />
                 </a>
               </div>
             </div>
             <div className="about-person-text">
-              <h3 className="about-person-title">Lazyman</h3>
+              <h3 className="about-person-title">Ehsan</h3>
               <div className="about-person-text-paragraph">TEXT GOES HERE</div>
             </div>
           </div>
