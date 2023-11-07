@@ -115,7 +115,7 @@ color: white;
   background-color: var(--secondary);
 }
 
-.darkPage2-suggested-individual-card {
+/* .darkPage2-suggested-individual-card {
   margin: 1%;
   font-family: var(--secondaryFont);
   background-color: #555;
@@ -133,11 +133,11 @@ color: #DDD;
 
 .darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-title {
   color: #DDD;
-  }
+}
   
-  .darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-description {
-    color: #DDD;
-  }
+.darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-description {
+  color: #DDD;
+} */
 
 .page2-suggested-individual-card:hover {
   transform: scale(1.07);
