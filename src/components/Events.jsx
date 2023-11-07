@@ -431,47 +431,19 @@ const Events = () => {
                   ))
                 : currentItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </NavLink>,
-                        ]}
-                      >
-                        <Meta
-                          // className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
-
-//                       <Link to={`/events/${event._id}`}>
-//                         <Card
-//                           className="page2-suggested-individual-card"
-//                           style={{
-//                             width: 300,
-//                             background: themeStyles.light,
-//                             color: themeStyles.text,
-//                           }}
-//                           cover={
-//                             <img
-//                               alt="example"
-//                               src={imageOptions[event?.sportType[0]]}
-//                               className="events-card-cover"
-
+                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
                           actions={[
@@ -499,7 +471,7 @@ const Events = () => {
                             }`}
                           />
                         </Card>
-                      </Link>
+                      </NavLink>
                     </div>
                   ))}
             </div>
@@ -509,47 +481,19 @@ const Events = () => {
               {searchValue === null
                 ? completedItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </NavLink>,
-                        ]}
-                      >
-                        <Meta
-                          className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
-
-//                       <Link to={`/events/${event._id}`}>
-//                         <Card
-//                           className="page2-suggested-individual-card"
-//                           style={{
-//                             width: 300,
-//                             background: themeStyles.light,
-//                             color: themeStyles.text,
-//                           }}
-//                           cover={
-//                             <img
-//                               alt="example"
-//                               src={imageOptions[event?.sportType[0]]}
-//                               className="events-card-cover"
-
+                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
                           actions={[
@@ -581,52 +525,24 @@ const Events = () => {
                             })} // ${event.location?.address?.city}`}
                           />
                         </Card>
-                      </Link>
+                      </NavLink>
                     </div>
                   ))
                 : completedItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-
-                      <Card
-                        className="page2-suggested-individual-card"
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                            className="events-card-cover"
-                          />
-                        }
-                        actions={[
-                          // <PlusOutlined key="plus" />,
-                          // <CheckOutlined key="check" />,
-                          <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </NavLink>,
-                        ]}
-                      >
-                        <Meta
-                          // className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
-
-//                       <Link to={`/events/${event._id}`}>
-//                         <Card
-//                           className="page2-suggested-individual-card"
-//                           style={{
-//                             width: 300,
-//                             background: themeStyles.light,
-//                             color: themeStyles.text,
-//                           }}
-//                           cover={
-//                             <img
-//                               alt="example"
-//                               src={imageOptions[event?.sportType[0]]}
-//                               className="events-card-cover"
-
+                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                        <Card
+                          className="page2-suggested-individual-card"
+                          style={{
+                            width: 300,
+                            background: themeStyles.light,
+                            color: themeStyles.text,
+                          }}
+                          cover={
+                            <img
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                              className="events-card-cover"
                             />
                           }
                           actions={[
@@ -654,7 +570,7 @@ const Events = () => {
                             }`}
                           />
                         </Card>
-                      </Link>
+                      </NavLink>
                     </div>
                   ))}
             </div>
@@ -684,7 +600,7 @@ const Events = () => {
               onShowSizeChange={handlePageSizeChange}
             />
           </div>
-          <Link
+          <Link 
             to="/events/create"
             className={token ? "page2-link" : "page2-link-hidden"}
           >
