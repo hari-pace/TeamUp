@@ -74,7 +74,7 @@ const About = () => {
                 through sport, hence the creation of this app. I've loved being
                 a part of the TeamUp team, and upon completion of our Full-Stack
                 Web Development course, I look forward to kick-starting my new
-                career in tech.{" "}
+                career in tech
               </div>
             </div>
           </div>
@@ -140,7 +140,18 @@ const About = () => {
             </div>
             <div className="about-person-text">
               <h3 className="about-person-title">Ehsan</h3>
-              <div className="about-person-text-paragraph">TEXT GOES HERE</div>
+              <div className="about-person-text-paragraph">
+                I came to Germany as a student in 2016. As a newcomer, I was
+                eager to immerse myself in the local culture, and what better
+                way to do that than through sports? I was particularly
+                interested in team sports, as they not only provide a great way
+                to stay fit, but also offer an opportunity to socialize and make
+                new friends. However, I found it challenging to find a local
+                sports group that I could join. That’s when the idea of
+                developing an application that could help people connect over
+                their shared love for sports and facilitate joining sports
+                groups
+              </div>
             </div>
           </div>
         </div>
