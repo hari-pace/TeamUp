@@ -44,6 +44,7 @@ export default function SportEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
+            document.location.reload();
             return newLoadings;
           });
         }, 6000);
