@@ -2,12 +2,17 @@ import { useState, useContext } from 'react';
 import { Form, Input, Button, Popconfirm } from "antd";
 import { AuthContext } from "../../context/authContext";
 import FormItem from 'antd/es/form/FormItem/index.js';
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit, setLoggedOut} ) {
   const { token, logout } = useContext(AuthContext);
   const [username, setUsername] = useState(initialUsername)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -78,6 +83,7 @@ console.log(username);
         <FormItem
       label="Username"
       htmlFor="username"
+      className={isLightTheme ? "bioDescText" : "darkbioDescText"}
       rules= {[
         {
           required: true,

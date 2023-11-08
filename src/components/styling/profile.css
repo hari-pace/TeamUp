@@ -374,3 +374,39 @@ padding: 0px 3px;
     border-color: grey;
     border-width: 10px;
 }
+
+.darkbioDescText:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkbioDescText:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-dev-only-do-not-override-qgg3xn).ant-radio-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-qgg3xn).ant-radio-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-dev-only-do-not-override-qgg3xn).ant-upload-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-qgg3xn).ant-upload-wrapper {
+    color: #DDD;
+}
+
+:where(.css-dev-only-do-not-override-qgg3xn).ant-rate +.ant-rate-text {
+    display: none;
+}
+
+:where(.css-qgg3xn).ant-rate +.ant-rate-text {
+    display: none;
+}
+
+.bioDescText {
+    color: var(--tertiary);
+}

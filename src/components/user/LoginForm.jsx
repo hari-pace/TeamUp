@@ -60,10 +60,11 @@ export default function LoginForm() {
     return(
         <>
         <div className=":where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content" style={{background: themeStyles.ui,
-          color: themeStyles.text,}}>
+          color: themeStyles.text}}>
         <Form
     onFinish={handleSubmit}
     name="basic"
+
     labelCol={{
       span: 8,
     }}

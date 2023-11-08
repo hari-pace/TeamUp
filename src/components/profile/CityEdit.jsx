@@ -1,11 +1,17 @@
 import { useState, useContext } from 'react';
 import { Form, Input, Button, Space, Radio } from "antd";
 import FormItem from 'antd/es/form/FormItem/index.js';
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function UsernameEdit( { initialCity, id, setCity} ) {
   const [city, setBasedCity] = useState(initialCity)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -65,6 +71,7 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
 <FormItem
 label="City"
 htmlFor="city"
+className={isLightTheme ? "bioDescText" : "darkbioDescText"}
 defaultValue={initialCity}
 >
 <Radio.Group onChange={(e) => setBasedCity(e.target.value)} value={city}>
