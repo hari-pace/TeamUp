@@ -245,7 +245,7 @@ const CreateEvent = () => {
         >
           <div className="page5-form-container">
             <Form
-              onFinish={onFinish}
+              onFinish={handleSubmit}
               className="page5-form"
               labelCol={{
                 span: 8,
@@ -466,19 +466,21 @@ const CreateEvent = () => {
                 </Form>
               </Form.Item> */}
               <h3 className="page5-subheadings">Event location</h3>
-              <div className="page5-map-container">
-                <SearchBar onAddressSelect={handleAddressSelect} />
-                <MapComponent
-                  selectedLocation={selectedLocation}
-                  onLocationSelected={handleLocationSelected}
-                />
-              </div>
-
-              {eventAddress ? (
-                <div className="page5-event-address">
-                  This event will take place at: <div>{eventAddress}</div>
+              <Form.Item>
+                <div className="page5-map-container">
+                  <SearchBar onAddressSelect={handleAddressSelect} />
+                  <MapComponent
+                    selectedLocation={selectedLocation}
+                    onLocationSelected={handleLocationSelected}
+                  />
                 </div>
-              ) : null}
+
+                {eventAddress ? (
+                  <div className="page5-event-address">
+                    This event will take place at: <div>{eventAddress}</div>
+                  </div>
+                ) : null}
+              </Form.Item>
               {/* {eventLocation ? (
                 <div className="page5-event-address">
                   This event will take place at:{" "}
@@ -538,7 +540,7 @@ const CreateEvent = () => {
               </Form.Item> */}
 
               <Form.Item>
-                <Button className="page5-btn" onClick={handleSubmit}>
+                <Button className="page5-btn" htmlType="submit">
                   Create my event!
                 </Button>
               </Form.Item>
