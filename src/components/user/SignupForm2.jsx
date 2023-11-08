@@ -246,8 +246,9 @@ export default function SignupForm2 () {
 
 {/* select language */}
 <Form.Item
-label="* Languages"
+label="Languages"
 htmlFor="languagesSpoken"
+name="Languages"
 rules={[
     { required: true },
     ]}
@@ -332,8 +333,9 @@ rules={[
   </Form.Item>
 {/* select language */}
 <Form.Item
-label="*City"
+label="City"
 htmlFor="userInfo.location.city"
+name="city"
 rules={[
   {
     required: true,
