@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../../jsfunctions/FormatDate";
-import { Rate, Card, Space, Button, Form, Input } from "antd";
+import { Rate, Card, Space, Button, Form, Input, Modal } from "antd";
 import Avatar from "../Avatar.jsx";
 import Spinner from "../Spinner";
 import UsernameEdit from "./UsernameEdit";
@@ -18,6 +18,7 @@ import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
 import ImageEditAx from "./ImageEditAx";
 import CountryEdit from "./CountryEdit.jsx";
+import Badge from "./Badge.jsx"
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -35,6 +36,18 @@ export default function Profile() {
   const [showRate, setRate] = useState(false);
   const [showCountry, setShowCountryEdit] = useState(false);
   const [loggedout, setLoggedOut] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(!true);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
 
   const themeStyles = isLightTheme ? light : dark;
@@ -109,6 +122,7 @@ export default function Profile() {
 
   console.log(singleUser);
   console.log(singleUser?.userInfo?.userImage);
+  console.log(isModalOpen);
   return (
     <>
       <div
@@ -234,6 +248,30 @@ export default function Profile() {
                         )}
                       </>
                     )}
+                    <h3>Badges</h3>
+                    <div style={{cursor: "pointer"}}className="badgeCon">
+                    <div 
+                    onClick={showModal}
+                    className="badge">
+                    </div>
+                    <Modal 
+                    title="What are Badges?"
+                    className={isLightTheme ? "lightModal" : "darkModal"}
+                    open={isModalOpen} 
+                    onOk={handleOk} 
+                    onCancel={handleCancel}>
+                    <Badge />
+                    </Modal>
+                    {singleUser?.userInfo?.eventsOrganized?.length >= 5 ? (
+                      <div className="masterBadge">
+                        </div>): null}
+                    {singleUser?.userInfo?.eventsAttended?.length >= 3 ? (
+                      <div className="beaverBadge">
+                        </div>): null}
+                    {singleUser?.userInfo?.averageRating >= 4 ? (
+                      <div className="starBadge">
+                        </div>): null}
+                    </div>
                     <h3>Bio</h3>
                     {showBioEdit ? (
                       <>
