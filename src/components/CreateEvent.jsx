@@ -258,7 +258,7 @@ const CreateEvent = () => {
                 maxWidth: 600,
               }}
             >
-              <h3 className="page5-subheadings">Event location</h3>
+              <h3 style={{color: themeStyles.text }} className="page5-subheadings">Event location</h3>
 
               <div className="page5-map-container">
                 <SearchBar onAddressSelect={handleAddressSelect} />
@@ -273,10 +273,13 @@ const CreateEvent = () => {
                   This event will take place at: <div>{eventAddress}</div>
                 </div>
               ) : null}
-              <h3 className="page5-subheadings">Event information</h3>
+              <h3 
+              style={{color: themeStyles.text }}
+              className="page5-subheadings">Event information</h3>
               <Form.Item
                 label="Event title"
                 name="Event title"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
@@ -293,6 +296,7 @@ const CreateEvent = () => {
               <Form.Item
                 label="Sport type"
                 name="Sport type"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
@@ -317,6 +321,7 @@ const CreateEvent = () => {
               <Form.Item
                 label="Event date"
                 rootClassName="Event date"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
@@ -327,6 +332,7 @@ const CreateEvent = () => {
                 <DatePicker onChange={setEventDate} value={eventDate} />
               </Form.Item>
               <Form.Item
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Event time"
                 name="Event time"
                 rules={[
@@ -345,6 +351,7 @@ const CreateEvent = () => {
               </Form.Item>
 
               <Form.Item
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Minimum no. of players"
                 name="Minimum no. of players"
                 rules={[
@@ -360,6 +367,7 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Max no. of players"
                 name="Max no. of players"
                 rules={[
@@ -385,6 +393,7 @@ const CreateEvent = () => {
               </Form.Item> */}
 
               <Form.Item
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Short event description"
                 name="Short event description"
                 rules={[
