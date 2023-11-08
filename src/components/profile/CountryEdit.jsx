@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form, Input, Button } from "antd";
 import FormItem from 'antd/es/form/FormItem/index.js';
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function UsernameEdit( { initialCountry, id, setShowCountryEdit } ) {
   const [country, setCountry] = useState(initialCountry)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -65,6 +71,7 @@ export default function UsernameEdit( { initialCountry, id, setShowCountryEdit }
         <FormItem
       label="Country"
       htmlFor="country"
+      className={isLightTheme ? "bioDescText" : "darkbioDescText"}
     >
       <Input
       type="text"

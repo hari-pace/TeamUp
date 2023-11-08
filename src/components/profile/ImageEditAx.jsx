@@ -4,6 +4,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Upload, Form, Button, Popconfirm } from "antd";
 import { AuthContext } from "../../context/authContext";
 import { useJwt } from "react-jwt";
+import { ThemeContext } from "../../context/ThemeContext";
 
 
 const normFile = (e) => {
@@ -20,6 +21,10 @@ export default function PictureUpload({initialImage, id, setLoggedOut}) {
   const [image, setImage] = useState(initialImage);
   const [error, setError] = useState(false);
   const [loadings, setLoadings] = useState([])
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const handleSubmit = async () => {
     try {
@@ -73,6 +78,7 @@ console.log(decodedToken?.image)
       <Form.Item
         label="Upload"
         name="fileList"
+        className={isLightTheme ? "bioDescText" : "darkbioDescText"}
         valuePropName="fileList"
         getValueFromEvent={normFile}
       >

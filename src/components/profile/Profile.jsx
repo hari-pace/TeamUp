@@ -155,10 +155,6 @@ export default function Profile() {
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
-
-  console.log(singleUser);
-  console.log(singleUser?.userInfo?.userImage);
-  console.log(isModalOpen);
   return (
     <>
       <div
