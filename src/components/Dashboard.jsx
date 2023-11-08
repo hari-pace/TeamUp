@@ -383,7 +383,7 @@ const Dashboard = () => {
                           actions={[<EllipsisOutlined key="ellipsis" />]}
                         >
                           <Meta
-                            // className="page2-suggested-individual-card-meta"
+                            className="page2-suggested-individual-card-meta"
                             avatar={
                               <Avatar
                                 src={event?.organizator?.userInfo?.userImage}
@@ -413,49 +413,51 @@ const Dashboard = () => {
             futureSuggestedEventsWithFollowedSports.length > 0
               ? futureSuggestedEventsWithFollowedSports.map((event, index) => (
                   <>
-                    <Link to={`/events/${event._id}`}>
-                      <Card
-                        key={index}
-                        className={
-                          isLightTheme
-                            ? "lightPage2-suggested-individual-card"
-                            : "darkPage2-suggested-individual-card"
-                        }
-                        style={{
-                          width: 300,
-                        }}
-                        cover={
-                          <img
-                            className="events-card-cover"
-                            alt="example"
-                            src={imageOptions[event?.sportType[0]]}
-                          />
-                        }
-                        actions={[<EllipsisOutlined key="ellipsis" />]}
-                      >
-                        <Meta
-                          // className="page2-suggested-individual-card-meta"
-                          avatar={
-                            <Avatar
-                              src={event?.organizator?.userInfo?.userImage}
+                    <div className="page2-suggested-card-one">
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          key={index}
+                          className={
+                            isLightTheme
+                              ? "lightPage2-suggested-individual-card"
+                              : "darkPage2-suggested-individual-card"
+                          }
+                          style={{
+                            width: 300,
+                          }}
+                          cover={
+                            <img
+                              className="events-card-cover"
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
                             />
                           }
-                          title={event.eventTitle}
-                          description={`${event.sportType[0]} // ${new Date(
-                            event?.eventDateAndTime?.eventDate
-                          ).toLocaleDateString("de-DE", {
-                            day: "numeric",
-                            month: "numeric",
-                            year: "numeric",
-                          })} @ ${new Date(
-                            event?.eventDateAndTime?.eventTime
-                          ).toLocaleTimeString("de-DE", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })} // ${event.location?.address?.city}`}
-                        />
-                      </Card>
-                    </Link>
+                          actions={[<EllipsisOutlined key="ellipsis" />]}
+                        >
+                          <Meta
+                            className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
+                          />
+                        </Card>
+                      </Link>
+                    </div>
                   </>
                 ))
               : null}
