@@ -329,12 +329,11 @@
 }
 
 @media screen and (min-width: 800px) and (max-width: 1600px) {
+  .page4-grid-items {
+  }
 
-.page4-grid-items {
-  
-}
-
-.page4-grid-cards {
-  margin: 5%;
-  padding: 5%;
+  .page4-grid-cards {
+    margin: 5%;
+    padding: 5%;
+  }
 }
