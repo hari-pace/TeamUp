@@ -25,7 +25,6 @@ import { useJwt } from "react-jwt";
 import { dateFormatter } from "../jsfunctions/FormatDate";
 import Video720p from "../assets/Video720p.mp4";
 
-
 const { Meta } = Card;
 
 const Dashboard = () => {
@@ -278,22 +277,47 @@ const Dashboard = () => {
           </Carousel>
         </div>
 
-        <div style={{backgroundColor: themeStyles.grey }} className="page2-section2">
-          <div style={{backgroundColor: themeStyles.grey }} className="page2-sports">
-            <div style={{color: themeStyles.text, backgroundColor: themeStyles.grey}} className="page2-subheading2">Sports you follow</div>
-            <div style={{backgroundColor: themeStyles.grey }}  className="page2-sports-cards">
-              <Row style={{backgroundColor: themeStyles.grey }} className="page2-sports-cards-row" gutter={0}>
+        <div
+          style={{ backgroundColor: themeStyles.grey }}
+          className="page2-section2"
+        >
+          <div
+            style={{ backgroundColor: themeStyles.grey }}
+            className="page2-sports"
+          >
+            <div
+              style={{
+                color: themeStyles.text,
+                backgroundColor: themeStyles.grey,
+              }}
+              className="page2-subheading2"
+            >
+              Sports you follow
+            </div>
+            <div
+              style={{ backgroundColor: themeStyles.grey }}
+              className="page2-sports-cards"
+            >
+              <Row
+                style={{ backgroundColor: themeStyles.grey }}
+                className="page2-sports-cards-row"
+                gutter={0}
+              >
                 {oneUser[0]?.userInfo?.interestedInSports.length > 0 ? (
                   oneUser[0]?.userInfo?.interestedInSports?.map((e, index) => (
                     <Col
                       key={index}
                       className="page2-sports-cards-row-individual"
                       span={5}
-                      style={{backgroundColor: themeStyles.grey }}
+                      style={{ backgroundColor: themeStyles.grey }}
                     >
                       <Card
                         title={e}
-                        className={isLightTheme ? "lightPage2-sports-cards-col" : "darkPage2-sports-cards-col"} 
+                        className={
+                          isLightTheme
+                            ? "lightPage2-sports-cards-col"
+                            : "darkPage2-sports-cards-col"
+                        }
                         // className="lightpage2-section2 div"
                         bordered={true}
                       >
@@ -311,10 +335,14 @@ const Dashboard = () => {
                     {" "}
                     You haven't followed any sports yet -{" "}
                     <Link
+                      style={{
+                        color: themeStyles.text,
+                      }}
                       className="dashboard-suggested-link"
                       to={`/profile/${decodedToken?.name}`}
                     >
-                      you can do that in your profile here!
+                      you can do that in your profile{" "}
+                      <span className="dashboard-here-underlined">here!</span>
                     </Link>
                   </h3>
                 )}
@@ -332,92 +360,102 @@ const Dashboard = () => {
             {oneUser[0]?.userInfo?.interestedInSports.length === 0 &&
             futureSuggestedEvents.length > 0
               ? futureSuggestedEvents.map((event, index) => (
-                <>
-                  <Link to={`/events/${event._id}`}>
-                    <Card
-                      key={index}
-                      className={isLightTheme ? "lightPage2-suggested-individual-card" : "darkPage2-suggested-individual-card"}
-                      style={{
-                        width: 350,
-                      }}
-                      cover={
-                        <img
-                          className="events-card-cover"
-                          alt="example"
-                          src={imageOptions[event?.sportType[0]]}
-                        />
-                      }
-                      actions={[<EllipsisOutlined key="ellipsis" />]}
-                    >
-                      <Meta
-                        // className="page2-suggested-individual-card-meta"
-                        avatar={
-                          <Avatar
-                            src={event?.organizator?.userInfo?.userImage}
+                  <>
+                    <div className="page2-suggested-card-one">
+                      <Link to={`/events/${event._id}`}>
+                        <Card
+                          key={index}
+                          className={
+                            isLightTheme
+                              ? "lightPage2-suggested-individual-card"
+                              : "darkPage2-suggested-individual-card"
+                          }
+                          style={{
+                            width: 300,
+                          }}
+                          cover={
+                            <img
+                              className="events-card-cover"
+                              alt="example"
+                              src={imageOptions[event?.sportType[0]]}
+                            />
+                          }
+                          actions={[<EllipsisOutlined key="ellipsis" />]}
+                        >
+                          <Meta
+                            // className="page2-suggested-individual-card-meta"
+                            avatar={
+                              <Avatar
+                                src={event?.organizator?.userInfo?.userImage}
+                              />
+                            }
+                            title={event.eventTitle}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
                           />
-                        }
-                        title={event.eventTitle}
-                        description={`${event.sportType[0]} // ${new Date(
-                          event?.eventDateAndTime?.eventDate
-                        ).toLocaleDateString("de-DE", {
-                          day: "numeric",
-                          month: "numeric",
-                          year: "numeric",
-                        })} @ ${new Date(
-                          event?.eventDateAndTime?.eventTime
-                        ).toLocaleTimeString("de-DE", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })} // ${event.location?.address?.city}`}
-                      />
-                    </Card>
-                  </Link>
+                        </Card>
+                      </Link>
+                    </div>
                   </>
                 ))
               : null}
             {oneUser[0]?.userInfo?.interestedInSports.length > 0 &&
             futureSuggestedEventsWithFollowedSports.length > 0
               ? futureSuggestedEventsWithFollowedSports.map((event, index) => (
-                <>
-                  <Link to={`/events/${event._id}`}>
-                    <Card
-                      key={index}
-                      className={isLightTheme ? "lightPage2-suggested-individual-card" : "darkPage2-suggested-individual-card"}
-                      style={{
-                        width: 350,
-                      }}
-                      cover={
-                        <img
-                          className="events-card-cover"
-                          alt="example"
-                          src={imageOptions[event?.sportType[0]]}
-                        />
-                      }
-                      actions={[<EllipsisOutlined key="ellipsis" />]}
-                    >
-                      <Meta
-                        // className="page2-suggested-individual-card-meta"
-                        avatar={
-                          <Avatar
-                            src={event?.organizator?.userInfo?.userImage}
+                  <>
+                    <Link to={`/events/${event._id}`}>
+                      <Card
+                        key={index}
+                        className={
+                          isLightTheme
+                            ? "lightPage2-suggested-individual-card"
+                            : "darkPage2-suggested-individual-card"
+                        }
+                        style={{
+                          width: 300,
+                        }}
+                        cover={
+                          <img
+                            className="events-card-cover"
+                            alt="example"
+                            src={imageOptions[event?.sportType[0]]}
                           />
                         }
-                        title={event.eventTitle}
-                        description={`${event.sportType[0]} // ${new Date(
-                          event?.eventDateAndTime?.eventDate
-                        ).toLocaleDateString("de-DE", {
-                          day: "numeric",
-                          month: "numeric",
-                          year: "numeric",
-                        })} @ ${new Date(
-                          event?.eventDateAndTime?.eventTime
-                        ).toLocaleTimeString("de-DE", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })} // ${event.location?.address?.city}`}
-                      />
-                    </Card>
-                  </Link>
+                        actions={[<EllipsisOutlined key="ellipsis" />]}
+                      >
+                        <Meta
+                          // className="page2-suggested-individual-card-meta"
+                          avatar={
+                            <Avatar
+                              src={event?.organizator?.userInfo?.userImage}
+                            />
+                          }
+                          title={event.eventTitle}
+                          description={`${event.sportType[0]} // ${new Date(
+                            event?.eventDateAndTime?.eventDate
+                          ).toLocaleDateString("de-DE", {
+                            day: "numeric",
+                            month: "numeric",
+                            year: "numeric",
+                          })} @ ${new Date(
+                            event?.eventDateAndTime?.eventTime
+                          ).toLocaleTimeString("de-DE", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })} // ${event.location?.address?.city}`}
+                        />
+                      </Card>
+                    </Link>
                   </>
                 ))
               : null}
@@ -433,7 +471,8 @@ const Dashboard = () => {
                   className="dashboard-suggested-link"
                   to="/events/create"
                 >
-                  you can always create one here!
+                  you can always create one{" "}
+                  <span className="dashboard-here-underlined">here!</span>
                 </Link>
               </h3>
             ) : null}

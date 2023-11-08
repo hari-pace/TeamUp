@@ -87,6 +87,7 @@
 
 .events-find-event {
   padding-left: 4%;
+  font-family: var(--secondaryFont);
 }
 
 .events-search-location-button {

@@ -93,13 +93,13 @@ page2-section2 div {
   border: 2px solid var(--primary);
   font-family: var(--mainFont);
   background-color: #333;
-  border-color: #DDD;
+  border-color: #ddd;
 }
 
-.darkPage2-sports-cards-col:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-head-title {
-color: white;
+.darkPage2-sports-cards-col:where(.css-dev-only-do-not-override-qgg3xn).ant-card
+  .ant-card-head-title {
+  color: white;
 }
-
 
 .page2-suggested-cards {
   display: flex;
@@ -107,6 +107,19 @@ color: white;
   flex-flow: wrap;
   margin: 0 6%;
   margin-bottom: 5%;
+}
+
+.page2-suggested-card-one {
+  margin: 1%;
+}
+
+.page2-suggested-card-one:hover {
+  transform: scale(1.07);
+  transition: 0.5s ease;
+}
+.page2-suggested-individual-card:hover {
+  transform: scale(1.07);
+  transition: 0.5s ease;
 }
 
 .lightPage2-suggested-individual-card {
@@ -138,11 +151,6 @@ color: #DDD;
 .darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-description {
   color: #DDD;
 } */
-
-.page2-suggested-individual-card:hover {
-  transform: scale(1.07);
-  transition: 0.5s ease;
-}
 
 .ant-card-head-title {
   font-size: 2rem;
@@ -190,6 +198,10 @@ color: #DDD;
     color-stop(100%, rgba(0, 0, 0, 0)),
     to(rgba(0, 0, 0, 1))
   );
+}
+
+.dashboard-here-underlined {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 800px) {

@@ -96,11 +96,20 @@ const Events = () => {
   // const futureEvents = events.filter(
   //   (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
   // );
+
+  // Old method using status
+  // const upcomingEvents = events.filter(
+  //   (event) => event.eventStatus === "upcoming"
+  // );
+  // const completedEvents = events.filter(
+  //   (event) => event.eventStatus === "completed"
+  // );
+
   const upcomingEvents = events.filter(
-    (event) => event.eventStatus === "upcoming"
+    (event) => new Date(event.eventDateAndTime?.eventDate) >= new Date()
   );
   const completedEvents = events.filter(
-    (event) => event.eventStatus === "completed"
+    (event) => new Date(event.eventDateAndTime?.eventDate) < new Date()
   );
 
   console.log(upcomingEvents);
@@ -260,37 +269,74 @@ const Events = () => {
               className="events-modal-text"
             >
               <Space direction="vertical">
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Berlin"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Berlin"}
+                >
                   Berlin
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"München"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"München"}
+                >
                   München
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Hamburg"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Hamburg"}
+                >
                   Hamburg
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Stuttgart"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Stuttgart"}
+                >
                   Stuttgart
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Dresden"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Dresden"}
+                >
                   Dresden
                 </Radio>
-                <Radio style={{color: themeStyles.text}}
+                <Radio
+                  style={{ color: themeStyles.text }}
                   className="events-modal-text"
                   value={"Frankfurt am Main"}
                 >
                   Frankfurt am Main
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Köln"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Köln"}
+                >
                   Köln
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Nürnberg"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Nürnberg"}
+                >
                   Nürnberg
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Hannover"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Hannover"}
+                >
                   Hannover
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Bremen"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Bremen"}
+                >
                   Bremen
                 </Radio>
               </Space>
@@ -327,37 +373,81 @@ const Events = () => {
           >
             <Radio.Group onChange={onChangeSport} value={sportValue}>
               <Space direction="vertical">
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Football"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Football"}
+                >
                   Football
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Basketball"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Basketball"}
+                >
                   Basketball
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Volleyball"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Volleyball"}
+                >
                   Volleyball
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Swimming"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Swimming"}
+                >
                   Swimming
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Cycling"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Cycling"}
+                >
                   Cycling
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Yoga"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Yoga"}
+                >
                   Yoga
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Tennis"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Tennis"}
+                >
                   Tennis
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Handball"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Handball"}
+                >
                   Handball
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Cricket"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Cricket"}
+                >
                   Cricket
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Fitness"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Fitness"}
+                >
                   Fitness
                 </Radio>
-                <Radio style={{color: themeStyles.text}} className="events-modal-text" value={"Ski"}>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={"Ski"}
+                >
                   Ski
                 </Radio>
               </Space>
@@ -383,7 +473,10 @@ const Events = () => {
               {searchValue === null
                 ? currentItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                      <NavLink
+                        style={{ textDecoration: "none" }}
+                        to={`/events/${event._id}`}
+                      >
                         <Card
                           className="page2-suggested-individual-card"
                           style={{
@@ -433,7 +526,10 @@ const Events = () => {
                   ))
                 : currentItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                      <NavLink
+                        style={{ textDecoration: "none" }}
+                        to={`/events/${event._id}`}
+                      >
                         <Card
                           className="page2-suggested-individual-card"
                           style={{
@@ -483,7 +579,10 @@ const Events = () => {
               {searchValue === null
                 ? completedItemsFiltered.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                      <NavLink
+                        style={{ textDecoration: "none" }}
+                        to={`/events/${event._id}`}
+                      >
                         <Card
                           className="page2-suggested-individual-card"
                           style={{
@@ -532,7 +631,10 @@ const Events = () => {
                   ))
                 : completedItemsFilteredByName.map((event, index) => (
                     <div key={index} className="page4-suggested-cards">
-                      <NavLink style={{textDecoration: "none"}} to={`/events/${event._id}`}>
+                      <NavLink
+                        style={{ textDecoration: "none" }}
+                        to={`/events/${event._id}`}
+                      >
                         <Card
                           className="page2-suggested-individual-card"
                           style={{
@@ -602,7 +704,7 @@ const Events = () => {
               onShowSizeChange={handlePageSizeChange}
             />
           </div>
-          <Link 
+          <Link
             to="/events/create"
             className={token ? "page2-link" : "page2-link-hidden"}
           >
