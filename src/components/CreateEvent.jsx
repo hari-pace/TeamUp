@@ -258,6 +258,21 @@ const CreateEvent = () => {
                 maxWidth: 600,
               }}
             >
+              <h3 className="page5-subheadings">Event location</h3>
+
+              <div className="page5-map-container">
+                <SearchBar onAddressSelect={handleAddressSelect} />
+                <MapComponent
+                  selectedLocation={selectedLocation}
+                  onLocationSelected={handleLocationSelected}
+                />
+              </div>
+
+              {eventAddress ? (
+                <div className="page5-event-address">
+                  This event will take place at: <div>{eventAddress}</div>
+                </div>
+              ) : null}
               <h3 className="page5-subheadings">Event information</h3>
               <Form.Item
                 label="Event title"
@@ -465,22 +480,7 @@ const CreateEvent = () => {
                   </Form.List>
                 </Form>
               </Form.Item> */}
-              <h3 className="page5-subheadings">Event location</h3>
-              <Form.Item>
-                <div className="page5-map-container">
-                  <SearchBar onAddressSelect={handleAddressSelect} />
-                  <MapComponent
-                    selectedLocation={selectedLocation}
-                    onLocationSelected={handleLocationSelected}
-                  />
-                </div>
 
-                {eventAddress ? (
-                  <div className="page5-event-address">
-                    This event will take place at: <div>{eventAddress}</div>
-                  </div>
-                ) : null}
-              </Form.Item>
               {/* {eventLocation ? (
                 <div className="page5-event-address">
                   This event will take place at:{" "}
