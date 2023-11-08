@@ -22,6 +22,10 @@
         border-width: 0px !important;
         justify-content: flex-start !important;
         margin: 10px !important;
+        width: auto !important;
+    }
+    :where(.css-qgg3xn).ant-rate {
+        width: auto !important;
     }
     .bioContainer h3,  .infoContainer h3 {
         font-size: 1.25rem;
@@ -409,4 +413,12 @@ padding: 0px 3px;
 
 .bioDescText {
     color: var(--tertiary);
+}
+
+:where(.css-qgg3xn).ant-rate {
+    width: 40%;
+}
+
+.bioContainer {
+    width: 40%;
 }
