@@ -2,8 +2,12 @@ import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useJwt } from "react-jwt";
 import "./styling/createEvent.css";
+import MapComponent from "./mapfunctions/MapComponent";
+import SearchBar from "./mapfunctions/SearchBar";
+import axios from "axios";
 import Swimming from "../assets/swimming2.jpg";
 import Cycling from "../assets/cycling.jpg";
 import Basketball from "../assets/basketball2.jpg";
@@ -23,6 +27,9 @@ import {
   Switch,
   Typography,
 } from "antd";
+import { ParallaxBanner } from "react-scroll-parallax";
+import Skiing from "../assets/ski1.jpg";
+
 const { TextArea } = Input;
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -32,6 +39,9 @@ const normFile = (e) => {
 };
 
 const CreateEvent = () => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [eventAddress, setEventAddress] = useState(null);
+  const [eventLocation, setEventLocation] = useState(null);
   const [error, setError] = useState(null);
   const [eventTitle, setEventTitle] = useState();
   const [eventSportType, setEventSportType] = useState([]);
@@ -47,6 +57,9 @@ const CreateEvent = () => {
   const [eventHouseNumber, setEventHouseNumber] = useState();
   const [eventUsersAttending, setEventUsersAttending] = useState([]);
   const [users, setUsers] = useState([]);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
@@ -74,8 +87,6 @@ const CreateEvent = () => {
 
   const oneUser = users.filter((user) => user.username === decodedToken?.name);
 
-  console.log(oneUser[0]);
-
   const jsonData = {
     sportType: eventSportType,
     usersAttending: [
@@ -88,16 +99,16 @@ const CreateEvent = () => {
     maxCapacity: eventMaximumPlayers,
     location: {
       LatLng: {
-        latitude: 50.44974899,
-        longitude: 30.52371788,
+        latitude: selectedLocation?.lat,
+        longitude: selectedLocation?.lng,
       },
-      address: {
-        city: eventCity,
-        street: eventStreet,
-        houseNumber: eventHouseNumber,
-      },
+      // address: {
+      //   city: eventCity,
+      //   street: eventStreet,
+      //   houseNumber: eventHouseNumber,
+      // },
       // eventPicture: eventPicture.fileList[0],
-      hashTags: [eventHashtags.hashtags],
+      // hashTags: [eventHashtags.hashtags],
     },
     eventDescription: eventDescription,
     eventTitle: eventTitle,
@@ -137,34 +148,90 @@ const CreateEvent = () => {
 
   const [form] = Form.useForm();
 
-  // console.log(eventHashtags);
+  // const handleLocationSelect = (location) => {
+  //   console.log("Selected Location:", location);
+  //   setSelectedLocation(location);
+  // };
 
-  // console.log(decodedToken.name);
-  // console.log(eventTime?.$H);
-  console.log(eventTime);
+  // console.log(selectedLocation.lat, selectedLocation.lng);
+
+  const handleLocationSelected = (location) => {
+    // Send the location data via a POST request or handle it as needed
+    console.log("Location selected:", location);
+    setEventAddress(null);
+    setSelectedLocation(location);
+    setEventLocation(location);
+    // Example: Send a POST request using Axios
+    // axios.post('YOUR_API_ENDPOINT', location)
+    //   .then(response => {
+    //     console.log('Location sent successfully:', response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error sending location:', error);
+    //   });
+  };
+
+  const handleAddressSelect = (address) => {
+    // Handle the selected address logic here
+    console.log("Selected address:", address);
+    setEventLocation(null);
+    setSelectedLocation(address);
+    setEventAddress(address.userAddress);
+  };
+
+  // console.log(selectedLocation.lat, selectedLocation.lng);
+  // console.log(selectedLocation);
+
+  const onFinish = (values) => {
+    // Handle form submission logic here
+    console.log("Received values:", values);
+  };
 
   return (
     <>
-      <div className="events-heroDiv">
-        <h1 className="events-h1"> Create an event</h1>
-      </div>
+      <ParallaxBanner
+        className="events-heroDiv"
+        layers={[
+          {
+            speed: -30,
+            children: (
+              <div className="">
+                {/* <h1 className="events-h1">Create an event</h1> */}
+              </div>
+            ),
+          },
+          { image: Skiing, speed: 20 },
+        ]}
+      >
+        <h1 className="events-text-hero"> Create an event</h1>
+        {/* <h1> Create an event</h1> */}
+      </ParallaxBanner>
       <div className="page4-container">
         <div className="page5-left-column">
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Cycling}
               alt="cycling"
             />
           </div>
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Swimming}
               alt="cycling"
             />
           </div>
-          <div className="page5-images">
+          <div
+            className="page5-images"
+            style={{ background: themeStyles.grey, color: themeStyles.text }}
+          >
             <img
               className="page5-individual-images"
               src={Basketball}
@@ -172,9 +239,13 @@ const CreateEvent = () => {
             />
           </div>
         </div>
-        <div className="page4-right-column">
+        <div
+          className="page4-right-column"
+          style={{ background: themeStyles.midgrey }}
+        >
           <div className="page5-form-container">
             <Form
+              onFinish={handleSubmit}
               className="page5-form"
               labelCol={{
                 span: 8,
@@ -187,12 +258,32 @@ const CreateEvent = () => {
                 maxWidth: 600,
               }}
             >
-              <h3 className="page5-subheadings">Event information</h3>
+              <h3 style={{color: themeStyles.text }} className="page5-subheadings">Event location</h3>
+
+              <div className="page5-map-container">
+                <SearchBar onAddressSelect={handleAddressSelect} />
+                <MapComponent
+                  selectedLocation={selectedLocation}
+                  onLocationSelected={handleLocationSelected}
+                />
+              </div>
+
+              {eventAddress ? (
+                <div className="page5-event-address">
+                  This event will take place at: <div>{eventAddress}</div>
+                </div>
+              ) : null}
+              <h3 
+              style={{color: themeStyles.text }}
+              className="page5-subheadings">Event information</h3>
               <Form.Item
-                label="* Event title"
+                label="Event title"
+                name="Event title"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
+                    message: "Please enter a title",
                   },
                 ]}
               >
@@ -203,10 +294,13 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="* Sport type"
+                label="Sport type"
+                name="Sport type"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
+                    message: "Please enter a sport type",
                   },
                 ]}
               >
@@ -217,23 +311,34 @@ const CreateEvent = () => {
                   <Select.Option value="Swimming">Swimming</Select.Option>
                   <Select.Option value="Cycling">Cycling</Select.Option>
                   <Select.Option value="Yoga">Yoga</Select.Option>
+                  <Select.Option value="Tennis">Tennis</Select.Option>
+                  <Select.Option value="Handball">Handball</Select.Option>
+                  <Select.Option value="Cricket">Cricket</Select.Option>
+                  <Select.Option value="Fitness">Fitness</Select.Option>
+                  <Select.Option value="Ski">Ski</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item
-                label="* Event date"
+                label="Event date"
+                rootClassName="Event date"
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 rules={[
                   {
                     required: true,
+                    message: "Please select a date",
                   },
                 ]}
               >
                 <DatePicker onChange={setEventDate} value={eventDate} />
               </Form.Item>
               <Form.Item
-                label="* Event time"
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                label="Event time"
+                name="Event time"
                 rules={[
                   {
                     required: true,
+                    message: "Please select a time",
                   },
                 ]}
               >
@@ -246,10 +351,13 @@ const CreateEvent = () => {
               </Form.Item>
 
               <Form.Item
-                label="* Minimum no. of players"
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                label="Minimum no. of players"
+                name="Minimum no. of players"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter minimum number of players",
                   },
                 ]}
               >
@@ -259,10 +367,13 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="* Max no. of players"
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                label="Max no. of players"
+                name="Max no. of players"
                 rules={[
                   {
                     required: true,
+                    message: "Please enter maximum number of players",
                   },
                 ]}
               >
@@ -281,7 +392,17 @@ const CreateEvent = () => {
                 />
               </Form.Item> */}
 
-              <Form.Item label="Short description of event">
+              <Form.Item
+              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                label="Short event description"
+                name="Short event description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter event description",
+                  },
+                ]}
+              >
                 <TextArea
                   rows={4}
                   onChange={(e) => setEventDescription(e.target.value)}
@@ -368,8 +489,16 @@ const CreateEvent = () => {
                   </Form.List>
                 </Form>
               </Form.Item> */}
-              <h3 className="page5-subheadings">Event location</h3>
-              <Form.Item
+
+              {/* {eventLocation ? (
+                <div className="page5-event-address">
+                  This event will take place at:{" "}
+                  <div>Latitude: {eventLocation.lat}</div>
+                  <div>Longitude: {eventLocation.lng}</div>
+                </div>
+              ) : null} */}
+
+              {/* <Form.Item
                 label="* Street number"
                 rules={[
                   {
@@ -407,7 +536,7 @@ const CreateEvent = () => {
                   onChange={(e) => setEventCity(e.target.value)}
                   value={eventCity}
                 />
-              </Form.Item>
+              </Form.Item> */}
               {/* <Form.Item
                 label="* Postcode"
                 rules={[
@@ -420,7 +549,7 @@ const CreateEvent = () => {
               </Form.Item> */}
 
               <Form.Item>
-                <Button className="page5-btn" onClick={handleSubmit}>
+                <Button className="page5-btn" htmlType="submit">
                   Create my event!
                 </Button>
               </Form.Item>

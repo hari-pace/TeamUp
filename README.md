@@ -1,9 +1,2 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # TeamUp
+With this app users can create a profile and then find and create sports events in their local area. The user just needs to decide where (either from address or by dropping a pin on the map) and when the event should take place, plus how many people they need to join. Users can see each others profiles and rate each other, as well as comment on events, all improving the community feel of the TeamUp experience.

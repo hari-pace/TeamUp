@@ -3,14 +3,14 @@
 .page2-heading {
   text-align: center;
   font-size: 4rem;
-  font-family: "Futura Condensed Extra", sans-serif;
+  font-family: var(--mainFont);
   margin-bottom: 2%;
   margin-top: 2%;
 }
 .page2-subheading {
   font-size: 4rem;
   text-decoration: underline;
-  font-family: "Futura Condensed Extra", sans-serif;
+  font-family: var(--mainFont);
   margin: 1%;
 }
 
@@ -32,20 +32,20 @@
   max-width: 500px;
   background-color: var(--secondary);
   color: var(--primary);
-  font-family: "Proxima Nova Condensed", sans-serif;
+  font-family: var(--secondaryFont);
   font-size: 1.5rem;
   height: 50px;
   margin-bottom: 1%;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
   background-color: #536ce8;
   color: white;
 }
-:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
@@ -53,7 +53,7 @@
   color: white;
 }
 
-.page2-section2 div {
+page2-section2 div {
   background-color: var(--secondary);
   color: black;
 }
@@ -61,7 +61,7 @@
 .page2-subheading2 {
   font-size: 4rem;
   text-decoration: underline;
-  font-family: "Futura Condensed Extra", sans-serif;
+  font-family: var(--mainFont);
   padding-top: 2%;
   padding-bottom: 1%;
   margin: 1%;
@@ -69,21 +69,36 @@
 
 .page2-sports-cards {
   margin-top: 1%;
+  min-height: 100px;
 }
 
 .page2-sports-cards-row {
   text-align: center;
   display: flex;
-  justify-content: center;
-
+  justify-content: flex-start;
+  margin-left: 5%;
   margin-bottom: 2%;
   padding-bottom: 2%;
 }
 
-.page2-sports-cards-col {
+.lightPage2-sports-cards-col {
   padding: 1%;
   border: 2px solid var(--primary);
-  font-family: "Futura Condensed Extra", sans-serif;
+  font-family: var(--mainFont);
+  background-color: var(--secondary);
+}
+
+.darkPage2-sports-cards-col {
+  padding: 1%;
+  border: 2px solid var(--primary);
+  font-family: var(--mainFont);
+  background-color: #333;
+  border-color: #ddd;
+}
+
+.darkPage2-sports-cards-col:where(.css-dev-only-do-not-override-qgg3xn).ant-card
+  .ant-card-head-title {
+  color: white;
 }
 
 .page2-suggested-cards {
@@ -91,18 +106,51 @@
   justify-content: flex-start;
   flex-flow: wrap;
   margin: 0 6%;
+  margin-bottom: 5%;
 }
 
-.page2-suggested-individual-card {
+.page2-suggested-card-one {
   margin: 1%;
-  font-family: "Proxima Nova Condensed", sans-serif;
-  background-color: var(--secondary);
 }
 
+.page2-suggested-card-one:hover {
+  transform: scale(1.07);
+  transition: 0.5s ease;
+}
 .page2-suggested-individual-card:hover {
   transform: scale(1.07);
   transition: 0.5s ease;
 }
+
+.lightPage2-suggested-individual-card {
+  margin: 1%;
+  font-family: var(--secondaryFont);
+  background-color: var(--secondary);
+}
+
+/* .darkPage2-suggested-individual-card {
+  margin: 1%;
+  font-family: var(--secondaryFont);
+  background-color: #555;
+  border-color: #333;
+  color: #DDD;
+}
+
+.darkPage2-suggested-individual-card:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
+color: #DDD;
+}
+
+.darkPage2-suggested-individual-card:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-description {
+  color: #DDD;
+}
+
+.darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-title {
+  color: #DDD;
+}
+  
+.darkPage2-suggested-individual-card:where(.css-qgg3xn).ant-card .ant-card-meta-description {
+  color: #DDD;
+} */
 
 .ant-card-head-title {
   font-size: 2rem;
@@ -116,6 +164,44 @@
   display: flex;
   min-width: 350px;
   margin-bottom: 2%;
+}
+
+.dashboard-suggested-link {
+  color: black;
+  font-family: var(--secondaryFont);
+}
+
+.dashboard-sports-and-suggested-h3 {
+  margin: 2% 0;
+  font-family: var(--secondaryFont);
+}
+
+.dashboard-carousel-img {
+  max-height: 100%;
+  opacity: 0.7;
+  object-fit: cover;
+
+  position: absolute;
+  top: 0%;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+  /* For Webkit browsers like Chrome and Safari */
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(0, 0, 0, 1)),
+    color-stop(100%, rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
+  );
+}
+
+.dashboard-here-underlined {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 800px) {
@@ -142,5 +228,31 @@
   .page2-suggested-cards {
     display: flex;
     justify-content: center;
+  }
+
+  .page2-suggested-individual-card:hover {
+    transform: scale(1.02);
+  }
+
+  .page2-carousel {
+    max-width: 98%;
+    margin: 0 auto;
+  }
+
+  #dashboard-button-create,
+  #dashboard-button-find {
+    font-size: 1.5rem;
+  }
+
+  .page2-section2 {
+    margin-bottom: 5%;
+  }
+
+  .page2-my-events {
+    margin-top: 3%;
+  }
+
+  .dashboard-carousel-img {
+    opacity: 0.3;
   }
 }

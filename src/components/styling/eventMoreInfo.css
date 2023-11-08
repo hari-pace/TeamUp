@@ -35,6 +35,13 @@
   padding-left: 10%;
   margin-left: 10%;
   border-radius: 20px;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  padding-bottom: 2%;
+}
+
+.page4-heading {
+  width: 80%;
 }
 
 .page4-input-fields {
@@ -66,8 +73,15 @@
 
 #page-4-description {
   height: 10rem;
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   padding-top: 2%;
+  padding-right: 2%;
+}
+
+.page-4-description-text {
+  margin-top: 3%;
 }
 
 .page4-spaces-fields {
@@ -82,8 +96,16 @@
   margin: 0.5%;
 }
 
+.page4-spaces-fields-div {
+  width: 100%;
+}
+
 .page4-spaces-fields-container {
   display: flex;
+}
+
+.page4-users-attending {
+  margin-bottom: 4%;
 }
 
 .page4-users-attending-heading {
@@ -103,6 +125,8 @@
 
 .page4-grid-cards {
   height: 100%;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .gridProfile-page4 {
@@ -130,20 +154,20 @@
   max-width: 500px;
   background-color: var(--primary);
   color: var(--secondary);
-  font-family: "Proxima Nova Condensed", sans-serif;
+  font-family: var(--secondaryFont);
   font-size: 1.5rem;
   height: 50px;
   margin: 1% 0.5% 1% 0.5%;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
   background-color: #536ce8;
   color: white;
 }
-:where(.css-3mqfnx).ant-btn-primary:not(:disabled):not(
+:where(.css-qgg3xn).ant-btn-primary:not(:disabled):not(
     .ant-btn-disabled
   ):hover {
   max-width: 500px;
@@ -156,6 +180,69 @@
   font-size: 1.5rem;
 }
 
+.event-info-buttons {
+  margin-left: 2%;
+}
+
+.event-individual-comment {
+  margin-bottom: 5%;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  padding: 3%;
+  background: radial-gradient(
+    circle at 90% 90%,
+    var(--secondary),
+    var(--primary)
+  );
+}
+
+.event-individual-comment-text {
+  font-size: 1.5rem;
+}
+.event-individual-comment-date {
+  font-size: 1rem;
+}
+
+.event-add-new-comment-heading {
+  font-size: 1.2rem;
+  padding-bottom: 1%;
+  margin-top: 5%;
+}
+
+.event-comments-none-yet {
+  font-size: 1.2rem;
+}
+
+.event-individual-comment-button {
+  font-size: 1rem;
+  width: 6rem;
+  height: 2rem;
+}
+
+.event-individual-comment-time-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-individual-comment-reply-heading {
+  margin-top: 2%;
+  margin-left: 10%;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.event-individual-comment-reply-text {
+  margin-left: 10%;
+  font-size: 1.3rem;
+}
+.event-individual-comment-reply-date {
+  margin-left: 10%;
+  font-size: 1rem;
+}
+
+.event-info-comment-buttons {
+  margin-left: 4%;
+}
+
 @media screen and (max-width: 800px) {
   .page4-container {
     flex-direction: column;
@@ -165,7 +252,7 @@
 
     justify-content: center;
     margin: 5% 10%;
-    width: 50%;
+    width: 75%;
     min-height: 50px;
   }
   .page4-avatar {
@@ -177,7 +264,8 @@
 
   .page4-right-column {
     width: 65%;
-    margin: none;
+    margin-top: 5%;
+    margin-bottom: 5%;
     padding: none;
   }
   .page4-btn-wrapper {
@@ -214,5 +302,41 @@
     padding-left: 4%;
     border-radius: 20px;
     margin-bottom: 4%;
+  }
+  .event-info-buttons {
+    font-size: 0.92rem;
+  }
+
+  .avatarProfile-page4 {
+    max-height: 100px;
+    max-width: 100px;
+  }
+
+  .page4-organiser-container {
+    /* margin-right: 5%; */
+    padding-right: 5%;
+  }
+
+  .event-individual-comment-time-and-button {
+    display: flex;
+  }
+
+  .event-individual-comment-buttons {
+    display: flex;
+
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1600px) {
+  .page4-grid-items {
+  }
+
+  .page4-grid-cards {
+    margin: 5%;
+    padding: 5%;
+  }
+  .page4-input-fields {
+    font-size: 1.1rem;
   }
 }

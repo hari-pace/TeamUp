@@ -1,3 +1,24 @@
+.about-us-hero {
+  background-color: var(--secondary);
+  padding: 2% 0;
+}
+.about-us-hero-gradient-1 {
+  height: 4rem;
+  background: linear-gradient(to top, var(--secondary), var(--primary));
+}
+.about-us-hero-gradient-2 {
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--secondary), var(--primary));
+}
+.about-us-hero-gradient-1-dark {
+  height: 4rem;
+  background: linear-gradient(to top, #555, #333);
+}
+.about-us-hero-gradient-2-dark {
+  height: 4rem;
+  background: linear-gradient(to bottom, #555, #333);
+}
+
 .about-main-container {
   background-color: var(--secondary);
   height: 100%;
@@ -12,18 +33,96 @@
   margin-bottom: 2%;
 }
 
+.about-subheading {
+  padding-top: 3%;
+  padding-left: 2%;
+}
+
 .about-person-container {
-  height: 30vh;
+  height: 40vh;
   display: flex;
   border: 2px solid black;
+  border-radius: 20px;
+  min-height: 310px;
 }
 
 .about-person-pic {
   height: 30vh;
-  width: 25%;
-  background-color: beige;
+  width: 30%;
+  min-width: 200px;
 }
 .about-person-text {
-  height: 30vh;
-  width: 75%;
+  height: 0vh;
+  width: 65%;
+  padding-left: 1.5%;
+}
+
+.about-person-text-paragraph {
+  font-size: 1.4rem;
+}
+
+.about-person-title {
+  padding: 1% 0;
+}
+
+.about-img {
+  object-fit: cover;
+  min-height: 16rem;
+  max-height: 18rem;
+  width: 100%;
+  border-radius: 20px 0 20px 0;
+}
+
+.about-socials {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20%;
+  font-size: 2rem;
+}
+
+.about-social-icons {
+  color: var(--primary);
+}
+
+.about-socials-text {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .about-person-text-paragraph {
+    font-size: 1rem;
+    padding: 2%;
+  }
+  .about-person-title {
+    padding: 2% 2%;
+    font-size: 2rem;
+  }
+  .about-socials-text {
+    font-size: 1.2rem;
+  }
+  .about-person-pic {
+    min-width: 175px;
+  }
+  .about-img {
+    object-fit: cover;
+    height: 16rem;
+  }
+
+  .about-person-container {
+    height: 25rem;
+  }
+
+  #about-hari {
+    height: 28rem;
+  }
+  #about-kate {
+    height: 29rem;
+  }
+  #about-ehsan {
+    height: 32rem;
+  }
+  #about-darrell {
+    height: 32rem;
+  }
 }

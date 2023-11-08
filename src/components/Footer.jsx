@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -10,8 +10,14 @@ import Logo from "./Logo";
 import { Divider } from "antd";
 import "./styling/footer.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 function Footer() {
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+  const { token } = useContext(AuthContext);
   return (
     <section>
       <Divider className="divider" />
@@ -21,20 +27,81 @@ function Footer() {
         </div>
         <div className="footer-1">
           <ul>
-            <li>Login</li>
-            <li>Create an account</li>
-            <li>Find an event</li>
-            <li>Create an event</li>
+            <li
+              onClick={
+                !token
+                  ? () =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                  : null
+              }
+            >
+              Login
+            </li>
+            <li
+              onClick={
+                !token
+                  ? () =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                  : null
+              }
+            >
+              Create an account
+            </li>
+            <li>
+              <Link
+                className="footer-links"
+                to="/events"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
+                Find an event
+              </Link>
+            </li>
+            <li>
+              <Link
+                style={{
+                  color: themeStyles.light,
+                }}
+                className="footer-links"
+                to={token ? "/events/create" : null}
+              >
+                Create an event
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="footer-2">
           <ul>
             <li>
-              <Link className="footer-links" to={"/about"}>
+              <Link
+                className="footer-links"
+                to="/about"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
                 About Us
               </Link>
             </li>
-            <li>Contact Us</li>
+
+            <li>
+              <Link
+                className="footer-links"
+                to="/contact"
+                style={{
+                  color: themeStyles.light,
+                }}
+              >
+                Contact Us
+              </Link>
+            </li>
             <li>Careers at TeamUp</li>
             <li>FAQ's</li>
           </ul>

@@ -6,7 +6,9 @@
     .profileContainer {
         padding: 0px !important;
     }
-
+    .profileWholeContainer.profileWholeContainer {
+        padding: 0 0 5% 0;
+        }
     .avatarProfile {
         width: 150px !important;
         height: 150px !important;
@@ -39,53 +41,73 @@
         padding: 0px !important;
         border-width: 5px !important;
     }
-    :where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
+    .badge,
+    .beaverBadge,
+    .starBadge,
+    .masterBadge {
+    height: 15px !important;
+    border-width: 5px !important;
+    padding: 20px !important;
+    }
+    .badgeexample {
+        width: 300px;
+    }
+    :where(.css-dev-only-do-not-override-qgg3xn).ant-rate {
     padding: 0px !important;
     }
-    :where(.css-3mqfnx).ant-rate {
-        padding: 0px !important;
-        }
-    .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-body {
-        padding: 5px 5px !important;
+    :where(.css-qgg3xn).ant-rate {
+    padding: 0px !important;
     }
-    .profileCards:where(.css-3mqfnx).ant-card .ant-card-body {
-        padding: 5px 5px !important;
+    .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-body {
+    padding: 5px 5px !important;
+    }
+    .profileCards:where(.css-qgg3xn).ant-card .ant-card-body {
+    padding: 5px 5px !important;
     }
     .avatarCard {
+    margin-top: 10px !important;
     width: 30px !important;
     height: 30px !important;
     }
-    .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
+    .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap !important;
     }
-    .profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-head {
+    .profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-head {
     min-height: 0px !important;
     padding: 0px !important;
     }
-    .profileCards:where(.css-3mqfnx).ant-card .ant-card-head {
+    .badgeCon {
+    grid-template-columns: 5px 5px 5px 5px !important;
+    align-items: center;
+    }
+    .eventsJoinedCon {
+    grid-gap: 2px !important;
+    grid-template-columns: 50px 50px 50px !important;
+    }
+    .profileCards:where(.css-qgg3xn).ant-card .ant-card-head {
     min-height: 0px !important;
     padding: 0px !important;
     }
     .profileCards .ant-card-head-title {
     font-size: 0.75rem !important;
     }
-    .profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+    .profileCards:where(.css-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap !important;
     }
     .bioCon {
     border-width: 5px !important;
     }
-    :where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
+    :where(.css-dev-only-do-not-override-qgg3xn).ant-rate {
     border-width: 5px !important;
     }
-    :where(.css-3mqfnx).ant-rate {
+    :where(.css-qgg3xn).ant-rate {
     border-width: 5px !important;
     }
-    .deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    .deleteProfile:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-dangerous  {
     width: 40% !important;
     }
         
-    .deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+    .deleteProfile:where(.css-qgg3xn).ant-btn-primary.ant-btn-dangerous  {
     width: 40% !important;
     }
 }
@@ -123,7 +145,7 @@ h3 {
 .bioContainer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* border-style: solid; */
     border-color: var(--primary);
     padding: 50px;
@@ -161,7 +183,7 @@ padding: 0px;
 
 /* item */
 /* rating */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-rate {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-rate {
     background-color: white;
     border-style: solid;
     border-color: var(--primary);
@@ -169,7 +191,7 @@ padding: 0px;
     border-radius: 5px;
     border-width: 10px;
 }
-:where(.css-3mqfnx).ant-rate {
+:where(.css-qgg3xn).ant-rate {
     background-color: white;
     border-style: solid;
     border-color: var(--primary);
@@ -200,17 +222,21 @@ padding: 0px;
 }
 
 /* Card */
+.eventsJoinedCon {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-gap: 10px;
+}
 .eventsJoined .profileCards, .eventsCreated .profileCards {
     width: 100px;
-    height: 150px;
-    
+    height: 150px; 
 }
-.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
+.profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
     font-size: 0.6rem;
     white-space: wrap;
 }
 
-.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+.profileCards:where(.css-qgg3xn).ant-card .ant-card-meta-title {
     font-size: 0.6rem;
     white-space: wrap;
 }
@@ -219,51 +245,43 @@ padding: 0px;
     width: 60px;
     height: 60px;
     margin: 0px;
-    padding: 0px;
+    padding-top: 0px;
     border-radius: 50%;
 }
 
-.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-avatar {
+.profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-avatar {
     margin: 0px;
     padding: 0px;
 }
 
-.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-avatar {
+.profileCards:where(.css-qgg3xn).ant-card .ant-card-meta-avatar {
     margin: 0px;
     padding: 0px;
 }
 
-.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-body {
-    padding: 24px 5px;
+.profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-body {
+    padding: 14px 18px;
 }
 
-.profileCards:where(.css-3mqfnx).ant-card .ant-card-body {
-    padding: 24px 5px;
+.profileCards:where(.css-qgg3xn).ant-card .ant-card-body {
+    padding: 14px 18px;
 }
 
-.eventsJoinedCon {
-    display: flex;
-}
-
-.eventsJoinedItem {
-    margin-right: 10px;
-}
-
-.deleteProfile:where(.css-dev-only-do-not-override-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+.deleteProfile:where(.css-dev-only-do-not-override-qgg3xn).ant-btn-primary.ant-btn-dangerous  {
     width: 25%;
     align-self: flex-end;
 }
 
-.deleteProfile:where(.css-3mqfnx).ant-btn-primary.ant-btn-dangerous  {
+.deleteProfile:where(.css-qgg3xn).ant-btn-primary.ant-btn-dangerous  {
     width: 25%;
     align-self: flex-end;
 }
 
-.profileCards:where(.css-dev-only-do-not-override-3mqfnx).ant-card .ant-card-meta-title {
+.profileCards:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap;
 }
 
-.profileCards:where(.css-3mqfnx).ant-card .ant-card-meta-title {
+.profileCards:where(.css-qgg3xn).ant-card .ant-card-meta-title {
     white-space: nowrap;
     }
 
@@ -271,6 +289,124 @@ padding: 0px;
     font-size: 1rem ;
 }
 
-.rateCloseButton :where(.css-dev-only-do-not-override-3mqfnx).ant-btn {
+.rateCloseButton :where(.css-dev-only-do-not-override-qgg3xn).ant-btn {
 width: 0%;
+}
+
+:where(.css-dev-only-do-not-override-qgg3xn).ant-card .ant-card-head {
+padding: 0px 3px;
+}
+
+:where(.css-qgg3xn).ant-card .ant-card-head {
+padding: 0px 3px;
+}
+
+.badgeCon {
+    display: grid;
+    grid-template-columns: 60px 60px 60px 60px;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.badge {
+    border-style: solid;
+    border-radius: 100px;
+    height: 55px;
+    text-align: center;
+    background-image: url("../../assets/questionBadge.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 10px 40px;
+    background-position-x: 10px;
+    background-color: white;
+    border-color: black;
+    border-width: 10px;
+}
+
+.darkBadgeexample {
+    color: #DDD;
+}
+
+.beaverBadge {
+    border-style: solid;
+    border-radius: 100px;
+    height: 55px;
+    text-align: center;
+    background-image: url("../../assets/beaver.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 10px 40px;
+    background-position-x: 10px;
+    background-color: white;
+    border-color: rgb(108, 57, 23);
+    border-width: 10px;
+}
+
+.starBadge {
+    border-style: solid;
+    border-radius: 100px;
+    height: 55px;
+    text-align: center;
+    background-image: url("../../assets/starBadge.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 10px 40px;
+    background-color: white;
+    border-color: gold;
+    border-width: 10px;
+}
+
+.masterBadge {
+    border-style: solid;
+    border-radius: 100px;
+    height: 55px;
+    text-align: center;
+    background-image: url("../../assets/trophyBadge.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 10px 40px;
+    background-position-y: 6px;
+    background-color: white;
+    border-color: grey;
+    border-width: 10px;
+}
+
+.darkbioDescText:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkbioDescText:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-dev-only-do-not-override-qgg3xn).ant-radio-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-qgg3xn).ant-radio-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-dev-only-do-not-override-qgg3xn).ant-upload-wrapper {
+    color: #DDD;
+}
+
+.darkbioDescText :where(.css-qgg3xn).ant-upload-wrapper {
+    color: #DDD;
+}
+
+:where(.css-dev-only-do-not-override-qgg3xn).ant-rate +.ant-rate-text {
+    display: none;
+}
+
+:where(.css-qgg3xn).ant-rate +.ant-rate-text {
+    display: none;
+}
+
+.bioDescText {
+    color: var(--tertiary);
 }

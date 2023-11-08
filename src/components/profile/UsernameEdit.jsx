@@ -1,10 +1,18 @@
 import { useState, useContext } from 'react';
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Popconfirm } from "antd";
+import { AuthContext } from "../../context/authContext";
+import FormItem from 'antd/es/form/FormItem/index.js';
+import { ThemeContext } from "../../context/ThemeContext";
 
-export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit} ) {
+export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit, setLoggedOut} ) {
+  const { token, logout } = useContext(AuthContext);
   const [username, setUsername] = useState(initialUsername)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -37,10 +45,22 @@ export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setShowUsernameEdit(false);
+            localStorage.removeItem("token");
+            logout();
+            setLoggedOut(true);
+
             return newLoadings;
           });
-        }, 6000);
+        }, 500);
       };
+const confirm = () =>
+new Promise((resolve) => {
+setTimeout(() => {resolve(null); handleSubmit(); enterLoading()}, 3000);
+});
+const handleCancel = () => {
+  console.log('Clicked cancel button');
+};
+console.log(username);
     return (
         <>
         <Form
@@ -60,9 +80,10 @@ export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit
         }}
         autoComplete="off"
         >
-        <Form.Item
+        <FormItem
       label="Username"
-      name="username"
+      htmlFor="username"
+      className={isLightTheme ? "bioDescText" : "darkbioDescText"}
       rules= {[
         {
           required: true,
@@ -75,16 +96,25 @@ export default function UsernameEdit( { initialUsername, id, setShowUsernameEdit
       onChange={(e) => setUsername(e.target.value)}
       value={username}
       />
-    </Form.Item>
+    </FormItem>
     {error ? <h4 className="errorH">{error}</h4> : null}
+
+    <Popconfirm
+      className="changeUsername" 
+      title="WARNING"
+      description="Are you sure? You will have to login to your account again."
+      onConfirm={confirm}
+      onOpenChange={() => console.log('open change')}
+      onCancel={handleCancel}
+    >
     <Button 
       type="primary"
       className="editConfirmButtons"
-      loading={loadings[0]} 
-      onClick={() => enterLoading(0)} 
-      htmlType="submit">
+      // htmlType="submit">
+      >
         Submit
       </Button>
+    </Popconfirm>
     </Form>
         </>
     )

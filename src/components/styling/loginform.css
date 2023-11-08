@@ -1,48 +1,93 @@
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-content {
-    background-color: var(--primary);
+
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
+    /* background-color: var(--primary); */
+    background-color:#333;
 }
-    
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-title {
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
+    /* background-color: var(--primary); */
+    background-color:#333;
+}
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
 
-:where(.css-3mqfnx).ant-modal .ant-modal-content {
-    background-color: var(--primary);
-}
-    
-:where(.css-3mqfnx).ant-modal .ant-modal-title {
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-content {
     background-color: var(--primary);
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-title {
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
+    background-color:#333;
+    color: #DDD;
+}
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+    background-color:#333;
+    color: #DDD;
+}
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
+    background-color: var(--primary);
+}
+
+.lightModal:where(.css-qgg3xn).ant-modal .ant-modal-title {
+    background-color: var(--primary);
+}
+
+.lightModal:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: var(--tertiary);
+}
+
+.lightModal:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: var(--tertiary);
+}
+
+.darkModal :where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkModal :where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+    color: #DDD;
+}
+
+.darkModal:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-close {
+color: white;
+}
+
+.darkModal:where(.css-qgg3xn).ant-modal .ant-modal-close {
+color: white;
+}
+
+:where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
 }
 
-:where(.css-3mqfnx).ant-modal .ant-modal-title {
+:where(.css-qgg3xn).ant-modal .ant-modal-title {
 font-size: 1.75rem;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-form-item .ant-form-item-label >label {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-label >label {
 font-size: 1.2rem;
 }
 
-:where(.css-3mqfnx).ant-form-item .ant-form-item-label >label {
-    font-size: 1.2rem;
-    }
+:where(.css-qgg3xn).ant-form-item .ant-form-item-label >label {
+font-size: 1.2rem;
+}
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-form-item .ant-form-item-explain-error {
+:where(.css-dev-only-do-not-override-qgg3xn).ant-form-item .ant-form-item-explain-error {
 font-weight: 900;
 background-color: rgba(0, 0, 0, 0.514);
 border-radius: 5px;
 margin-bottom: 30px;
 }
 
-:where(.css-3mqfnx).ant-form-item .ant-form-item-explain-error {
-    font-weight: 900;
-    background-color: rgba(0, 0, 0, 0.514);
-    border-radius: 5px;
-    margin-bottom: 30px;
-    }
+:where(.css-qgg3xn).ant-form-item .ant-form-item-explain-error {
+font-weight: 900;
+background-color: rgba(0, 0, 0, 0.514);
+border-radius: 5px;
+margin-bottom: 30px;
+}
 
 .errorH {
     font-weight: 900;
@@ -53,3 +98,44 @@ margin-bottom: 30px;
     padding: 0px 10px;
     margin: 5px 0px;
     }
+
+    .eighteenAnimation {
+        font-size: 2rem;
+        align-self: flex-end;
+        border-style: dotted;
+        padding: 5px 30px;
+        border-width: 5px;
+        margin-bottom: 20px;
+        animation-name: border;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    .eighteen{
+        font-size: 2rem;
+        align-self: flex-end;
+        padding: 5px 30px;
+        margin-bottom: 20px;
+    }
+
+    @keyframes border {
+        0% {border-color: var(--primary)}
+        50% {border-color: red}
+        100% {border-color: var(--primary)}
+        }
+
+    .eighteen h4, .eighteenAnimation h4 {
+        font-size: 2rem;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .formDiv {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+
+

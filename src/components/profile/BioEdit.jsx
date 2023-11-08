@@ -1,12 +1,18 @@
 import { useState, useContext } from 'react';
 import { Form, Input, Button } from "antd";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const { TextArea } = Input;
 
-export default function UsernameEdit( { initialBio, id, setBio} ) {
-  const [description, setDescription] = useState(initialBio)
+export default function UsernameEdit( { initialDescription, id, setBio} ) {
+  const [description, setDescription] = useState(initialDescription)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -39,10 +45,10 @@ export default function UsernameEdit( { initialBio, id, setBio} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setBio(false);
-
+            document.location.reload();
             return newLoadings;
           });
-        }, 6000);
+        }, 4000);
       };
     return (
         <>
@@ -66,6 +72,7 @@ export default function UsernameEdit( { initialBio, id, setBio} ) {
         <Form.Item 
     label="Bio"
     htmlFor="description"
+    className={isLightTheme ? "bioDescText" : "darkbioDescText"}
     >
           <TextArea rows={8}
           placeholder="Say a few words about yourself"

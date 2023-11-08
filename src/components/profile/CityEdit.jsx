@@ -1,11 +1,17 @@
 import { useState, useContext } from 'react';
 import { Form, Input, Button, Space, Radio } from "antd";
 import FormItem from 'antd/es/form/FormItem/index.js';
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function UsernameEdit( { initialCity, id, setCity} ) {
   const [city, setBasedCity] = useState(initialCity)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
+
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -38,10 +44,10 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setCity(false);
-            
+            document.location.reload();
             return newLoadings;
           });
-        }, 6000);
+        }, 4000);
       };
     return (
         <>
@@ -65,13 +71,21 @@ export default function UsernameEdit( { initialCity, id, setCity} ) {
 <FormItem
 label="City"
 htmlFor="city"
+className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+defaultValue={initialCity}
 >
 <Radio.Group onChange={(e) => setBasedCity(e.target.value)} value={city}>
               <Space direction="vertical">
-                <Radio value={"Berlin"}>Berlin</Radio>
-                <Radio value={"Munich"}>Munich</Radio>
+              <Radio value={"Berlin"}>Berlin</Radio>
+                <Radio value={"München"}>München</Radio>
                 <Radio value={"Hamburg"}>Hamburg</Radio>
                 <Radio value={"Stuttgart"}>Stuttgart</Radio>
+                <Radio value={"Dresden"}>Dresden</Radio>
+                <Radio value={"Frankfurt am Main"}>Frankfurt am Main</Radio>
+                <Radio value={"Köln"}>Köln</Radio>
+                <Radio value={"Nürnberg"}>Nürnberg</Radio>
+                <Radio value={"Hannover"}>Hannover</Radio>
+                <Radio value={"Bremen"}>Bremen</Radio>
               </Space>
             </Radio.Group>
   </FormItem>

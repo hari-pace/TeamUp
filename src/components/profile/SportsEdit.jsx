@@ -1,12 +1,17 @@
 import { useState, useContext } from 'react';
 import { Form, Input, Button, Select, Space } from "antd";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const { Option } = Select;
 
-export default function UsernameEdit( { initialSports, id, setSports} ) {
+export default function SportEdit( { initialSports, id, setSports} ) {
   const [interestedInSports, setInterestedInSports] = useState(initialSports)
   const [error, setError] = useState()
   const [loadings, setLoadings] = useState([]);
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
     const handleSubmit = async () => {
         // e.preventDefault(); ant has built-in prevent default
         setError(null);
@@ -39,7 +44,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             const newLoadings = [...prevLoadings];
             newLoadings[index] = false;
             setSports(false);
-            
+            document.location.reload();
             return newLoadings;
           });
         }, 6000);
@@ -66,6 +71,7 @@ export default function UsernameEdit( { initialSports, id, setSports} ) {
             <Form.Item
       label="Sports Following"
       name="interestedInSports"
+      className={isLightTheme ? "bioDescText" : "darkbioDescText"}
     >
 <Select
     mode="multiple"

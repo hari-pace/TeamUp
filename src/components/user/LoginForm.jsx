@@ -3,16 +3,18 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/authContext.jsx";
-import Signup from './SignupForm.jsx';
+import Signup2 from './SignupForm2.jsx';
 import "../styling/loginform.css"
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loadings, setLoadings] = useState([]);
-
-  const { login } = useContext(AuthContext);
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+  const themeStyles = isLightTheme ? light : dark;
+  const { login, token } = useContext(AuthContext);
 
   const handleSubmit = async () => {
     // e.preventDefault(); ant has built-in prevent default
@@ -33,7 +35,9 @@ export default function LoginForm() {
     if (response.ok) {
       setTimeout(() => {
       localStorage.setItem("token", data.token);
-      login(data.token)}, 5000);
+      login(data.token)
+      setLoadings([false])
+    }, 5000);
     }
   };
   const enterLoading = (index) => {
@@ -42,6 +46,7 @@ export default function LoginForm() {
       newLoadings[index] = true;
       return newLoadings;
     });
+    if (token) {
     setTimeout(() => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
@@ -49,13 +54,17 @@ export default function LoginForm() {
         return newLoadings;
       });
     }, 6000);
-  };
+  }
+}
 
     return(
         <>
+        <div className=":where(.css-dev-only-do-not-override-qgg3xn).ant-modal .ant-modal-content" style={{background: themeStyles.ui,
+          color: themeStyles.text}}>
         <Form
     onFinish={handleSubmit}
     name="basic"
+
     labelCol={{
       span: 8,
     }}
@@ -63,7 +72,7 @@ export default function LoginForm() {
       span: 16,
     }}
     style={{
-      maxWidth: 600,
+      maxWidth: 600, background: themeStyles.ui, color: themeStyles.text
     }}
     initialValues={{
       remember: true,
@@ -73,6 +82,8 @@ export default function LoginForm() {
     <Form.Item
       label="Email"
       name="email"
+      style={{background: themeStyles.ui,
+        color: themeStyles.text,}}
       rules={[
         {
           required: true,
@@ -104,14 +115,6 @@ export default function LoginForm() {
       />
     </Form.Item>
     {error ? <h4 className="errorH">{error}</h4> : null}
-    <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-          <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item> 
 
     <Form.Item
       wrapperCol={{
@@ -124,6 +127,7 @@ export default function LoginForm() {
       ghost
       className="loginButtons" 
       htmlType="submit"
+      style={{color: themeStyles.text}}
       loading={loadings[0]} 
       onClick={() => enterLoading(0)}
       >
@@ -131,6 +135,7 @@ export default function LoginForm() {
       </Button>
     </Form.Item>
   </Form>
+  </div>
         </>
     )
 }

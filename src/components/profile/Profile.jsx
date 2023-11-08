@@ -1,23 +1,27 @@
 import "../styling/profile.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { useJwt } from "react-jwt";
 import { dateFormatter } from "../../jsfunctions/FormatDate";
-import { Rate, Card, Space, Button, Form, Input } from "antd";
+import { Rate, Card, Space, Button, Form, Input, Modal } from "antd";
 import Avatar from "../Avatar.jsx";
 import Spinner from "../Spinner";
 import UsernameEdit from "./UsernameEdit";
-import BioEdit from "./BioEdit"
-import SportsEdit from "./SportsEdit"
-import LanguageEdit from "./LangaugeEdit"
-import ImageEdit from "./ImageEdit"
-import CityEdit from "./CityEdit"
+import BioEdit from "./BioEdit";
+import SportsEdit from "./SportsEdit";
+import CityEdit from "./CityEdit";
 import DeleteUser from "./DeleteUser";
-import Question from "../../assets/question.png"
+import Question from "../../assets/question.png";
 import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
-
+import ImageEditAx from "./ImageEditAx";
+import CountryEdit from "./CountryEdit.jsx";
+import Badge from "./Badges/Badge.jsx";
+import BeaverBadge from "./Badges/BeaverBadge.jsx";
+import MasterBadge from "./Badges/MasterBadge.jsx";
+import StarBadge from "./Badges/StarBadge.jsx";
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -31,11 +35,58 @@ export default function Profile() {
   const [showLanguageEdit, setLanguageEdit] = useState(false);
   const [editImage, setEditImage] = useState(false);
   const [showCity, setCity] = useState(false);
-  const [rating, setUserRating] = useState()
-  const [error, setError] = useState()
-  const [loadings, setLoadings] = useState([]);
   const [showdelete, setShowDelete] = useState(false);
-  const [showRate, setRate] = useState(false)
+  const [showRate, setRate] = useState(false);
+  const [showCountry, setShowCountryEdit] = useState(false);
+  const [loggedout, setLoggedOut] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBeavModalOpen, setIsBeavModalOpen] = useState(false);
+  const [isMastModalOpen, setIsMastModalOpen] = useState(false);
+  const [isStarModalOpen, setIsStarModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const showMastModal = () => {
+    setIsMastModalOpen(true);
+  };
+  const handleMastOk = () => {
+    setIsMastModalOpen(false);
+  };
+  const handleMastCancel = () => {
+    setIsMastModalOpen(false);
+  };
+
+  const showBeavModal = () => {
+    setIsBeavModalOpen(true);
+  };
+  const handleBeavOk = () => {
+    setIsBeavModalOpen(false);
+  };
+  const handleBeavCancel = () => {
+    setIsBeavModalOpen(false);
+  };
+
+  const showStarModal = () => {
+    setIsStarModalOpen(true);
+  };
+  const handleStarOk = () => {
+    setIsStarModalOpen(false);
+  };
+  const handleStarCancel = () => {
+    setIsStarModalOpen(false);
+  };
+
+  const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
+
+  const themeStyles = isLightTheme ? light : dark;
 
   let extractedUsername = window.location.pathname;
   extractedUsername = extractedUsername.replace("/profile/", "");
@@ -49,7 +100,7 @@ export default function Profile() {
     (element) => element?.username == extractedUsername
   );
 
-  const id = singleUser?._id
+  const id = singleUser?._id;
   const eventAttendedIds = singleUser?.userInfo?.eventsAttended;
   const eventOrganisedIds = singleUser?.userInfo?.eventsOrganized;
 
@@ -57,7 +108,7 @@ export default function Profile() {
     const res = await fetch(`https://teamup-service.onrender.com/event`);
     const data = await res.json();
     setEvents(data);
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -71,7 +122,10 @@ export default function Profile() {
       eventAttendedIds.length > 0 &&
       (event._id?.includes(eventAttendedIds[0]) ||
         event._id?.includes(eventAttendedIds[1]) ||
-        event._id?.includes(eventAttendedIds[2]))
+        event._id?.includes(eventAttendedIds[2]) ||
+        event._id?.includes(eventAttendedIds[3]) ||
+        event._id?.includes(eventAttendedIds[4]) ||
+        event._id?.includes(eventAttendedIds[5]))
     );
   });
 
@@ -82,8 +136,8 @@ export default function Profile() {
       event.usersAttending?.userRef?.includes("653a6195352f338321518709")
     );
   });
-console.log(EventsArray);
-// console.log(events[156].usersAttending[0].userRef);
+  console.log(EventsArray);
+  // console.log(events[156].usersAttending[0].userRef);
 
   const filteredOrganisedArray = events?.filter((event) => {
     return (
@@ -91,310 +145,479 @@ console.log(EventsArray);
       eventOrganisedIds.length > 0 &&
       (event._id?.includes(eventOrganisedIds[0]) ||
         event._id?.includes(eventOrganisedIds[1]) ||
-        event._id?.includes(eventOrganisedIds[2]))
+        event._id?.includes(eventOrganisedIds[2]) ||
+        event._id?.includes(eventOrganisedIds[3]) ||
+        event._id?.includes(eventOrganisedIds[4]) ||
+        event._id?.includes(eventOrganisedIds[5]))
     );
   });
   const inputDate = singleUser?.userInfo?.registrationDate;
   const formattedDate = dateFormatter(inputDate);
 
   const { Meta } = Card;
-
-  // const handleSubmit = async () => {
-  //   // e.preventDefault(); ant has built-in prevent default.
-  //   // this submit is for userRating
-  //   setError(null);
-
-  //   const response = await fetch(`https://teamup-service.onrender.com/user/users/${id}/rater-user`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
-  //     body: JSON.stringify({ userRating: { rating } }),
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (!response.ok) {
-  //     setError(data.error);
-  //     console.log(error);
-  //   }
-
-  //   if (response.ok) {
-  //     console.log("SUCCESS!!!")
-  //   }
-  // };
-  // const enterLoading = (index) => {
-  //   setLoadings((prevLoadings) => {
-  //     const newLoadings = [...prevLoadings];
-  //     newLoadings[index] = true;
-  //     return newLoadings;
-  //   });
-  //   setTimeout(() => {
-  //     setLoadings((prevLoadings) => {
-  //       const newLoadings = [...prevLoadings];
-  //       newLoadings[index] = false;
-  //       return newLoadings;
-  //     });
-  //   }, 6000);
-  // };
-console.log(users)
-console.log(events)
   return (
     <>
-      <div className="profileWholeContainer">
-        {loading ? <Spinner /> : (
-          <>
-        {showdelete ? (
-          <h1 style={{textDecoration: "none", color: "red"}}>User has been deleted</h1>
+      <div
+        className="profileWholeContainer"
+        style={{ background: themeStyles.grey, color: themeStyles.text }}
+      >
+        {loading ? (
+          <Spinner />
         ) : (
           <>
-      {auth ? <DeleteUser setShowDelete = {setShowDelete} /> : null}
-        <h1>{singleUser?.username}</h1>
-        <div className="profileContainer">
-          <div className="bioContainer">
-          {editImage ?
-            <> 
-            <Avatar className="avatarProfile" alt="empty avatar"/>
-            <ImageEdit id = {singleUser?._id} initialImage = {singleUser?.userInfo?.userImage} setEditImage = {setEditImage} /> 
-            <Button danger type="primary" onClick={() => setEditImage(false)}>
-            Close X
-            </Button>
-            </>
-            : (
+            {showdelete ? (
+              <h1 style={{ textDecoration: "none", color: "red" }}>
+                User has been deleted
+              </h1>
+            ) : (
               <>
-              {auth ? <Button onClick={() => setEditImage(true)}>
-              Edit
-              </Button> : null}
-            <Avatar
-              className="avatarProfile"
-              src={singleUser?.userInfo?.userImage}
-            />
-            </>
-            )}
-           {auth ? (
-            <Rate
-            allowHalf
-            allowQuarter
-            disabled
-            value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
-            />) : (
-            <>
-            {showRate ? (
-            <>
-             <RateEdit id = {singleUser?._id} initialRating = {singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]} setRate = {setRate}/>
-             <Button 
-             danger
-             className="rateCloseButton" 
-             type="primary" 
-             onClick={() => setRate(false)}>
-             Close X
-             </Button>
-             </>)
-             : (
-              <>
-              <Rate
-              allowHalf
-              allowQuarter
-              disabled
-              className="rateButton"
-              value={singleUser?.userInfo?.averageRating ? singleUser?.userInfo?.averageRating : singleUser?.userInfo?.userRating[singleUser?.userInfo?.userRating.length - 1]}
-              />
-              <Button onClick={() => setRate(true)}>Rate</Button>
-              </>
-             )}
-            </>
-            )}
-            <h3>Bio</h3>
-            {showBioEdit ?
-            <> 
-            <BioEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setBio = {setBioEdit} /> 
-            <Button danger type="primary" onClick={() => setBioEdit(false)}>
-            Close X
-            </Button>
-            </>
-            : (
-              <div className="bioCon">
-              {auth ? <Button onClick={() => setBioEdit(true)}>
-              Edit
-              </Button> : null}
-              <p>{singleUser?.userInfo?.description}</p>
-            </div>)}
-            <div className="eventsJoined">
-              <h3>Events joined</h3>
-              <br />
-
-              {/* Card */}
-              <div className="eventsJoinedCon">
-                {filteredEventsArray.map((event, index) => (
-                  <div className="eventsJoinedItem" key={index}>
-                    <Link
-                      to={`/events/${event._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Card
-                        className="profileCards"
-                        hoverable
-                        title={event?.eventDescription}
-                      >
-                        <Meta
-                          avatar={
-                            <Avatar
-                              className="avatarCard"
-                              src={event.organizator?.userInfo?.userImage ? event.organizator?.userInfo?.userImage : Question }
-                            />
-                          }
-                          // title={event?.eventDescription}
+                {loggedout ? <Navigate to="/" /> : null}
+                {auth ? <DeleteUser setShowDelete={setShowDelete} /> : null}
+                <h1>{singleUser?.username}</h1>
+                <div
+                  className="profileContainer"
+                  style={{
+                    background: themeStyles.grey,
+                    color: themeStyles.text,
+                  }}
+                >
+                  <div className="bioContainer">
+                    {editImage ? (
+                      <>
+                        <Avatar className="avatarProfile" alt="emptyavatar" />
+                        <ImageEditAx
+                          id={singleUser?._id}
+                          initialImage={singleUser?.userInfo?.userImage}
+                          setEditImage={setEditImage}
+                          setLoggedOut={setLoggedOut}
                         />
-                        {/* // description={events?.sportType[0]}/> */}
-                      </Card>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="eventsCreated">
-              <h3>Events created</h3>
-              <br />
-              {/* Card */}
-              <div className="eventsJoinedCon">
-                {filteredOrganisedArray.map((event, index) => (
-                  <div className="eventsJoinedItem" key={index}>
-                    <Link
-                      to={`/events/${event._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Card
-                        className="profileCards"
-                        hoverable
-                        title={event?.eventDescription}
-                      >
-                        <Meta
-                          avatar={
-                            <Avatar
-                              className="avatarCard"
-                              src={singleUser?.userInfo?.userImage}
-                            />
-                          }
-                          // title={event?.eventDescription}
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setEditImage(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        {auth ? (
+                          <Button onClick={() => setEditImage(true)}>
+                            Edit
+                          </Button>
+                        ) : null}
+                        <img
+                          className="avatarProfile"
+                          src={singleUser?.userInfo?.userImage}
                         />
-                        {/* // description={events?.sportType[0]}/> */}
-                      </Card>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-              {/* Card */}
-            </div>
-          </div>
-          <div className="infoContainer">
-            <label>
-              <h3>Username</h3>
-              <br />
-              </label>
-              {showUsernameEdit ? (
-              <>
-              <UsernameEdit id = {singleUser?._id} initialUsername = {singleUser?.username} setShowUsernameEdit={setShowUsernameEdit} />
-              <Button danger type="primary" onClick={() => setShowUsernameEdit(false)}>
-              Close X
-              </Button>
-              </>
-              ) : (
-              <>
-            <p className="infoItem">
+                      </>
+                    )}
+                    {auth ? (
+                      <>
+                        <Rate
+                          allowHalf
+                          disabled
+                          value={
+                            singleUser?.userInfo?.averageRating
+                              ? singleUser?.userInfo?.averageRating
+                              : singleUser?.userInfo?.userRating[
+                                  singleUser?.userInfo?.userRating.length - 1
+                                ]
+                          }
+                        />
+                        <p>
+                          Total: {singleUser?.userInfo?.userRating?.length}{" "}
+                          ratings
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        {showRate ? (
+                          <>
+                            <RateEdit
+                              id={singleUser?._id}
+                              initialRating={
+                                singleUser?.userInfo?.averageRating
+                                  ? singleUser?.userInfo?.averageRating
+                                  : singleUser?.userInfo?.userRating[
+                                      singleUser?.userInfo?.userRating.length -
+                                        1
+                                    ]
+                              }
+                              setRate={setRate}
+                            />
+                            <Button
+                              danger
+                              className="rateCloseButton"
+                              type="primary"
+                              onClick={() => setRate(false)}
+                            >
+                              Close X
+                            </Button>
+                          </>
+                        ) : (
+                          <>
+                            <Rate
+                              allowHalf
+                              allowQuarter
+                              disabled
+                              className="rateButton"
+                              value={
+                                singleUser?.userInfo?.averageRating
+                                  ? singleUser?.userInfo?.averageRating
+                                  : singleUser?.userInfo?.userRating[
+                                      singleUser?.userInfo?.userRating.length -
+                                        1
+                                    ]
+                              }
+                            />
+                            <p>
+                              Total: {singleUser?.userInfo?.userRating?.length}{" "}
+                              ratings
+                            </p>
+                            <Button onClick={() => setRate(true)}>Rate</Button>
+                          </>
+                        )}
+                      </>
+                    )}
+                    <h3>Badges</h3>
+                    <div style={{ cursor: "pointer" }} className="badgeCon">
+                      <div onClick={showModal} className="badge"></div>
+                      <Modal
+                        title="What are Badges?"
+                        className={isLightTheme ? "lightModal" : "darkModal"}
+                        open={isModalOpen}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        <Badge />
+                      </Modal>
+                      {singleUser?.userInfo?.eventsOrganized?.length >= 5 ? (
+                        <>
+                          <div
+                            onClick={showMastModal}
+                            className="masterBadge"
+                          ></div>
+                          <Modal
+                            title="Event Master"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isMastModalOpen}
+                            onOk={handleMastOk}
+                            onCancel={handleMastCancel}
+                          >
+                            <MasterBadge />
+                          </Modal>
+                        </>
+                      ) : null}
+                      {singleUser?.userInfo?.eventsAttended?.length >= 3 ? (
+                        <>
+                          <div
+                            onClick={showBeavModal}
+                            className="beaverBadge"
+                          ></div>
+                          <Modal
+                            title="Eager Beaver"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isBeavModalOpen}
+                            onOk={handleBeavOk}
+                            onCancel={handleBeavCancel}
+                          >
+                            <BeaverBadge />
+                          </Modal>
+                        </>
+                      ) : null}
+                      {singleUser?.userInfo?.averageRating >= 4 ? (
+                        <>
+                          <div
+                            onClick={showStarModal}
+                            className="starBadge"
+                          ></div>
+                          <Modal
+                            title="All Star"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isStarModalOpen}
+                            onOk={handleStarOk}
+                            onCancel={handleStarCancel}
+                          >
+                            <StarBadge />
+                          </Modal>
+                        </>
+                      ) : null}
+                    </div>
+                    <h3>Bio</h3>
+                    {showBioEdit ? (
+                      <>
+                        <BioEdit
+                          id={singleUser?._id}
+                          initialDescription={singleUser?.userInfo?.description}
+                          setBio={setBioEdit}
+                        />
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setBioEdit(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <div
+                        className="bioCon"
+                        style={{ background: themeStyles.midgrey }}
+                      >
+                        {auth ? (
+                          <Button onClick={() => setBioEdit(true)}>Edit</Button>
+                        ) : null}
+                        <p>{singleUser?.userInfo?.description}</p>
+                      </div>
+                    )}
+                    <div className="eventsJoined">
+                      <h3>Events joined</h3>
+                      <br />
 
-            {auth ? <Button onClick={() => setShowUsernameEdit(true)}>
-              Edit
-              </Button> : null}
-              {singleUser?.username}
-              </p>
-            </>
+                      {/* Card */}
+                      <div className="eventsJoinedCon">
+                        {filteredEventsArray.map((event, index) => (
+                          <div className="eventsJoinedItem" key={index}>
+                            <Link
+                              to={`/events/${event._id}`}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <Card
+                                className="profileCards"
+                                hoverable
+                                title={event?.eventTitle}
+                              >
+                                <Meta
+                                  avatar={
+                                    <Avatar
+                                      className="avatarCard"
+                                      src={
+                                        event.organizator?.userInfo?.userImage
+                                          ? event.organizator?.userInfo
+                                              ?.userImage
+                                          : Question
+                                      }
+                                    />
+                                  }
+                                  // title={event?.eventDescription}
+                                />
+                                {/* // description={events?.sportType[0]}/> */}
+                              </Card>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <h3>Events created</h3>
+                    <div className="eventsCreated">
+                      <br />
+                      {/* Card */}
+                      <div className="eventsJoinedCon">
+                        {filteredOrganisedArray.map((event, index) => (
+                          <div className="eventsJoinedItem" key={index}>
+                            <Link
+                              to={`/events/${event._id}`}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <Card
+                                className="profileCards"
+                                hoverable
+                                title={event?.eventTitle}
+                              >
+                                <Meta
+                                  avatar={
+                                    <Avatar
+                                      className="avatarCard"
+                                      src={singleUser?.userInfo?.userImage}
+                                    />
+                                  }
+                                  // title={event?.eventDescription}
+                                />
+                                {/* // description={events?.sportType[0]}/> */}
+                              </Card>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Card */}
+                    </div>
+                  </div>
+                  <div className="infoContainer">
+                    <label>
+                      <h3>Username</h3>
+                      <br />
+                    </label>
+                    {showUsernameEdit ? (
+                      <>
+                        <UsernameEdit
+                          id={singleUser?._id}
+                          initialUsername={singleUser?.username}
+                          setShowUsernameEdit={setShowUsernameEdit}
+                          setLoggedOut={setLoggedOut}
+                        />
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setShowUsernameEdit(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <p
+                          className="infoItem"
+                          style={{ background: themeStyles.midgrey }}
+                        >
+                          {auth ? (
+                            <Button onClick={() => setShowUsernameEdit(true)}>
+                              Edit
+                            </Button>
+                          ) : null}
+                          {singleUser?.username}
+                        </p>
+                      </>
+                    )}
+                    <label>
+                      <h3>Date joined</h3>
+                    </label>
+                    <br />
+                    <p
+                      style={{ background: themeStyles.midgrey }}
+                      className="infoItem"
+                    >
+                      {formattedDate}
+                    </p>
+                    <label>
+                      <h3>Sports following</h3>
+                    </label>
+                    <br />
+                    {showSportsEdit ? (
+                      <>
+                        <SportsEdit
+                          id={singleUser?._id}
+                          initialSports={singleUser?.userInfo?.interestedInSports.map(
+                            (sport) => sport
+                          )}
+                          setSports={setSportsEdit}
+                        />
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setSportsEdit(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
+                          {auth ? (
+                            <Button onClick={() => setSportsEdit(true)}>
+                              Edit
+                            </Button>
+                          ) : null}
+                          {singleUser?.userInfo?.interestedInSports.map(
+                            (sport) => (
+                              <li>{sport}</li>
+                            )
+                          )}
+                        </p>
+                      </>
+                    )}
+                    <label>
+                      <h3>Languages</h3>
+                    </label>
+                    <br />
+                    <p
+                      style={{ background: themeStyles.midgrey }}
+                      className="infoItem"
+                    >
+                      {singleUser?.userInfo?.languagesSpoken}
+                    </p>
+                    <label>
+                      <h3>Based in</h3>
+                    </label>
+                    <br />
+                    {showCity ? (
+                      <>
+                        <CityEdit
+                          id={singleUser?._id}
+                          initialCity={singleUser?.userInfo?.location.city}
+                          setCity={setCity}
+                        />
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setCity(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
+                          {auth ? (
+                            <Button onClick={() => setCity(true)}>Edit</Button>
+                          ) : null}
+                          {singleUser?.userInfo?.location?.city}
+                        </p>
+                      </>
+                    )}
+                    <label>
+                      <h3>Country of Origin</h3>
+                    </label>
+                    <br />
+                    {showCountry ? (
+                      <>
+                        <CountryEdit
+                          id={singleUser?._id}
+                          initialCountry={
+                            singleUser?.userInfo?.location.country
+                          }
+                          setShowCountryEdit={setShowCountryEdit}
+                        />
+                        <Button
+                          danger
+                          type="primary"
+                          onClick={() => setShowCountryEdit(false)}
+                        >
+                          Close X
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <p
+                          style={{ background: themeStyles.midgrey }}
+                          className="infoItem"
+                        >
+                          {auth ? (
+                            <Button onClick={() => setShowCountryEdit(true)}>
+                              Edit
+                            </Button>
+                          ) : null}
+                          {singleUser?.userInfo?.location?.country}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </>
             )}
-            <label>
-              <h3>Date joined</h3>
-            </label>
-            <br />
-            <p className="infoItem">{formattedDate}</p>
-            <label>
-              <h3>Sports following</h3>
-            </label>
-            <br />            
-            {showSportsEdit ?
-            <> 
-            <SportsEdit id = {singleUser?._id} initialSports = {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => sport + `, `
-            )} setSports = {setSportsEdit} /> 
-            <Button danger type="primary" onClick={() => setSportsEdit(false)}>
-            Close X
-            </Button>
-            </>
-            : (
-              <>
-            <p className="infoItem">
-            {auth ? <Button onClick={() => setSportsEdit(true)}>
-              Edit
-              </Button> : null}
-            {singleUser?.userInfo?.interestedInSports.map(
-              (sport) => sport + `, `
-            )}
-          </p>
           </>
-              )}
-            <label>
-              <h3>Languages</h3>
-            </label>
-            <br />
-            {showLanguageEdit ?
-            <> 
-            <LanguageEdit id = {singleUser?._id} initialLanguages ={singleUser?.userInfo?.languagesSpoken.map(
-                (language) => language + `, `
-              )}  setLanguageEdit = {setLanguageEdit} /> 
-            <Button danger type="primary" onClick={() => setLanguageEdit(false)}>
-            Close X
-            </Button>
-            </>
-            : (
-              <>
-            <p className="infoItem">
-            {auth ? <Button onClick={() => setLanguageEdit(true)}>
-              Edit
-              </Button> : null}
-              {singleUser?.userInfo?.languagesSpoken.map(
-                (language) => language + `, `
-              )}
-            </p>
-            </>
-            )}
-            <label>
-              <h3>Based in</h3>
-            </label>
-            <br />
-            {showCity ?
-            <> 
-            <CityEdit id = {singleUser?._id} initialCity ={singleUser?.userInfo?.city}  setCity = {setCity} /> 
-            <Button danger type="primary" onClick={() => setCity(false)}>
-            Close X
-            </Button>
-            </>
-            : (
-              <>
-            <p className="infoItem">
-            {auth ? <Button onClick={() => setCity(true)}>
-              Edit
-              </Button> : null}
-              {singleUser?.userInfo?.location?.city}
-            </p>
-            </>
-            )}
-            <label>
-            <h3>From</h3>
-            </label>
-            <br />
-            <p className="infoItem">
-              {singleUser?.userInfo?.location?.country}
-            </p>
-          </div>
-        </div>
-        </>
-        )}
-        </>
         )}
       </div>
     </>
