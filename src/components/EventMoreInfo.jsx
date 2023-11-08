@@ -52,6 +52,7 @@ const EventMoreInfo = () => {
   const [loading, setLoading] = useState(true);
   const [commentPopup, setCommentPopup] = useState(false);
   const [replyPopup, setReplyPopup] = useState(false);
+  const [isDataUpdated, setIsDataUpdated] = useState(false);
   const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
 
   const themeStyles = isLightTheme ? light : dark;
@@ -119,7 +120,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("user attend updated successfully");
         alert("Your have been successfully subscribed for this event!");
-        navigate("/");
+        // navigate("/");
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to update item");
       }
@@ -145,7 +147,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("user no longer attending updated successfully");
         alert("Your have been successfully removed from this event!");
-        navigate("/");
+        // navigate("/");
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to update item");
       }
@@ -171,7 +174,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("user like array updated successfully");
         alert("This event has been successfully added to your watchlist!");
-        navigate("/");
+        // navigate("/");
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to update item");
       }
@@ -196,7 +200,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("user like array updated successfully");
         alert("This event has been successfully removed from your watchlist!");
-        navigate("/");
+        // navigate("/");
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to update item");
       }
@@ -260,7 +265,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("new comment added successfully");
         alert("Your comment has been successfully added!");
-        navigate(-1);
+        // navigate(-1);
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to add comment");
       }
@@ -293,7 +299,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("new reply added successfully");
         alert("Your reply has been successfully added!");
-        navigate(-1);
+        // navigate(-1);
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to add reply");
       }
@@ -319,7 +326,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("reply deleted successfully");
         alert("Your reply has been successfully deleted!");
-        navigate(-1);
+        // navigate(-1);
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to delete reply");
       }
@@ -345,7 +353,8 @@ const EventMoreInfo = () => {
       if (response.ok) {
         console.log("comment deleted successfully");
         alert("Your comment has been successfully deleted!");
-        navigate(-1);
+        // navigate(-1);
+        setIsDataUpdated(true);
       } else {
         console.error("Failed to delete comment");
       }
@@ -383,6 +392,15 @@ const EventMoreInfo = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (isDataUpdated) {
+      // Perform actions you want to do after the data is updated
+      fetchData();
+      // Reset the state after performing necessary actions
+      setIsDataUpdated(false);
+    }
+  }, [isDataUpdated]);
 
   const data = attendees;
 

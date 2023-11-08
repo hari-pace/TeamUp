@@ -272,6 +272,13 @@ const Events = () => {
                 <Radio
                   style={{ color: themeStyles.text }}
                   className="events-modal-text"
+                  value={""}
+                >
+                  All cities
+                </Radio>
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
                   value={"Berlin"}
                 >
                   Berlin
@@ -373,6 +380,13 @@ const Events = () => {
           >
             <Radio.Group onChange={onChangeSport} value={sportValue}>
               <Space direction="vertical">
+                <Radio
+                  style={{ color: themeStyles.text }}
+                  className="events-modal-text"
+                  value={""}
+                >
+                  All sports
+                </Radio>
                 <Radio
                   style={{ color: themeStyles.text }}
                   className="events-modal-text"
