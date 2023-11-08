@@ -18,7 +18,10 @@ import FormItem from "antd/es/form/FormItem";
 import RateEdit from "./RateEdit";
 import ImageEditAx from "./ImageEditAx";
 import CountryEdit from "./CountryEdit.jsx";
-import Badge from "./Badge.jsx"
+import Badge from "./Badges/Badge.jsx";
+import BeaverBadge from "./Badges/BeaverBadge.jsx";
+import MasterBadge from "./Badges/MasterBadge.jsx";
+import StarBadge from "./Badges/StarBadge.jsx";
 
 export default function Profile() {
   const { token } = useContext(AuthContext);
@@ -37,15 +40,48 @@ export default function Profile() {
   const [showCountry, setShowCountryEdit] = useState(false);
   const [loggedout, setLoggedOut] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBeavModalOpen, setIsBeavModalOpen] = useState(false);
+  const [isMastModalOpen, setIsMastModalOpen] = useState(false);
+  const [isStarModalOpen, setIsStarModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-    setIsModalOpen(!true);
+    setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const showMastModal = () => {
+    setIsMastModalOpen(true);
+  };
+  const handleMastOk = () => {
+    setIsMastModalOpen(false);
+  };
+  const handleMastCancel = () => {
+    setIsMastModalOpen(false);
+  };
+
+  const showBeavModal = () => {
+    setIsBeavModalOpen(true);
+  };
+  const handleBeavOk = () => {
+    setIsBeavModalOpen(false);
+  };
+  const handleBeavCancel = () => {
+    setIsBeavModalOpen(false);
+  };
+
+  const showStarModal = () => {
+    setIsStarModalOpen(true);
+  };
+  const handleStarOk = () => {
+    setIsStarModalOpen(false);
+  };
+  const handleStarCancel = () => {
+    setIsStarModalOpen(false);
   };
 
   const { light, dark, isLightTheme, toggleTheme } = useContext(ThemeContext);
@@ -249,28 +285,74 @@ export default function Profile() {
                       </>
                     )}
                     <h3>Badges</h3>
-                    <div style={{cursor: "pointer"}}className="badgeCon">
-                    <div 
-                    onClick={showModal}
-                    className="badge">
-                    </div>
-                    <Modal 
-                    title="What are Badges?"
-                    className={isLightTheme ? "lightModal" : "darkModal"}
-                    open={isModalOpen} 
-                    onOk={handleOk} 
-                    onCancel={handleCancel}>
-                    <Badge />
-                    </Modal>
-                    {singleUser?.userInfo?.eventsOrganized?.length >= 5 ? (
-                      <div className="masterBadge">
-                        </div>): null}
-                    {singleUser?.userInfo?.eventsAttended?.length >= 3 ? (
-                      <div className="beaverBadge">
-                        </div>): null}
-                    {singleUser?.userInfo?.averageRating >= 4 ? (
-                      <div className="starBadge">
-                        </div>): null}
+                    <div style={{ cursor: "pointer" }} className="badgeCon">
+                      <div onClick={showModal} className="badge"></div>
+                      <Modal
+                        title="What are Badges?"
+                        className={isLightTheme ? "lightModal" : "darkModal"}
+                        open={isModalOpen}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        <Badge />
+                      </Modal>
+                      {singleUser?.userInfo?.eventsOrganized?.length >= 5 ? (
+                        <>
+                          <div
+                            onClick={showMastModal}
+                            className="masterBadge"
+                          ></div>
+                          <Modal
+                            title="Event Master"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isMastModalOpen}
+                            onOk={handleMastOk}
+                            onCancel={handleMastCancel}
+                          >
+                            <MasterBadge />
+                          </Modal>
+                        </>
+                      ) : null}
+                      {singleUser?.userInfo?.eventsAttended?.length >= 3 ? (
+                        <>
+                          <div
+                            onClick={showBeavModal}
+                            className="beaverBadge"
+                          ></div>
+                          <Modal
+                            title="Eager Beaver"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isBeavModalOpen}
+                            onOk={handleBeavOk}
+                            onCancel={handleBeavCancel}
+                          >
+                            <BeaverBadge />
+                          </Modal>
+                        </>
+                      ) : null}
+                      {singleUser?.userInfo?.averageRating >= 4 ? (
+                        <>
+                          <div
+                            onClick={showStarModal}
+                            className="starBadge"
+                          ></div>
+                          <Modal
+                            title="All Star"
+                            className={
+                              isLightTheme ? "lightModal" : "darkModal"
+                            }
+                            open={isStarModalOpen}
+                            onOk={handleStarOk}
+                            onCancel={handleStarCancel}
+                          >
+                            <StarBadge />
+                          </Modal>
+                        </>
+                      ) : null}
                     </div>
                     <h3>Bio</h3>
                     {showBioEdit ? (
