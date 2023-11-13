@@ -61,6 +61,8 @@ const EventMoreInfo = () => {
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
+  // console.log(token);
+
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -904,10 +906,10 @@ const EventMoreInfo = () => {
                         </div>
 
                         <textarea
+                          className="event-add-new-comment-textarea"
                           onChange={(e) => setEventNewComment(e.target.value)}
                           name="add-comment"
                           id="add-comment"
-                          width="100%"
                           cols="50"
                           rows="10"
                         ></textarea>
