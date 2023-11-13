@@ -8,9 +8,12 @@
   font-size: 1.5rem;
   min-height: 50px;
   min-width: 300px;
+  width: 100%;
   background-color: var(--primary);
   color: var(--secondary);
-  margin: 10%;
+  font-family: var(--secondaryFont);
+  margin: 5% 0.5% 5% 0.5%;
+  border: none;
 }
 
 .page4-suggested-cards {
@@ -66,6 +69,24 @@
 .page5-event-address {
   font-size: 1.4rem;
   margin-top: 4%;
+}
+
+.page5-collapse-light .ant-collapse-header-text {
+  color: var(--tertiary);
+}
+.page5-collapse-dark .ant-collapse-header-text {
+  color: white;
+}
+.page5-collapse-light .ant-collapse-content-box {
+  background-color: #e1dfd3;
+}
+.page5-collapse-dark .ant-collapse-content-box {
+  background-color: #666;
+  color: white;
+}
+
+.create-event-buttons {
+  margin-left: 5%;
 }
 
 @media screen and (max-width: 800px) {

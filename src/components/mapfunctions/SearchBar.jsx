@@ -15,11 +15,6 @@ const SearchBar = ({ onAddressSelect, onLocationSelected }) => {
 
   return (
     <div className="search-bar">
-      <label>
-        If you know the exact address of where you want to play, you can write
-        it below and click 'set location'. Otherwise, you can set your location
-        by simply dropping a pin on the map:
-      </label>
       <div style={{ margin: "1% 0" }}>
         <input
           style={{
