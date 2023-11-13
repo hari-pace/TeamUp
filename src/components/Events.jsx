@@ -217,6 +217,8 @@ const Events = () => {
     }
   };
 
+  console.log(filteredEventsCompleted);
+
   return (
     <>
       <ParallaxBanner
@@ -731,9 +733,13 @@ const Events = () => {
             <Pagination
               defaultCurrent={1}
               total={
-                searchValue === null
-                  ? filteredEvents.length
-                  : filteredEventsByName.length
+                toggleEventType
+                  ? searchValue === null
+                    ? filteredEvents.length
+                    : filteredEventsByName.length
+                  : searchValue === null
+                  ? filteredEventsCompleted.length
+                  : filteredEventsByNameCompleted.length
               }
               pageSize={itemsPerPage}
               onChange={handlePageChange}
