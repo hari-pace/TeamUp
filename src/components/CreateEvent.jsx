@@ -146,7 +146,7 @@ const CreateEvent = () => {
     }
 
     if (response.ok) {
-      alert("Your event was created successfully!");
+      // alert("Your event was created successfully!");
       navigate("/");
     }
   };
