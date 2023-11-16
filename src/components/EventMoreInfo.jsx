@@ -61,6 +61,8 @@ const EventMoreInfo = () => {
   const { token } = useContext(AuthContext);
   const { decodedToken } = useJwt(token);
 
+  // console.log(token);
+
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -93,7 +95,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("Item deleted successfully");
-        alert("Your event was deleted successfully!");
+        // alert("Your event was deleted successfully!");
         navigate("/");
       } else {
         console.error("Failed to delete item");
@@ -119,7 +121,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("user attend updated successfully");
-        alert("Your have been successfully subscribed for this event!");
+        // alert("Your have been successfully subscribed for this event!");
         // navigate("/");
         setIsDataUpdated(true);
       } else {
@@ -146,7 +148,7 @@ const EventMoreInfo = () => {
       console.log(result);
       if (response.ok) {
         console.log("user no longer attending updated successfully");
-        alert("Your have been successfully removed from this event!");
+        // alert("Your have been successfully removed from this event!");
         // navigate("/");
         setIsDataUpdated(true);
       } else {
@@ -173,7 +175,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("user like array updated successfully");
-        alert("This event has been successfully added to your watchlist!");
+        // alert("This event has been successfully added to your watchlist!");
         // navigate("/");
         setIsDataUpdated(true);
       } else {
@@ -199,7 +201,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("user like array updated successfully");
-        alert("This event has been successfully removed from your watchlist!");
+        // alert("This event has been successfully removed from your watchlist!");
         // navigate("/");
         setIsDataUpdated(true);
       } else {
@@ -264,7 +266,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("new comment added successfully");
-        alert("Your comment has been successfully added!");
+        // alert("Your comment has been successfully added!");
         // navigate(-1);
         setIsDataUpdated(true);
       } else {
@@ -298,7 +300,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("new reply added successfully");
-        alert("Your reply has been successfully added!");
+        // alert("Your reply has been successfully added!");
         // navigate(-1);
         setIsDataUpdated(true);
       } else {
@@ -325,7 +327,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("reply deleted successfully");
-        alert("Your reply has been successfully deleted!");
+        // alert("Your reply has been successfully deleted!");
         // navigate(-1);
         setIsDataUpdated(true);
       } else {
@@ -352,7 +354,7 @@ const EventMoreInfo = () => {
 
       if (response.ok) {
         console.log("comment deleted successfully");
-        alert("Your comment has been successfully deleted!");
+        // alert("Your comment has been successfully deleted!");
         // navigate(-1);
         setIsDataUpdated(true);
       } else {
@@ -904,10 +906,10 @@ const EventMoreInfo = () => {
                         </div>
 
                         <textarea
+                          className="event-add-new-comment-textarea"
                           onChange={(e) => setEventNewComment(e.target.value)}
                           name="add-comment"
                           id="add-comment"
-                          width="100%"
                           cols="50"
                           rows="10"
                         ></textarea>

@@ -15,16 +15,11 @@ const SearchBar = ({ onAddressSelect, onLocationSelected }) => {
 
   return (
     <div className="search-bar">
-      <label>
-        If you know the exact address of where you want to play, you can write
-        it below and click 'set location'. Otherwise, you can set your location
-        by simply dropping a pin on the map:
-      </label>
       <div style={{ margin: "1% 0" }}>
         <input
           style={{
             height: "25px",
-            width: "80%",
+            width: "81%",
             marginTop: "10px",
             marginBottom: "5px",
             border: "none",
@@ -37,7 +32,12 @@ const SearchBar = ({ onAddressSelect, onLocationSelected }) => {
         />
         <button
           onClick={handleSearch}
-          style={{ height: "29px", width: "100px", marginBottom: "5px" }}
+          style={{
+            height: "29px",
+            width: "100px",
+            marginBottom: "5px",
+            paddingTop: "2px",
+          }}
         >
           Set location
         </button>

@@ -133,8 +133,15 @@ const Events = () => {
       event?.location?.address?.city?.includes(locationValue)
   );
 
-  const filteredEventsByName = upcomingEvents.filter((event) =>
-    event.eventTitle?.includes(searchValue)
+  const filteredEventsByName = upcomingEvents.filter(
+    (event) =>
+      event.eventTitle?.includes(searchValue) ||
+      event.eventTitle?.includes(
+        searchValue?.charAt(0).toUpperCase() + searchValue?.slice(1)
+      ) ||
+      event.eventTitle?.includes(
+        searchValue?.charAt(0).toLowerCase() + searchValue?.slice(1)
+      )
   );
   const filteredEventsCompleted = completedEvents.filter(
     (event) =>
@@ -142,8 +149,15 @@ const Events = () => {
       event.location?.address?.city?.includes(locationValue)
   );
 
-  const filteredEventsByNameCompleted = completedEvents.filter((event) =>
-    event.eventTitle?.includes(searchValue)
+  const filteredEventsByNameCompleted = completedEvents.filter(
+    (event) =>
+      event.eventTitle?.includes(searchValue) ||
+      event.eventTitle?.includes(
+        searchValue?.charAt(0).toUpperCase() + searchValue?.slice(1)
+      ) ||
+      event.eventTitle?.includes(
+        searchValue?.charAt(0).toLowerCase() + searchValue?.slice(1)
+      )
   );
 
   // console.log(completedEvents);
@@ -202,6 +216,8 @@ const Events = () => {
       setToggleEventType(false);
     }
   };
+
+  console.log(filteredEventsCompleted);
 
   return (
     <>
@@ -566,21 +582,25 @@ const Events = () => {
                           ]}
                         >
                           <Meta
-                            // className="page2-suggested-individual-card-meta"
+                            className="page2-suggested-individual-card-meta"
                             avatar={
                               <Avatar
                                 src={event?.organizator?.userInfo?.userImage}
                               />
                             }
                             title={event.eventTitle}
-                            description={`${
-                              event.sportType[0]
-                            } // ${event.eventDateAndTime?.eventDate?.slice(
-                              0,
-                              10
-                            )} @ ${event.eventDateAndTime?.eventTime} // ${
-                              event.location?.address?.city
-                            }`}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
                           />
                         </Card>
                       </NavLink>
@@ -671,21 +691,25 @@ const Events = () => {
                           ]}
                         >
                           <Meta
-                            // className="page2-suggested-individual-card-meta"
+                            className="page2-suggested-individual-card-meta"
                             avatar={
                               <Avatar
                                 src={event?.organizator?.userInfo?.userImage}
                               />
                             }
                             title={event.eventTitle}
-                            description={`${
-                              event.sportType[0]
-                            } // ${event.eventDateAndTime?.eventDate?.slice(
-                              0,
-                              10
-                            )} @ ${event.eventDateAndTime?.eventTime} // ${
-                              event.location?.address?.city
-                            }`}
+                            description={`${event.sportType[0]} // ${new Date(
+                              event?.eventDateAndTime?.eventDate
+                            ).toLocaleDateString("de-DE", {
+                              day: "numeric",
+                              month: "numeric",
+                              year: "numeric",
+                            })} @ ${new Date(
+                              event?.eventDateAndTime?.eventTime
+                            ).toLocaleTimeString("de-DE", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })} // ${event.location?.address?.city}`}
                           />
                         </Card>
                       </NavLink>
@@ -709,9 +733,13 @@ const Events = () => {
             <Pagination
               defaultCurrent={1}
               total={
-                searchValue === null
-                  ? filteredEvents.length
-                  : filteredEventsByName.length
+                toggleEventType
+                  ? searchValue === null
+                    ? filteredEvents.length
+                    : filteredEventsByName.length
+                  : searchValue === null
+                  ? filteredEventsCompleted.length
+                  : filteredEventsByNameCompleted.length
               }
               pageSize={itemsPerPage}
               onChange={handlePageChange}

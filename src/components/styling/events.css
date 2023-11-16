@@ -324,5 +324,14 @@
     justify-content: center;
   }
   .events-switch {
+    max-width: 130px;
+  }
+
+  .page2-suggested-individual-card {
+    margin-bottom: 5%;
+  }
+
+  .events-pagination {
+    width: 80%;
   }
 }

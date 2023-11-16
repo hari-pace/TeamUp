@@ -11,11 +11,13 @@ import axios from "axios";
 import Swimming from "../assets/swimming2.jpg";
 import Cycling from "../assets/cycling.jpg";
 import Basketball from "../assets/basketball2.jpg";
-import { PlusOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined } from "@ant-design/icons";
 import { CloseOutlined } from "@ant-design/icons";
+import { SmileOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
+  Collapse,
   DatePicker,
   TimePicker,
   Form,
@@ -87,6 +89,9 @@ const CreateEvent = () => {
 
   const oneUser = users.filter((user) => user.username === decodedToken?.name);
 
+  // console.log(oneUser[0].userInfo.location.city);
+  const userCity = oneUser[0]?.userInfo?.location?.city;
+
   const jsonData = {
     sportType: eventSportType,
     usersAttending: [
@@ -141,7 +146,7 @@ const CreateEvent = () => {
     }
 
     if (response.ok) {
-      alert("Your event was created successfully!");
+      // alert("Your event was created successfully!");
       navigate("/");
     }
   };
@@ -185,6 +190,16 @@ const CreateEvent = () => {
   const onFinish = (values) => {
     // Handle form submission logic here
     console.log("Received values:", values);
+  };
+
+  const { Panel } = Collapse;
+
+  const customPanelStyle = {
+    background: isLightTheme ? "#D9D7CC" : "#555",
+    borderRadius: 4,
+    marginBottom: 8,
+    border: 0,
+    overflow: "hidden",
   };
 
   return (
@@ -258,13 +273,48 @@ const CreateEvent = () => {
                 maxWidth: 600,
               }}
             >
-              <h3 style={{color: themeStyles.text }} className="page5-subheadings">Event location</h3>
+              <h3
+                style={{ color: themeStyles.text }}
+                className="page5-subheadings"
+              >
+                Event location
+              </h3>
 
               <div className="page5-map-container">
+                <Collapse
+                  className={
+                    isLightTheme
+                      ? "page5-collapse-light"
+                      : "page5-collapse-dark"
+                  }
+                >
+                  <Panel
+                    key="1"
+                    header={
+                      <span>
+                        <InfoCircleOutlined style={{ marginRight: 8 }} />
+                        How can I set the event location?
+                      </span>
+                    }
+                    style={customPanelStyle}
+                  >
+                    <label>
+                      - If you know the exact address of where you want to play,
+                      you can write it below and click 'set location'. If the
+                      address is found, a pop-up will appear below the map
+                      showing the full address. <br /> - If you don't know the
+                      exact address, you can set your location by simply
+                      dropping a pin on the map:
+                    </label>
+                  </Panel>
+                  {/* Add more panels as needed */}
+                </Collapse>
+
                 <SearchBar onAddressSelect={handleAddressSelect} />
                 <MapComponent
                   selectedLocation={selectedLocation}
                   onLocationSelected={handleLocationSelected}
+                  userCity={userCity}
                 />
               </div>
 
@@ -273,9 +323,12 @@ const CreateEvent = () => {
                   This event will take place at: <div>{eventAddress}</div>
                 </div>
               ) : null}
-              <h3 
-              style={{color: themeStyles.text }}
-              className="page5-subheadings">Event information</h3>
+              <h3
+                style={{ color: themeStyles.text }}
+                className="page5-subheadings"
+              >
+                Event information
+              </h3>
               <Form.Item
                 label="Event title"
                 name="Event title"
@@ -332,7 +385,7 @@ const CreateEvent = () => {
                 <DatePicker onChange={setEventDate} value={eventDate} />
               </Form.Item>
               <Form.Item
-              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Event time"
                 name="Event time"
                 rules={[
@@ -351,7 +404,7 @@ const CreateEvent = () => {
               </Form.Item>
 
               <Form.Item
-              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Minimum no. of players"
                 name="Minimum no. of players"
                 rules={[
@@ -367,7 +420,7 @@ const CreateEvent = () => {
                 />
               </Form.Item>
               <Form.Item
-              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Max no. of players"
                 name="Max no. of players"
                 rules={[
@@ -393,7 +446,7 @@ const CreateEvent = () => {
               </Form.Item> */}
 
               <Form.Item
-              className={isLightTheme ? "bioDescText" : "darkbioDescText"}
+                className={isLightTheme ? "bioDescText" : "darkbioDescText"}
                 label="Short event description"
                 name="Short event description"
                 rules={[
@@ -550,7 +603,12 @@ const CreateEvent = () => {
 
               <Form.Item>
                 <Button className="page5-btn" htmlType="submit">
-                  Create my event!
+                  <div>
+                    <SmileOutlined />
+                    <span className="create-event-buttons">
+                      Create my event!
+                    </span>
+                  </div>
                 </Button>
               </Form.Item>
             </Form>
